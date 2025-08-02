@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riwayat Upload Kertas Kerja</title>
+    <link rel="stylesheet" href="RiwayatUp.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="top-bar">
+        <button class="btn-back" onclick="window.history.back();">
+          <svg width="32" height="32" viewBox="0 0 28 28">
+            <path
+              d="M18 22l-8-8 8-8"
+              stroke="#666"
+              stroke-width="2.5"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <img
+          src="Gambar/Kemenkeu.png"
+          alt="Logo Kemenkeu"
+          class="logo-kemenkeu"
+        />
+      </div>
+    <main class="content-hasil">
+      <section class="hasil-card">
+        <h1>Riwayat Upload Kertas Kerja</h1>
+        <hr />
+        <div class="riwayat-upload-table">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal Upload</th>
+                <th>NUP</th>
+                <th>Nama Objek</th>
+                <th>Nilai Taksiran</th>
+                <th>Nama File</th>
+                <th style="text-align: center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>27 Juli 2025 | 21:37</td>
+                <td>11231121</td>
+                <td>Mobil Toyota 1234567</td>
+                <td>Rp 120.000.000</td>
+                <td>KertasKerja_Toyota.pdf</td>
+                <td class="aksi-td">
+                  <a class="icon-btn" title="Unduh" href="#">
+                    <!-- Icon unduh -->
+                    <svg
+                      width="22"
+                      height="22"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#3976df"
+                    >
+                      <path
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"
+                      />
+                    </svg>
+                    <span class="aksi-text">Unduh</span>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>26 Juli 2025 | 19:14</td>
+                <td>1234242</td>
+                <td>SUV Pajero</td>
+                <td>Rp 175.000.000</td>
+                <td>KertasKerja_SUV.docx</td>
+                <td class="aksi-td">
+                  <a class="icon-btn" title="Unduh" href="#">
+                    <svg
+                      width="22"
+                      height="22"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#3976df"
+                    >
+                      <path
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"
+                      />
+                    </svg>
+                    <span class="aksi-text">Unduh</span>
+                  </a>
+                </td>
+              </tr>
+              <!-- Tambahkan baris sesuai kebutuhan -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

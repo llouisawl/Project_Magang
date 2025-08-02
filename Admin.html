@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitoring Kertas Kerja | Admin e-Taksir</title>
+    <link rel="stylesheet" href="Admin.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <img
+        src="Gambar/Kemenkeu.png"
+        alt="Logo Kemenkeu"
+        class="logo-kemenkeu"
+      />
+      <div class="header-right">
+        <span class="welcome-text">Selamat Datang</span>
+        <span class="icon-vehicle">
+          <!-- Icon kendaraan, bisa SVG atau gambar -->
+          <img src="Gambar/Putih.png" alt="Icon e-Taksir" height="38" />
+        </span>
+        <span class="user-role">Admin</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="container-table">
+        <div class="table-header">
+          <h2>Monitoring Kertas Kerja</h2>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari Kode Satker, NUP, atau Nama Objek..."
+          />
+        </div>
+        <div class="table-responsive">
+          <table id="kertasKerjaTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Kode Satker</th>
+                <th>NUP</th>
+                <th>Nama Objek</th>
+                <th>Nama File</th>
+                <th>Nilai Taksiran</th>
+                <th>Status Watermark</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Contoh data awal, nanti bisa diisi dari backend -->
+              <tr>
+                <td>1</td>
+                <td>321003</td>
+                <td>2022001</td>
+                <td>Mobil XYZ</td>
+                <td>Kertas Kerja_Toyota</td>
+                <td>Rp69.000.000</td>
+                <td><span class="status belum">Belum</span></td>
+                <td>
+                  <button
+                    class="btn-preview"
+                    onclick="showPreview('Mobil XYZ')"
+                  >
+                    Preview
+                  </button>
+                  <button class="btn-watermark" onclick="beriWatermark(this)">
+                    Beri Watermark
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>321004</td>
+                <td>2022002</td>
+                <td>Motor ABC</td>
+                <td>Kertas Kerja_Toyota</td>
+                <td>Rp69.000.000</td>
+                <td><span class="status sudah">Sudah</span></td>
+                <td>
+                  <button
+                    class="btn-preview"
+                    onclick="showPreview('Motor ABC')"
+                  >
+                    Preview
+                  </button>
+                  <button class="btn-download">Download</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>321005</td>
+                <td>2022003</td>
+                <td>Mobil DEF</td>
+                <td>Kertas Kerja_Toyota</td>
+                <td>Rp69.000.000</td>
+                <td><span class="status belum">Belum</span></td>
+                <td>
+                  <button
+                    class="btn-preview"
+                    onclick="showPreview('Mobil DEF')"
+                  >
+                    Preview
+                  </button>
+                  <button class="btn-watermark" onclick="beriWatermark(this)">
+                    Beri Watermark
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Modal Preview -->
+      <div class="modal" id="previewModal">
+        <div class="modal-content">
+          <span class="close" onclick="closePreview()">&times;</span>
+          <h3 id="modalTitle">Preview Kertas Kerja</h3>
+          <div class="modal-body">
+            <p id="modalContent">
+              Ini adalah tampilan preview Kertas Kerja. (Simulasi)
+            </p>
+            <!-- Contoh isi preview, bisa diganti dengan iframe PDF, embed dokumen, dsb -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // SEARCH/FILTER
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function () {
+          let filter = this.value.toUpperCase();
+          let rows = document.querySelectorAll("#kertasKerjaTable tbody tr");
+          rows.forEach((row) => {
+            let kodeSatker = row.cells[1].textContent.toUpperCase();
+            let nup = row.cells[2].textContent.toUpperCase();
+            let namaObjek = row.cells[3].textContent.toUpperCase();
+            if (
+              kodeSatker.indexOf(filter) > -1 ||
+              nup.indexOf(filter) > -1 ||
+              namaObjek.indexOf(filter) > -1
+            ) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+
+      // MODAL PREVIEW
+      function showPreview(objek) {
+        document.getElementById("modalTitle").textContent =
+          "Preview Kertas Kerja";
+        document.getElementById("modalContent").innerHTML =
+          "<b>Ini adalah preview kertas kerja:</b><br><br>Nama Objek: <u>" +
+          objek +
+          "</u><br><br><i>Preview PDF/isi dokumen akan muncul di sini (simulasi)</i>";
+        document.getElementById("previewModal").style.display = "block";
+      }
+      function closePreview() {
+        document.getElementById("previewModal").style.display = "none";
+      }
+
+      // WATERMARK SIMULASI
+      function beriWatermark(btn) {
+        // Ambil baris tabel terkait
+        let row = btn.closest("tr");
+        // Ubah status watermark
+        let statusSpan = row.querySelector(".status");
+        statusSpan.textContent = "Sudah";
+        statusSpan.classList.remove("belum");
+        statusSpan.classList.add("sudah");
+        // Ubah tombol jadi Download
+        btn.outerHTML =
+          '<button class="btn-download" onclick="alert(\'Download Berhasil!\')">Download</button>';
+        // Optional: notif/snackbar
+        alert("Watermark berhasil ditambahkan!");
+      }
+    </script>
+  </body>
+</html>

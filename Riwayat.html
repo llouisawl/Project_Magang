@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Riwayat Kertas Kerja</title>
+    <link rel="stylesheet" href="Riwayat.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header-flex">
+          <img
+            src="Gambar/Kemenkeu.png"
+            alt="Logo Kemenkeu"
+            class="logo-kemenkeu"
+          />
+          <div class="profile-dropdown">
+            <!-- SVG icon profil user -->
+            <span class="profile-icon" tabindex="0">
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <circle cx="19" cy="19" r="19" fill="#E8EEFB" />
+                <path
+                  d="M19 19c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zM19 21c-4.41 0-8 2.24-8 5v2h16v-2c0-2.76-3.59-5-8-5z"
+                  fill="#426bba"
+                />
+              </svg>
+            </span>
+            <div class="dropdown-content">
+              <a href="Panitia.html">
+                <!-- Icon Dokumen (Kertas Kerja) -->
+                <svg
+                  width="17"
+                  height="17"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#426bba"
+                  style="vertical-align: middle; margin-right: 7px"
+                >
+                  <rect
+                    x="4"
+                    y="2"
+                    width="16"
+                    height="20"
+                    rx="2"
+                    stroke="#426bba"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <line
+                    x1="8"
+                    y1="6"
+                    x2="16"
+                    y2="6"
+                    stroke="#426bba"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="8"
+                    y1="10"
+                    x2="16"
+                    y2="10"
+                    stroke="#426bba"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="8"
+                    y1="14"
+                    x2="14"
+                    y2="14"
+                    stroke="#426bba"
+                    stroke-width="2"
+                  />
+                </svg>
+                Kertas Kerja
+              </a>
+
+              <a href="#" class="logout-link">
+                <!-- Icon Logout -->
+                <svg
+                  width="17"
+                  height="17"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e04848"
+                  style="vertical-align: middle; margin-right: 7px"
+                >
+                  <path
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1"
+                  />
+                </svg>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-row">
+          <img src="Gambar/Logo.png" alt="Icon" class="welcome-icon" />
+          <div class="welcome-text">
+            <span>Selamat Datang</span>
+            <h3>Dino</h3>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="Riwayat.html" class="active"
+                ><span>🗒️</span> Riwayat Kertas kerja</a
+              >
+            </li>
+            <li>
+              <a href="Upload.html"><span>📂</span> Upload Kertas Kerja</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="search-row">
+          <div class="search-box">
+            <span class="icon-search">
+              <svg
+                width="21"
+                height="21"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#3659b5"
+                stroke-width="2"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <line
+                  x1="16.5"
+                  y1="16.5"
+                  x2="22"
+                  y2="22"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+
+            <input type="text" placeholder="Cari" />
+            <span class="icon-close">&#10005;</span>
+          </div>
+          <a href="Panitia.html" class="btn-tambah">
+            Tambah Kertas Kerja <span class="icon-plus">&#43;</span>
+          </a>
+        </div>
+        <div class="riwayat-table">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal & Waktu Pembuatan</th>
+                <th>Nama Objek</th>
+                <th style="text-align: center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>19 Agustus 2025 | 12:10</td>
+                <td>Daihatsu Sigra 1.2 Kuda VA1W GLX/Deluxe</td>
+                <td class="aksi-td">
+                  <!-- LIHAT -->
+                  <button
+                    class="aksi-btn lihat-btn"
+                    title="Lihat Detail"
+                    onclick="showDetail()"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#37589a"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M1.458 12C2.732 7.943 6.522 5 12 5c5.478 0 9.268 2.943 10.542 7-.857 2.571-3.143 5.8-10.542 7-7.4-1.2-9.685-4.429-10.542-7zm10.542 2a2 2 0 100-4 2 2 0 000 4z"
+                      />
+                    </svg>
+                    <span>Lihat</span>
+                  </button>
+                  <!-- UNDUH -->
+                  <a class="aksi-btn unduh-btn" title="Unduh" href="#">
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#37589a"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"
+                      />
+                    </svg>
+                    <span>Unduh</span>
+                  </a>
+                  <!-- HAPUS -->
+                  <button class="aksi-btn icon-btn" title="Hapus">
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e04848"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M8 7V4a2 2 0 012-2h2a2 2 0 012 2v3"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>20 Agustus 2025 | 12:10</td>
+                <td>Daihatsu Sigra 1.2 MT</td>
+                <td class="aksi-td">
+                  <button
+                    class="aksi-btn lihat-btn"
+                    title="Lihat Detail"
+                    onclick="showDetail()"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#37589a"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M1.458 12C2.732 7.943 6.522 5 12 5c5.478 0 9.268 2.943 10.542 7-.857 2.571-3.143 5.8-10.542 7-7.4-1.2-9.685-4.429-10.542-7zm10.542 2a2 2 0 100-4 2 2 0 000 4z"
+                      />
+                    </svg>
+                    <span>Lihat</span>
+                  </button>
+                  <a class="aksi-btn unduh-btn" title="Unduh" href="#">
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#37589a"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"
+                      />
+                    </svg>
+                    <span>Unduh</span>
+                  </a>
+                  <button class="aksi-btn icon-btn" title="Hapus">
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#e04848"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M8 7V4a2 2 0 012-2h2a2 2 0 012 2v3"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <img src="Gambar/Logo.png" alt="Watermark" class="watermark-bg" />
+
+        <!-- Modal Detail Kertas Kerja -->
+        <div class="modal-detail" id="modalDetail">
+          <div class="modal-detail-content">
+            <span class="close-modal" onclick="closeDetail()">&times;</span>
+            <div id="detailContent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Untuk demo, data dummy mirip hasil HasilTaksir
+      function showDetail() {
+        document.getElementById("modalDetail").style.display = "block";
+        document.getElementById("detailContent").innerHTML = `
+      <div class="result-card-modal">
+        <h2 class="section-title-modal">Data Kendaraan dan Kondisi Fisik</h2>
+        <div class="vehicle-data-box-modal">
+          <img src="Gambar/Logo.png" class="logoe-modal" alt="" />
+          <div class="vehicle-group-modal">
+            <h2>IDENTIFIKASI</h2>
+            <div class="row-modal">
+              <div class="field-modal"><label>NAMA OBJEK</label><div class="val-modal">Daihatsu</div></div>
+              <div class="field-modal"><label>NUP</label><div class="val-modal">-</div></div>
+            </div>
+            <div class="row-modal">
+              <div class="field-modal"><label>LOKASI OBJEK</label><div class="val-modal">Bekasi</div></div>
+              <div class="field-modal"><label>KATEGORI LOKASI</label><div class="val-modal">2</div></div>
+            </div>
+            <div class="row-modal">
+              <div class="field-modal"><label>JENIS KENDARAAN</label><div class="val-modal">Roda 2 atau 3</div></div>
+              <div class="field-modal"><label>MEREK KENDARAAN</label><div class="val-modal">Caesar</div></div>
+              <div class="field-modal"><label>TIPE KENDARAAN</label><div class="val-modal">AN 112 D</div></div>
+            </div>
+            <div class="sub-group-modal">
+              <div class="sub-label-modal">Identitas Kendaraan</div>
+              <div class="row-modal">
+                <div class="field-modal"><label>NOMOR POLISI</label><div class="val-modal">DB 1234 GU</div></div>
+                <div class="field-modal"><label>DOKUMEN KEPEMILIKAN</label><div class="val-modal">BPKB</div></div>
+              </div>
+            </div>
+            <div class="row-modal">
+              <div class="field-modal"><label>PEMILIK DOKUMEN</label><div class="val-modal">Kementrian X</div></div>
+              <div class="field-modal"><label>MASA BERLAKU</label><div class="val-modal">Masih Berlaku</div></div>
+            </div>
+            <div class="sub-group-modal">
+              <div class="sub-label-modal">Keterangan</div>
+              <div class="row-modal">
+                <div class="field-modal"><label>PENGGUNAAN KENDARAAN</label><div class="val-modal">Pribadi</div></div>
+                <div class="field-modal"><label>KETERANGAN LAINNYA</label><div class="val-modal">-</div></div>
+              </div>
+            </div>
+            <h2>FISIK KENDARAAN</h2>
+            <div class="row-modal">
+              <div class="field-modal"><label>WARNA</label><div class="val-modal">Merah Hitam</div></div>
+              <div class="field-modal"><label>TAHUN PEMBUATAN</label><div class="val-modal">1915</div></div>
+              <div class="field-modal"><label>BAHAN BAKAR</label><div class="val-modal">Bensin</div></div>
+            </div>
+            <div class="row-modal">
+              <div class="field-modal" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val-modal">0,7 (Tingkat kerusakan sampai dengan 80%)</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="table-title-modal">
+          <span>Data Hasil Lelang</span>
+          <span class="brand-highlight-modal" id="lelangBrand">Caesar</span>
+        </div>
+        <div class="table-responsive-modal">
+          <table>
+                        <thead>
+              <tr>
+                <th>No</th>
+                <th>Kode Lelang</th>
+                <th>Tipe</th>
+                <th>Harga Lelang</th>
+                <th>Waktu Lelang</th>
+                <th colspan="2" class="kategori-header">
+                  Kategori Lokasi Lelang
+                </th>
+                <th>Tahun Pembuatan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>EMT3NR</td>
+                <td>Sigra 1.2 MT</td>
+                <td>Rp 69 020 000</td>
+                <td>2023</td>
+                <td class="lokasi">Cirebon</td>
+                <td class="kategori">1</td>
+                <td>2019</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>MYV1BW</td>
+                <td>Sigra 1.2 MT</td>
+                <td>Rp 79 914 000</td>
+                <td>2022</td>
+                <td class="lokasi">Cirebon</td>
+                <td class="kategori">1</td>
+                <td>2016</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>XXXYXY</td>
+                <td>Sigra 1.2 MT</td>
+                <td>Rp 75 000 000</td>
+                <td>2021</td>
+                <td class="lokasi">Cirebon</td>
+                <td class="kategori">1</td>
+                <td>2018</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-title-modal" style="margin-top: 28px">Penyesuaian</div>
+        <div class="table-responsive-modal">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tipe</th>
+                <th>Merk</th>
+                <th>Waktu</th>
+                <th>Lokasi</th>
+                <th>Tahun Pembuatan</th>
+                <th>Total</th>
+                <th>Nilai Taksiran</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td><td>0%</td><td>0%</td><td>4%</td><td>0%</td><td>0%</td><td>0%</td><td>Rp 69 768 000</td>
+              </tr>
+              <tr>
+                <td>2</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>Rp 69 768 000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nilai-row-modal">
+          <div class="nilai-box-modal">
+            <span class="nilai-label-modal">RATA - RATA NILAI TAKSIRAN</span>
+            <span class="nilai-val-modal" id="rataTaksir">Rp 69 768 000</span>
+          </div>
+          <div class="nilai-box-modal">
+            <span class="nilai-label-modal">TAKSIRAN NILAI LIMIT LELANG</span>
+            <span class="nilai-val-modal" id="limitTaksir">Rp 69 768 000</span>
+          </div>
+          <div class="nilai-box-modal">
+            <span class="nilai-label-modal">PEMBULATAN</span>
+            <span class="nilai-val-modal" id="pembulatan">Rp 69 768 000</span>
+          </div>
+        </div>
+      </div>
+      `;
+      }
+      function closeDetail() {
+        document.getElementById("modalDetail").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

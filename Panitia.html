@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>e-Taksir | Panitia Penaksir</title>
+    <link rel="stylesheet" href="Panitia.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header-flex">
+          <img
+            src="Gambar/Kemenkeu.png"
+            alt="Logo Kemenkeu"
+            class="logo-kemenkeu"
+          />
+          <div class="profile-dropdown">
+            <span class="profile-icon" tabindex="0">
+              <!-- ...SVG ICON USER... -->
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <circle cx="19" cy="19" r="19" fill="#E8EEFB" />
+                <path
+                  d="M19 19c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zM19 21c-4.41 0-8 2.24-8 5v2h16v-2c0-2.76-3.59-5-8-5z"
+                  fill="#426bba"
+                />
+              </svg>
+            </span>
+            <div class="dropdown-content">
+              <a href="Daftar.Html" class="logout-link">
+                <!-- Icon Logout -->
+                <svg
+                  width="17"
+                  height="17"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e04848"
+                  style="vertical-align: middle; margin-right: 7px"
+                >
+                  <path
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1"
+                  />
+                </svg>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-row">
+          <img src="Gambar/Logo.png" alt="Icon" class="welcome-icon" />
+          <div class="welcome-text">
+            <span>Selamat Datang</span>
+            <h3>Dino</h3>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="Riwayat.html" class="active"
+                ><span>🗒️</span> Riwayat Kertas kerja</a
+              >
+            </li>
+            <li>
+              <a href="Upload.html"><span>📂</span> Upload Kertas Kerja</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <!-- Main Content -->
+      <main>
+        <h1>Kertas Kerja Penentuan Nilai Taksiran BMN (Lelang Kendaraan)</h1>
+        <form id="kertasKerjaForm">
+          <section>
+            <h2>IDENTIFIKASI</h2>
+            <div class="row">
+              <div class="input-group">
+                <label>Nama Objek</label>
+                <input type="text" name="nama_objek" required />
+              </div>
+              <div class="input-group">
+                <label>NUP</label>
+                <input type="text" name="nup" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-group">
+                <label>Lokasi Objek</label>
+                <input
+                  list="daftar-lokasi"
+                  name="lokasi_objek"
+                  id="lokasi_objek"
+                  placeholder="Ketik lokasi objek..."
+                  required
+                />
+                <datalist id="daftar-lokasi"></datalist>
+              </div>
+              <div class="input-group">
+                <label>Kategori Lokasi</label>
+                <select name="kategori_lokasi" required>
+                  <option value="">Pilih</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-group">
+                <label>Jenis Kendaraan</label>
+                <select
+                  name="jenis_kendaraan"
+                  id="jenis_kendaraan"
+                  required
+                  onchange="tampilkanCC()"
+                >
+                  <option value="">Pilih</option>
+                  <option value="Roda 2 atau 3">Roda 2 atau 3</option>
+                  <option value="Roda 4 atau lebih">Roda 4 atau lebih</option>
+                </select>
+              </div>
+              <div class="input-group" id="cc_roda2" style="display: none">
+                <label>CC Kendaraan</label>
+                <select name="cc_kendaraan_roda2" id="cc_kendaraan_roda2">
+                  <option value="">Pilih CC</option>
+                  <option value="low">≤ 100 cc</option>
+                  <option value="middle">100 – 150 cc</option>
+                  <option value="high">&gt; 150 cc</option>
+                </select>
+              </div>
+              <div class="input-group" id="cc_roda4" style="display: none">
+                <label>CC Kendaraan</label>
+                <select name="cc_kendaraan_roda4" id="cc_kendaraan_roda4">
+                  <option value="">Pilih CC</option>
+                  <option value="low">≤ 1200 cc</option>
+                  <option value="middle">1200 – 2500 cc</option>
+                  <option value="high">&gt; 2500 cc</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-group">
+                <label>Merek Kendaraan</label>
+                <input
+                  list="daftar-merek"
+                  name="merek_kendaraan"
+                  id="merek_kendaraan"
+                  placeholder="Ketik merek kendaraan..."
+                  required
+                />
+                <datalist id="daftar-merek"></datalist>
+              </div>
+              <div class="input-group">
+                <label>Tipe Kendaraan</label>
+                <input
+                  list="datalist-tipe"
+                  id="tipe_kendaraan"
+                  name="tipe_kendaraan"
+                  placeholder="Ketik atau pilih tipe kendaraan..."
+                  required
+                />
+                <datalist id="datalist-tipe"></datalist>
+              </div>
+              <div class="input-group">
+                <label>Nomor Polisi</label>
+                <input type="text" name="nomor_polisi" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-group">
+                <label>Dokumen Kepemilikan</label>
+                <div class="checkbox-group">
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="dokumen_kepemilikan[]"
+                      value="BPKB"
+                    />
+                    BPKB
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="dokumen_kepemilikan[]"
+                      value="STNK"
+                    />
+                    STNK
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="lainnyaCheckbox"
+                      onchange="toggleLainnyaInput(this)"
+                    />
+                    Lainnya
+                    <input
+                      type="text"
+                      name="dokumen_kepemilikan[]"
+                      id="lainnyaInput"
+                      placeholder="Tulis dokumen lain..."
+                      style="display: none; margin-left: 8px; width: 140px"
+                    />
+                  </label>
+                </div>
+              </div>
+              <div class="input-group">
+                <label>Pemilik Dokumen</label>
+                <input type="text" name="pemilik_dokumen" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-group">
+                <label>Masa Berlaku</label>
+                <select name="masa_berlaku" required>
+                  <option value="">Pilih</option>
+                  <option value="Masih Berlaku">Masih Berlaku</option>
+                  <option value="Habis Masih Berlaku">
+                    Habis Masih Berlaku
+                  </option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Penggunaan Kendaraan</label>
+                <input type="text" name="penggunaan_kendaraan" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-group">
+                <label>Keterangan Lain</label>
+                <input type="text" name="keterangan_lain" />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>FISIK KENDARAAN</h2>
+            <div class="row">
+              <div class="input-group">
+                <label>Warna</label>
+                <input
+                  list="daftar-warna"
+                  name="warna"
+                  id="warna"
+                  placeholder="Ketik warna kendaraan..."
+                  required
+                />
+                <datalist id="daftar-warna"></datalist>
+              </div>
+              <div class="input-group">
+                <label>Tahun Pembuatan</label>
+                <input
+                  list="daftar-tahun"
+                  name="tahun_pembuatan"
+                  id="tahun_pembuatan"
+                  placeholder="Tahun..."
+                  required
+                />
+                <datalist id="daftar-tahun"></datalist>
+              </div>
+              <div class="input-group">
+                <label>Bahan Bakar</label>
+                <select name="bahan_bakar" required>
+                  <option value="">Pilih</option>
+                  <option value="Bensin">Bensin</option>
+                  <option value="Solar">Solar</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Kondisi Kendaraan</label>
+                <select name="kondisi_kendaraan" required>
+                  <option value="">Pilih</option>
+                  <option value="0,5 (Tingkat kerusakan diatas 90%)">
+                    0,5 (Tingkat kerusakan diatas 90%)
+                  </option>
+                  <option value="0,6 (Tingkat kerusakan diatas 80%-90%)">
+                    0,6 (Tingkat kerusakan diatas 80%-90%)
+                  </option>
+                  <option value="0,7 (Tingkat kerusakan sampai dengan 80%)">
+                    0,7 (Tingkat kerusakan sampai dengan 80%)
+                  </option>
+                </select>
+              </div>
+            </div>
+          </section>
+          <div class="actions">
+            <button type="submit" class="submit-btn">Data Pembanding</button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="Panitia.js"></script>
+    <script>
+      // Tampilkan CC dinamis
+      function tampilkanCC() {
+        var jenis = document.getElementById("jenis_kendaraan").value;
+        var ccRoda2 = document.getElementById("cc_roda2");
+        var ccRoda4 = document.getElementById("cc_roda4");
+        ccRoda2.style.display = "none";
+        ccRoda4.style.display = "none";
+        document.getElementById("cc_kendaraan_roda2").required = false;
+        document.getElementById("cc_kendaraan_roda4").required = false;
+        if (jenis === "Roda 2 atau 3") {
+          ccRoda2.style.display = "block";
+          document.getElementById("cc_kendaraan_roda2").required = true;
+        } else if (jenis === "Roda 4 atau lebih") {
+          ccRoda4.style.display = "block";
+          document.getElementById("cc_kendaraan_roda4").required = true;
+        }
+      }
+      function toggleLainnyaInput(checkbox) {
+        var input = document.getElementById("lainnyaInput");
+        input.style.display = checkbox.checked ? "inline-block" : "none";
+        if (!checkbox.checked) input.value = "";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("kertasKerjaForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault(); // Cegah reload form
+
+            // Kumpulkan seluruh data form ke dalam object
+            const formData = {};
+            const fd = new FormData(this);
+
+            // Ambil semua input name normal
+            for (let [key, value] of fd.entries()) {
+              // Bukan dokumen kepemilikan, langsung isi
+              if (!key.startsWith("dokumen_kepemilikan")) {
+                formData[key] = value;
+              }
+            }
+
+            // Ambil semua dokumen kepemilikan (array dari checkbox + “lainnya”)
+            const dokumenArr = [];
+            // BPKB
+            if (
+              this.querySelector(
+                'input[name="dokumen_kepemilikan[]"][value="BPKB"]'
+              ).checked
+            ) {
+              dokumenArr.push("BPKB");
+            }
+            // STNK
+            if (
+              this.querySelector(
+                'input[name="dokumen_kepemilikan[]"][value="STNK"]'
+              ).checked
+            ) {
+              dokumenArr.push("STNK");
+            }
+            // Lainnya
+            const lainnyaCheckbox = this.querySelector("#lainnyaCheckbox");
+            const lainnyaInput = this.querySelector("#lainnyaInput");
+            if (
+              lainnyaCheckbox &&
+              lainnyaCheckbox.checked &&
+              lainnyaInput &&
+              lainnyaInput.value.trim() !== ""
+            ) {
+              dokumenArr.push(lainnyaInput.value.trim());
+            }
+            formData["dokumen_kepemilikan"] = dokumenArr;
+
+            // Simpan ke sessionStorage
+            sessionStorage.setItem("dataKertasKerja", JSON.stringify(formData));
+            window.location.href = "HasilTaksir.html";
+          });
+      });
+    </script>
+    <script>
+      function toggleLainnyaInput(checkbox) {
+        var input = document.getElementById("lainnyaInput");
+        input.style.display = checkbox.checked ? "inline-block" : "none";
+        if (!checkbox.checked) input.value = "";
+      }
+    </script>
+
+    <script>
+      // Ambil data tipe dari file JSON (pastikan Tipe.json 1 folder dengan file html)
+      fetch("Tipe.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const tipeList = data.map((item) => String(item.TIPE)); // pastikan jadi string
+          const datalist = document.getElementById("datalist-tipe");
+          datalist.innerHTML = ""; // kosongkan dulu
+
+          tipeList.forEach((tipe) => {
+            // Cek agar tipe tidak kosong/null/undefined
+            if (tipe && tipe.trim() !== "") {
+              const option = document.createElement("option");
+              option.value = tipe;
+              datalist.appendChild(option);
+            }
+          });
+        })
+        .catch((err) => {
+          console.error("Gagal load tipe kendaraan:", err);
+        });
+    </script>
+
+    <script>
+      // Array warna kendaraan, langsung dari list yang kamu berikan
+      const daftarWarna = [
+        "Abu - abu Metalik",
+        "Abu - abu Titanium",
+        "Abu abu Metalik",
+        "Biru",
+        "Biru Metalik",
+        "Biru Tua Metalik",
+        "Cokelat Muda",
+        "Coklat Muda Hijau",
+        "Hijau",
+        "Hijau Hitam",
+        "Hijau Metalik",
+        "Hitam",
+        "Hitam Biru",
+        "Hitam Metalik",
+        "Hitam Silver",
+        "Merah Hitam",
+        "Putih Biru",
+        "Putih Kuning",
+        "Putih Merah",
+        "Silver",
+        "Silver Metalik",
+        "Stone Grey",
+        "Abu - abu",
+        "Abu - abu Baja",
+        "Abu - abu Baja Metalik",
+        "Abu - abu Biru",
+        "Abu - abu bulan Metalik",
+        "Abu - abu Cokelat",
+        "Abu - abu Cokelat Metalik",
+        "Abu - abu Cokelat Muda",
+        "Abu - abu Coklat",
+        "Abu - abu Coklat Muda",
+        "Abu - abu Hitam",
+        "Abu - abu Merah",
+        "Abu - abu Metalik",
+        "Abu - abu Metalik Hitam",
+        "Abu - abu Mika",
+        "Abu - abu Muda Biru Tua",
+        "Abu - abu Muda Metalik",
+        "Abu - abu Perak",
+        "Abu - abu Perak Metalik",
+        "Abu - abu Silver",
+        "Abu - abu titanium",
+        "Abu - abu TNI",
+        "Abu - abu Tua",
+        "Abu - abu Tua Metalik",
+        "Abu - abu Tua Mika",
+        "Abu - abu Tua/Silver Metalik",
+        "Abu abu Metalik",
+        "Abu-Abu",
+        "Abu-Abu Hitam",
+        "Abu-Abu Metalik",
+        "Abu-abu tua metalik",
+        "Admiral Blue",
+        "Arganik Green",
+        "Arktic White",
+        "Army (Hijau abu - abu)",
+        "Army Green",
+        "Aurora Black",
+        "Beige",
+        "Biru",
+        "Biru (eks abu-abu)",
+        "Biru (Eks. Hitam)",
+        "Biru Abu - abu",
+        "Biru Abu Abu",
+        "Biru Cream",
+        "Biru Doff",
+        "Biru Dongker",
+        "Biru Hitam",
+        "Biru Hitam Metalik",
+        "Biru Kombinasi",
+        "Biru Krem",
+        "Biru Kuning",
+        "Biru Langit",
+        "Biru List Hitam",
+        "Biru Malam",
+        "Biru Mekanik",
+        "Biru Merah",
+        "Biru Metalik",
+        "Biru Metalik Pudar",
+        "Biru Muda",
+        "Biru Muda Coklat Mud",
+        "Biru Muda Metalik",
+        "Biru Orange",
+        "Biru Perak",
+        "Biru Putih",
+        "Biru Safir",
+        "Biru Safir Metalik",
+        "Biru Safir Mgt",
+        "Biru Silver",
+        "Biru Silver Metalik",
+        "Biru Standar",
+        "Biru Standar TNI AU",
+        "Biru TNI AU",
+        "Biru Toska",
+        "Biru Tua",
+        "Biru Tua Metalik",
+        "Biru Tua Silver",
+        "Biru Ungu",
+        "Black Dove",
+        "Black Mica",
+        "Bright Silver",
+        "Champagne",
+        "Chrome Black",
+        "Clear White",
+        "Cokelat",
+        "Cokelat Abu - abu",
+        "Cokelat Hitam",
+        "Cokelat KeHitaman",
+        "Cokelat Kenari",
+        "Cokelat Kombinasi",
+        "Cokelat Metalik",
+        "Cokelat Muda",
+        "Cokelat Muda Metalik",
+        "Cokelat Silver",
+        "Cokelat Tbk",
+        "Cokelat Tembakau",
+        "Cokelat Tua",
+        "Coklat",
+        "Coklat Hitam",
+        "Coklat Kombinasi",
+        "Coklat Krem",
+        "Coklat Kuning",
+        "Coklat Metalik",
+        "Coklat Muda",
+        "Coklat Muda Metalik",
+        "Coklat Tua Metalik",
+        "Cream",
+        "Creamy White",
+        "Cristal Black",
+        "Cyrus Blue",
+        "Dark Blue",
+        "Dark Blue Mica",
+        "Dark Grey Mica",
+        "Dark Olive",
+        "Dark Olive Metallic",
+        "Deep Teal",
+        "Deep Teal Metalik",
+        "Desert Storm Beige",
+        "Diamond Blue Metalic",
+        "Diamond Silver",
+        "Dokumen Biru Fisik Coklat",
+        "Dokumen Biru Fisik Hitam",
+        "Doreng",
+        "Ebony Hitam",
+        "Emas",
+        "Glittering Metal",
+        "Gold Metalik",
+        "Green",
+        "Green Army",
+        "Green Silver",
+        "Grey",
+        "Grey Metalik",
+        "Grey Mica Metallic",
+        "Gun grey",
+        "Hijau",
+        "Hijau Army",
+        "Hijau Daun",
+        "Hijau Gelap",
+        "Hijau GLP",
+        "Hijau Hitam",
+        "Hijau Kombinasi",
+        "Hijau Kombinasi Abu",
+        "Hijau Kombinasi Hitam",
+        "Hijau Kuning",
+        "Hijau Metalic",
+        "Hijau Metalic Nope",
+        "Hijau Metalik",
+        "Hijau Muda",
+        "Hijau Muda Metalik",
+        "Hijau Mutiara",
+        "Hijau Organik",
+        "Hijau Perak",
+        "Hijau Putih",
+        "Hijau Silver",
+        "Hijau Tosca",
+        "Hijau Tua",
+        "Hijau Tua Metalik",
+        "Hijau Tua/Lumut",
+        "Hijau-Metalik",
+        "Hita Merah",
+        "Hitam",
+        "Hitam - Abu/Silver",
+        "Hitam Biru",
+        "Hitam - Biru",
+        "Hitam - Merah",
+        "Hitam - Silver",
+        "Hitam (Ex Hijau)",
+        "Hitam (Kanzai)",
+        "Hitam Abu",
+        "Hitam Abu - abu",
+        "Hitam Abu- abu",
+        "Hitam Abu-abu",
+        "Hitam Biru",
+        "Hitam Bis Putih",
+        "Hitam Coklat",
+        "Hitam Coklat Muda",
+        "Hitam Hijau",
+        "Hitam Kanzai",
+        "Hitam Kuning",
+        "Hitam Les Merah",
+        "Hitam Les Orange",
+        "Hitam Lis Biru",
+        "Hitam Lis Merah",
+        "Hitam List Biru",
+        "Hitam List Hijau",
+        "Hitam List Merah",
+        "Hitam List Orange",
+        "Hitam Merah",
+        "Hitam Met",
+        "Hitam Metalic",
+        "Hitam Metalik",
+        "Hitam Mika",
+        "Hitam Mika/Silver",
+        "Hitam MTL",
+        "Hitam Mutiara",
+        "Hitam Mutiara Silver",
+        "Hitam Orange",
+        "Hitam Perak",
+        "Hitam Pink",
+        "Hitam Silver",
+        "Hitam putih",
+        "Hitam Silver Metalik",
+        "Hitam Silver Orange",
+        "Hitam Strip Kuning",
+        "Hitam Strip Kuning Merah",
+        "Hitam Tua Metalik",
+        "Hitam/Biru",
+        "Hitam/Biru Metalik",
+        "Hitam-Biru",
+        "HitamMerah",
+        "Hitam-Silver",
+        "Hiujau Metalik",
+        "Htam",
+        "Htam Metalik",
+        "Krem",
+        "Krem Coklat",
+        "Kron Metalik",
+        "Kuning",
+        "Kuning Abu - abu",
+        "Kuning Coklat Tembak",
+        "Kuning Hijau",
+        "Kuning Hitam",
+        "Kuning Kombinasi",
+        "Kuning Kombinasi Biru",
+        "Kuning Mas",
+        "Kuning Merah",
+        "Kuning Metalik",
+        "Kuning MTL",
+        "Kuning Muda",
+        "Kuning Muda Abu-Abu",
+        "Kuning Muda Kombinasi",
+        "Kuning Muda Metalik",
+        "Kuning Putih",
+        "Kuning Silver",
+        "Kuning Ungu",
+        "Kuning-Orange",
+        "Magenta",
+        "Matic",
+        "Merah",
+        "Merah abu",
+        "Merah Abu - abu",
+        "Merah Abu abu",
+        "Merah Abu- Abu",
+        "Merah Abu-Abu",
+        "Merah Anggur",
+        "Merah Coklat",
+        "Merah Coklat Muda",
+        "Merah dan Putih",
+        "Merah Doft",
+        "Merah Hitam",
+        "Merah Kombinasi",
+        "Merah Kuning",
+        "Merah Magenta",
+        "Merah Maroon",
+        "Merah Marun",
+        "Merah Metalic",
+        "Merah Metalik",
+        "Merah Mica",
+        "Merah Mika",
+        "Merah MTL",
+        "Merah Muda",
+        "Merah Muda Metalik",
+        "Merah Mutiara",
+        "Merah Mutiara/Silver",
+        "Merah Orange",
+        "Merah Perak",
+        "Merah Putih",
+        "Merah Silver",
+        "Merah Solid",
+        "Merah Tua",
+        "Merah Tua Mutiara",
+        "Merah/Silver",
+        "Merah-Hitam",
+        "Meran Abu - abu",
+        "Moon Silver",
+        "Navy Gold",
+        "Orange",
+        "Orange Biru",
+        "Orange Campur Kuning",
+        "Orange Hitam",
+        "Orange Kombinasi",
+        "Orange Krim",
+        "Orange Kuning",
+        "Orange Metalik",
+        "Orange Putih",
+        "Orange Silver",
+        "Perak",
+        "Perak Hitam",
+        "Perak Metalik",
+        "Pink",
+        "Platinum",
+        "Premium",
+        "Preswent Blue",
+        "Primer",
+        "Puith solid",
+        "Putih",
+        "Putih - Orange",
+        "Putih (Eks. Hitam Metalik)",
+        "Putih Abu",
+        "Putih Abu - abu",
+        "Putih Abu - abu Moka",
+        "Putih Abu-abu",
+        "Putih Beige",
+        "Putih Biru",
+        "Putih Biru Muda",
+        "Putih Bru",
+        "PUTIH COKLAT",
+        "Putih Comb",
+        "Putih Corak Merah",
+        "Putih Hijau",
+        "Putih Hijau Kombinasi",
+        "Putih Hitam",
+        "Putih Kombiasi",
+        "Putih Kombinasi",
+        "Putih Kombinasi Biru",
+        "Putih Kombinasi Hitam",
+        "Putih List Merah",
+        "Putih Merah",
+        "Putih Metalik",
+        "Putih Mutiara",
+        "Putih Orange",
+        "Putih Orchid",
+        "Putih Orchid Mutiara",
+        "Putih Silver",
+        "Putih Solid",
+        "Putih Strip Hijau",
+        "Red Wine",
+        "Saphire Blue",
+        "Silver",
+        "Silver (Ungu Metalik)",
+        "Silver Abu - abu",
+        "Silver Abu-Abu",
+        "Silver Biru",
+        "Silver Hitam",
+        "Silver Kombinasi",
+        "Silver Kombinasi Biru",
+        "Silver Kuning",
+        "Silver Machine",
+        "Silver Merah",
+        "Silver Metalic",
+        "Silver Metalik",
+        "Silver Metalik Kombinasi Abu - abu",
+        "Silver MTL",
+        "Silver Mutiara Metalik",
+        "Silver Orange",
+        "Silver Putih Metalik",
+        "Silver Stone",
+        "Silver Sunlight",
+        "Silver Tua Titanium",
+        "Silver Violet",
+        "Siver Metalik",
+        "Sonic Blue Metalik",
+        "Squadron Blue",
+        "Stealth Black",
+        "Stone Grey",
+        "Tetian Biru",
+        "Titanium Gold",
+        "Toska",
+        "Ungu",
+        "Ungu Hitam",
+        "Ungu Metalic",
+        "Ungu Metalik",
+        "Ungu Putih",
+        "Ungu Silver",
+        "Violet",
+        "Violet Hitam",
+        "Violet Silver",
+        "White",
+        "White Blue",
+        "White Gold",
+        "White Redn",
+        "White Silver",
+      ];
+
+      // Isi datalist otomatis
+      const datalist = document.getElementById("daftar-warna");
+      daftarWarna.forEach(function (warna) {
+        const opt = document.createElement("option");
+        opt.value = warna;
+        datalist.appendChild(opt);
+      });
+    </script>
+
+    <script>
+      const daftarMerek = [
+        "Acmat",
+        "Ariel Motor",
+        "Audi",
+        "Auverland",
+        "Bajaj",
+        "Beijing",
+        "Benelli",
+        "BMW",
+        "Bosowa",
+        "BSA (British Small Arms)",
+        "Caesar",
+        "Cherokee",
+        "Chevrolet",
+        "Daihatsu",
+        "Datsun",
+        "Dayang",
+        "Defender",
+        "Diablo",
+        "Ducati",
+        "Dyna",
+        "Fiat",
+        "Ford",
+        "Forklift",
+        "Fukuda",
+        "Garuda",
+        "Golden Dragon",
+        "Happy",
+        "Harley",
+        "Hino",
+        "Honda",
+        "Hyosung",
+        "Hyundai",
+        "Isuzu",
+        "Iveco",
+        "Jeep",
+        "Jialing",
+        "Kaisar",
+        "Kancil",
+        "Kanzen",
+        "Katana",
+        "Kawasaki",
+        "KBM",
+        "Kia",
+        "Kijang",
+        "KTM",
+        "Kymco",
+        "Lamborghini",
+        "Land Rover",
+        "Lexus",
+        "Lifan",
+        "Matchless",
+        "Mazda",
+        "Mercedes",
+        "Mercedes Benz",
+        "Mercedes-Benz",
+        "Millenium",
+        "Minerva",
+        "Mini",
+        "Mitsubishi",
+        "Monstrac",
+        "Montrada",
+        "Morin",
+        "Nasha",
+        "Nissan",
+        "Nozomi",
+        "Opel",
+        "Peugeot",
+        "Porsche",
+        "Prima",
+        "Prisma",
+        "Proton",
+        "Pulsar",
+        "Qestar",
+        "Range Rover",
+        "Rantis",
+        "Reo",
+        "Royal Enfield",
+        "Samsung",
+        "Sanex",
+        "Scania",
+        "Serena",
+        "Strada",
+        "Subaru",
+        "Suzuki",
+        "Taft",
+        "Timor",
+        "Tossa",
+        "Toyota",
+        "Trisheda",
+        "TVS",
+        "Unimog",
+        "Vespa",
+        "Viar",
+        "Viva",
+        "Volvo",
+        "VW",
+        "Wuling",
+        "Yamaha",
+      ];
+
+      // Isi datalist otomatis
+      const datalistMerek = document.getElementById("daftar-merek");
+      daftarMerek.forEach(function (merek) {
+        const opt = document.createElement("option");
+        opt.value = merek;
+        datalistMerek.appendChild(opt);
+      });
+    </script>
+
+    <script>
+      const daftarLokasi = [
+        "Ambon",
+        "Balikpapan",
+        "Banda Aceh",
+        "Bandar Lampung",
+        "Bandung",
+        "Banjarmasin",
+        "Batam",
+        "Bekasi",
+        "Bengkulu",
+        "Biak",
+        "Bima",
+        "Bogor",
+        "Bontang",
+        "Bukittinggi",
+        "Cirebon",
+        "Denpasar",
+        "Dumai",
+        "Gorontalo",
+        "Jakarta I",
+        "Jakarta II",
+        "Jakarta III",
+        "Jakarta IV",
+        "Jakarta V",
+        "Jambi",
+        "Jayapura",
+        "Jember",
+        "Kendari",
+        "Kisaran",
+        "Kupang",
+        "Lahat",
+        "Lhokseumawe",
+        "Madiun",
+        "Makassar",
+        "Malang",
+        "Mamuju",
+        "Manado",
+        "Mataram",
+        "Medan",
+        "Metro",
+        "Padang",
+        "Padang Sidempuan",
+        "Palangkaraya",
+        "Palembang",
+        "Palopo",
+        "Palu",
+        "Pamekasan",
+        "Pangkal Pinang",
+        "Pangkalan Bun",
+        "Parepare",
+        "Pekalongan",
+        "Pekanbaru",
+        "Pematang Siantar",
+        "Pontianak",
+        "Purwakarta",
+        "Purwokerto",
+        "Samarinda",
+        "Semarang",
+        "Serang",
+        "Sidoarjo",
+        "Singaraja",
+        "Singkawang",
+        "Sorong",
+        "Surabaya",
+        "Surakarta",
+        "Tangerang I",
+        "Tangerang II",
+        "Tarakan",
+        "Tasikmalaya",
+        "Tegal",
+        "Ternate",
+        "Yogyakarta",
+      ];
+
+      const datalistLokasi = document.getElementById("daftar-lokasi");
+      daftarLokasi.forEach(function (lokasi) {
+        const opt = document.createElement("option");
+        opt.value = lokasi;
+        datalistLokasi.appendChild(opt);
+      });
+    </script>
+
+    <script>
+      // Isi datalist dari 1980 - tahun sekarang
+      const tahunAwal = 1900;
+      const tahunAkhir = new Date().getFullYear();
+      const datalistTahun = document.getElementById("daftar-tahun");
+      for (let t = tahunAwal; t <= tahunAkhir; t++) {
+        const opt = document.createElement("option");
+        opt.value = t;
+        datalistTahun.appendChild(opt);
+      }
+    </script>
+
+    <script>
+      function titleCase(str) {
+        return str.replace(/\b\w/g, function (txt) {
+          return txt.toUpperCase();
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Seleksi SEMUA input text dalam form (termasuk yg pakai list/datalist)
+        document
+          .querySelectorAll(
+            '#kertasKerjaForm input[type="text"], #kertasKerjaForm input[list]'
+          )
+          .forEach(function (input) {
+            input.addEventListener("input", function () {
+              let start = input.selectionStart;
+              let end = input.selectionEnd;
+              let valBaru = titleCase(input.value);
+              if (input.value !== valBaru) {
+                input.value = valBaru;
+                input.setSelectionRange(start, end);
+              }
+            });
+          });
+      });
+    </script>
+  </body>
+</html>

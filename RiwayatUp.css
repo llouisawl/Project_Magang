@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: #f5f7fa;
+}
+
+.main-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER/LOGO/BACK */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 20px 0 20px 0;
+  width: 100%;
+  max-width: 900px;
+  padding: 10px 70px 10px 30px;
+  position: relative;
+}
+
+.btn-back {
+  border: none;
+  background: #f6f7fb;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px #e5e9f7aa;
+  margin-right: 14px;
+  margin-left: 4px;
+  transition: background 0.18s;
+}
+.btn-back:hover {
+  background: #e3e9f3;
+}
+.btn-back svg {
+  margin: 0;
+  width: 22px;
+  height: 22px;
+}
+.logo-kemenkeu {
+  height: 44px;
+  width: auto;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.content-hasil {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+.hasil-card {
+  background: #fff;
+  border-radius: 21px;
+  box-shadow: 0 4px 26px #dbe3ee44;
+  padding: 36px 36px 38px 36px;
+  min-width: 790px;
+  max-width: 1150px;
+  margin-bottom: 46px;
+}
+.hasil-card h1 {
+  font-size: 27px;
+  color: #31405f;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+hr {
+  border: none;
+  border-top: 2.1px solid #e9eef7;
+  margin-bottom: 25px;
+}
+
+/* ---- RIWAYAT TABLE RESPONSIVE ---- */
+.riwayat-upload-table {
+  margin-top: 8px;
+  border-radius: 15px;
+  overflow-x: auto;
+  background: #fff;
+  box-shadow: 0 2px 12px #dbe3ee33;
+  width: 100%;
+  min-width: 480px;
+  max-width: 100%;
+}
+
+.riwayat-upload-table table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15.2px;
+  background: #fff;
+  table-layout: auto;
+}
+
+.riwayat-upload-table th {
+  background: #e7ecf8;
+  color: #30476a;
+  font-weight: 700;
+  padding: 13px 10px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 2px solid #e0e6f2;
+}
+
+.riwayat-upload-table td {
+  padding: 11px 10px;
+  border-bottom: 1px solid #f0f1f7;
+  background: #fff;
+  color: #222;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.riwayat-upload-table tr:last-child td {
+  border-bottom: none;
+}
+
+.riwayat-upload-table th:nth-child(3),
+.riwayat-upload-table td:nth-child(3) {
+  /* Nama Objek: wrap di desktop/mobile, max-width supaya rapi */
+  white-space: normal !important;
+  word-break: break-word;
+  max-width: 260px;
+  min-width: 100px;
+}
+
+/* Responsive horizontal scroll bar */
+.riwayat-upload-table::-webkit-scrollbar {
+  height: 7px;
+}
+.riwayat-upload-table::-webkit-scrollbar-thumb {
+  background: #e0e6f2;
+  border-radius: 7px;
+}
+.riwayat-upload-table::-webkit-scrollbar-track {
+  background: #f7f9fc;
+}
+
+.aksi-td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 185px;
+}
+
+.icon-btn {
+  background: #f3f7ff;
+  border: none;
+  cursor: pointer;
+  padding: 6px 13px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  color: #355bb2;
+  font-weight: 600;
+  transition: background 0.13s, color 0.12s;
+  text-decoration: none;
+}
+.icon-btn svg {
+  margin-right: 3px;
+  vertical-align: middle;
+}
+.icon-btn:hover {
+  background: #426bba;
+  color: #fff;
+}
+.icon-btn.icon-hapus {
+  background: #fff0f0;
+  color: #e04848;
+  padding: 6px 10px;
+}
+.icon-btn.icon-hapus:hover {
+  background: #e04848;
+  color: #fff;
+}
+
+/* Responsive style for mobile & tablet */
+@media (max-width: 1100px) {
+  .hasil-card {
+    min-width: 0;
+    padding: 13px 2vw 18px 2vw;
+  }
+  .riwayat-upload-table {
+    min-width: 0;
+    font-size: 13px;
+  }
+  .riwayat-upload-table table {
+    min-width: 520px;
+    font-size: 14px;
+  }
+  .riwayat-upload-table th,
+  .riwayat-upload-table td {
+    font-size: 14px;
+    padding: 8px 6px;
+  }
+  .riwayat-upload-table td:nth-child(3) {
+    max-width: 120px;
+  }
+  .aksi-td {
+    min-width: 120px;
+    gap: 4px;
+  }
+}
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 10px 7px 10px 10px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hasil-card {
+    min-width: 0;
+    padding: 8px 2vw 14px 2vw;
+  }
+  .riwayat-upload-table th,
+  .riwayat-upload-table td {
+    font-size: 12px;
+    padding: 5px 3px;
+  }
+  .riwayat-upload-table table {
+    min-width: 360px;
+    font-size: 12px;
+  }
+  .riwayat-upload-table td:nth-child(3) {
+    max-width: 70px;
+  }
+  .aksi-td {
+    min-width: 72px;
+    gap: 2px;
+  }
+}

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Kendaraan dan Kondisi Fisik | e-Taksir</title>
+    <link rel="stylesheet" href="HasilTaksir.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="top-bar">
+        <button class="btn-back" onclick="window.history.back();">
+          <svg width="32" height="32" viewBox="0 0 28 28">
+            <path
+              d="M18 22l-8-8 8-8"
+              stroke="#666"
+              stroke-width="2.5"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <img
+          src="Gambar/Kemenkeu.png"
+          alt="Logo Kemenkeu"
+          class="logo-kemenkeu"
+        />
+      </div>
+      <div class="result-card">
+        <h2 class="section-title">Data Kendaraan dan Kondisi Fisik</h2>
+        <div class="vehicle-data-box">
+          <img src="Gambar/Logo.png" class="logoe" alt="" />
+          <div class="vehicle-group" id="vehicleGroup"></div>
+        </div>
+        <div class="table-title">
+          <span>Data Hasil Lelang </span>
+          <span class="brand-highlight" id="lelangBrand">-</span>
+        </div>
+        <div class="table-responsive">
+          <table id="tabelHasilLelang">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Kode Lelang</th>
+                <th>Merek</th>
+                <th>Tipe</th>
+                <th>Harga Lelang</th>
+                <th>Waktu Lelang</th>
+                <th colspan="2" class="kategori-header">
+                  Kategori Lokasi Lelang
+                </th>
+                <th>Tahun Pembuatan</th>
+                <th class="aksi-header fade-table-col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyPembanding">
+              <!-- Baris data otomatis/manual, diisi JS -->
+            </tbody>
+          </table>
+        </div>
+        <!-- TOMBOL TAMBAH DATA -->
+        <div class="table-btn-row" id="rowTambahData">
+          <button
+            class="btn-tambah"
+            id="btnTambahManual"
+            onclick="tambahManual()"
+            style="margin-top: 10px"
+          >
+            + Tambah Data
+          </button>
+        </div>
+        <!-- TOMBOL EDIT DATA (AWALNYA HIDDEN) -->
+        <div class="table-btn-row" id="rowEditData" style="display: none">
+          <button
+            class="btn-tambah"
+            onclick="editKembaliData()"
+            style="margin-top: 10px"
+          >
+            Edit Data
+          </button>
+        </div>
+        <div
+          class="info-status"
+          id="infoPenyesuaian"
+          style="color: #ff922b; margin: 10px 0 20px 0; text-align: center"
+        >
+          <b>
+            Saat ini Nilai Taksiran belum dapat dihitung. Silahkan pastikan data
+            pembanding yang ada minimal 3 data dan maksimal 7 data
+          </b>
+        </div>
+        <div class="aksi-row" style="text-align: center">
+          <button
+            class="btn-simpan"
+            id="btnHasilTaksir"
+            disabled
+            onclick="tampilkanPenyesuaian()"
+          >
+            Hasil Taksiran
+          </button>
+        </div>
+        <div
+          class="penyesuaian-section"
+          id="penyesuaianSection"
+          style="display: none"
+        >
+          <div class="table-title" style="margin-top: 28px">Penyesuaian</div>
+          <div class="table-responsive">
+            <table id="tabelPenyesuaian">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Data Hasil Lelang</th>
+                  <th>Tipe</th>
+                  <th>Merk</th>
+                  <th>Waktu</th>
+                  <th>Lokasi</th>
+                  <th>Tahun Pembuatan</th>
+                  <th>Total</th>
+                  <th>Nilai Taksiran</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Toyota</td>
+                  <td>0%</td>
+                  <td>0%</td>
+                  <td>4%</td>
+                  <td>0%</td>
+                  <td>0%</td>
+                  <td>0%</td>
+                  <td>Rp 69 768 000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="nilai-row">
+            <div class="nilai-box">
+              <span class="nilai-label">RATA - RATA NILAI TAKSIRAN</span>
+              <span class="nilai-val" id="rataTaksir">Rp 69 768 000</span>
+            </div>
+            <div class="nilai-box">
+              <span class="nilai-label">TAKSIRAN NILAI LIMIT LELANG</span>
+              <span class="nilai-val" id="limitTaksir">Rp 69 768 000</span>
+            </div>
+            <div class="nilai-box">
+              <span class="nilai-label">PEMBULATAN</span>
+              <span class="nilai-val" id="pembulatan">Rp 69 768 000</span>
+            </div>
+          </div>
+          <div class="btn-simpan-row">
+            <button class="btn-simpan" onclick="alert('Disimpan!')">
+              Simpan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Simulasi data kode.json & hasil lelang
+      const kodeLelangList = ["EMT3NR", "MYV1BW", "XXXYXY"];
+      const dataLelang = {
+        EMT3NR: {
+          kode: "EMT3NR",
+          merek: "Honda",
+          tipe: "Supra X 125 Spoke NF 125 TDl",
+          harga: "Rp 69 020 000",
+          waktu: "2023",
+          lokasi: "Padang Sidempuan",
+          kategori: "1",
+          tahun: "2019",
+        },
+        MYV1BW: {
+          kode: "MYV1BW",
+          merek: "Daihatsu",
+          tipe: "Sigra 1.2 MT",
+          harga: "Rp 79 914 000",
+          waktu: "2022",
+          lokasi: "Cirebon",
+          kategori: "1",
+          tahun: "2016",
+        },
+        XXXYXY: {
+          kode: "XXXYXY",
+          merek: "Daihatsu",
+          tipe: "Sigra 1.2 MTsss",
+          harga: "Rp 75 000 000",
+          waktu: "2021",
+          lokasi: "Cirebon",
+          kategori: "1",
+          tahun: "2018",
+        },
+      };
+
+      // ===== NOMOR URUT =====
+      function updateTableNumbers() {
+        const rows = document.querySelectorAll("#tbodyPembanding tr");
+        rows.forEach((tr, idx) => {
+          let noCell = tr.querySelector("td:first-child");
+          if (noCell) noCell.textContent = idx + 1;
+        });
+      }
+
+      // ===== TAMBAH BARIS =====
+      function tambahManual() {
+        const tbody = document.getElementById("tbodyPembanding");
+        if (tbody.rows.length >= 7) return;
+
+        let kodeOptions = `<option value="">Pilih Kode</option>`;
+        kodeLelangList.forEach((k) => {
+          kodeOptions += `<option value="${k}">${k}</option>`;
+        });
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+    <td></td>
+    <td>
+      <select onchange="isiOtomatisDataLelang(this)">
+        ${kodeOptions}
+      </select>
+    </td>
+    <td class="merek"></td>
+    <td class="tipe"></td>
+    <td class="harga"></td>
+    <td class="waktu"></td>
+    <td class="lokasi"></td>
+    <td class="kategori"></td>
+    <td class="tahun"></td>
+    <td class="fade-table-col aksi-cell">
+      <button class="btn-hapus" onclick="hapusBaris(this)">
+        Hapus
+      </button>
+    </td>
+  `;
+        tr.classList.add("fade-in-row");
+        tbody.appendChild(tr);
+        setTimeout(() => {
+          tr.classList.remove("fade-in-row");
+        }, 320);
+
+        updateTableNumbers();
+        updateStatePembanding();
+      }
+
+      // ===== ISI OTOMATIS =====
+      function isiOtomatisDataLelang(select) {
+        const kode = select.value;
+        const tr = select.closest("tr");
+        if (!kodeLelangList.includes(kode)) {
+          [
+            "merek",
+            "tipe",
+            "harga",
+            "waktu",
+            "lokasi",
+            "kategori",
+            "tahun",
+          ].forEach((c) => {
+            tr.querySelector(`.${c}`).textContent = "";
+          });
+          return;
+        }
+        const d = dataLelang[kode];
+        tr.querySelector(".merek").textContent = d.merek;
+        tr.querySelector(".tipe").textContent = d.tipe;
+        tr.querySelector(".harga").textContent = d.harga;
+        tr.querySelector(".waktu").textContent = d.waktu;
+        tr.querySelector(".lokasi").textContent = d.lokasi;
+        tr.querySelector(".kategori").textContent = d.kategori;
+        tr.querySelector(".tahun").textContent = d.tahun;
+      }
+
+      // ===== HAPUS BARIS =====
+      function hapusBaris(btn) {
+        const row = btn.closest("tr");
+        row.classList.add("fading-out");
+        setTimeout(() => {
+          row.remove();
+          updateTableNumbers();
+          updateStatePembanding();
+        }, 340);
+      }
+
+      // ===== STATE BUTTON & INFO =====
+      function updateStatePembanding() {
+        const tbody = document.getElementById("tbodyPembanding");
+        const btn = document.getElementById("btnHasilTaksir");
+        const info = document.getElementById("infoPenyesuaian");
+        let rowCount = tbody.rows.length;
+        btn.disabled = !(rowCount >= 3 && rowCount <= 7);
+        info.style.display = rowCount >= 3 && rowCount <= 7 ? "none" : "block";
+      }
+
+      // ===== TAMPILKAN PENYESUAIAN (FADE) =====
+      function tampilkanPenyesuaian() {
+        document.getElementById("penyesuaianSection").style.display = "block";
+        document.getElementById("btnHasilTaksir").style.display = "none";
+        document.getElementById("rowTambahData").style.display = "none";
+        document.getElementById("rowEditData").style.display = "flex";
+
+        // Fade out kolom aksi pada header
+        let aksiHeader = document.querySelector("th.aksi-header");
+        if (aksiHeader) {
+          aksiHeader.style.transition = "opacity 0.32s";
+          aksiHeader.style.opacity = "0";
+          setTimeout(() => {
+            aksiHeader.parentNode.removeChild(aksiHeader);
+            updateTableNumbers();
+          }, 320);
+        }
+
+        // Fade out semua td aksi di baris
+        document.querySelectorAll("#tbodyPembanding tr").forEach((tr) => {
+          let aksiCell = tr.querySelector("td.aksi-cell");
+          if (aksiCell) {
+            aksiCell.style.transition = "opacity 0.32s";
+            aksiCell.style.opacity = "0";
+            setTimeout(() => {
+              aksiCell.parentNode.removeChild(aksiCell);
+              updateTableNumbers();
+            }, 320);
+          }
+        });
+      }
+
+      // ===== EDIT KEMBALI (FADE IN) =====
+      function editKembaliData() {
+        document.getElementById("penyesuaianSection").style.display = "none";
+        document.getElementById("btnHasilTaksir").style.display = "";
+        document.getElementById("rowTambahData").style.display = "flex";
+        document.getElementById("rowEditData").style.display = "none";
+
+        // Header aksi
+        let theadRow = document.querySelector("#tabelHasilLelang thead tr");
+        if (theadRow && !theadRow.querySelector(".aksi-header")) {
+          let th = document.createElement("th");
+          th.className = "aksi-header";
+          th.textContent = "Aksi";
+          th.style.opacity = "0";
+          theadRow.appendChild(th);
+          setTimeout(() => {
+            th.style.transition = "opacity 0.32s";
+            th.style.opacity = "1";
+          }, 10);
+        }
+        // Semua baris, tambah td aksi jika belum ada
+        document.querySelectorAll("#tbodyPembanding tr").forEach((tr) => {
+          if (!tr.querySelector("td.aksi-cell")) {
+            let td = document.createElement("td");
+            td.className = "aksi-cell";
+            td.innerHTML = `<button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button>`;
+            td.style.opacity = "0";
+            tr.appendChild(td);
+            setTimeout(() => {
+              td.style.transition = "opacity 0.32s";
+              td.style.opacity = "1";
+            }, 10);
+          }
+        });
+        updateTableNumbers();
+      }
+
+      // Ambil data kendaraan dari sessionStorage
+      const v = JSON.parse(sessionStorage.getItem("dataKertasKerja") || "{}");
+      function isi(val, fallback = "-") {
+        if (Array.isArray(val))
+          return val.length > 0 ? val.join(", ") : fallback;
+        return val && val !== "" ? val : fallback;
+      }
+      document.getElementById("vehicleGroup").innerHTML = `
+        <h2>IDENTIFIKASI</h2>
+        <div class="row">
+          <div class="field"><label>NAMA OBJEK</label><div class="val">${isi(
+            v.nama_objek,
+            "Daihatsu"
+          )}</div></div>
+          <div class="field"><label>NUP</label><div class="val">${isi(
+            v.nup,
+            "-"
+          )}</div></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>LOKASI OBJEK</label><div class="val">${isi(
+            v.lokasi_objek,
+            "Cirebon"
+          )}</div></div>
+          <div class="field"><label>KATEGORI LOKASI</label><div class="val">${isi(
+            v.kategori_lokasi,
+            "1"
+          )}</div></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>JENIS KENDARAAN</label><div class="val">${isi(
+            v.jenis_kendaraan,
+            "Roda 4 atau lebih"
+          )}</div></div>
+          <div class="field"><label>MERK KENDARAAN</label><div class="val">${isi(
+            v.merek_kendaraan,
+            "Daihatsu"
+          )}</div></div>
+          <div class="field"><label>TIPE KENDARAAN</label><div class="val">${isi(
+            v.tipe_kendaraan,
+            "Sigra 1.2 MT"
+          )}</div></div>
+        </div>
+        <div class="sub-group">
+          <div class="sub-label">Identitas Kendaraan</div>
+          <div class="row">
+            <div class="field"><label>NOMOR POLISI</label><div class="val">${isi(
+              v.nomor_polisi,
+              "DB 1234 GU"
+            )}</div></div>
+            <div class="field"><label>DOKUMEN KEPEMILIKAN</label><div class="val">${isi(
+              v.dokumen_kepemilikan,
+              "Tidak Ada"
+            )}</div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field"><label>PEMILIK DOKUMEN</label><div class="val">${isi(
+            v.pemilik_dokumen,
+            "Kementrian X"
+          )}</div></div>
+          <div class="field"><label>MASA BERLAKU</label><div class="val">${isi(
+            v.masa_berlaku,
+            "Masih Berlaku"
+          )}</div></div>
+        </div>
+        <div class="sub-group">
+          <div class="sub-label">Keterangan</div>
+          <div class="row">
+            <div class="field"><label>PENGGUNAAN KENDARAAN</label><div class="val">${isi(
+              v.penggunaan_kendaraan
+            )}</div></div>
+            <div class="field"><label>KETERANGAN LAINNYA</label><div class="val">${isi(
+              v.keterangan_lain,
+              "-"
+            )}</div></div>
+          </div>
+        </div>
+        <h2>FISIK KENDARAAN</h2>
+        <div class="row">
+          <div class="field"><label>WARNA</label><div class="val">${isi(
+            v.warna,
+            "Hitam"
+          )}</div></div>
+          <div class="field"><label>TAHUN PEMBUATAN</label><div class="val">${isi(
+            v.tahun_pembuatan,
+            "2019"
+          )}</div></div>
+          <div class="field"><label>BAHAN BAKAR</label><div class="val">${isi(
+            v.bahan_bakar,
+            "Bensin"
+          )}</div></div>
+        </div>
+        <div class="row">
+          <div class="field" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val">${isi(
+            v.kondisi_kendaraan,
+            "0,5 (Tingkat kerusakan diatas 90%)"
+          )}</div></div>
+        </div>
+      `;
+      document.getElementById("lelangBrand").textContent = isi(
+        v.merek_kendaraan,
+        "Daihatsu"
+      );
+      updateStatePembanding();
+    </script>
+  </body>
+</html>

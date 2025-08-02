@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Kertas Kerja</title>
+    <link rel="stylesheet" href="Upload.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header-flex">
+          <img
+            src="Gambar/Kemenkeu.png"
+            alt="Logo Kemenkeu"
+            class="logo-kemenkeu"
+          />
+          <div class="profile-dropdown">
+            <span class="profile-icon" tabindex="0">
+              <!-- SVG ikon profil -->
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <circle cx="19" cy="19" r="19" fill="#E8EEFB" />
+                <path
+                  d="M19 19c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zM19 21c-4.41 0-8 2.24-8 5v2h16v-2c0-2.76-3.59-5-8-5z"
+                  fill="#426bba"
+                />
+              </svg>
+            </span>
+            <div class="dropdown-content">
+              <a href="Panitia.html">
+                <!-- Icon Dokumen (Kertas Kerja) -->
+                <svg
+                  width="17"
+                  height="17"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#426bba"
+                  style="vertical-align: middle; margin-right: 7px"
+                >
+                  <rect
+                    x="4"
+                    y="2"
+                    width="16"
+                    height="20"
+                    rx="2"
+                    stroke="#426bba"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <line
+                    x1="8"
+                    y1="6"
+                    x2="16"
+                    y2="6"
+                    stroke="#426bba"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="8"
+                    y1="10"
+                    x2="16"
+                    y2="10"
+                    stroke="#426bba"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="8"
+                    y1="14"
+                    x2="14"
+                    y2="14"
+                    stroke="#426bba"
+                    stroke-width="2"
+                  />
+                </svg>
+                Kertas Kerja
+              </a>
+
+              <a href="#" class="logout-link">
+                <svg
+                  width="17"
+                  height="17"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e04848"
+                  style="vertical-align: middle; margin-right: 7px"
+                >
+                  <path
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1"
+                  />
+                </svg>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="welcome-row">
+          <img src="Gambar/Logo.png" alt="Icon" class="welcome-icon" />
+          <div class="welcome-text">
+            <span>Selamat Datang</span>
+            <h3>Dino</h3>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="Riwayat.html"><span>🗒️</span> Riwayat Kertas kerja</a>
+            </li>
+            <li>
+              <a href="#" class="active"><span>📂</span> Upload Kertas Kerja</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <!-- Main Content -->
+      <main class="upload-content">
+        <div class="upload-header-row">
+          <h1>Upload Kertas Kerja</h1>
+          <a href="RiwayatUp.html" class="btn-lihat-riwayat">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              stroke="#355bb2"
+              fill="none"
+              style="vertical-align: middle; margin-right: 7px"
+            >
+              <path
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"
+              />
+            </svg>
+            Lihat Riwayat
+          </a>
+        </div>
+        <p class="subtitle">
+          Silahkan unggah dokumen kertas kerja hasil penilaian kendaraan berikut
+          dengan mengisi data terkait !
+        </p>
+        <form class="upload-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Objek</label>
+              <input type="text" placeholder="Nama objek kendaraan" required />
+            </div>
+            <div class="form-group">
+              <label>NUP</label>
+              <input
+                type="text"
+                placeholder="Nomor Urut Pendaftaran (NUP)"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Nilai Taksiran</label>
+              <div class="input-group-rp">
+                <span class="prefix">Rp</span>
+                <input
+                  type="text"
+                  id="nilaiTaksiran"
+                  placeholder="0"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group file-group">
+            <label class="label-file">Pilih File Kertas Kerja</label>
+            <div class="custom-file-input">
+              <span class="file-icon">
+                <!-- paperclip SVG -->
+                <svg
+                  width="21"
+                  height="21"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#3a4e8c"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.586 8.586l-7.07 7.071a2 2 0 002.829 2.828l8.485-8.485a4 4 0 00-5.657-5.657l-9.192 9.192a6 6 0 008.485 8.485l7.071-7.07"
+                  />
+                </svg>
+              </span>
+              <input
+                type="file"
+                id="fileInput"
+                class="file-input"
+                accept=".pdf,.docx,.jpg,.jpeg,.png"
+              />
+              <input
+                type="text"
+                class="filename"
+                id="filename"
+                value="Belum ada file dipilih"
+                disabled
+              />
+              <label for="fileInput" class="file-browse-btn">Browse</label>
+            </div>
+            <div class="file-help-text">
+              PDF, DOCX, JPG atau PNG (maks. 5 MB)
+            </div>
+          </div>
+          <div class="action-row">
+            <button type="submit" class="btn-upload">Upload</button>
+            <button type="reset" class="btn-reset">Reset</button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script>
+      // Untuk tampilkan nama file
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (e) {
+          const fileName = this.files.length
+            ? this.files[0].name
+            : "Belum ada file dipilih";
+          document.getElementById("filename").value = fileName;
+        });
+
+      document
+        .getElementById("nilaiTaksiran")
+        .addEventListener("input", function (e) {
+          let angka = this.value.replace(/\D/g, "");
+          this.value = angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        });
+    </script>
+  </body>
+</html>
