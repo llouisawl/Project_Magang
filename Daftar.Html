@@ -28,6 +28,7 @@
               <input
                 id="userlogin"
                 type="text"
+                name="nama_satker"
                 placeholder="Enter username"
                 required
               />
@@ -37,6 +38,7 @@
               <input
                 id="passlogin"
                 type="password"
+                name="password"
                 placeholder="Enter password"
                 required
               />
@@ -153,37 +155,47 @@
       // Script agar tombol login pindah ke panitia.html
       document
         .getElementById("formLogin")
-        .addEventListener("submit", function (e) {
-          e.preventDefault(); // Cegah submit default
-          window.location.href = "index.html"; // Pindah halaman
-        });
-
-      document
-        .getElementById("formLogin")
         .addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          const username = document.getElementById("userlogin").value;
-          const password = document.getElementById("passlogin").value;
+          let username = document.getElementById("userlogin").value;
+          let password = document.getElementById("passlogin").value;
 
-          console.log(`Username: ${username}, Password: ${password}`);
+          let usernameType = document
+            .getElementById("userlogin")
+            .getAttribute("name");
+          console.log(
+            `Username: ${username}, Password: ${password}, Type: ${usernameType}`
+          );
 
           try {
-            const res = await fetch(`${API_URL}/auth/login`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ username, password }),
-            });
+            const res = await fetch(
+              "https://w7fl1g25-8080.asse.devtunnels.ms/auth/login",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username, password }),
+              }
+            );
+            let data;
+            try {
+              data = await res.json();
+            } catch {
+              data = { message: "Terjadi error tidak diketahui." };
+            }
 
             if (!res.ok) {
-              alert("Login gagal. Cek kembali username/password.");
+              // Tampilkan pesan error dari backend jika ada
+              alert(
+                data.message || "Login gagal. Cek kembali username/password."
+              );
               return;
             }
 
-            const data = await res.json();
-            localStorage.setItem("jwt_token", data.access_token);
+            // const data = await res.json();
+            // localStorage.setItem("jwt_token", data.access_token);
 
             // window.location.href = "index.html";
           } catch (err) {

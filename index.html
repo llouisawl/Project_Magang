@@ -294,6 +294,10 @@
     </div>
     <!-- <script src="Panitia.js"></script> -->
     <script>
+      let jwt = localStorage.getItem("jwt_token");
+      console.log(jwt);
+    </script>
+    <script>
       // Tampilkan CC dinamis
       function tampilkanCC() {
         var jenis = document.getElementById("jenis_kendaraan").value;
