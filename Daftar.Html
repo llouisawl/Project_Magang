@@ -166,6 +166,8 @@
           const username = document.getElementById("userlogin").value;
           const password = document.getElementById("passlogin").value;
 
+          console.log(`Username: ${username}, Password: ${password}`);
+
           try {
             const res = await fetch(`${API_URL}/auth/login`, {
               method: "POST",
@@ -179,8 +181,6 @@
               alert("Login gagal. Cek kembali username/password.");
               return;
             }
-
-            console.log(`Username: ${username}, Password: ${password}`);
 
             const data = await res.json();
             localStorage.setItem("jwt_token", data.access_token);
