@@ -169,35 +169,22 @@
           );
 
           try {
-            const res = await fetch(
-              "https://w7fl1g25-8080.asse.devtunnels.ms/auth/login",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ username, password }),
-              }
-            );
-            let data;
-            try {
-              data = await res.json();
-            } catch {
-              data = { message: "Terjadi error tidak diketahui." };
-            }
+            const res = await fetch(`${API_URL}/auth/login`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                nama_satker: username,
+                password: password,
+              }),
+            })
+              .then((res) => res.json())
+              .then((response) => {
+                localStorage.setItem("jwt_token", response.data.access_token);
+              });
 
-            if (!res.ok) {
-              // Tampilkan pesan error dari backend jika ada
-              alert(
-                data.message || "Login gagal. Cek kembali username/password."
-              );
-              return;
-            }
-
-            // const data = await res.json();
-            // localStorage.setItem("jwt_token", data.access_token);
-
-            // window.location.href = "index.html";
+            window.location.href = "index.html";
           } catch (err) {
             alert("Terjadi error. Silakan coba lagi.");
             console.error(err);
