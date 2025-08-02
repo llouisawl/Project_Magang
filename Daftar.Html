@@ -180,6 +180,8 @@
               return;
             }
 
+            console.log(`Username: ${username}, Password: ${password}`);
+
             const data = await res.json();
             localStorage.setItem("jwt_token", data.access_token);
 
