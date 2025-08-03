@@ -151,48 +151,171 @@
             </div>
           </div>
           <div class="btn-simpan-row">
-            <button class="btn-simpan" onclick="alert('Disimpan!')">
+            <button class="btn-simpan" onclick="saveKertasKerjaToExcel()">
               Simpan
             </button>
           </div>
         </div>
       </div>
     </div>
+    <script src="config.js"></script>
     <script>
-      // Simulasi data kode.json & hasil lelang
-      const kodeLelangList = ["EMT3NR", "MYV1BW", "XXXYXY"];
-      const dataLelang = {
-        EMT3NR: {
-          kode: "EMT3NR",
-          merek: "Honda",
-          tipe: "Supra X 125 Spoke NF 125 TDl",
-          harga: "Rp 69 020 000",
-          waktu: "2023",
-          lokasi: "Padang Sidempuan",
-          kategori: "1",
-          tahun: "2019",
-        },
-        MYV1BW: {
-          kode: "MYV1BW",
-          merek: "Daihatsu",
-          tipe: "Sigra 1.2 MT",
-          harga: "Rp 79 914 000",
-          waktu: "2022",
-          lokasi: "Cirebon",
-          kategori: "1",
-          tahun: "2016",
-        },
-        XXXYXY: {
-          kode: "XXXYXY",
-          merek: "Daihatsu",
-          tipe: "Sigra 1.2 MTsss",
-          harga: "Rp 75 000 000",
-          waktu: "2021",
-          lokasi: "Cirebon",
-          kategori: "1",
-          tahun: "2018",
-        },
-      };
+      let inputLelang = null;
+      let dataPembanding = [];
+      let jwt = localStorage.getItem("jwt_token");
+
+      // Ambil data kendaraan dari sessionStorage
+      inputLelang = JSON.parse(
+        sessionStorage.getItem("dataKertasKerja") || "{}"
+      );
+
+      function isi(val, fallback = "-") {
+        if (Array.isArray(val))
+          return val.length > 0 ? val.join(", ") : fallback;
+        return val && val !== "" ? val : fallback;
+      }
+
+      document.getElementById("vehicleGroup").innerHTML = `
+          <h2>IDENTIFIKASI</h2>
+          <div class="row">
+            <div class="field"><label>NAMA OBJEK</label><div class="val">${isi(
+              inputLelang.nama_objek,
+              "Daihatsu"
+            )}</div></div>
+            <div class="field"><label>NUP</label><div class="val">${isi(
+              inputLelang.nup,
+              "-"
+            )}</div></div>
+          </div>
+          <div class="row">
+            <div class="field"><label>LOKASI OBJEK</label><div class="val">${isi(
+              inputLelang.lokasi_objek,
+              "Cirebon"
+            )}</div></div>
+            <div class="field"><label>KATEGORI LOKASI</label><div class="val">${isi(
+              inputLelang.kategori_lokasi,
+              "1"
+            )}</div></div>
+          </div>
+          <div class="row">
+            <div class="field"><label>JENIS KENDARAAN</label><div class="val">${isi(
+              inputLelang.jenis_kendaraan,
+              "Roda 4 atau lebih"
+            )}</div></div>
+            <div class="field"><label>MERK KENDARAAN</label><div class="val">${isi(
+              inputLelang.merek_kendaraan,
+              "Daihatsu"
+            )}</div></div>
+            <div class="field"><label>TIPE KENDARAAN</label><div class="val">${isi(
+              inputLelang.tipe_kendaraan,
+              "Sigra 1.2 MT"
+            )}</div></div>
+          </div>
+          <div class="sub-group">
+            <div class="sub-label">Identitas Kendaraan</div>
+            <div class="row">
+              <div class="field"><label>NOMOR POLISI</label><div class="val">${isi(
+                inputLelang.nomor_polisi,
+                "DB 1234 GU"
+              )}</div></div>
+              <div class="field"><label>DOKUMEN KEPEMILIKAN</label><div class="val">${isi(
+                inputLelang.dokumen_kepemilikan,
+                "Tidak Ada"
+              )}</div></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field"><label>PEMILIK DOKUMEN</label><div class="val">${isi(
+              inputLelang.pemilik_dokumen,
+              "Kementrian X"
+            )}</div></div>
+            <div class="field"><label>MASA BERLAKU</label><div class="val">${isi(
+              inputLelang.masa_berlaku,
+              "Masih Berlaku"
+            )}</div></div>
+          </div>
+          <div class="sub-group">
+            <div class="sub-label">Keterangan</div>
+            <div class="row">
+              <div class="field"><label>PENGGUNAAN KENDARAAN</label><div class="val">${isi(
+                inputLelang.penggunaan_kendaraan
+              )}</div></div>
+              <div class="field"><label>KETERANGAN LAINNYA</label><div class="val">${isi(
+                inputLelang.keterangan_lain,
+                "-"
+              )}</div></div>
+            </div>
+          </div>
+          <h2>FISIK KENDARAAN</h2>
+          <div class="row">
+            <div class="field"><label>WARNA</label><div class="val">${isi(
+              inputLelang.warna,
+              "Hitam"
+            )}</div></div>
+            <div class="field"><label>TAHUN PEMBUATAN</label><div class="val">${isi(
+              inputLelang.tahun_pembuatan,
+              "2019"
+            )}</div></div>
+            <div class="field"><label>BAHAN BAKAR</label><div class="val">${isi(
+              inputLelang.bahan_bakar,
+              "Bensin"
+            )}</div></div>
+          </div>
+          <div class="row">
+            <div class="field" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val">${isi(
+              inputLelang.kondisi_kendaraan,
+              "0,5 (Tingkat kerusakan diatas 90%)"
+            )}</div></div>
+          </div>
+        `;
+      document.getElementById("lelangBrand").textContent = isi(
+        inputLelang.merek_kendaraan
+      );
+      // Ambil data pembanding dari API (POST)
+      function getDataPembanding() {
+        fetch(`${API_URL}/kertas-kerja/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+          body: JSON.stringify({
+            merek_kendaraan: inputLelang.merek_kendaraan,
+            tipe_kendaraan: inputLelang.tipe_kendaraan,
+            tahun_pembuatan: parseInt(inputLelang.tahun_pembuatan), // tahun_pembuatan harus number
+            lokasi_objek: inputLelang.lokasi_objek,
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res.data);
+
+            if (
+              res.status_code === "200" &&
+              res.data &&
+              Array.isArray(res.data.data_pembanding)
+            ) {
+              dataPembanding = res.data.data_pembanding;
+              // Simpan list kode & data by kode untuk tambah manual
+              kodeLelangList = dataPembanding.map((x) => x.KodeLelang);
+              dataLelangByKode = {};
+              dataPembanding.forEach((x) => {
+                dataLelangByKode[x.KodeLelang] = x;
+              });
+              tampilkanDataPembanding();
+              updateStatePembanding();
+            } else {
+              alert(
+                res.message || "Gagal mengambil data pembanding (Frontend)."
+              );
+            }
+          })
+          .catch((err) => {
+            alert("Koneksi gagal ke endpoint pembanding");
+            console.error(err);
+          });
+      }
+      getDataPembanding();
 
       // ===== NOMOR URUT =====
       function updateTableNumbers() {
@@ -215,25 +338,26 @@
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
-    <td></td>
-    <td>
-      <select onchange="isiOtomatisDataLelang(this)">
-        ${kodeOptions}
-      </select>
-    </td>
-    <td class="merek"></td>
-    <td class="tipe"></td>
-    <td class="harga"></td>
-    <td class="waktu"></td>
-    <td class="lokasi"></td>
-    <td class="kategori"></td>
-    <td class="tahun"></td>
-    <td class="fade-table-col aksi-cell">
-      <button class="btn-hapus" onclick="hapusBaris(this)">
-        Hapus
-      </button>
-    </td>
-  `;
+            <td></td>
+            <td>
+              <select onchange="isiOtomatisDataLelang(this)">
+                ${kodeOptions}
+              </select>
+            </td>
+            <td class="merek"></td>
+            <td class="tipe"></td>
+            <td class="harga"></td>
+            <td class="waktu"></td>
+            <td class="lokasi"></td>
+            <td class="kategori"></td>
+            <td class="tahun"></td>
+            <td class="fade-table-col aksi-cell">
+              <button class="btn-hapus" onclick="hapusBaris(this)">
+                Hapus
+              </button>
+            </td>
+          `;
+
         tr.classList.add("fade-in-row");
         tbody.appendChild(tr);
         setTimeout(() => {
@@ -244,11 +368,11 @@
         updateStatePembanding();
       }
 
-      // ===== ISI OTOMATIS =====
+      // ===== ISI OTOMATIS (ambil dari objek dataLelangByKode sesuai struktur baru) =====
       function isiOtomatisDataLelang(select) {
         const kode = select.value;
         const tr = select.closest("tr");
-        if (!kodeLelangList.includes(kode)) {
+        if (!kodeLelangList.includes(kode) || !dataLelangByKode[kode]) {
           [
             "merek",
             "tipe",
@@ -262,14 +386,16 @@
           });
           return;
         }
-        const d = dataLelang[kode];
-        tr.querySelector(".merek").textContent = d.merek;
-        tr.querySelector(".tipe").textContent = d.tipe;
-        tr.querySelector(".harga").textContent = d.harga;
-        tr.querySelector(".waktu").textContent = d.waktu;
-        tr.querySelector(".lokasi").textContent = d.lokasi;
-        tr.querySelector(".kategori").textContent = d.kategori;
-        tr.querySelector(".tahun").textContent = d.tahun;
+        const d = dataLelangByKode[kode];
+        tr.querySelector(".merek").textContent = d.Merek || "-";
+        tr.querySelector(".tipe").textContent = d.Tipe || "-";
+        tr.querySelector(".harga").textContent = d.HargaLelang
+          ? "Rp " + Number(d.HargaLelang).toLocaleString("id-ID")
+          : "-";
+        tr.querySelector(".waktu").textContent = d.TahunTransaksi || "-";
+        tr.querySelector(".lokasi").textContent = d.Lokasi || "-";
+        tr.querySelector(".kategori").textContent = d.KategoriLokasi || "-";
+        tr.querySelector(".tahun").textContent = d.TahunPembuatan || "-";
       }
 
       // ===== HAPUS BARIS =====
@@ -362,111 +488,151 @@
         updateTableNumbers();
       }
 
-      // Ambil data kendaraan dari sessionStorage
-      const v = JSON.parse(sessionStorage.getItem("dataKertasKerja") || "{}");
-      function isi(val, fallback = "-") {
-        if (Array.isArray(val))
-          return val.length > 0 ? val.join(", ") : fallback;
-        return val && val !== "" ? val : fallback;
-      }
-      document.getElementById("vehicleGroup").innerHTML = `
-        <h2>IDENTIFIKASI</h2>
-        <div class="row">
-          <div class="field"><label>NAMA OBJEK</label><div class="val">${isi(
-            v.nama_objek,
-            "Daihatsu"
-          )}</div></div>
-          <div class="field"><label>NUP</label><div class="val">${isi(
-            v.nup,
-            "-"
-          )}</div></div>
-        </div>
-        <div class="row">
-          <div class="field"><label>LOKASI OBJEK</label><div class="val">${isi(
-            v.lokasi_objek,
-            "Cirebon"
-          )}</div></div>
-          <div class="field"><label>KATEGORI LOKASI</label><div class="val">${isi(
-            v.kategori_lokasi,
-            "1"
-          )}</div></div>
-        </div>
-        <div class="row">
-          <div class="field"><label>JENIS KENDARAAN</label><div class="val">${isi(
-            v.jenis_kendaraan,
-            "Roda 4 atau lebih"
-          )}</div></div>
-          <div class="field"><label>MERK KENDARAAN</label><div class="val">${isi(
-            v.merek_kendaraan,
-            "Daihatsu"
-          )}</div></div>
-          <div class="field"><label>TIPE KENDARAAN</label><div class="val">${isi(
-            v.tipe_kendaraan,
-            "Sigra 1.2 MT"
-          )}</div></div>
-        </div>
-        <div class="sub-group">
-          <div class="sub-label">Identitas Kendaraan</div>
-          <div class="row">
-            <div class="field"><label>NOMOR POLISI</label><div class="val">${isi(
-              v.nomor_polisi,
-              "DB 1234 GU"
-            )}</div></div>
-            <div class="field"><label>DOKUMEN KEPEMILIKAN</label><div class="val">${isi(
-              v.dokumen_kepemilikan,
-              "Tidak Ada"
-            )}</div></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="field"><label>PEMILIK DOKUMEN</label><div class="val">${isi(
-            v.pemilik_dokumen,
-            "Kementrian X"
-          )}</div></div>
-          <div class="field"><label>MASA BERLAKU</label><div class="val">${isi(
-            v.masa_berlaku,
-            "Masih Berlaku"
-          )}</div></div>
-        </div>
-        <div class="sub-group">
-          <div class="sub-label">Keterangan</div>
-          <div class="row">
-            <div class="field"><label>PENGGUNAAN KENDARAAN</label><div class="val">${isi(
-              v.penggunaan_kendaraan
-            )}</div></div>
-            <div class="field"><label>KETERANGAN LAINNYA</label><div class="val">${isi(
-              v.keterangan_lain,
-              "-"
-            )}</div></div>
-          </div>
-        </div>
-        <h2>FISIK KENDARAAN</h2>
-        <div class="row">
-          <div class="field"><label>WARNA</label><div class="val">${isi(
-            v.warna,
-            "Hitam"
-          )}</div></div>
-          <div class="field"><label>TAHUN PEMBUATAN</label><div class="val">${isi(
-            v.tahun_pembuatan,
-            "2019"
-          )}</div></div>
-          <div class="field"><label>BAHAN BAKAR</label><div class="val">${isi(
-            v.bahan_bakar,
-            "Bensin"
-          )}</div></div>
-        </div>
-        <div class="row">
-          <div class="field" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val">${isi(
-            v.kondisi_kendaraan,
-            "0,5 (Tingkat kerusakan diatas 90%)"
-          )}</div></div>
-        </div>
+      function tampilkanDataPembanding() {
+        const tbody = document.getElementById("tbodyPembanding");
+        tbody.innerHTML = ""; // Kosongkan dulu
+
+        // Jika tidak ada data pembanding, tampilkan baris kosong
+        if (!dataPembanding || dataPembanding.length === 0) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td colspan="10" style="text-align:center;">Belum ada data pembanding.</td>`;
+          tbody.appendChild(tr);
+          updateStatePembanding();
+          return;
+        }
+
+        // Untuk option tambah manual & mapping
+        kodeLelangList.length = 0;
+        dataLelangByKode = {};
+
+        dataPembanding.forEach((d, i) => {
+          // Update kode & mapping untuk option di tambahManual()
+          kodeLelangList.push(d.KodeLelang);
+          dataLelangByKode[d.KodeLelang] = d;
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>
+          <select onchange="isiOtomatisDataLelang(this)">
+            <option value="${d.KodeLelang}">${d.KodeLelang}</option>
+          </select>
+        </td>
+        <td class="merek">${d.Merek || "-"}</td>
+        <td class="tipe">${d.Tipe || "-"}</td>
+        <td class="harga">${
+          d.HargaLelang
+            ? "Rp " + Number(d.HargaLelang).toLocaleString("id-ID")
+            : "-"
+        }</td>
+        <td class="waktu">${d.TahunTransaksi || "-"}</td>
+        <td class="lokasi">${d.Lokasi || "-"}</td>
+        <td class="kategori">${d.KategoriLokasi || "-"}</td>
+        <td class="tahun">${d.TahunPembuatan || "-"}</td>
+        <td class="fade-table-col aksi-cell">
+          <button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button>
+        </td>
       `;
-      document.getElementById("lelangBrand").textContent = isi(
-        v.merek_kendaraan,
-        "Daihatsu"
-      );
-      updateStatePembanding();
+          tbody.appendChild(tr);
+        });
+
+        updateStatePembanding();
+      }
+
+      function saveKertasKerjaToExcel() {
+        // Validasi data
+        if (!inputLelang || !dataPembanding || dataPembanding.length < 3) {
+          alert("Data pembanding minimal 3 baris dan data input lengkap!");
+          return;
+        }
+
+        const inputPayload = {
+          input_lelang: {
+            bahan_bakar: inputLelang.bahan_bakar || "",
+            dokumen_kepemilikan: inputLelang.dokumen_kepemilikan || "",
+            jenis_kendaraan: inputLelang.jenis_kendaraan || "",
+            kategori_lokasi: inputLelang.kategori_lokasi || "",
+            keterangan:
+              inputLelang.keterangan_lain || inputLelang.keterangan || "",
+            kondisi_kendaraan: inputLelang.kondisi_kendaraan || "",
+            lokasi_objek: inputLelang.lokasi_objek || "",
+            masa_berlaku: inputLelang.masa_berlaku || "",
+            merek_kendaraan: inputLelang.merek_kendaraan || "",
+            nama_objek: inputLelang.nama_objek || "",
+            nomor_polisi: inputLelang.nomor_polisi || "",
+            nup: inputLelang.nup || "",
+            pemilik_dokumen: inputLelang.pemilik_dokumen || "",
+            penggunaan_kendaraan: inputLelang.penggunaan_kendaraan || "",
+            provinsi: inputLelang.provinsi || "",
+            tahun_pembuatan: Number(inputLelang.tahun_pembuatan) || 0,
+            tipe_kendaraan: inputLelang.tipe_kendaraan || "",
+            warna: inputLelang.warna || "",
+          },
+          data_pembanding: dataPembanding,
+        };
+
+        const btn = document.getElementById("btnSimpanKertasKerja");
+        if (btn) btn.disabled = true;
+
+        fetch(`${API_URL}/kertas-kerja/save`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+          body: JSON.stringify({
+            input_lelang: {
+              nama_objek: inputLelang.nama_objek,
+              lokasi_objek: inputLelang.lokasi_objek,
+              nup: inputLelang.nup,
+              kategori_lokasi: inputLelang.kategori_lokasi,
+              merek_kendaraan: inputLelang.merek_kendaraan,
+              tipe_kendaraan: inputLelang.tipe_kendaraan,
+              nomor_polisi: inputLelang.nomor_polisi,
+              dokumen_kepemilikan: inputLelang.dokumen_kepemilikan,
+              pemilik_dokumen: inputLelang.pemilik_dokumen,
+              jenis_kendaraan: inputLelang.jenis_kendaraan,
+              masa_berlaku: inputLelang.masa_berlaku,
+              penggunaan_kendaraan: inputLelang.penggunaan_kendaraan,
+              keterangan: inputLelang.keterangan || "", // fallback kalau kosong
+              warna: inputLelang.warna,
+              tahun_pembuatan: Number(inputLelang.tahun_pembuatan) || 0,
+              bahan_bakar: inputLelang.bahan_bakar,
+              kondisi_kendaraan: inputLelang.kondisi_kendaraan,
+              provinsi: inputLelang.provinsi || "",
+            },
+            data_pembanding: dataPembanding.map((item) => ({
+              KodeLelang: item.KodeLelang,
+              Merek: item.Merek,
+              Tipe: item.Tipe,
+              TahunPembuatan: item.TahunPembuatan,
+              TahunTransaksi: item.TahunTransaksi,
+              Lokasi: item.Lokasi,
+              KategoriLokasi: item.KategoriLokasi,
+              HargaLelang: item.HargaLelang,
+            })),
+          }),
+        })
+          .then(async (res) => {
+            let result;
+            try {
+              result = await res.json();
+            } catch {
+              result = { message: "Gagal parse response server" };
+            }
+            if (res.ok && result && result.message) {
+              alert(result.message); // Tampilkan pesan dari backend, misal "Berhasil"
+            } else {
+              alert(result.message || "Gagal menyimpan data!");
+            }
+          })
+          .catch((err) => {
+            alert("Terjadi error: " + err);
+          })
+          .finally(() => {
+            if (btn) btn.disabled = false;
+          });
+      }
     </script>
   </body>
 </html>
