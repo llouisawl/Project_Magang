@@ -3,12 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
     <link rel="stylesheet" href="Daftar.css" />
-    <title>Sign in & Sign up Form</title>
+    <title>e-Taksir | Login & Daftar</title>
   </head>
   <body>
     <!-- Logo Kemenkeu Kiri Atas -->
@@ -17,23 +13,31 @@
       alt="Logo Kemenkeu"
       class="logo-kemenkeu-login"
     />
+
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <!-- LOGIN -->
-          <form action="#" class="sign-in-form" id="formLogin">
+          <!-- ================= LOGIN ================= -->
+          <form
+            action="#"
+            class="sign-in-form"
+            id="formLogin"
+            autocomplete="on"
+          >
             <h2 class="title">Login</h2>
+
             <div class="form-group">
-              <label for="userlogin">Username (KODE SATKER)</label>
+              <label for="userlogin">Username</label>
               <input
                 id="userlogin"
                 type="text"
                 name="nama_satker"
-                placeholder="Enter username"
+                placeholder="Username"
                 required
               />
             </div>
-            <div class="form-group">
+
+            <div class="form-group input-with-eye">
               <label for="passlogin">Password</label>
               <input
                 id="passlogin"
@@ -42,20 +46,42 @@
                 placeholder="Enter password"
                 required
               />
-            </div>
-            <button type="submit" class="btn btn-login">LOGIN</button>
-            <div class="login-extra">
-              <a href="#" class="forgot-link">Lupa password?</a>
-              <br />
-              <span class="superadmin-link"
-                >Login SuperAdmin ? <a href="#"><b>Klik di sini</b></a></span
+              <button
+                type="button"
+                class="toggle-pass"
+                aria-label="Tampilkan/Sembunyikan password"
+                data-target="passlogin"
               >
+                <!-- Eye icon ala Edge -->
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 5C6 5 2.73 9.11 1 12c1.73 2.89 5 7 11 7s9.27-4.11 11-7c-1.73-2.89-5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
             </div>
+
+            <button type="submit" class="btn btn-login" id="btnLogin">
+              <span class="btn-text">LOGIN</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
           </form>
 
-          <!-- SIGN UP -->
-          <form action="#" class="sign-up-form">
+          <!-- ================= SIGN UP ================= -->
+          <form
+            action="#"
+            class="sign-up-form"
+            id="formRegister"
+            autocomplete="off"
+          >
             <h2 class="title">Daftar Akun</h2>
+
             <div class="form-group">
               <label for="satker">Nama Satker <span class="red">*</span></label>
               <input
@@ -65,6 +91,7 @@
                 required
               />
             </div>
+
             <div class="form-group">
               <label for="kodekl">Kode K/L <span class="red">*</span></label>
               <input
@@ -74,41 +101,84 @@
                 required
               />
             </div>
+
             <div class="form-group">
               <label for="email">Alamat Email <span class="red">*</span></label>
               <input
                 id="email"
                 type="email"
-                placeholder="Isi dengan Alamat email aktif Kementerian / Lembaga"
+                placeholder="email@kemenkeu.go.id"
                 required
               />
             </div>
-            <div class="form-group">
+
+            <div class="form-group input-with-eye">
               <label for="pass">Password <span class="red">*</span></label>
               <input
                 id="pass"
                 type="password"
-                placeholder="Minimal 8 karakter, mengandung huruf besar, huruf kecil, spesial karakter dan angka."
+                placeholder="Minimal 8 karakter, ada huruf besar, huruf kecil, dan karakter khusus."
                 required
               />
+              <button
+                type="button"
+                class="toggle-pass"
+                aria-label="Tampilkan/Sembunyikan password"
+                data-target="pass"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 5C6 5 2.73 9.11 1 12c1.73 2.89 5 7 11 7s9.27-4.11 11-7c-1.73-2.89-5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="form-group">
+
+            <div class="form-group input-with-eye">
               <label for="repass"
                 >Ulangi Password <span class="red">*</span></label
               >
               <input
                 id="repass"
                 type="password"
-                placeholder="Ulangi penulisan password untuk memastikan tidak salah ketik."
+                placeholder="Ulangi password"
                 required
               />
+              <button
+                type="button"
+                class="toggle-pass"
+                aria-label="Tampilkan/Sembunyikan password"
+                data-target="repass"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 5C6 5 2.73 9.11 1 12c1.73 2.89 5 7 11 7s9.27-4.11 11-7c-1.73-2.89-5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
             </div>
-            <button type="submit" class="btn btn-signup">DAFTAR</button>
+
+            <button type="submit" class="btn btn-signup" id="btnRegister">
+              <span class="btn-text">DAFTAR</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
           </form>
         </div>
       </div>
 
-      <!-- Panel: bisa dihapus jika tidak dipakai -->
+      <!-- Panel (punyamu) -->
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
@@ -138,58 +208,341 @@
         </div>
       </div>
     </div>
+
+    <!-- ================= Modal System ================= -->
+    <div class="modal-overlay" id="modalOverlay" hidden>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          id="modalClose"
+          aria-label="Tutup"
+        >
+          ✕
+        </button>
+        <div class="modal-icon" id="modalIcon"></div>
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <p id="modalMessage" class="modal-message"></p>
+        <div class="modal-actions" id="modalActions"></div>
+      </div>
+    </div>
+
     <script src="config.js"></script>
+    <script src="auth.js"></script>
     <script>
+      // ================= Toggle panel (punyamu) =================
       const sign_in_btn = document.querySelector("#sign-in-btn");
       const sign_up_btn = document.querySelector("#sign-up-btn");
       const container = document.querySelector(".container");
+      sign_up_btn.addEventListener("click", () =>
+        container.classList.add("sign-up-mode")
+      );
+      sign_in_btn.addEventListener("click", () =>
+        container.classList.remove("sign-up-mode")
+      );
 
-      sign_up_btn.addEventListener("click", () => {
-        container.classList.add("sign-up-mode");
+      // ================= Modal util =================
+      const $ = (q, el = document) => el.querySelector(q);
+      const modal = $("#modalOverlay");
+      const mIcon = $("#modalIcon");
+      const mTitle = $("#modalTitle");
+      const mMsg = $("#modalMessage");
+      const mActions = $("#modalActions");
+      const mClose = $("#modalClose");
+
+      function showModal({
+        type = "info",
+        title = "",
+        message = "",
+        actions = [],
+      }) {
+        // type: success | error | warning | info
+        mIcon.innerHTML =
+          {
+            success:
+              '<svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="12" fill="#22c55e"/><path d="M7 12l3 3 7-7" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            error:
+              '<svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="12" fill="#ef4444"/><path d="M8 8l8 8M16 8l-8 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>',
+            warning:
+              '<svg viewBox="0 0 24 24" width="44" height="44"><path d="M12 2l10 18H2L12 2z" fill="#f59e0b"/><circle cx="12" cy="17" r="1.6" fill="#fff"/><rect x="11" y="8" width="2" height="6" rx="1" fill="#fff"/></svg>',
+            info: '<svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="12" fill="#3b82f6"/><rect x="11" y="10" width="2" height="7" rx="1" fill="#fff"/><circle cx="12" cy="7" r="1.3" fill="#fff"/></svg>',
+          }[type] || "";
+        mTitle.textContent = title || "";
+        mMsg.textContent = message || "";
+        mActions.innerHTML = "";
+        (actions || []).forEach(({ text, onclick, variant = "primary" }) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = `modal-btn ${variant}`;
+          b.textContent = text;
+          b.addEventListener("click", onclick);
+          mActions.appendChild(b);
+        });
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = "";
+      }
+      mClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
       });
 
-      sign_in_btn.addEventListener("click", () => {
-        container.classList.remove("sign-up-mode");
+      // ================= Helpers =================
+      function setLoading(btn, isLoading) {
+        const text = btn.querySelector(".btn-text");
+        const spin = btn.querySelector(".btn-spinner");
+        btn.disabled = !!isLoading;
+        if (isLoading) {
+          btn.classList.add("is-loading");
+          spin.style.display = "inline-block";
+          text.style.opacity = "0.0";
+        } else {
+          btn.classList.remove("is-loading");
+          spin.style.display = "none";
+          text.style.opacity = "1";
+        }
+      }
+
+      function isValidEmail(s) {
+        // RFC5322-ish yang cukup ketat utk web
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s).toLowerCase());
+      }
+      function isStrongPassword(s) {
+        // ≥8, ada huruf besar, huruf kecil, dan karakter khusus
+        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(
+          String(s)
+        );
+      }
+
+      // Eye toggle (semua tombol .toggle-pass)
+      // ===== Eye toggle: eye ↔ eye-slash + aria =====
+      const ICON_EYE = `
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+  <path d="M12 5C6 5 2.73 9.11 1 12c1.73 2.89 5 7 11 7s9.27-4.11 11-7c-1.73-2.89-5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" fill="currentColor"/>
+</svg>`;
+      const ICON_EYE_SLASH = `
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+  <path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M10.58 7.21A5 5 0 0 1 17 12c0 .74-.16 1.43-.45 2.06M7.45 9.94C7.16 10.57 7 11.26 7 12a5 5 0 0 0 7.42 4.45" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M12 5C6 5 2.73 9.11 1 12c.68 1.14 1.6 2.43 2.77 3.57M20.23 15.57C21.4 14.43 22.32 13.14 23 12c-1.73-2.89-5-7-11-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>`;
+
+      document.querySelectorAll(".toggle-pass").forEach((btn) => {
+        const targetId = btn.getAttribute("data-target");
+        const input = document.getElementById(targetId);
+        if (!input) return;
+
+        // inisialisasi
+        btn.setAttribute("aria-pressed", "false");
+        btn.innerHTML = ICON_EYE;
+
+        btn.addEventListener("click", () => {
+          const show = input.type === "password"; // akan ditampilkan
+          input.type = show ? "text" : "password";
+          btn.classList.toggle("active", show);
+          btn.setAttribute("aria-pressed", show ? "true" : "false");
+          btn.innerHTML = show ? ICON_EYE_SLASH : ICON_EYE;
+          btn.setAttribute(
+            "aria-label",
+            show ? "Sembunyikan password" : "Tampilkan password"
+          );
+        });
       });
 
-      // Script agar tombol login pindah ke panitia.html
+      // Submit via ENTER tetap jalan (default), tapi ini memastikan di kedua input:
+      ["userlogin", "passlogin"].forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter")
+            document.getElementById("formLogin").requestSubmit();
+        });
+      });
+
+      // ================= LOGIN =================
       document
         .getElementById("formLogin")
-        .addEventListener("submit", async function (e) {
+        .addEventListener("submit", async (e) => {
           e.preventDefault();
+          const btn = document.getElementById("btnLogin");
+          const username = document.getElementById("userlogin").value.trim();
+          const password = document.getElementById("passlogin").value;
 
-          let username = document.getElementById("userlogin").value;
-          let password = document.getElementById("passlogin").value;
-
-          let usernameType = document
-            .getElementById("userlogin")
-            .getAttribute("name");
-          console.log(
-            `Username: ${username}, Password: ${password}, Type: ${usernameType}`
-          );
+          if (!username || !password) {
+            return showModal({
+              type: "warning",
+              title: "Lengkapi Data",
+              message: "Silakan isi username dan password terlebih dahulu.",
+            });
+          }
 
           try {
-            const res = await fetch(`${API_URL}/auth/login`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                nama_satker: username,
-                password: password,
-              }),
-            })
-              .then((res) => res.json())
-              .then((response) => {
-                localStorage.setItem("jwt_token", response.data.access_token);
-              });
+            setLoading(btn, true);
+            const { role, name } = await Auth.login({ username, password });
 
-            window.location.href = "index.html";
+            // simpan tampilan nama per-role
+            localStorage.setItem(`display_${role}`, name || username);
+            localStorage.setItem("last_username", username);
+
+            // redirect
+            if (role === "satker") location.href = "index.html";
+            else if (role === "admin") location.href = "Admin.html";
+            else if (role === "superadmin") location.href = "Super.html";
+            else {
+              showModal({
+                type: "error",
+                title: "Role tidak dikenali",
+                message: "Hubungi admin untuk pengecekan akun.",
+              });
+            }
           } catch (err) {
-            alert("Terjadi error. Silakan coba lagi.");
             console.error(err);
+
+            // Cek apakah error login (401 unauthorized atau pesan token hilang)
+            const msg =
+              err?.response?.status === 401 ||
+              (err?.message || "").toLowerCase().includes("token")
+                ? "Username atau password tidak sesuai."
+                : "Terjadi kesalahan pada server. Coba lagi nanti.";
+
+            showModal({
+              type: "error",
+              title: "Login Gagal",
+              message: msg,
+            });
+          } finally {
+            setLoading(btn, false);
           }
         });
+
+      // ================= REGISTER =================
+      (function () {
+        const API = (window.API_URL || "").replace(/\/+$/, "");
+        const form = document.getElementById("formRegister");
+        const btn = document.getElementById("btnRegister");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const nama_satker = document.getElementById("satker").value.trim();
+          const kode_kl = document
+            .getElementById("kodekl")
+            .value.trim()
+            .replace(/\D/g, "");
+          const email = document
+            .getElementById("email")
+            .value.trim()
+            .toLowerCase();
+          const password = document.getElementById("pass").value;
+          const repass = document.getElementById("repass").value;
+
+          // Validasi
+          if (!nama_satker)
+            return showModal({
+              type: "warning",
+              title: "Nama Satker wajib diisi",
+              message: "Mohon isi Nama Satker.",
+            });
+          if (!kode_kl)
+            return showModal({
+              type: "warning",
+              title: "Kode K/L wajib diisi",
+              message: "Mohon isi Kode K/L (angka).",
+            });
+          if (!isValidEmail(email))
+            return showModal({
+              type: "warning",
+              title: "Format Email Tidak Valid",
+              message: "Gunakan alamat email yang benar.",
+            });
+          if (!isStrongPassword(password)) {
+            return showModal({
+              type: "warning",
+              title: "Password Belum Memenuhi Ketentuan",
+              message:
+                "Minimal 8 karakter dan mengandung huruf besar, huruf kecil, serta karakter khusus.",
+            });
+          }
+          if (password !== repass) {
+            return showModal({
+              type: "warning",
+              title: "Konfirmasi Password Tidak Cocok",
+              message: "Pastikan kedua password sama persis.",
+            });
+          }
+
+          // Kirim
+          const payload = {
+            nama_satker,
+            kode_kl,
+            email,
+            password,
+            role: "Satker",
+            status: "Menunggu Validasi",
+          };
+
+          try {
+            setLoading(btn, true);
+            const res = await fetch(`${API}/auth/register`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            const body = await res.json().catch(() => ({}));
+            if (!res.ok)
+              throw new Error(
+                body?.message ||
+                  body?.error ||
+                  `Gagal mendaftar (HTTP ${res.status}).`
+              );
+
+            // Sukses: tampilkan modal tanpa tombol; hanya ✕ untuk menutup dan balik ke login
+            showModal({
+              type: "success",
+              title: "Pendaftaran Berhasil",
+              message: "Akun Anda telah terdaftar dan menunggu validasi.",
+            });
+
+            // Saat modal ditutup → kembali ke form login
+            const goLogin = () => {
+              closeModal();
+              container.classList.remove("sign-up-mode"); // tampilkan panel login
+              document.getElementById("formLogin").reset();
+            };
+            // Override close click khusus sekali ini
+            const closeOnce = () => {
+              mClose.removeEventListener("click", closeOnce);
+              modal.removeEventListener("click", bgOnce);
+              goLogin();
+            };
+            const bgOnce = (e) => {
+              if (e.target === modal) {
+                modal.removeEventListener("click", bgOnce);
+                mClose.removeEventListener("click", closeOnce);
+                goLogin();
+              }
+            };
+            mClose.addEventListener("click", closeOnce);
+            modal.addEventListener("click", bgOnce);
+          } catch (err) {
+            console.error(err);
+            showModal({
+              type: "error",
+              title: "Pendaftaran Gagal",
+              message: err?.message || "Terjadi kesalahan saat mendaftar.",
+            });
+          } finally {
+            setLoading(btn, false);
+          }
+        });
+      })();
     </script>
   </body>
 </html>

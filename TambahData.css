@@ -1,0 +1,542 @@
+/* =========================
+   SUPERADMIN • Tambah Data Lelang (UI v2 konsisten)
+   ========================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
+
+:root {
+  --bg: #f5f7fd;
+  --card: #ffffff;
+  --line: #e6ecfb;
+  --shadow: 0 10px 24px rgba(43, 74, 156, 0.08);
+  --radius: 16px;
+
+  --blue-900: #022058;
+  --blue-700: #2b4a9c;
+  --blue-600: #2577e2;
+  --blue-500: #4998ff;
+
+  --success: #2bae66;
+  --success-soft: #e9f7ef;
+  --success-border: #bfe8d1;
+  --danger: #e74c3c;
+  --danger-soft: #ffecec;
+  --danger-border: #ffd6d6;
+  --muted: #6c87d7;
+
+  --overlay: rgba(15, 23, 42, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: var(--bg);
+  color: #23304c;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: #fff;
+  border-right: 1px solid var(--line);
+  padding: 20px 16px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+.brand img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: var(--blue-700);
+  text-decoration: none;
+  background: #eef3ff;
+  transition: 0.18s;
+}
+.nav-item:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+.nav-item.active {
+  background: var(--blue-700);
+  color: #fff;
+}
+.nav-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Sidebar nav icon coloring === */
+.nav-item .nav-ico svg *,
+.nav-item .nav-ico svg [stroke] {
+  stroke: currentColor !important;
+  fill: none;
+}
+.nav-item {
+  color: var(--blue-700);
+}
+.nav-item:not(.active):hover {
+  color: #23408d;
+}
+.nav-item.active {
+  color: #fff;
+}
+.nav-item,
+.nav-item .nav-ico svg {
+  transition: color 0.18s ease, background 0.18s ease, transform 0.15s ease;
+}
+
+/* Main + header */
+.main {
+  flex: 1;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  /* ===== OVERRIDE penting agar konten (form) tidak terpotong di layout flex ===== */
+  min-width: 0; /* biarkan shrink saat ada sibling sidebar */
+}
+.hero {
+  background: linear-gradient(90deg, var(--blue-700) 0%, #1f86d5 100%);
+  color: #fff;
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 22px rgba(32, 78, 165, 0.18);
+}
+.hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+.hero-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-logo {
+  height: 20px;
+  width: auto;
+  transition: 0.18s;
+}
+.hero-logo:hover {
+  transform: scale(1.06) rotate(-1deg);
+}
+.hero-role {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* Tombol logout */
+.btn-logout {
+  background: var(--danger);
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.15s;
+}
+.btn-logout:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.search {
+  position: relative;
+  width: 360px;
+  max-width: 50vw;
+  border: 1.5px dashed #cfe0ff;
+  border-radius: 999px;
+  padding: 8px 14px 8px 36px;
+  background: #f8fbff;
+  transition: box-shadow 0.18s, transform 0.12s;
+}
+.search:focus-within {
+  box-shadow: 0 0 0 4px rgba(56, 109, 255, 0.1), var(--shadow);
+  transform: translateY(-1px);
+}
+.search-ico {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+}
+.search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  color: #23304c;
+}
+
+/* Buttons */
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+.btn.ghost {
+  background: #f1f5fb;
+  color: #1d2b4b;
+  border: 1px solid #d1d9e6;
+}
+.btn.ghost:hover {
+  background: #e3edfb;
+  transform: translateY(-1px);
+}
+.btn.primary {
+  background: #2577e2;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(37, 119, 226, 0.22);
+  transition: 0.18s;
+}
+.btn.primary:hover {
+  background: linear-gradient(90deg, #1958ac 0%, #177de4 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 22px rgba(37, 119, 226, 0.28);
+}
+.btn.danger {
+  background: #e74c3c;
+  color: #fff;
+}
+.btn.danger:hover {
+  filter: brightness(0.98);
+}
+
+/* Table */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  /* ===== OVERRIDE: beri ruang bawah untuk scrollbar agar tidak menutupi baris ===== */
+  padding-bottom: 6px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+thead th {
+  background: #eaf0ff;
+  color: #3a4e91;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 14px;
+  text-align: left;
+}
+tbody td {
+  padding: 14px;
+  border-top: 1px solid #f0f3ff;
+}
+tbody tr:hover {
+  background: linear-gradient(0deg, #fafcff, #ffffff);
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* Empty table */
+td.empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 20px;
+}
+
+/* Form */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field span {
+  font-size: 13px;
+  color: #3a4e91;
+  font-weight: 700;
+}
+.field input,
+.field select {
+  padding: 10px 12px;
+  border: 1px solid #dfe6fb;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field input:focus,
+.field select:focus {
+  border-color: #98b4ff;
+  box-shadow: 0 0 0 3px rgba(56, 109, 255, 0.12);
+}
+.hint {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  z-index: 1000;
+  background: var(--overlay);
+  backdrop-filter: blur(3px) saturate(108%);
+}
+.modal.open {
+  display: flex;
+}
+.modal-card {
+  position: relative;
+  width: min(500px, 94vw);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(2, 32, 88, 0.22);
+  overflow: hidden;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.modal-header h3 {
+  margin: 0;
+  font-weight: 800;
+  color: var(--blue-900);
+}
+.modal-body {
+  padding: 18px;
+  color: #1d2b4b;
+}
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px 18px;
+}
+
+/* Spinner & checkmark */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.checkmark {
+  display: inline-block;
+  color: var(--success);
+  font-size: 18px;
+  font-weight: bold;
+}
+.is-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.is-done {
+  background: var(--success) !important;
+  color: #fff !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .search {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   OVERRIDES TAMBAHAN (tidak mengubah yang sudah benar)
+   - Kunci lebar konten: form tidak melebar & tidak terpotong
+   - Tabel mengikuti lebar form; scroll di dalam tabel
+   - Header/sel tabel 1 baris (nowrap)
+   - Kolom "Harga Laku" aman
+   ========================================================= */
+
+/* 1) Kunci lebar konten agar form & tabel seragam */
+:root {
+  --content-max: 1200px;
+} /* sesuaikan 1160/1280 jika diinginkan */
+html,
+body {
+  overflow-x: hidden;
+} /* cegah halaman melebar global */
+
+.main > .card {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2) Tabel mengikuti lebar form & scroll di dalam tabel saja */
+.card .table-wrap {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.card .table-wrap > table {
+  min-width: 100%; /* minimal selebar kartu/form */
+  width: max-content; /* boleh lebih lebar → di-scroll */
+  table-layout: auto;
+}
+
+/* 3) Header & sel tabel satu baris (tidak turun) */
+.table-wrap th,
+.table-wrap td {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+/* 3b) Kolom Harga Laku: cegah terpotong di tepi kanan scrollbar */
+.table-wrap th:last-child,
+.table-wrap td:last-child {
+  padding-right: 36px; /* ruang ekstra di sisi kanan */
+  min-width: 180px; /* angka panjang tetap muat */
+}
+
+/* 4) Modal sukses (opsional) */
+.modal-card.success .modal-header {
+  background: var(--success-soft);
+  border-bottom-color: var(--success-border);
+}
+.modal-card.success .modal-header h3 {
+  color: var(--success);
+}
+.modal-card.success .modal-body {
+  padding-top: 22px;
+}
+.ok-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--success);
+  background: var(--success-soft);
+  border: 2px solid var(--success-border);
+  margin: 0 auto 10px;
+  box-shadow: 0 0 0 6px rgba(43, 174, 102, 0.08) inset;
+}
+.ok-badge svg {
+  display: block;
+}
+.ok-text {
+  text-align: center;
+  color: #1d2b4b;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* 5) Amankan input/select agar tidak mendorong grid */
+.field input,
+.field select {
+  min-width: 0;
+}
+
+/* 6) Toolbar dalam kartu data ikut lebar konten */
+.card .toolbar {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 7) Batasi lebar komponen pencarian agar tidak memaksa melebar */
+.search {
+  max-width: 560px;
+  width: 100%;
+}

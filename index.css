@@ -135,6 +135,12 @@ body {
   height: 140px;
   border-radius: 14px;
 }
+
+.welcome-text h3:empty::before {
+  content: "Satker";
+  color: #6b7280;
+}
+
 .welcome-text span {
   font-size: 28px;
   color: #4b5563;

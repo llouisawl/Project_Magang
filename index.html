@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>e-Taksir | Panitia Penaksir</title>
     <link rel="stylesheet" href="index.css" />
+
+    <!-- Konfigurasi & Auth -->
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- Kunci halaman khusus SATKER -->
+    <script>
+      (function () {
+        try {
+          Auth.protectPage("satker");
+        } catch (e) {}
+      })();
+    </script>
   </head>
+
   <body>
     <div class="container">
       <!-- Sidebar -->
@@ -18,7 +32,6 @@
           />
           <div class="profile-dropdown">
             <span class="profile-icon" tabindex="0">
-              <!-- ...SVG ICON USER... -->
               <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
                 <circle cx="19" cy="19" r="19" fill="#E8EEFB" />
                 <path
@@ -28,8 +41,7 @@
               </svg>
             </span>
             <div class="dropdown-content">
-              <a href="Daftar.Html" class="logout-link">
-                <!-- Icon Logout -->
+              <a href="daftar.html" class="logout-link" id="satkerLogout">
                 <svg
                   width="17"
                   height="17"
@@ -55,9 +67,10 @@
           <img src="Gambar/Logo.png" alt="Icon" class="welcome-icon" />
           <div class="welcome-text">
             <span>Selamat Datang</span>
-            <h3>Dino</h3>
+            <h3 id="welcomeName">Pengguna</h3>
           </div>
         </div>
+
         <nav>
           <ul>
             <li>
@@ -65,12 +78,10 @@
                 ><span>🗒️</span> Riwayat Kertas kerja</a
               >
             </li>
-            <li>
-              <a href="Upload.html"><span>📂</span> Upload Kertas Kerja</a>
-            </li>
           </ul>
         </nav>
       </aside>
+
       <!-- Main Content -->
       <main>
         <h1>Kertas Kerja Penentuan Nilai Taksiran BMN (Lelang Kendaraan)</h1>
@@ -84,9 +95,10 @@
               </div>
               <div class="input-group">
                 <label>NUP</label>
-                <input type="text" name="nup" />
+                <input type="text" name="nup" required />
               </div>
             </div>
+
             <div class="row">
               <div class="input-group">
                 <label>Lokasi Objek</label>
@@ -112,14 +124,17 @@
               <div class="input-group">
                 <label>Provinsi</label>
                 <input
+                  list="daftar-provinsi"
                   name="provinsi"
                   id="provinsi"
                   placeholder="Ketik provinsi"
                   required
                   type="text"
                 />
+                <datalist id="daftar-provinsi"></datalist>
               </div>
             </div>
+
             <div class="row">
               <div class="input-group">
                 <label>Jenis Kendaraan</label>
@@ -153,6 +168,7 @@
                 </select>
               </div>
             </div>
+
             <div class="row">
               <div class="input-group">
                 <label>Merek Kendaraan</label>
@@ -181,26 +197,27 @@
                 <input type="text" name="nomor_polisi" required />
               </div>
             </div>
+
             <div class="row">
               <div class="input-group">
                 <label>Dokumen Kepemilikan</label>
                 <div class="checkbox-group">
-                  <label>
-                    <input
+                  <label
+                    ><input
                       type="checkbox"
                       name="dokumen_kepemilikan[]"
                       value="BPKB"
                     />
-                    BPKB
-                  </label>
-                  <label>
-                    <input
+                    BPKB</label
+                  >
+                  <label
+                    ><input
                       type="checkbox"
                       name="dokumen_kepemilikan[]"
                       value="STNK"
                     />
-                    STNK
-                  </label>
+                    STNK</label
+                  >
                   <label>
                     <input
                       type="checkbox"
@@ -216,6 +233,14 @@
                       style="display: none; margin-left: 8px; width: 140px"
                     />
                   </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="tidakAdaCheckbox"
+                      value="Tidak Ada"
+                    />
+                    Tidak Ada
+                  </label>
                 </div>
               </div>
               <div class="input-group">
@@ -223,6 +248,7 @@
                 <input type="text" name="pemilik_dokumen" required />
               </div>
             </div>
+
             <div class="row">
               <div class="input-group">
                 <label>Masa Berlaku</label>
@@ -239,6 +265,7 @@
                 <input type="text" name="penggunaan_kendaraan" />
               </div>
             </div>
+
             <div class="row">
               <div class="input-group">
                 <label>Keterangan Lain</label>
@@ -246,6 +273,7 @@
               </div>
             </div>
           </section>
+
           <section>
             <h2>FISIK KENDARAAN</h2>
             <div class="row">
@@ -283,29 +311,28 @@
                 <label>Kondisi Kendaraan</label>
                 <select name="kondisi_kendaraan" required>
                   <option value="">Pilih</option>
-                  <option value="0,5 (Tingkat kerusakan diatas 90%)">
-                    0,5 (Tingkat kerusakan diatas 90%)
+                  <option value="0.5 (Tingkat kerusakan diatas 90%)">
+                    0.5 (Tingkat kerusakan diatas 90%)
                   </option>
-                  <option value="0,6 (Tingkat kerusakan diatas 80%-90%)">
-                    0,6 (Tingkat kerusakan diatas 80%-90%)
+                  <option value="0.6 (Tingkat kerusakan diatas 80%-90%)">
+                    0.6 (Tingkat kerusakan diatas 80%-90%)
                   </option>
-                  <option value="0,7 (Tingkat kerusakan sampai dengan 80%)">
-                    0,7 (Tingkat kerusakan sampai dengan 80%)
+                  <option value="0.7 (Tingkat kerusakan sampai dengan 80%)">
+                    0.7 (Tingkat kerusakan sampai dengan 80%)
                   </option>
                 </select>
               </div>
             </div>
           </section>
+
           <div class="actions">
             <button type="submit" class="submit-btn">Data Pembanding</button>
           </div>
         </form>
       </main>
     </div>
-    <!-- <script src="Panitia.js"></script> -->
-    <script>
-      let jwt = localStorage.getItem("jwt_token");
-    </script>
+
+    <!-- ====== SCRIPT LOGIKA FORM ====== -->
     <script>
       // Tampilkan CC dinamis
       function tampilkanCC() {
@@ -324,6 +351,19 @@
           document.getElementById("cc_kendaraan_roda4").required = true;
         }
       }
+      // Ambil angka faktor_kondisi dari dropdown (0.5/0.6/0.7)
+      function extractFaktorKondisi(selectEl) {
+        if (!selectEl) return 0.6;
+        const raw = (
+          selectEl.value ||
+          selectEl.options[selectEl.selectedIndex]?.text ||
+          ""
+        ).trim();
+        const m = raw.replace(",", ".").match(/[0-9.]+/);
+        const f = m ? parseFloat(m[0]) : NaN;
+        return Number.isFinite(f) ? f : 0.6;
+      }
+      // Toggle input "Lainnya"
       function toggleLainnyaInput(checkbox) {
         var input = document.getElementById("lainnyaInput");
         input.style.display = checkbox.checked ? "inline-block" : "none";
@@ -332,80 +372,126 @@
     </script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      // Sinkronisasi checkboxes dokumen kepemilikan
+      document.addEventListener("DOMContentLoaded", () => {
+        const chkBpkb = document.querySelector(
+          'input[name="dokumen_kepemilikan[]"][value="BPKB"]'
+        );
+        const chkStnk = document.querySelector(
+          'input[name="dokumen_kepemilikan[]"][value="STNK"]'
+        );
+        const chkLain = document.getElementById("lainnyaCheckbox");
+        const txtLain = document.getElementById("lainnyaInput");
+        const chkTidak = document.getElementById("tidakAdaCheckbox");
+        const nonTidak = [chkBpkb, chkStnk, chkLain];
+
+        function applyTidakAdaState() {
+          const on = chkTidak.checked;
+          nonTidak.forEach((el) => {
+            el.disabled = on;
+            if (on) el.checked = false;
+          });
+          if (on) {
+            txtLain.style.display = "none";
+            txtLain.value = "";
+          }
+        }
+        chkTidak.addEventListener("change", applyTidakAdaState);
+
+        function deselectTidakAdaWhenOthers() {
+          if (chkBpkb.checked || chkStnk.checked || chkLain.checked) {
+            chkTidak.checked = false;
+            applyTidakAdaState();
+          }
+        }
+        chkBpkb.addEventListener("change", deselectTidakAdaWhenOthers);
+        chkStnk.addEventListener("change", deselectTidakAdaWhenOthers);
+        chkLain.addEventListener("change", () => {
+          toggleLainnyaInput(chkLain);
+          deselectTidakAdaWhenOthers();
+        });
+        txtLain.addEventListener("input", () => {
+          if (txtLain.value.trim() !== "") {
+            chkLain.checked = true;
+            chkTidak.checked = false;
+            applyTidakAdaState();
+            txtLain.style.display = "inline-block";
+          }
+        });
+      });
+    </script>
+
+    <script>
+      // Submit form → simpan ke sessionStorage → pindah halaman
+      document.addEventListener("DOMContentLoaded", () => {
         document
           .getElementById("kertasKerjaForm")
           .addEventListener("submit", function (e) {
-            e.preventDefault(); // Cegah reload form
+            e.preventDefault();
 
-            // Kumpulkan seluruh data form ke dalam object
-            const formData = {};
             const fd = new FormData(this);
+            const formData = {};
 
-            // Ambil semua input name normal
-            for (let [key, value] of fd.entries()) {
-              // Bukan dokumen kepemilikan, langsung isi
-              if (!key.startsWith("dokumen_kepemilikan")) {
-                formData[key] = value;
-              }
+            // salin semua field normal (kecuali dokumen_kepemilikan[])
+            for (let [k, v] of fd.entries()) {
+              if (!k.startsWith("dokumen_kepemilikan"))
+                formData[k] = (v ?? "").toString().trim();
             }
 
-            // Ambil semua dokumen kepemilikan (array dari checkbox + “lainnya”)
-            const dokumenArr = [];
-            // BPKB
-            if (
-              this.querySelector(
-                'input[name="dokumen_kepemilikan[]"][value="BPKB"]'
-              ).checked
-            ) {
-              dokumenArr.push("BPKB");
-            }
-            // STNK
-            if (
-              this.querySelector(
-                'input[name="dokumen_kepemilikan[]"][value="STNK"]'
-              ).checked
-            ) {
-              dokumenArr.push("STNK");
-            }
-            // Lainnya
-            const lainnyaCheckbox = this.querySelector("#lainnyaCheckbox");
-            const lainnyaInput = this.querySelector("#lainnyaInput");
-            if (
-              lainnyaCheckbox &&
-              lainnyaCheckbox.checked &&
-              lainnyaInput &&
-              lainnyaInput.value.trim() !== ""
-            ) {
-              dokumenArr.push(lainnyaInput.value.trim());
-            }
-            formData["dokumen_kepemilikan"] = dokumenArr;
+            // Dokumen kepemilikan + Tidak Ada
+            const dokumen = [];
+            const bpkb = this.querySelector(
+              'input[name="dokumen_kepemilikan[]"][value="BPKB"]'
+            )?.checked;
+            const stnk = this.querySelector(
+              'input[name="dokumen_kepemilikan[]"][value="STNK"]'
+            )?.checked;
+            const chkLain = this.querySelector("#lainnyaCheckbox")?.checked;
+            const txtLain = (
+              this.querySelector("#lainnyaInput")?.value || ""
+            ).trim();
+            const chkTidak = this.querySelector("#tidakAdaCheckbox")?.checked;
 
-            // Simpan ke sessionStorage
+            if (bpkb) dokumen.push("BPKB");
+            if (stnk) dokumen.push("STNK");
+            if (chkLain) dokumen.push("Lainnya");
+
+            if (chkTidak) {
+              formData.dokumen_kepemilikan = [];
+              formData.dokumen_kepemilikan_tidak_ada = true;
+              formData.dok_lainnya_detail = "";
+            } else {
+              formData.dokumen_kepemilikan = dokumen;
+              formData.dok_lainnya_detail = chkLain ? txtLain : "";
+            }
+
+            // Faktor kondisi
+            const rawKondisi = fd.get("kondisi_kendaraan") || "";
+            const faktor = (() => {
+              const m = String(rawKondisi)
+                .replace(",", ".")
+                .match(/[0-9.]+/);
+              const f = m ? parseFloat(m[0]) : NaN;
+              return Number.isFinite(f) ? f : 0.6;
+            })();
+            formData.kondisi_kendaraan = rawKondisi;
+            formData.faktor_kondisi = faktor;
+
             sessionStorage.setItem("dataKertasKerja", JSON.stringify(formData));
             window.location.href = "HasilTaksir.html";
           });
       });
     </script>
-    <script>
-      function toggleLainnyaInput(checkbox) {
-        var input = document.getElementById("lainnyaInput");
-        input.style.display = checkbox.checked ? "inline-block" : "none";
-        if (!checkbox.checked) input.value = "";
-      }
-    </script>
 
+    <!-- ====== DATA LIST (Tipe dari Tipe.json) ====== -->
     <script>
-      // Ambil data tipe dari file JSON (pastikan Tipe.json 1 folder dengan file html)
       fetch("Tipe.json")
         .then((response) => response.json())
         .then((data) => {
-          const tipeList = data.map((item) => String(item.TIPE)); // pastikan jadi string
+          const tipeList = data.map((item) => String(item.TIPE));
           const datalist = document.getElementById("datalist-tipe");
-          datalist.innerHTML = ""; // kosongkan dulu
-
+          datalist.innerHTML = "";
           tipeList.forEach((tipe) => {
-            // Cek agar tipe tidak kosong/null/undefined
             if (tipe && tipe.trim() !== "") {
               const option = document.createElement("option");
               option.value = tipe;
@@ -1020,6 +1106,56 @@
     </script>
 
     <script>
+      const daftarProvinsi = [
+        "Nanggroe Aceh Darussalam",
+        "Sumatera Utara",
+        "Sumatera Selatan",
+        "Sumatera Barat",
+        "Bengkulu",
+        "Riau",
+        "Kepulauan Riau",
+        "Jambi",
+        "Lampung",
+        "Bangka Belitung",
+        "Kalimantan Barat",
+        "Kalimantan Timur",
+        "Kalimantan Selatan",
+        "Kalimantan Tengah",
+        "Kalimantan Utara",
+        "Banten",
+        "DKI Jakarta",
+        "Jawa Barat",
+        "Jawa Tengah",
+        "Daerah Istimewa Yogyakarta",
+        "Jawa Timur",
+        "Bali",
+        "Nusa Tenggara Timur",
+        "Nusa Tenggara Barat",
+        "Gorontalo",
+        "Sulawesi Barat",
+        "Sulawesi Tengah",
+        "Sulawesi Utara",
+        "Sulawesi Tenggara",
+        "Sulawesi Selatan",
+        "Maluku Utara",
+        "Maluku",
+        "Papua Barat",
+        "Papua",
+        "Papua Tengah",
+        "Papua Pegunungan",
+        "Papua Selatan",
+        "Papua Barat Daya",
+      ];
+
+      const datalistProvinsi = document.getElementById("daftar-provinsi");
+      daftarProvinsi.forEach(function (prov) {
+        const opt = document.createElement("option");
+        opt.value = prov;
+        datalistProvinsi.appendChild(opt);
+      });
+    </script>
+
+    <script>
       // Isi datalist dari 1980 - tahun sekarang
       const tahunAwal = 1900;
       const tahunAkhir = new Date().getFullYear();
@@ -1037,9 +1173,7 @@
           return txt.toUpperCase();
         });
       }
-
       document.addEventListener("DOMContentLoaded", function () {
-        // Seleksi SEMUA input text dalam form (termasuk yg pakai list/datalist)
         document
           .querySelectorAll(
             '#kertasKerjaForm input[type="text"], #kertasKerjaForm input[list]'
@@ -1058,6 +1192,29 @@
       });
     </script>
 
-    <script></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.getElementById("welcomeName");
+        if (!el) return;
+        // cukup dari helper (sudah ada fallback per-role di auth.js)
+        el.textContent = Auth.getName("satker") || "Pengguna";
+      });
+    </script>
+
+    <!-- ====== LOGOUT SATKER ====== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btnLogout = document.getElementById("satkerLogout");
+        if (btnLogout) {
+          btnLogout.addEventListener("click", (ev) => {
+            ev.preventDefault();
+            try {
+              Auth.logout("satker");
+            } catch {}
+            location.href = "daftar.html";
+          });
+        }
+      });
+    </script>
   </body>
 </html>

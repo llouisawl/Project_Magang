@@ -525,3 +525,153 @@ form.sign-up-form {
     top: auto;
   }
 }
+
+/* ====== Input dengan ikon "eye" ====== */
+.input-with-eye {
+  position: relative;
+}
+.input-with-eye .toggle-pass {
+  position: absolute;
+  right: 10px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: #1d2b4b;
+  opacity: 0.7;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  transition: background 0.15s, opacity 0.15s, transform 0.1s;
+}
+.input-with-eye .toggle-pass:hover,
+.input-with-eye .toggle-pass:focus {
+  background: #e7f0fa;
+  opacity: 1;
+  outline: none;
+}
+.input-with-eye .toggle-pass.active {
+  color: #2577e2;
+}
+
+/* ====== Tombol: spinner loading ====== */
+.btn {
+  position: relative;
+}
+.btn-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@keyframes spin {
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+.btn.is-loading {
+  pointer-events: none;
+}
+
+/* ====== Modal Pop-up (tema Kemenkeu) ====== */
+.modal-overlay[hidden] {
+  display: none !important;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+.modal-card {
+  width: min(520px, 92vw);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(2, 32, 88, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 24px 24px 20px 24px;
+  position: relative;
+  animation: pop 0.16s ease-out;
+}
+@keyframes pop {
+  from {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 10px;
+  background: #f1f5fb;
+  color: #022058;
+  font-size: 18px;
+  cursor: pointer;
+}
+.modal-close:hover {
+  background: #e3edfb;
+}
+.modal-icon {
+  margin: 6px 0 8px 0;
+}
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #022058;
+  margin-bottom: 6px;
+}
+.modal-message {
+  color: #1d2b4b;
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.modal-btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.modal-btn.primary {
+  background: linear-gradient(90deg, #022058 0%, #4998ff 100%);
+  color: #fff;
+}
+.modal-btn.secondary {
+  background: #f1f5fb;
+  color: #022058;
+}
+
+/* Sembunyikan tombol reveal bawaan Edge/IE pada input password */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+}
+
+/* Sedikit padding kanan agar teks tidak ketimpa tombol custom */
+.input-with-eye input {
+  padding-right: 44px; /* ruang untuk tombol .toggle-pass */
+}

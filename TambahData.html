@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superadmin • Tambah Data Lelang | e-Taksir</title>
+
+    <!-- CSS halaman ini -->
+    <link rel="stylesheet" href="TambahData.css" />
+
+    <!-- Wajib: config + auth + guard role superadmin -->
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script>
+      try {
+        Auth.protectPage("superadmin");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="Gambar/Kemenkeu.png" alt="Kementerian Keuangan" />
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="Super.html">
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"
+                  stroke="#fff"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+                <circle cx="9" cy="7" r="4" stroke="#fff" stroke-width="1.7" />
+                <path
+                  d="M17 11l2 2 4-4"
+                  stroke="#fff"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            Validasi User
+          </a>
+
+          <a
+            class="nav-item active"
+            href="TambahData.html"
+            id="navTambah"
+            data-route="tambah"
+          >
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  stroke="#2b4a9c"
+                  stroke-width="1.7"
+                />
+                <path d="M14 2v6h6" stroke="#2b4a9c" stroke-width="1.7" />
+                <path
+                  d="M16 13H8M16 17H8M10 9H8"
+                  stroke="#2b4a9c"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            Tambah Data Lelang
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <header class="hero">
+          <div class="hero-title">Tambah Data Lelang</div>
+          <div class="hero-right">
+            <span class="hero-role">SuperAdmin</span>
+            <img src="Gambar/DJKN.png" alt="Logo DJKN" class="hero-logo" />
+            <!-- Logout -->
+            <button
+              id="btnLogout"
+              class="btn-logout"
+              type="button"
+              title="Logout"
+            >
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <!-- Form tambah -->
+        <section class="card" style="margin-bottom: 18px">
+          <h3>Form Input</h3>
+
+          <form
+            id="lelangForm"
+            class="modal-body"
+            style="padding: 0; margin-top: 8px"
+          >
+            <!-- Baris 1 -->
+            <div class="grid-3">
+              <label class="field">
+                <span>Kode</span>
+                <input name="kode" placeholder="L001" required />
+              </label>
+
+              <label class="field">
+                <span>Kategori Objek</span>
+                <select name="kategori_objek" id="kategoriObjek" required>
+                  <option value="Mobil">Mobil</option>
+                  <option value="Motor">Motor</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Tahun Lelang</span>
+                <input
+                  name="tahun_lelang"
+                  list="datalist-tahun"
+                  placeholder="2025"
+                  required
+                />
+                <datalist id="datalist-tahun"></datalist>
+              </label>
+            </div>
+
+            <!-- Baris 2 -->
+            <div class="grid-3" style="margin-top: 12px">
+              <label class="field">
+                <span>Provinsi</span>
+                <input
+                  name="provinsi"
+                  list="daftar-provinsi"
+                  placeholder="Jawa Timur"
+                  required
+                />
+                <datalist id="daftar-provinsi"></datalist>
+              </label>
+
+              <label class="field">
+                <span>Kota</span>
+                <input
+                  name="kota"
+                  id="inpKota"
+                  list="daftar-kota"
+                  placeholder="Kota / Kabupaten"
+                  required
+                />
+                <datalist id="daftar-kota"></datalist>
+              </label>
+
+              <label class="field">
+                <span>KPKNL</span>
+                <input
+                  name="kpknl"
+                  id="inpKpknl"
+                  list="daftar-kpknl"
+                  placeholder="KPKNL Malang"
+                  required
+                />
+                <datalist id="daftar-kpknl"></datalist>
+              </label>
+            </div>
+
+            <!-- Baris 3 -->
+            <div class="grid-2" style="margin-top: 12px">
+              <label class="field">
+                <span>Kategori Lokasi (Jan–Jun)</span>
+                <select name="kategori_lokasi_jan_jun" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Kategori Lokasi (Jul–Des)</span>
+                <select name="kategori_lokasi_jul_des" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Baris 4 -->
+            <div class="grid-3" style="margin-top: 12px">
+              <label class="field">
+                <span>Merek</span>
+                <input
+                  name="merek"
+                  list="daftar-merek"
+                  placeholder="Toyota"
+                  required
+                />
+                <datalist id="daftar-merek"></datalist>
+              </label>
+
+              <label class="field">
+                <span>Tipe</span>
+                <input
+                  name="tipe"
+                  id="inpTipe"
+                  list="datalist-tipe"
+                  placeholder="Kijang / Beat / ..."
+                  required
+                />
+                <datalist id="datalist-tipe"></datalist>
+              </label>
+
+              <label class="field">
+                <span>Tahun Pembuatan</span>
+                <input
+                  name="tahun_pembuatan"
+                  list="datalist-tahun"
+                  placeholder="2018"
+                  required
+                />
+              </label>
+            </div>
+
+            <!-- Baris 5 -->
+            <div class="grid-2" style="margin-top: 12px">
+              <label class="field">
+                <span>Warna</span>
+                <input
+                  name="warna"
+                  list="daftar-warna"
+                  placeholder="Merah / Hitam / ..."
+                  required
+                />
+                <datalist id="daftar-warna"></datalist>
+              </label>
+
+              <label class="field">
+                <span>Harga Laku (Rp)</span>
+                <input
+                  name="harga_laku"
+                  id="hargaInput"
+                  placeholder="12.000.000"
+                  required
+                />
+                <span class="hint"
+                  >Ketik angka dengan titik pemisah ribuan (contoh:
+                  12.000.000)</span
+                >
+              </label>
+            </div>
+
+            <div class="modal-actions" style="padding: 0; margin-top: 14px">
+              <button type="reset" class="btn ghost">Reset</button>
+              <div style="flex: 1"></div>
+              <button type="submit" class="btn primary" id="btnSubmit">
+                Simpan
+              </button>
+            </div>
+
+            <p
+              id="formHint"
+              class="modal-hint"
+              style="display: none; margin-top: 8px"
+            ></p>
+          </form>
+        </section>
+
+        <!-- Tabel data -->
+        <section class="card">
+          <div class="toolbar" style="margin-bottom: 10px">
+            <div class="toolbar-left">
+              <div class="search">
+                <span class="search-ico">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="11"
+                      cy="11"
+                      r="7"
+                      stroke="#6C87D7"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M21 21l-3.5-3.5"
+                      stroke="#6C87D7"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Cari kode / objek / lokasi / merek / tipe"
+                />
+              </div>
+            </div>
+
+            <div
+              class="right"
+              style="display: flex; gap: 10px; align-items: center"
+            >
+              <button
+                class="btn ghost"
+                id="btnDownload"
+                type="button"
+                title="Download Excel"
+              >
+                Download Excel
+              </button>
+
+              <label
+                class="muted nowrap"
+                style="display: flex; gap: 6px; align-items: center"
+              >
+                Tampil
+                <select
+                  id="pageSize"
+                  style="
+                    padding: 6px 8px;
+                    border: 1px solid #dfe6fb;
+                    border-radius: 8px;
+                  "
+                >
+                  <!-- default 10 baris -->
+                  <option selected>10</option>
+                  <option>20</option>
+                  <option>50</option>
+                  <option>100</option>
+                  <option>200</option>
+                </select>
+                / halaman
+              </label>
+              <span class="muted nowrap" id="countInfo">0 data</span>
+              <div class="actions">
+                <button class="btn ghost" id="prevPage" type="button">
+                  « Prev
+                </button>
+                <button class="btn ghost" id="nextPage" type="button">
+                  Next »
+                </button>
+                <span class="muted nowrap" id="pageInfo"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table id="tblLelang" class="table-no-break">
+              <thead>
+                <tr>
+                  <th>Kode</th>
+                  <th>Kategori</th>
+                  <th>Tahun Lelang</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>KPKNL</th>
+                  <th>Lokasi 1–6</th>
+                  <th>Lokasi 7–12</th>
+                  <th>Merek</th>
+                  <th>Tipe</th>
+                  <th>Tahun Buat</th>
+                  <th>Warna</th>
+                  <th>Harga Laku</th>
+                </tr>
+              </thead>
+              <tbody id="lelangBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Modal Info (sukses, dll) -->
+    <div class="modal" id="infoModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header"><h3>Info</h3></div>
+        <div class="modal-body">
+          <p id="infoText">Berhasil.</p>
+          <div class="modal-actions" style="justify-content: center">
+            <button type="button" class="btn primary" data-close="infoModal">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================== JS ================== -->
+    <script>
+      /* ===== Helpers ===== */
+      const $ = (q, el = document) => el.querySelector(q);
+      const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
+
+      const API_BASE = (window.API_URL || "").replace(/\/+$/, "");
+      const ENDPOINT_ADD = `${API_BASE}/data-lelang/tambah-data`;
+      const ENDPOINT_LIST = `${API_BASE}/data-lelang/`;
+      const ENDPOINT_DOWNLOAD = `${API_BASE}/data-lelang/download`;
+
+      const SUPER = (() => {
+        try {
+          return new Auth.ApiClient("superadmin");
+        } catch {
+          return null;
+        }
+      })();
+      const headersJson = () =>
+        SUPER
+          ? SUPER.headers({ "Content-Type": "application/json" })
+          : { "Content-Type": "application/json" };
+
+      // Format angka ribuan (input harga)
+      function formatRibuanDenganTitik(v) {
+        const d = String(v).replace(/[^\d]/g, "");
+        if (!d) return "";
+        return d.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+      function tampilRupiah(v) {
+        const n = Number(String(v).replace(/[^\d]/g, ""));
+        if (!Number.isFinite(n)) return "-";
+        return "Rp" + n.toLocaleString("id-ID");
+      }
+      const rupiahToNumber = (v) =>
+        Number(String(v).replace(/[^\d]/g, "")) || 0;
+
+      // Normalisasi baris dari API
+      function normalizeRow(r) {
+        return {
+          kode: r.kode ?? r.code ?? "-",
+          kategori_objek: r.kategori_objek ?? r.kategori ?? "-",
+          tahun_lelang: r.tahun_lelang ?? r.tahun ?? null,
+          provinsi: r.provinsi ?? "-",
+          kota: r.kota ?? "-",
+          kpknl: r.kpknl ?? r.kantor ?? "-",
+          kategori_lokasi_jan_jun:
+            r.kategori_lokasi_jan_jun ?? r.lokasi_1_6 ?? null,
+          kategori_lokasi_jul_des:
+            r.kategori_lokasi_jul_des ?? r.lokasi_7_12 ?? null,
+          merek: r.merek ?? r.brand ?? "-",
+          tipe: r.tipe ?? r.model ?? "-",
+          tahun_pembuatan: r.tahun_pembuatan ?? r.tahun_buat ?? null,
+          warna: r.warna ?? "-",
+          harga_laku: r.harga_laku ?? r.harga ?? 0,
+        };
+      }
+
+      /* ===== STATE (paginasi) ===== */
+      let ALL = [];
+      let VIEW = [];
+      let page = 1;
+      let pageSize = 10; // ✅ default 10 baris
+
+      /* ===== Render ===== */
+      function sliceForPage(list) {
+        const start = (page - 1) * pageSize;
+        return list.slice(start, start + pageSize);
+      }
+      function updatePagerInfo() {
+        const total = VIEW.length;
+        const totalPages = Math.max(1, Math.ceil(total / pageSize));
+        if (page > totalPages) page = totalPages;
+        $("#pageInfo").textContent = `Hal ${page} / ${totalPages}`;
+        $("#countInfo").textContent = `${total} data`;
+        $("#prevPage").disabled = page <= 1;
+        $("#nextPage").disabled = page >= totalPages;
+      }
+      function renderRows(rowsFull) {
+        updatePagerInfo();
+        const rows = sliceForPage(rowsFull);
+        const tb = $("#lelangBody");
+        tb.innerHTML = "";
+        if (!rows.length) {
+          tb.innerHTML = `<tr><td colspan="13" class="empty">Belum ada data.</td></tr>`;
+          return;
+        }
+        const frag = document.createDocumentFragment();
+        rows.forEach((row) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.kode}</td>
+            <td>${row.kategori_objek}</td>
+            <td class="text-center">${row.tahun_lelang ?? "-"}</td>
+            <td>${row.provinsi}</td>
+            <td>${row.kota}</td>
+            <td>${row.kpknl}</td>
+            <td class="text-center">${row.kategori_lokasi_jan_jun ?? "-"}</td>
+            <td class="text-center">${row.kategori_lokasi_jul_des ?? "-"}</td>
+            <td>${row.merek}</td>
+            <td>${row.tipe}</td>
+            <td class="text-center">${row.tahun_pembuatan ?? "-"}</td>
+            <td>${row.warna}</td>
+            <td class="text-right">${tampilRupiah(row.harga_laku)}</td>
+          `;
+          frag.appendChild(tr);
+        });
+        tb.appendChild(frag);
+      }
+      function applySearch() {
+        const q = ($("#searchInput").value || "").toLowerCase().trim();
+        if (!q) {
+          VIEW = [...ALL];
+          page = 1;
+          renderRows(VIEW);
+          return;
+        }
+        VIEW = ALL.filter((r) => {
+          const s =
+            `${r.kode} ${r.kategori_objek} ${r.provinsi} ${r.kota} ${r.kpknl} ${r.merek} ${r.tipe} ${r.warna}`.toLowerCase();
+          return s.includes(q);
+        });
+        page = 1;
+        renderRows(VIEW);
+      }
+
+      /* ===== Fetch ===== */
+      async function loadList() {
+        const tb = $("#lelangBody");
+        tb.innerHTML = `<tr><td colspan="13" class="empty">Memuat data…</td></tr>`;
+        try {
+          const res = await fetch(ENDPOINT_LIST, {
+            headers: SUPER ? SUPER.headers() : {},
+          });
+          const json = await res.json().catch(() => ({}));
+          const arr = Array.isArray(json?.data)
+            ? json.data
+            : Array.isArray(json)
+            ? json
+            : [];
+          ALL = arr.map(normalizeRow);
+          VIEW = [...ALL];
+          page = 1;
+          renderRows(VIEW); // ✅ tampil pertama kali 10 baris (sesuai pageSize)
+        } catch (e) {
+          tb.innerHTML = `<tr><td colspan="13" class="empty">Gagal memuat data. Coba reload.</td></tr>`;
+        }
+      }
+
+      /* ===== Submit ===== */
+      function setBtnLoading(btn, loading) {
+        if (!btn) return;
+        if (loading) {
+          if (!btn.dataset.orig) btn.dataset.orig = btn.innerHTML;
+          btn.classList.add("is-loading");
+          btn.disabled = true;
+          btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>';
+        } else {
+          btn.classList.remove("is-loading");
+          btn.disabled = false;
+          if (btn.dataset.orig) btn.innerHTML = btn.dataset.orig;
+        }
+      }
+      function setBtnDone(btn) {
+        if (!btn) return;
+        btn.classList.add("is-done");
+        btn.innerHTML = '<span class="checkmark" aria-hidden="true">✓</span>';
+        setTimeout(() => {
+          btn.classList.remove("is-done");
+          if (btn.dataset.orig) btn.innerHTML = btn.dataset.orig;
+          btn.disabled = false;
+        }, 900);
+      }
+
+      async function submitForm(e) {
+        e.preventDefault();
+        const hint = $("#formHint");
+        const btn = $("#btnSubmit");
+        hint.style.display = "block";
+        hint.textContent = "Menyimpan data…";
+
+        const fd = new FormData(e.target);
+        const d = Object.fromEntries(fd.entries());
+
+        // harga_laku sebagai NUMBER
+        const payload = {
+          kode: (d.kode || "").trim(),
+          kategori_objek: (d.kategori_objek || "").trim(),
+          tahun_lelang: Number(d.tahun_lelang) || 0,
+          provinsi: (d.provinsi || "").trim(),
+          kota: (d.kota || "").trim(),
+          kpknl: (d.kpknl || "").trim(),
+          kategori_lokasi_jan_jun: Number(d.kategori_lokasi_jan_jun) || 0,
+          kategori_lokasi_jul_des: Number(d.kategori_lokasi_jul_des) || 0,
+          merek: (d.merek || "").trim(),
+          tipe: (d.tipe || "").trim(),
+          tahun_pembuatan: Number(d.tahun_pembuatan) || 0,
+          warna: (d.warna || "").trim(),
+          harga_laku: rupiahToNumber(d.harga_laku),
+        };
+
+        try {
+          setBtnLoading(btn, true);
+          const res = await fetch(ENDPOINT_ADD, {
+            method: "POST",
+            headers: headersJson(),
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) {
+            let msg = `Gagal simpan (HTTP ${res.status})`;
+            try {
+              const j = await res.json();
+              if (j?.message) msg = j.message;
+            } catch {}
+            throw new Error(msg);
+          }
+          await res.json().catch(() => ({}));
+          hint.textContent = "Berhasil disimpan.";
+          setBtnDone(btn);
+          e.target.reset();
+          showInfo("Data lelang <b>berhasil ditambahkan</b>.");
+          loadList();
+        } catch (err) {
+          hint.textContent = err?.message || "Gagal menyimpan.";
+        } finally {
+          setBtnLoading(btn, false);
+        }
+      }
+
+      /* ===== Datalist & referensi ===== */
+      async function tryFetchJson(url) {
+        try {
+          const r = await fetch(url, { cache: "no-store" });
+          if (!r.ok) throw new Error("http " + r.status);
+          return await r.json();
+        } catch (e) {
+          return null;
+        }
+      }
+      async function loadTipeDatalist() {
+        const data = await tryFetchJson("Tipe.json");
+        const datalist = $("#datalist-tipe");
+        datalist.innerHTML = "";
+        if (Array.isArray(data)) {
+          const tipeList = data
+            .map((item) => String(item.TIPE))
+            .filter(Boolean);
+          tipeList.forEach((tipe) => {
+            const option = document.createElement("option");
+            option.value = tipe;
+            datalist.appendChild(option);
+          });
+        }
+      }
+      function uniqueSorted(arr) {
+        return [...new Set(arr.filter(Boolean))].sort((a, b) =>
+          a.localeCompare(b, "id", { sensitivity: "base" })
+        );
+      }
+
+      // Kota.json
+      fetch("Kota.json")
+        .then((r) => r.json())
+        .then((data) => {
+          const values = (Array.isArray(data) ? data : []).map((item) => {
+            if (item == null) return "";
+            if (typeof item === "string") return item.trim();
+            return (item.KOTA || item.kota || item.nama || "").trim();
+          });
+          const list = uniqueSorted(values);
+          const dl = document.getElementById("daftar-kota");
+          dl.innerHTML = "";
+          list.forEach((v) => {
+            const opt = document.createElement("option");
+            opt.value = v;
+            dl.appendChild(opt);
+          });
+        })
+        .catch(() => {});
+
+      // KPKNL.json
+      fetch("KPKNL.json")
+        .then((r) => r.json())
+        .then((data) => {
+          const values = (Array.isArray(data) ? data : []).map((item) => {
+            if (item == null) return "";
+            if (typeof item === "string") return item.trim();
+            return (item.KPKNL || item.kpknl || item.nama || "").trim();
+          });
+          const list = uniqueSorted(values);
+          const dl = document.getElementById("daftar-kpknl");
+          dl.innerHTML = "";
+          list.forEach((v) => {
+            const opt = document.createElement("option");
+            opt.value = v;
+            dl.appendChild(opt);
+          });
+        })
+        .catch(() => {});
+
+      // Provinsi
+      (function isiDaftarProvinsi() {
+        const daftarProvinsi = [
+          "Nanggroe Aceh Darussalam",
+          "Sumatera Utara",
+          "Sumatera Selatan",
+          "Sumatera Barat",
+          "Bengkulu",
+          "Riau",
+          "Kepulauan Riau",
+          "Jambi",
+          "Lampung",
+          "Bangka Belitung",
+          "Kalimantan Barat",
+          "Kalimantan Timur",
+          "Kalimantan Selatan",
+          "Kalimantan Tengah",
+          "Kalimantan Utara",
+          "Banten",
+          "DKI Jakarta",
+          "Jawa Barat",
+          "Jawa Tengah",
+          "Daerah Istimewa Yogyakarta",
+          "Jawa Timur",
+          "Bali",
+          "Nusa Tenggara Timur",
+          "Nusa Tenggara Barat",
+          "Gorontalo",
+          "Sulawesi Barat",
+          "Sulawesi Tengah",
+          "Sulawesi Utara",
+          "Sulawesi Tenggara",
+          "Sulawesi Selatan",
+          "Maluku Utara",
+          "Maluku",
+          "Papua Barat",
+          "Papua",
+          "Papua Tengah",
+          "Papua Pegunungan",
+          "Papua Selatan",
+          "Papua Barat Daya",
+        ];
+        const datalistProvinsi = $("#daftar-provinsi");
+        daftarProvinsi.forEach((prov) => {
+          const opt = document.createElement("option");
+          opt.value = prov;
+          datalistProvinsi.appendChild(opt);
+        });
+      })();
+
+      (function isiDaftarMerek() {
+        const daftarMerek = [
+          "Acmat",
+          "Ariel Motor",
+          "Audi",
+          "Auverland",
+          "Bajaj",
+          "Beijing",
+          "Benelli",
+          "BMW",
+          "Bosowa",
+          "BSA (British Small Arms)",
+          "Caesar",
+          "Cherokee",
+          "Chevrolet",
+          "Daihatsu",
+          "Datsun",
+          "Dayang",
+          "Defender",
+          "Diablo",
+          "Ducati",
+          "Dyna",
+          "Fiat",
+          "Ford",
+          "Forklift",
+          "Fukuda",
+          "Garuda",
+          "Golden Dragon",
+          "Happy",
+          "Harley",
+          "Hino",
+          "Honda",
+          "Hyosung",
+          "Hyundai",
+          "Isuzu",
+          "Iveco",
+          "Jeep",
+          "Jialing",
+          "Kaisar",
+          "Kancil",
+          "Kanzen",
+          "Katana",
+          "Kawasaki",
+          "KBM",
+          "Kia",
+          "Kijang",
+          "KTM",
+          "Kymco",
+          "Lamborghini",
+          "Land Rover",
+          "Lexus",
+          "Lifan",
+          "Matchless",
+          "Mazda",
+          "Mercedes",
+          "Mercedes Benz",
+          "Mercedes-Benz",
+          "Millenium",
+          "Minerva",
+          "Mini",
+          "Mitsubishi",
+          "Monstrac",
+          "Montrada",
+          "Morin",
+          "Nasha",
+          "Nissan",
+          "Nozomi",
+          "Opel",
+          "Peugeot",
+          "Porsche",
+          "Prima",
+          "Prisma",
+          "Proton",
+          "Pulsar",
+          "Qestar",
+          "Range Rover",
+          "Rantis",
+          "Reo",
+          "Royal Enfield",
+          "Samsung",
+          "Sanex",
+          "Scania",
+          "Serena",
+          "Strada",
+          "Subaru",
+          "Suzuki",
+          "Taft",
+          "Timor",
+          "Tossa",
+          "Toyota",
+          "Trisheda",
+          "TVS",
+          "Unimog",
+          "Vespa",
+          "Viar",
+          "Viva",
+          "Volvo",
+          "VW",
+          "Wuling",
+          "Yamaha",
+        ];
+        const datalistMerek = $("#daftar-merek");
+        daftarMerek.forEach((m) => {
+          const opt = document.createElement("option");
+          opt.value = m;
+          datalistMerek.appendChild(opt);
+        });
+      })();
+
+      (function isiDaftarWarna() {
+        const daftarWarna = [
+          "Abu - abu Metalik",
+          "Abu - abu Titanium",
+          "Biru",
+          "Biru Metalik",
+          "Hijau",
+          "Hitam",
+          "Merah",
+          "Putih",
+          "Silver",
+          "Ungu",
+          "Kuning",
+          "Cokelat",
+        ];
+        const datalist = $("#daftar-warna");
+        daftarWarna.forEach((w) => {
+          const opt = document.createElement("option");
+          opt.value = w;
+          datalist.appendChild(opt);
+        });
+      })();
+
+      // Tahun 1900 - sekarang
+      (function isiDatalistTahun() {
+        const tahunAwal = 1900;
+        const tahunAkhir = new Date().getFullYear();
+        const dl = $("#datalist-tahun");
+        for (let t = tahunAwal; t <= tahunAkhir; t++) {
+          const opt = document.createElement("option");
+          opt.value = t;
+          dl.appendChild(opt);
+        }
+      })();
+
+      /* ===== Modal utils ===== */
+      function openModalById(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.add("open");
+        m.setAttribute("aria-hidden", "false");
+      }
+      function closeModalById(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.remove("open");
+        m.setAttribute("aria-hidden", "true");
+      }
+      function showInfo(html) {
+        const el = document.getElementById("infoText");
+        if (el) el.innerHTML = html;
+        openModalById("infoModal");
+      }
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-close]");
+        if (btn) closeModalById(btn.getAttribute("data-close"));
+      });
+
+      /* ===== Download Excel (dengan loading) ===== */
+      async function downloadExcel() {
+        const btn = $("#btnDownload");
+        setBtnLoading(btn, true); // pakai spinner yang sudah ada
+        try {
+          const res = await fetch(ENDPOINT_DOWNLOAD, {
+            headers: SUPER ? SUPER.headers() : {},
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "data-lelang.xlsx";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        } catch (e) {
+          showInfo("Gagal mengunduh file.");
+        } finally {
+          setBtnLoading(btn, false);
+        }
+      }
+
+      /* ===== INIT ===== */
+      document.addEventListener("input", (e) => {
+        if (e.target.id === "hargaInput")
+          e.target.value = formatRibuanDenganTitik(e.target.value);
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Form
+        $("#lelangForm").addEventListener("submit", submitForm);
+
+        // Search
+        $("#searchInput").addEventListener("input", applySearch);
+
+        // Pager
+        $("#pageSize").addEventListener("change", (e) => {
+          pageSize = Number(e.target.value) || 10; // tetap default 10 kalau kosong
+          page = 1;
+          renderRows(VIEW);
+        });
+        $("#prevPage").addEventListener("click", () => {
+          if (page > 1) {
+            page--;
+            renderRows(VIEW);
+          }
+        });
+        $("#nextPage").addEventListener("click", () => {
+          const totalPages = Math.max(1, Math.ceil(VIEW.length / pageSize));
+          if (page < totalPages) {
+            page++;
+            renderRows(VIEW);
+          }
+        });
+
+        // Download & Logout
+        $("#btnDownload").addEventListener("click", downloadExcel);
+        document.getElementById("btnLogout")?.addEventListener("click", () => {
+          try {
+            Auth.logout?.();
+          } catch {}
+          try {
+            localStorage.clear();
+            sessionStorage.clear();
+          } catch {}
+          location.href = "daftar.html";
+        });
+
+        // Datalist tambahan
+        loadTipeDatalist();
+
+        // Ambil data awal
+        loadList();
+      });
+
+      // Stub agar tidak error jika ada pemanggilan lama
+      function loadKotaDatalist() {}
+      function loadKpknlDatalist() {}
+    </script>
+  </body>
+</html>

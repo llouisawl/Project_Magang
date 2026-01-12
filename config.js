@@ -1,1 +1,1 @@
-var API_URL = "https://w7fl1g25-8080.asse.devtunnels.ms";
+var API_URL = "http://192.168.227.184:8080/";

@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superadmin • Validasi User | e-Taksir</title>
+
+    <!-- Gaya utama konsisten (versi yang sudah kamu update sebelumnya) -->
+    <link rel="stylesheet" href="superadmin.css" />
+
+    <!-- WAJIB: config + auth + guard role superadmin -->
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script>
+      try {
+        Auth.protectPage("superadmin");
+      } catch (e) {}
+    </script>
+
+    <!-- Tambahan tipis khusus halaman (posisi ikon mata & blok feedback) -->
+    <style>
+      .input-with-eye {
+        position: relative;
+      }
+      .input-with-eye input {
+        padding-right: 44px;
+      }
+      .input-with-eye .toggle-pass {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        border: 0;
+        border-radius: 8px;
+        background: #f1f5fb;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        color: #1d2b4b;
+        opacity: 0.9;
+        transition: background 0.15s, opacity 0.15s, transform 0.1s;
+      }
+      .input-with-eye .toggle-pass:hover {
+        background: #e7f0fa;
+        opacity: 1;
+      }
+      .input-with-eye .toggle-pass.active {
+        color: #2577e2;
+      }
+      input[type="password"]::-ms-reveal,
+      input[type="password"]::-ms-clear {
+        display: none !important;
+      }
+
+      .help.success {
+        color: #1e874b;
+      }
+      .help.danger {
+        color: #e74c3c;
+      }
+
+      /* feedback (loading -> centang) di modal aksi */
+      .action-feedback {
+        display: none;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+        color: #324e9b;
+      }
+      .action-feedback.show {
+        display: flex;
+      }
+      .action-feedback .spinner {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 3px solid #e5eeff;
+        border-top-color: #2577e2;
+        animation: spin 0.8s linear infinite;
+      }
+      .action-feedback .check {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #e9f7ef;
+        border: 2px solid #c7ecd7;
+        display: grid;
+        place-items: center;
+        color: #2bae66;
+      }
+      .action-feedback .check svg {
+        display: block;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="Gambar/Kemenkeu.png" alt="Kementerian Keuangan" />
+        </div>
+        <nav class="nav">
+          <a class="nav-item active" href="#">
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"
+                  stroke="#fff"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+                <circle cx="9" cy="7" r="4" stroke="#fff" stroke-width="1.7" />
+                <path
+                  d="M17 11l2 2 4-4"
+                  stroke="#fff"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            Validasi User
+          </a>
+          <a class="nav-item" href="TambahData.html">
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  stroke="#2b4a9c"
+                  stroke-width="1.7"
+                />
+                <path d="M14 2v6h6" stroke="#2b4a9c" stroke-width="1.7" />
+                <path
+                  d="M16 13H8M16 17H8M10 9H8"
+                  stroke="#2b4a9c"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            Tambah Data Lelang
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <header class="hero">
+          <div class="hero-title">Selamat Datang</div>
+          <div class="hero-right">
+            <span class="hero-role">SuperAdmin</span>
+            <img src="Gambar/DJKN.png" alt="Logo DJKN" class="hero-logo" />
+            <button id="btnLogout" class="btn-logout" style="margin-left: 12px">
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <section class="card">
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search">
+                <span class="search-ico">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="11"
+                      cy="11"
+                      r="7"
+                      stroke="#6C87D7"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M21 21l-3.5-3.5"
+                      stroke="#6C87D7"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Cari satker / email / kode / status / role"
+                />
+              </div>
+
+              <div class="filter">
+                <button class="filter-btn" id="roleBtn" type="button">
+                  <span class="filter-ico">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <circle
+                        cx="12"
+                        cy="7"
+                        r="4"
+                        stroke="#6C87D7"
+                        stroke-width="2"
+                      />
+                      <path
+                        d="M5.5 21a7.5 7.5 0 0 1 13 0"
+                        stroke="#6C87D7"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </span>
+                  <span id="roleLabel">Role</span>
+                  <svg
+                    class="caret"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="#6C87D7"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <div class="dropdown" id="roleDropdown">
+                  <button data-role="">Semua</button>
+                  <button data-role="Admin">Admin</button>
+                  <button data-role="Satker">Satker</button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="add-btn"
+              id="addUserBtn"
+              type="button"
+              title="Tambah Admin"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 5v14M5 12h14"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              Tambah Admin
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table id="userTable">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Modal: Tambah Admin -->
+    <div class="modal" id="userModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modalTitle">Tambah Admin</h3>
+          <button
+            class="modal-close"
+            id="modalClose"
+            aria-label="Close"
+            type="button"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="#324e9b"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <form id="userForm" class="modal-body">
+          <div class="grid">
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" required />
+              <small class="help danger" data-dup="email" style="display: none"
+                >Email sudah terdaftar.</small
+              >
+            </label>
+
+            <label class="field">
+              <span>Role</span>
+              <select name="role" id="roleSelect">
+                <option value="Admin">Admin</option>
+                <option value="Satker">Satker</option>
+              </select>
+            </label>
+          </div>
+
+          <!-- SATKER fields -->
+          <div class="grid satker-fields">
+            <label class="field"
+              ><span>Nama Satker</span><input type="text" name="nama_satker"
+            /></label>
+            <label class="field">
+              <span>Kode K/L</span>
+              <input
+                type="text"
+                name="kode_kl"
+                maxlength="6"
+                inputmode="numeric"
+                oninput="this.value=this.value.replace(/\D/g,'')"
+              />
+            </label>
+          </div>
+
+          <!-- ADMIN fields -->
+          <div class="grid admin-fields" style="display: none">
+            <label class="field">
+              <span>Nama</span>
+              <input type="text" name="nama_admin" />
+              <small
+                class="help danger"
+                data-dup="nama_admin"
+                style="display: none"
+                >Nama admin sudah dipakai.</small
+              >
+            </label>
+
+            <label class="field">
+              <span>Password</span>
+              <div class="input-with-eye">
+                <input
+                  type="password"
+                  name="password"
+                  id="adminPasswordInput"
+                  autocomplete="new-password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="toggle-pass"
+                  id="toggleAdminPassword"
+                  aria-label="Tampilkan password"
+                  aria-pressed="false"
+                  title="Tampilkan password"
+                >
+                  <!-- Eye open -->
+                  <svg
+                    class="ico-eye-open"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3.25"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <!-- Eye closed (slash) -->
+                  <svg
+                    class="ico-eye-closed"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    style="display: none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 3l18 18"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M2 12s4-7 10-7c2.2 0 4.1.7 5.7 1.7M22 12s-4 7-10 7c-2.2 0-4.1-.7-5.7-1.7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3.25"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <small
+                id="passwordHint"
+                class="help danger"
+                style="display: none"
+              >
+                Password minimal 8 karakter, harus mengandung huruf besar, huruf
+                kecil, angka, dan simbol.
+              </small>
+            </label>
+
+            <label class="field">
+              <span>KPKNL</span>
+              <select name="kpknl">
+                <option value="KPKNL Manado">KPKNL Manado</option>
+                <option value="KPKNL Palu">KPKNL Palu</option>
+                <option value="KPKNL Gorontalo">KPKNL Gorontalo</option>
+                <option value="KPKNL Ternate">KPKNL Ternate</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn ghost" id="modalCancel">
+              Batal
+            </button>
+            <button type="submit" class="btn primary" id="modalSubmitBtn">
+              Simpan
+            </button>
+          </div>
+          <p
+            id="formMsg"
+            style="margin: 6px 2px 0; color: #2b4a9c; display: none"
+          ></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Info/OK (sukses tambah admin / info umum) -->
+    <div class="modal" id="addedModal" aria-hidden="true">
+      <div class="modal-card success">
+        <div class="modal-header"><h3>Info</h3></div>
+        <div class="modal-body">
+          <p>Berhasil.</p>
+          <div class="modal-actions" style="justify-content: center">
+            <button type="button" class="btn primary" data-close="addedModal">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Konfirmasi hapus -->
+    <div class="modal" id="confirmDeleteModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header"><h3>Hapus User</h3></div>
+        <div class="modal-body">
+          <p>Apakah Anda ingin menghapus user ini?</p>
+          <div class="modal-actions" style="justify-content: center; gap: 12px">
+            <button
+              type="button"
+              class="btn ghost"
+              data-close="confirmDeleteModal"
+            >
+              Tidak
+            </button>
+            <button type="button" class="btn danger" id="btnConfirmDeleteYes">
+              Ya
+            </button>
+          </div>
+          <div id="delFeedback" class="action-feedback">
+            <span class="spinner" aria-hidden="true"></span>
+            <small>Menghapus…</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Aksi Validasi / Nonaktif / Tolak -->
+    <div class="modal" id="validateModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="validateTitle">Pilih Aksi</h3>
+          <button
+            class="modal-close"
+            id="validateClose"
+            aria-label="Close"
+            type="button"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="#324e9b"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="validateText">Pilih aksi untuk pengguna ini.</p>
+          <div class="modal-actions" style="justify-content: center; gap: 12px">
+            <button
+              type="button"
+              class="btn danger btn-reject"
+              id="btnDoReject"
+            >
+              Nonaktifkan
+            </button>
+            <button type="button" class="btn primary" id="btnDoValidate">
+              Aktifkan
+            </button>
+          </div>
+          <div id="valFeedback" class="action-feedback">
+            <span class="spinner" aria-hidden="true"></span>
+            <small>Memproses…</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ========= Helpers ========= */
+      const $ = (q, el = document) => el.querySelector(q);
+      const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
+
+      const API_BASE = (window.API_URL || "").replace(/\/+$/, "");
+      const ENDPOINT_CREATE_ADMIN = `${API_BASE}/user/create-admin`;
+
+      const SUPER = (() => {
+        try {
+          return new Auth.ApiClient("superadmin");
+        } catch {
+          return null;
+        }
+      })();
+      const authHeaders = (extra = {}) =>
+        SUPER
+          ? SUPER.headers({ "Content-Type": "application/json", ...extra })
+          : { "Content-Type": "application/json", ...extra };
+
+      function setBtnLoading(btn, isLoading) {
+        if (!btn) return;
+        if (isLoading) {
+          if (!btn.dataset.orig) btn.dataset.orig = btn.innerHTML;
+          btn.classList.add("is-loading");
+          btn.disabled = true;
+          btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>';
+        } else {
+          btn.classList.remove("is-loading");
+          btn.disabled = false;
+          if (btn.dataset.orig) btn.innerHTML = btn.dataset.orig;
+        }
+      }
+      function setBtnDone(btn) {
+        if (!btn) return;
+        btn.classList.add("is-done");
+        btn.innerHTML =
+          '<span class="checkmark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+        setTimeout(() => {
+          btn.classList.remove("is-done");
+          if (btn.dataset.orig) btn.innerHTML = btn.dataset.orig;
+          btn.disabled = false;
+        }, 900);
+      }
+      const showBlock = (el) => el?.classList.add("show");
+      const hideBlock = (el) => el?.classList.remove("show");
+
+      /* ========= Status helpers (match tampilan Admin) ========= */
+      function statusFromIsVerified(v) {
+        if (v === 2 || String(v).toLowerCase() === "tervalidasi")
+          return "Tervalidasi";
+        if (v === 3 || String(v).toLowerCase() === "ditolak") return "Ditolak";
+        return "Menunggu";
+      }
+      function normalizeStatusLabel(s) {
+        const t = String(s ?? "")
+          .toLowerCase()
+          .trim();
+        if (
+          ["2", "active", "verified", "terverifikasi", "tervalidasi"].includes(
+            t
+          )
+        )
+          return "Tervalidasi";
+        if (["3", "rejected", "tolak", "ditolak"].includes(t)) return "Ditolak";
+        return "Menunggu";
+      }
+      // Badge Satker (pakai titik indikator & label "Belum divalidasi" ketika Menunggu)
+      function pill(s) {
+        const st = normalizeStatusLabel(s);
+        const cls =
+          st === "Tervalidasi"
+            ? "pill green"
+            : st === "Ditolak"
+            ? "pill red"
+            : "pill gray";
+        const text = st === "Menunggu" ? "Menunggu Validasi" : st;
+        return `<span class="${cls} pill--with-dot">${text}</span>`;
+      }
+      // Badge Admin (Aktif/Nonaktif dengan titik)
+      function pillAdminLabel(label) {
+        const cls = label === "Aktif" ? "pill green" : "pill gray";
+        return `<span class="${cls} pill--with-dot">${label}</span>`;
+      }
+      function adminStatusLabel(u) {
+        const iv = u.is_verified,
+          base = (u.status || "").toLowerCase();
+        if (iv === 2 || base === "aktif" || base === "tervalidasi")
+          return "Aktif";
+        if (iv === 3 || base === "nonaktif" || base === "ditolak")
+          return "Nonaktif";
+        return "Nonaktif";
+      }
+      function formatDateForTable(iso) {
+        if (!iso) return "-";
+        const d = new Date(iso);
+        return Number.isNaN(d.getTime())
+          ? "-"
+          : d.toLocaleDateString("id-ID", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            });
+      }
+
+      /* ========= Data helpers ========= */
+      function normalizeUser(u) {
+        const userId = u.id ?? u.user_id ?? u.uuid ?? u._id ?? "";
+        const role =
+          (u.role || u.user_role || "").toString().trim() ||
+          (u.kode_kl ? "Satker" : "Admin");
+        const status =
+          u.is_verified !== undefined
+            ? statusFromIsVerified(u.is_verified)
+            : u.status
+            ? normalizeStatusLabel(u.status)
+            : "Menunggu";
+        return {
+          ...u,
+          id: String(userId),
+          role,
+          status,
+          nama_admin: u.nama || u.nama_admin || "",
+          nama_satker: u.nama_satker || u.nama || "",
+          kpknl: u.kpknl || u.kantor || "",
+          joinedAt: u.joinedAt ?? u.created_at ?? u.createdAt ?? null,
+        };
+      }
+
+      /* ========= API calls ========= */
+      async function getUsers() {
+        try {
+          const res = await fetch(`${API_BASE}/user/all`, {
+            headers: SUPER ? SUPER.headers() : {},
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const json = await res.json().catch(() => ({}));
+          const arr = Array.isArray(json?.data)
+            ? json.data
+            : Array.isArray(json)
+            ? json
+            : [];
+          return arr.map(normalizeUser);
+        } catch (e) {
+          console.error("getUsers error:", e);
+          alert("Gagal memuat data pengguna.");
+          return [];
+        }
+      }
+      async function createAdminApi(payload) {
+        try {
+          const res = await fetch(ENDPOINT_CREATE_ADMIN, {
+            method: "POST",
+            headers: authHeaders(),
+            body: JSON.stringify(payload),
+          });
+          if (!res.ok) {
+            let msg = "Gagal menambah admin.";
+            try {
+              const j = await res.json();
+              msg = j?.message || msg;
+            } catch {}
+            throw new Error(msg);
+          }
+          const json = await res.json().catch(() => ({}));
+          return normalizeUser(json?.data || json || payload);
+        } catch (e) {
+          console.error("createAdmin error:", e);
+          alert(e.message || "Gagal menambah admin.");
+          return null;
+        }
+      }
+      async function validateUser(userId) {
+        const res = await fetch(
+          `${API_BASE}/user/validate/${encodeURIComponent(userId)}`,
+          { method: "PATCH", headers: authHeaders() }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return true;
+      }
+      async function rejectUser(userId) {
+        const res = await fetch(
+          `${API_BASE}/user/invalidate/${encodeURIComponent(userId)}`,
+          { method: "PATCH", headers: authHeaders() }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return true;
+      }
+      async function deleteUserApi(userId) {
+        const res = await fetch(
+          `${API_BASE}/user/${encodeURIComponent(userId)}`,
+          { method: "DELETE", headers: authHeaders() }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return true;
+      }
+
+      /* ========= State ========= */
+      let users = [];
+      let roleFilter = "";
+      let searchTerm = "";
+      let sortState = { key: "joinedAt", dir: "asc" };
+      let targetUserId = null;
+      let pendingDeleteUserId = null;
+
+      /* ========= Header Dinamis ========= */
+      function renderHeader() {
+        const thead = $("#userTable thead");
+        if (roleFilter === "Admin") {
+          thead.innerHTML = `
+          <tr>
+            <th data-key="joinedAt">Tanggal Masuk</th>
+            <th data-key="nama_admin">Nama</th>
+            <th data-key="email">Email</th>
+            <th data-key="role">Role</th>
+            <th data-key="kpknl">KPKNL</th>
+            <th data-key="status">Status</th>
+            <th class="actions-col">Aksi</th>
+          </tr>`;
+        } else if (roleFilter === "Satker") {
+          thead.innerHTML = `
+          <tr>
+            <th data-key="joinedAt">Tanggal Masuk</th>
+            <th data-key="nama_satker">Nama Satker</th>
+            <th data-key="email">Email</th>
+            <th data-key="role">Role</th>
+            <th data-key="kode_kl">Kode K/L</th>
+            <th data-key="status">Status</th>
+            <th class="actions-col">Aksi</th>
+          </tr>`;
+        } else {
+          thead.innerHTML = `
+          <tr>
+            <th data-key="joinedAt">Tanggal Masuk</th>
+            <th data-key="nama_satker">Nama</th>
+            <th data-key="email">Email</th>
+            <th data-key="role">Role</th>
+            <th data-key="status">Status</th>
+          </tr>`;
+        }
+        $$("#userTable thead th[data-key]").forEach((th) => {
+          th.addEventListener("click", () => {
+            const key = th.dataset.key;
+            if (sortState.key === key)
+              sortState.dir = sortState.dir === "asc" ? "desc" : "asc";
+            else {
+              sortState.key = key;
+              sortState.dir = "asc";
+            }
+            renderTable();
+          });
+        });
+      }
+
+      /* ========= Render ========= */
+      function applyFilterSort(list) {
+        const q = searchTerm.trim().toLowerCase();
+        const out = [];
+        for (const u of list) {
+          if (
+            roleFilter &&
+            (u.role || "").toLowerCase() !== roleFilter.toLowerCase()
+          )
+            continue;
+          if (q) {
+            const s = `${u.nama_satker || u.nama_admin || ""} ${
+              u.email || ""
+            } ${u.kode_kl || ""} ${u.kpknl || ""} ${normalizeStatusLabel(
+              u.status
+            )} ${u.role || ""}`.toLowerCase();
+            if (!s.includes(q)) continue;
+          }
+          out.push(u);
+        }
+        const { key, dir } = sortState;
+        out.sort((a, b) => {
+          let va = a[key],
+            vb = b[key];
+          if (key === "joinedAt") {
+            va = new Date(va).getTime() || 0;
+            vb = new Date(vb).getTime() || 0;
+          }
+          if (typeof va === "string") va = va.toLowerCase();
+          if (typeof vb === "string") vb = vb.toLowerCase();
+          if (va < vb) return dir === "asc" ? -1 : 1;
+          if (va > vb) return dir === "asc" ? 1 : -1;
+          return 0;
+        });
+        return out;
+      }
+
+      function renderTable() {
+        renderHeader();
+        const tbody = $("#userTable tbody");
+        const view = applyFilterSort(users);
+        if (!view.length) {
+          const colCount = $("#userTable thead tr").children.length || 5;
+          tbody.innerHTML = `<tr><td colspan="${colCount}" style="text-align:center;padding:16px">Belum ada data.</td></tr>`;
+          return;
+        }
+        let html = "";
+        for (const u of view) {
+          const tgl = formatDateForTable(u.joinedAt);
+          const nama = u.nama_satker || u.nama_admin || u.nama || "-";
+          const email = u.email
+            ? `<a class="link" href="mailto:${u.email}">${u.email}</a>`
+            : "-";
+          const roleTxt = u.role || "-";
+          const isAdmin = roleTxt.toLowerCase() === "admin";
+          const stAdmin = adminStatusLabel(u);
+          const stSatker = u.status;
+
+          let statusCell, actionLabel;
+          if (isAdmin) {
+            statusCell = pillAdminLabel(stAdmin);
+            actionLabel = stAdmin === "Aktif" ? "Nonaktifkan" : "Aktifkan";
+          } else {
+            statusCell = pill(stSatker);
+            if (stSatker === "Menunggu") actionLabel = "Validasi";
+            else if (stSatker === "Tervalidasi") actionLabel = "Nonaktifkan";
+            else actionLabel = "Validasi";
+          }
+
+          if (roleFilter === "Admin") {
+            html += `
+            <tr>
+              <td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td>
+              <td>${u.kpknl || "-"}</td><td>${statusCell}</td>
+              <td class="actions">
+                <div class="actions-flex">
+                  <button class="btn-mini success btn-joy" data-validate="${
+                    u.id
+                  }">
+                    <span class="btn-label">${actionLabel}</span>
+                  </button>
+                  <button class="ico-btn danger" data-delete="${
+                    u.id
+                  }" title="Hapus">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e04848" stroke-width="2" aria-hidden="true">
+                    <polyline points="3 6 5 6 21 6"/>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    <line x1="10" y1="11" x2="10" y2="17"/>
+                    <line x1="14" y1="11" x2="14" y2="17"/>
+                  </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>`;
+          } else if (roleFilter === "Satker") {
+            html += `
+            <tr>
+              <td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td><td>${
+              u.kode_kl || "-"
+            }</td><td>${statusCell}</td>
+              <td class="actions">
+                <div class="actions-flex">
+                  <button class="btn-mini success btn-joy" data-validate="${
+                    u.id
+                  }">
+                    <span class="btn-label">${actionLabel}</span>
+                  </button>
+                  <button class="ico-btn danger" data-delete="${
+                    u.id
+                  }" title="Hapus">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e04848" stroke-width="2" aria-hidden="true">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        <line x1="10" y1="11" x2="10" y2="17"/>
+                      <line x1="14" y1="11" x2="14" y2="17"/>
+                     </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>`;
+          } else {
+            const statusCellAll = isAdmin
+              ? pillAdminLabel(stAdmin)
+              : pill(stSatker);
+            html += `<tr><td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td><td>${statusCellAll}</td></tr>`;
+          }
+        }
+        tbody.innerHTML = html;
+      }
+
+      /* ========= Toolbar ========= */
+      $("#searchInput").addEventListener("input", (e) => {
+        searchTerm = e.target.value;
+        renderTable();
+      });
+
+      const roleBtn = $("#roleBtn"),
+        roleDropdown = $("#roleDropdown");
+      roleBtn.addEventListener("click", () =>
+        roleDropdown.classList.toggle("open")
+      );
+      roleDropdown.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-role]");
+        if (!btn) return;
+        roleFilter = btn.dataset.role;
+        $("#roleLabel").textContent = roleFilter || "Role";
+        roleDropdown.classList.remove("open");
+        renderTable();
+      });
+      document.addEventListener("click", (e) => {
+        if (!roleDropdown.contains(e.target) && !roleBtn.contains(e.target))
+          roleDropdown.classList.remove("open");
+      });
+
+      /* ========= Table actions ========= */
+      $("#userTable tbody").addEventListener("click", (e) => {
+        const delBtn = e.target.closest("[data-delete]");
+        const valBtn = e.target.closest("[data-validate]");
+
+        if (delBtn) {
+          pendingDeleteUserId = delBtn.dataset.delete;
+          $("#delFeedback").classList.remove("show");
+          openModalById("confirmDeleteModal");
+          return;
+        }
+        if (valBtn) {
+          targetUserId = valBtn.dataset.validate;
+          const row = users.find((u) => String(u.id) === String(targetUserId));
+          const isAdmin = (row?.role || "").toLowerCase() === "admin";
+          const btnVal = $("#btnDoValidate"),
+            btnRej = $("#btnDoReject");
+          btnVal.style.display = "inline-block";
+          btnRej.style.display = "inline-block";
+
+          if (isAdmin) {
+            const now = adminStatusLabel(row);
+            $("#validateTitle").textContent = "Konfirmasi Aksi Admin";
+            $("#validateText").textContent = `Untuk admin: ${
+              row?.nama_admin || row?.email
+            }`;
+            if (now === "Aktif") {
+              btnVal.style.display = "none";
+              btnRej.textContent = "Nonaktifkan";
+            } else {
+              btnRej.style.display = "none";
+              btnVal.textContent = "Aktifkan";
+            }
+          } else {
+            $("#validateTitle").textContent = "Konfirmasi Aksi Satker";
+            $("#validateText").textContent = `Untuk satker: ${
+              row?.nama_satker || row?.email
+            }`;
+            if (row.status === "Menunggu") {
+              btnVal.textContent = "Validasi";
+              btnRej.textContent = "Tolak";
+            } else if (row.status === "Tervalidasi") {
+              btnVal.style.display = "none";
+              btnRej.textContent = "Nonaktifkan";
+            } else {
+              btnRej.style.display = "none";
+              btnVal.textContent = "Validasi";
+            }
+          }
+          hideBlock($("#valFeedback"));
+          openModalById("validateModal");
+        }
+      });
+
+      /* ========= Add Admin Modal ========= */
+      const roleSelect = $("#roleSelect");
+      roleSelect.addEventListener("change", toggleRoleFields);
+      function toggleRoleFields() {
+        const showAdmin = roleSelect.value === "Admin";
+        $$(".admin-fields").forEach(
+          (el) => (el.style.display = showAdmin ? "grid" : "none")
+        );
+        $$(".satker-fields").forEach(
+          (el) => (el.style.display = showAdmin ? "none" : "grid")
+        );
+      }
+
+      $("#addUserBtn").addEventListener("click", () => {
+        openModalById("userModal");
+        const form = $("#userForm");
+        form.reset();
+        $("#formMsg").style.display = "none";
+        form.dataset.mode = "create-admin";
+        roleSelect.value = "Admin";
+        roleSelect.disabled = true;
+        toggleRoleFields();
+
+        const pIn = $("#adminPasswordInput"),
+          pHint = $("#passwordHint"),
+          sb = $("#modalSubmitBtn");
+        if (pIn && pHint && sb) {
+          pIn.value = "";
+          pHint.style.display = "none";
+          sb.disabled = true;
+        }
+        if (pIn) {
+          pIn.type = "password";
+        }
+        const tgl = $("#toggleAdminPassword");
+        if (tgl) {
+          tgl.classList.remove("active");
+          tgl.setAttribute("aria-pressed", "false");
+          tgl.querySelector(".ico-eye-open").style.display = "block";
+          tgl.querySelector(".ico-eye-closed").style.display = "none";
+        }
+        window._recheckDuplicates?.();
+      });
+      $("#modalClose").addEventListener("click", () =>
+        closeModalById("userModal")
+      );
+      $("#modalCancel").addEventListener("click", () =>
+        closeModalById("userModal")
+      );
+
+      // Eye toggle (klik, bukan tahan)
+      (function () {
+        const input = $("#adminPasswordInput"),
+          toggle = $("#toggleAdminPassword");
+        if (!input || !toggle) return;
+        const icoOpen = toggle.querySelector(".ico-eye-open");
+        const icoClosed = toggle.querySelector(".ico-eye-closed");
+        function setMode(show) {
+          input.type = show ? "text" : "password";
+          toggle.classList.toggle("active", show);
+          toggle.setAttribute("aria-pressed", String(show));
+          if (icoOpen && icoClosed) {
+            icoOpen.style.display = show ? "none" : "block";
+            icoClosed.style.display = show ? "block" : "none";
+          }
+          toggle.title = show ? "Sembunyikan password" : "Tampilkan password";
+        }
+        toggle.addEventListener("click", () =>
+          setMode(input.type === "password")
+        );
+      })();
+
+      // Validator password + enable tombol
+      (function () {
+        const input = $("#adminPasswordInput"),
+          hint = $("#passwordHint"),
+          submitBtn = $("#modalSubmitBtn");
+        if (!input || !hint) return;
+        const validPwd = (p) =>
+          /.{8,}/.test(p) &&
+          /[a-z]/.test(p) &&
+          /[A-Z]/.test(p) &&
+          /[0-9]/.test(p) &&
+          /[^A-Za-z0-9]/.test(p);
+        function update() {
+          const v = input.value.trim();
+          if (!v) {
+            hint.style.display = "none";
+            submitBtn.disabled = true;
+            return;
+          }
+          if (validPwd(v)) {
+            hint.textContent = "Password valid ✓";
+            hint.classList.remove("danger");
+            hint.classList.add("success");
+            hint.style.display = "block";
+          } else {
+            hint.textContent =
+              "Password minimal 8 karakter, harus mengandung huruf besar, huruf kecil, angka, dan simbol.";
+            hint.classList.remove("success");
+            hint.classList.add("danger");
+            hint.style.display = "block";
+          }
+          window._recheckDuplicates?.();
+        }
+        input.addEventListener("input", update);
+      })();
+
+      /* ===== DUPLICATE CHECK realtime: nama_admin & email ===== */
+      (function duplicateWatcher() {
+        const form = document.getElementById("userForm");
+        const nameInput = form.querySelector('[name="nama_admin"]');
+        const emailInput = form.querySelector('[name="email"]');
+        const passInput = form.querySelector('[name="password"]');
+        const submitBtn = document.getElementById("modalSubmitBtn");
+
+        const helpNama = document.querySelector('[data-dup="nama_admin"]');
+        const helpEmail = document.querySelector('[data-dup="email"]');
+        const norm = (s) => (s || "").trim().toLowerCase();
+        const pwdOK = (p) =>
+          /.{8,}/.test(p) &&
+          /[a-z]/.test(p) &&
+          /[A-Z]/.test(p) &&
+          /[0-9]/.test(p) &&
+          /[^A-Za-z0-9]/.test(p);
+
+        let t;
+        const debounce =
+          (fn, ms = 120) =>
+          (...a) => {
+            clearTimeout(t);
+            t = setTimeout(() => fn(...a), ms);
+          };
+
+        function check() {
+          if (form.dataset.mode !== "create-admin") return;
+          const kandidatNama = norm(nameInput?.value);
+          const kandidatEmail = norm(emailInput?.value);
+          const adminList = users.filter(
+            (u) => (u.role || "").toLowerCase() === "admin"
+          );
+
+          const namaSudahAda =
+            kandidatNama &&
+            adminList.some(
+              (u) => norm(u.nama_admin || u.nama) === kandidatNama
+            );
+          const emailSudahAda =
+            kandidatEmail &&
+            adminList.some((u) => norm(u.email) === kandidatEmail);
+
+          if (helpNama) {
+            helpNama.textContent = "Nama admin sudah terdaftar.";
+            helpNama.style.display = namaSudahAda ? "block" : "none";
+          }
+          if (helpEmail) {
+            helpEmail.textContent = "Email sudah terdaftar.";
+            helpEmail.style.display = emailSudahAda ? "block" : "none";
+          }
+
+          const passOk = pwdOK(passInput?.value || "");
+          submitBtn.disabled = !passOk || namaSudahAda || emailSudahAda;
+        }
+        nameInput?.addEventListener("input", debounce(check));
+        emailInput?.addEventListener("input", debounce(check));
+        passInput?.addEventListener("input", debounce(check));
+
+        document.getElementById("addUserBtn")?.addEventListener("click", () => {
+          if (helpNama) helpNama.style.display = "none";
+          if (helpEmail) helpEmail.style.display = "none";
+          submitBtn.disabled = true;
+          setTimeout(check, 0);
+        });
+
+        window._recheckDuplicates = check;
+      })();
+
+      // Submit Tambah Admin (munculkan modal sukses seperti gambar 4)
+      $("#userForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        if (form.dataset.mode !== "create-admin") return;
+
+        const msg = $("#formMsg"),
+          btn = $("#modalSubmitBtn");
+        msg.style.display = "block";
+        msg.textContent = "Menyimpan…";
+        setBtnLoading(btn, true);
+
+        try {
+          const fd = new FormData(form);
+          const d = Object.fromEntries(fd.entries());
+          const payload = {
+            nama_admin: (d.nama_admin || "").trim(),
+            email: (d.email || "").trim().toLowerCase(),
+            password: (d.password || "").trim(),
+            kpknl: d.kpknl || "KPKNL Manado",
+          };
+
+          window._recheckDuplicates?.();
+          if (btn.disabled) {
+            msg.textContent = "Perbaiki data di atas.";
+            setBtnLoading(btn, false);
+            return;
+          }
+
+          const created = await createAdminApi(payload);
+          if (created) {
+            created.role = "Admin";
+            created.nama_admin = payload.nama_admin;
+            created.kpknl = payload.kpknl;
+            created.joinedAt = new Date().toISOString();
+            created.is_verified = 2;
+            created.status = "Aktif";
+            users.unshift(created);
+            renderTable();
+
+            setBtnDone(btn);
+            msg.textContent = "Admin berhasil ditambahkan.";
+            closeModalById("userModal");
+            showInfo("Admin berhasil ditambahkan dan statusnya <b>Aktif</b>.");
+          } else {
+            msg.textContent = "Gagal menambah admin.";
+          }
+        } catch (err) {
+          console.error(err);
+          msg.textContent = err?.message || "Terjadi kesalahan.";
+        } finally {
+          setBtnLoading(btn, false);
+        }
+      });
+
+      /* ========= Modal utils ========= */
+      function openModalById(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.add("open");
+        m.setAttribute("aria-hidden", "false");
+      }
+      function closeModalById(id) {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.remove("open");
+        m.setAttribute("aria-hidden", "true");
+      }
+      function showInfo(message) {
+        const el = document.querySelector("#addedModal .modal-body p");
+        if (el) el.innerHTML = message;
+        openModalById("addedModal");
+      }
+      document.addEventListener("click", (e) => {
+        const closeBtn = e.target.closest("[data-close]");
+        if (closeBtn) closeModalById(closeBtn.getAttribute("data-close"));
+      });
+
+      /* ========= Aksi Validasi / Nonaktif / Tolak (modal loading -> centang) ========= */
+      $("#validateClose").addEventListener("click", () =>
+        closeModalById("validateModal")
+      );
+      $("#validateModal").addEventListener("click", (e) => {
+        if (e.target.id === "validateModal") closeModalById("validateModal");
+      });
+
+      $("#btnDoValidate").addEventListener("click", async () => {
+        const id = targetUserId;
+        if (!id) return;
+        const row = users.find((u) => String(u.id) === String(id));
+        const isAdmin = (row?.role || "").toLowerCase() === "admin";
+        const fb = $("#valFeedback");
+        showBlock(fb);
+        fb.querySelector("small").textContent = "Memproses…";
+        try {
+          await validateUser(id);
+          fb.innerHTML =
+            '<div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><small>Berhasil</small>';
+          if (isAdmin) {
+            row.is_verified = 2;
+            row.status = "Aktif";
+            renderTable();
+            showInfo("Akun admin telah <b>diaktifkan</b>.");
+          } else {
+            row.is_verified = 2;
+            row.status = "Tervalidasi";
+            renderTable();
+            showInfo("User satker berhasil <b>divalidasi</b>.");
+          }
+        } catch (e) {
+          alert("Gagal memproses aksi.");
+        } finally {
+          setTimeout(() => {
+            closeModalById("validateModal");
+            $("#valFeedback").innerHTML =
+              '<span class="spinner" aria-hidden="true"></span><small>Memproses…</small>';
+            hideBlock($("#valFeedback"));
+            targetUserId = null;
+          }, 600);
+        }
+      });
+
+      $("#btnDoReject").addEventListener("click", async () => {
+        const id = targetUserId;
+        if (!id) return;
+        const row = users.find((u) => String(u.id) === String(id));
+        const isAdmin = (row?.role || "").toLowerCase() === "admin";
+        const fb = $("#valFeedback");
+        showBlock(fb);
+        fb.querySelector("small").textContent = "Memproses…";
+        try {
+          await rejectUser(id);
+          fb.innerHTML =
+            '<div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><small>Berhasil</small>';
+          if (isAdmin) {
+            row.is_verified = 3;
+            row.status = "Nonaktif";
+            renderTable();
+            showInfo("Akun admin telah <b>dinonaktifkan</b>.");
+          } else {
+            if (row.status === "Menunggu") {
+              row.is_verified = 3;
+              row.status = "Ditolak";
+              showInfo("Pendaftaran satker telah <b>ditolak</b>.");
+            } else {
+              row.is_verified = 3;
+              row.status = "Ditolak";
+              showInfo("Akun satker telah <b>dinonaktifkan</b>.");
+            }
+            renderTable();
+          }
+        } catch (e) {
+          alert("Gagal memproses aksi.");
+        } finally {
+          setTimeout(() => {
+            closeModalById("validateModal");
+            $("#valFeedback").innerHTML =
+              '<span class="spinner" aria-hidden="true"></span><small>Memproses…</small>';
+            hideBlock($("#valFeedback"));
+            targetUserId = null;
+          }, 600);
+        }
+      });
+
+      /* ========= Hapus user (modal loading -> centang) ========= */
+      $("#btnConfirmDeleteYes").addEventListener("click", async () => {
+        const id = pendingDeleteUserId;
+        if (!id) return;
+        const fb = $("#delFeedback");
+        showBlock(fb);
+        fb.querySelector("small").textContent = "Menghapus…";
+        try {
+          await deleteUserApi(id);
+          users = users.filter((u) => String(u.id) !== String(id));
+          renderTable();
+          fb.innerHTML =
+            '<div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><small>Berhasil dihapus</small>';
+          setTimeout(() => {
+            closeModalById("confirmDeleteModal");
+            fb.innerHTML =
+              '<span class="spinner" aria-hidden="true"></span><small>Menghapus…</small>';
+            hideBlock(fb);
+          }, 700);
+          showInfo("User berhasil dihapus.");
+        } catch (e) {
+          alert("Gagal menghapus user.");
+          hideBlock(fb);
+        } finally {
+          pendingDeleteUserId = null;
+        }
+      });
+
+      /* ========= Logout ========= */
+      $("#btnLogout").addEventListener("click", () => {
+        try {
+          Auth.logout?.();
+        } catch {}
+        try {
+          localStorage.clear();
+          sessionStorage.clear();
+        } catch {}
+        location.href = "daftar.html";
+      });
+
+      /* ========= INIT ========= */
+      (async () => {
+        users = await getUsers();
+        renderTable();
+      })();
+    </script>
+  </body>
+</html>

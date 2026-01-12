@@ -17,10 +17,18 @@
       <div class="header-right">
         <span class="welcome-text">Selamat Datang</span>
         <span class="icon-vehicle">
-          <!-- Icon kendaraan, bisa SVG atau gambar -->
           <img src="Gambar/Putih.png" alt="Icon e-Taksir" height="38" />
         </span>
         <span class="user-role">Admin</span>
+        <!-- Tombol Logout Admin -->
+        <button
+          id="btnLogoutAdmin"
+          class="btn-logout"
+          type="button"
+          style="margin-left: 12px"
+        >
+          Logout
+        </button>
       </div>
     </header>
 
@@ -34,6 +42,7 @@
             placeholder="Cari Kode Satker, NUP, atau Nama Objek..."
           />
         </div>
+
         <div class="table-responsive">
           <table id="kertasKerjaTable">
             <thead>
@@ -42,144 +51,550 @@
                 <th>Kode Satker</th>
                 <th>NUP</th>
                 <th>Nama Objek</th>
-                <th>Nama File</th>
-                <th>Nilai Taksiran</th>
-                <th>Status Watermark</th>
+                <th>Taksiran Nilai Limit Lelang</th>
+                <th>Status</th>
                 <th>Aksi</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- Contoh data awal, nanti bisa diisi dari backend -->
-              <tr>
-                <td>1</td>
-                <td>321003</td>
-                <td>2022001</td>
-                <td>Mobil XYZ</td>
-                <td>Kertas Kerja_Toyota</td>
-                <td>Rp69.000.000</td>
-                <td><span class="status belum">Belum</span></td>
-                <td>
-                  <button
-                    class="btn-preview"
-                    onclick="showPreview('Mobil XYZ')"
-                  >
-                    Preview
-                  </button>
-                  <button class="btn-watermark" onclick="beriWatermark(this)">
-                    Beri Watermark
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>321004</td>
-                <td>2022002</td>
-                <td>Motor ABC</td>
-                <td>Kertas Kerja_Toyota</td>
-                <td>Rp69.000.000</td>
-                <td><span class="status sudah">Sudah</span></td>
-                <td>
-                  <button
-                    class="btn-preview"
-                    onclick="showPreview('Motor ABC')"
-                  >
-                    Preview
-                  </button>
-                  <button class="btn-download">Download</button>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>321005</td>
-                <td>2022003</td>
-                <td>Mobil DEF</td>
-                <td>Kertas Kerja_Toyota</td>
-                <td>Rp69.000.000</td>
-                <td><span class="status belum">Belum</span></td>
-                <td>
-                  <button
-                    class="btn-preview"
-                    onclick="showPreview('Mobil DEF')"
-                  >
-                    Preview
-                  </button>
-                  <button class="btn-watermark" onclick="beriWatermark(this)">
-                    Beri Watermark
-                  </button>
-                </td>
-              </tr>
+            <tbody id="kkTbody">
+              <!-- diisi via JS -->
             </tbody>
           </table>
+
+          <div
+            id="emptyState"
+            style="
+              display: none;
+              padding: 24px;
+              text-align: center;
+              color: #6b7280;
+            "
+          >
+            Tidak ada data kertas kerja.
+          </div>
         </div>
       </div>
 
-      <!-- Modal Preview -->
-      <div class="modal" id="previewModal">
-        <div class="modal-content">
-          <span class="close" onclick="closePreview()">&times;</span>
-          <h3 id="modalTitle">Preview Kertas Kerja</h3>
-          <div class="modal-body">
-            <p id="modalContent">
-              Ini adalah tampilan preview Kertas Kerja. (Simulasi)
-            </p>
-            <!-- Contoh isi preview, bisa diganti dengan iframe PDF, embed dokumen, dsb -->
+      <!-- Modal konfirmasi upload -->
+      <div id="uploadModal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal">
+          <h3>Konfirmasi Upload</h3>
+          <p>Apakah file yang Anda upload sudah benar?</p>
+          <p class="file-name">
+            File:
+            <a id="modalFileLink" href="#" target="_blank" rel="noopener">-</a>
+          </p>
+          <div class="modal-actions">
+            <button id="btnCancel" class="btn-modal" type="button">
+              Tidak
+            </button>
+            <button id="btnOk" class="btn-modal primary" type="button">
+              Ya
+            </button>
+          </div>
+          <div class="modal-status">
+            <div id="modalSpinner" class="spinner"></div>
+            <div id="modalCheck" class="checkmark">✓</div>
+            <div id="modalMsg" class="modal-desc"></div>
           </div>
         </div>
       </div>
     </main>
 
+    <!-- BASE API -->
+    <script src="config.js"></script>
+    <!-- Auth utilities (guard + per-role token) -->
+    <script src="auth.js"></script>
+
     <script>
-      // SEARCH/FILTER
-      document
-        .getElementById("searchInput")
-        .addEventListener("input", function () {
-          let filter = this.value.toUpperCase();
-          let rows = document.querySelectorAll("#kertasKerjaTable tbody tr");
-          rows.forEach((row) => {
-            let kodeSatker = row.cells[1].textContent.toUpperCase();
-            let nup = row.cells[2].textContent.toUpperCase();
-            let namaObjek = row.cells[3].textContent.toUpperCase();
-            if (
-              kodeSatker.indexOf(filter) > -1 ||
-              nup.indexOf(filter) > -1 ||
-              namaObjek.indexOf(filter) > -1
-            ) {
-              row.style.display = "";
-            } else {
-              row.style.display = "none";
-            }
+      /* ===================== ROUTE GUARD (Admin only) ===================== */
+      (function () {
+        try {
+          // Wajib token admin untuk membuka halaman ini
+          Auth.protectPage("admin", "daftar.html");
+        } catch (e) {}
+      })();
+
+      /* ===================== Konfigurasi & Token ===================== */
+      const API =
+        (typeof API_URL !== "undefined" && API_URL) ||
+        (typeof API_BASE !== "undefined" && API_BASE) ||
+        "";
+
+      // ⛔ Penting: hanya pakai token ADMIN, jangan fallback ke token generik
+      const TOKEN = localStorage.getItem("jwt_admin") || "";
+      const HEADERS_AUTH = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
+
+      const LIST_ENDPOINT = "/kertas-kerja/all"; // GET
+      const VALIDATE_ENDPOINT = (id) =>
+        `/kertas-kerja/validasi/${encodeURIComponent(id)}`; // PATCH (multipart, field: pdf_file)
+
+      const CACHE_BUST = true; // tambahkan timestamp ke URL preview agar tidak di-cache
+
+      /* ===================== Helpers ===================== */
+      const $ = (q, el = document) => el.querySelector(q);
+      const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
+      const trimSlashR = (s) => (s || "").replace(/\/$/, "");
+
+      function absUrl(path) {
+        if (!path) return "";
+        if (/^https?:\/\//i.test(path)) return path;
+        const base = trimSlashR(API);
+        const joined = path.startsWith("/") ? path : `/${path}`;
+        return base + joined;
+      }
+
+      function fmtIDR(n) {
+        const x = Number(n);
+        return Number.isFinite(x) ? "Rp" + x.toLocaleString("id-ID") : "-";
+      }
+
+      function makeStatusBadge(validated) {
+        return validated
+          ? `<span class="status-badge status-val"><span class="status-dot"></span> Tervalidasi</span>`
+          : `<span class="status-badge status-unval"><span class="status-dot"></span> Belum divalidasi</span>`;
+      }
+
+      /* ===================== Normalisasi item KK ===================== */
+      function normalizeKK(it = {}) {
+        const hasil = it.hasil_taksiran || {};
+        const input = it.input_lelang || {};
+
+        const rawPath =
+          it.pdf_path_raw ||
+          it.pdf_raw ||
+          it.pdf_url ||
+          it.url_pdf ||
+          it.preview_pdf_url ||
+          it.file_url ||
+          it.pdf_path ||
+          "";
+
+        const markPath =
+          it.pdf_path_mark ||
+          it.pdf_mark ||
+          it.pdf_marked_url ||
+          it.watermarked_pdf_url ||
+          "";
+
+        const toBool = (v) => {
+          if (typeof v === "boolean") return v;
+          if (typeof v === "number") return v === 1;
+          if (typeof v === "string") {
+            const s = v.trim().toLowerCase();
+            return (
+              s === "true" ||
+              s === "1" ||
+              s === "ya" ||
+              /\btervalidasi\b/.test(s)
+            );
+          }
+          return false;
+        };
+
+        let validated =
+          toBool(it.is_verified) ||
+          toBool(it.isVerified) ||
+          toBool(it.is_valid) ||
+          toBool(it.validated) ||
+          toBool(it.status_validasi) ||
+          toBool(it.status);
+
+        if (!validated) {
+          const looksMarked =
+            !!markPath || /validasi|watermark|wmk/i.test(String(rawPath));
+          if (looksMarked) validated = true;
+        }
+
+        // helper angka yang tahan string "1.234.000"
+        const pickNum = (v) => {
+          if (v == null) return null;
+          const n = Number(String(v).replace(/[^\d.-]/g, ""));
+          return Number.isFinite(n) ? n : null;
+        };
+
+        // PRIORITAS: pembulatan → limit lelang → total/nilai
+        const nilai =
+          // pembulatan (baru & root & lama)
+          pickNum(hasil.pembulatan_nilai_taksiran) ??
+          pickNum(it.pembulatan_nilai_taksiran) ??
+          pickNum(hasil.pembulatan) ??
+          pickNum(it.pembulatan) ??
+          // limit lelang (nested & root)
+          pickNum(hasil.taksiran_nilai_limit_lelang) ??
+          pickNum(it.taksiran_nilai_limit_lelang) ??
+          // total / nilai taksiran (berbagai alias)
+          pickNum(hasil.nilai_taksiran_total) ??
+          pickNum(it.nilai_taksiran_total) ??
+          pickNum(hasil.total_nilai_taksiran) ??
+          pickNum(it.total_nilai_taksiran) ??
+          pickNum(hasil.nilai_taksiran) ??
+          pickNum(it.hasil_nilai_taksiran) ??
+          0;
+
+        return {
+          id: it.id || it.kertas_kerja_id || it.uuid || it._id || null,
+          kode_satker: it.kode_satker || input.kode_satker || it.satker || "-",
+          nup: it.nup || input.nup || "-",
+          nama_objek: it.nama_objek || input.nama_objek || "-",
+          hasil_nilai_taksiran: Number(nilai) || 0,
+          validated,
+          rawUrl: absUrl(rawPath),
+          markUrl: absUrl(markPath),
+        };
+      }
+
+      /* ===================== Render ===================== */
+      function ensureTbody() {
+        let tb = $("#kkTbody");
+        if (!tb) {
+          const table = $("#kertasKerjaTable");
+          tb = document.createElement("tbody");
+          tb.id = "kkTbody";
+          table.appendChild(tb);
+        }
+        return tb;
+      }
+
+      function renderRow(kk, idx) {
+        const tr = document.createElement("tr");
+        tr.dataset.id = kk.id || "";
+        tr.dataset.validated = kk.validated ? "true" : "false";
+        tr.dataset.rawUrl = kk.rawUrl || "";
+        tr.dataset.markUrl = kk.markUrl || "";
+
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td>${kk.kode_satker}</td>
+          <td>${kk.nup}</td>
+          <td>${kk.nama_objek}</td>
+          <td>${fmtIDR(kk.hasil_nilai_taksiran)}</td>
+          <td class="status-cell">${makeStatusBadge(kk.validated)}</td>
+          <td class="aksi-cell">
+            <button type="button" class="btn-preview">Preview</button>
+            <label class="btn-upload">
+              <input type="file" class="hidden-file" accept="application/pdf" />
+              Upload
+            </label>
+          </td>
+        `;
+        return tr;
+      }
+
+      function rerenderStatus(tr) {
+        const cell = tr.querySelector(".status-cell");
+        const validated = (tr.dataset.validated || "false") === "true";
+        if (cell) cell.innerHTML = makeStatusBadge(validated);
+      }
+
+      /* ===================== State ===================== */
+      let ALL_ROWS = [];
+      let VIEW_ROWS = [];
+
+      /* ===================== Fetch list ===================== */
+      async function loadKertasKerja() {
+        const tbody = ensureTbody();
+        const table = $("#kertasKerjaTable");
+        const colCount = table.tHead?.rows[0]?.cells?.length || 7;
+
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="${colCount}" style="text-align:center;color:#6b7280;padding:16px">
+              Memuat data…
+            </td>
+          </tr>`;
+
+        try {
+          const res = await fetch(trimSlashR(API) + LIST_ENDPOINT, {
+            headers: { ...HEADERS_AUTH },
           });
+
+          // Ada backend yang balas 204 No Content
+          if (res.status === 204) {
+            ALL_ROWS = [];
+            VIEW_ROWS = [];
+            tbody.innerHTML = "";
+            $("#emptyState").style.display = "block";
+            return;
+          }
+
+          if (!res.ok) throw new Error("HTTP " + res.status);
+
+          const json = await res.json().catch(() => ({}));
+          const list = Array.isArray(json?.data)
+            ? json.data
+            : Array.isArray(json?.result)
+            ? json.result
+            : Array.isArray(json)
+            ? json
+            : [];
+
+          ALL_ROWS = list.map(normalizeKK);
+          VIEW_ROWS = [...ALL_ROWS];
+
+          // Render
+          tbody.innerHTML = "";
+          if (!VIEW_ROWS.length) {
+            $("#emptyState").style.display = "block";
+            return;
+          }
+          $("#emptyState").style.display = "none";
+          VIEW_ROWS.forEach((kk, i) => tbody.appendChild(renderRow(kk, i)));
+        } catch (e) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="${colCount}" style="text-align:center;color:#ef4444;padding:16px">
+                Gagal memuat data. Coba refresh halaman.
+              </td>
+            </tr>`;
+          console.error(e);
+        }
+      }
+
+      /* ===================== Preview ===================== */
+      function handlePreview(tr) {
+        const validated = (tr.dataset.validated || "false") === "true";
+        let url = validated
+          ? tr.dataset.markUrl || tr.dataset.rawUrl
+          : tr.dataset.rawUrl || tr.dataset.markUrl;
+
+        if (!url) {
+          alert("File PDF belum tersedia.");
+          return;
+        }
+        if (CACHE_BUST) {
+          url += (url.includes("?") ? "&" : "?") + "t=" + Date.now();
+        }
+        window.open(url, "_blank", "noopener");
+      }
+
+      /* ===================== Modal Upload ===================== */
+      const modal = {
+        el: null,
+        ok: null,
+        cancel: null,
+        link: null,
+        spin: null,
+        check: null,
+        msg: null,
+        _objUrl: null,
+        file: null,
+        tr: null,
+        init() {
+          this.el = $("#uploadModal");
+          this.ok = $("#btnOk");
+          this.cancel = $("#btnCancel");
+          this.link = $("#modalFileLink");
+          this.spin = $("#modalSpinner");
+          this.check = $("#modalCheck");
+          this.msg = $("#modalMsg");
+
+          if (this.el) {
+            this.el.addEventListener("click", (e) => {
+              if (e.target === this.el) this.close();
+            });
+          }
+          if (this.ok) this.ok.addEventListener("click", () => this.confirm());
+          if (this.cancel)
+            this.cancel.addEventListener("click", () => this.close());
+        },
+        _cleanupURL() {
+          if (this._objUrl) {
+            URL.revokeObjectURL(this._objUrl);
+            this._objUrl = null;
+          }
+        },
+        open(file, tr) {
+          if (!this.el) this.init();
+          this._cleanupURL();
+          this.file = file;
+          this.tr = tr;
+          this._objUrl = URL.createObjectURL(file);
+          if (this.link) {
+            this.link.textContent = file.name;
+            this.link.href = this._objUrl;
+          }
+          if (this.msg) this.msg.textContent = "";
+          if (this.spin) this.spin.style.display = "none";
+          if (this.check) this.check.style.display = "none";
+          if (this.ok) this.ok.disabled = false;
+          if (this.cancel) this.cancel.disabled = false;
+          if (this.el) {
+            this.el.style.display = "flex";
+            this.el.removeAttribute("aria-hidden");
+          }
+        },
+        async confirm() {
+          if (!this.ok || !this.cancel || !this.spin || !this.msg) return;
+          this.ok.disabled = true;
+          this.cancel.disabled = true;
+          this.spin.style.display = "inline-block";
+          this.msg.textContent = "Mengunggah…";
+
+          try {
+            await patchValidate(this.file, this.tr);
+            this.spin.style.display = "none";
+            if (this.check) this.check.style.display = "flex";
+            this.msg.textContent = "Berhasil diupload";
+            setTimeout(() => this.close(), 900);
+          } catch (err) {
+            this.spin.style.display = "none";
+            this.msg.textContent = err?.message || "Gagal mengunggah file.";
+            this.ok.disabled = false;
+            this.cancel.disabled = false;
+          }
+        },
+        close() {
+          this._cleanupURL();
+          if (!this.el) return;
+          this.el.style.display = "none";
+          this.el.setAttribute("aria-hidden", "true");
+        },
+      };
+
+      /* ===================== Upload (Validasi) ===================== */
+      async function patchValidate(file, tr) {
+        const kkId = tr.dataset.id || "";
+        if (!kkId) throw new Error("ID kertas kerja tidak tersedia.");
+
+        const fd = new FormData();
+        fd.append("pdf_file", file);
+
+        const res = await fetch(trimSlashR(API) + VALIDATE_ENDPOINT(kkId), {
+          method: "PATCH",
+          body: fd,
+          headers: { ...HEADERS_AUTH }, // jangan set Content-Type manual
         });
 
-      // MODAL PREVIEW
-      function showPreview(objek) {
-        document.getElementById("modalTitle").textContent =
-          "Preview Kertas Kerja";
-        document.getElementById("modalContent").innerHTML =
-          "<b>Ini adalah preview kertas kerja:</b><br><br>Nama Objek: <u>" +
-          objek +
-          "</u><br><br><i>Preview PDF/isi dokumen akan muncul di sini (simulasi)</i>";
-        document.getElementById("previewModal").style.display = "block";
-      }
-      function closePreview() {
-        document.getElementById("previewModal").style.display = "none";
+        if (!res.ok) {
+          let msg = `Upload gagal (HTTP ${res.status})`;
+          try {
+            const j = await res.json();
+            if (j?.message) msg = j.message;
+          } catch {}
+          throw new Error(msg);
+        }
+
+        let data = {};
+        try {
+          data = await res.json();
+        } catch {}
+
+        const payload = data?.data || data || {};
+        const mark =
+          payload.pdf_path_mark ||
+          payload.pdf_mark ||
+          payload.pdf_marked_url ||
+          payload.watermarked_pdf_url ||
+          payload.url ||
+          "";
+
+        if (mark) tr.dataset.markUrl = absUrl(mark);
+        tr.dataset.validated = "true";
+        rerenderStatus(tr);
       }
 
-      // WATERMARK SIMULASI
-      function beriWatermark(btn) {
-        // Ambil baris tabel terkait
-        let row = btn.closest("tr");
-        // Ubah status watermark
-        let statusSpan = row.querySelector(".status");
-        statusSpan.textContent = "Sudah";
-        statusSpan.classList.remove("belum");
-        statusSpan.classList.add("sudah");
-        // Ubah tombol jadi Download
-        btn.outerHTML =
-          '<button class="btn-download" onclick="alert(\'Download Berhasil!\')">Download</button>';
-        // Optional: notif/snackbar
-        alert("Watermark berhasil ditambahkan!");
+      /* ===================== Events ===================== */
+      function bindTableEvents() {
+        const table = $("#kertasKerjaTable");
+
+        // Preview
+        table.addEventListener("click", (e) => {
+          const btnPreview = e.target.closest(".btn-preview");
+          if (btnPreview) {
+            const tr = btnPreview.closest("tr");
+            handlePreview(tr);
+          }
+        });
+
+        // Upload (open modal)
+        table.addEventListener("change", (e) => {
+          const input = e.target.closest(".hidden-file");
+          if (!input) return;
+          const tr = input.closest("tr");
+          const file = input.files && input.files[0];
+          if (file && tr) {
+            modal.open(file, tr);
+          }
+          // reset agar file sama bisa dipilih lagi
+          input.value = "";
+        });
+
+        // Kosongkan value sebelum buka picker (klik berulang)
+        table.addEventListener("click", (e) => {
+          const lblUpload = e.target.closest(".btn-upload");
+          if (!lblUpload) return;
+          const input = lblUpload.querySelector(".hidden-file");
+          if (input) input.value = "";
+        });
       }
+
+      /* ===================== Search ===================== */
+      function bindSearch() {
+        const inp = $("#searchInput");
+        if (!inp) return;
+        inp.addEventListener("input", function () {
+          const f = this.value.toUpperCase();
+          const tbody = ensureTbody();
+          tbody.innerHTML = "";
+
+          VIEW_ROWS = ALL_ROWS.filter((r) => {
+            const s1 = (r.kode_satker || "").toUpperCase();
+            const s2 = (r.nup || "").toUpperCase();
+            const s3 = (r.nama_objek || "").toUpperCase();
+            return s1.includes(f) || s2.includes(f) || s3.includes(f);
+          });
+
+          if (!VIEW_ROWS.length) {
+            $("#emptyState").style.display = "block";
+            return;
+          }
+          $("#emptyState").style.display = "none";
+          VIEW_ROWS.forEach((kk, i) => tbody.appendChild(renderRow(kk, i)));
+        });
+      }
+
+      /* ===================== Welcome Name (Admin) ===================== */
+      function setWelcomeName() {
+        try {
+          const name = Auth.getName("admin");
+          if (name) {
+            const el = document.querySelector(".welcome-text");
+            if (el) el.textContent = `Selamat Datang, ${name}`;
+          }
+        } catch (e) {}
+      }
+
+      /* ===================== Logout (Admin only) ===================== */
+      function bindLogout() {
+        const btn = document.getElementById("btnLogoutAdmin");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          try {
+            // Hanya hapus sesi admin
+            Auth.logout("admin");
+          } catch (e) {}
+          location.href = "daftar.html";
+        });
+      }
+
+      /* ===================== INIT ===================== */
+      document.addEventListener("DOMContentLoaded", () => {
+        // Pastikan token admin tersedia (kalau tidak, protectPage sudah redirect)
+        if (!TOKEN) {
+          try {
+            Auth.protectPage("admin", "daftar.html");
+          } catch (e) {}
+          return;
+        }
+        ensureTbody();
+        modal.init();
+        bindTableEvents();
+        bindSearch();
+        bindLogout();
+        setWelcomeName();
+        loadKertasKerja();
+      });
     </script>
   </body>
 </html>

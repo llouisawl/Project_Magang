@@ -3,8 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halaman Riwayat Kertas Kerja</title>
+    <title>Riwayat Kertas Kerja | e-Taksir</title>
     <link rel="stylesheet" href="Riwayat.css" />
+
+    <!-- Auth per-role -->
+    <script src="auth.js"></script>
+    <script>
+      // Kunci halaman untuk satker
+      try {
+        Auth.protectPage("satker");
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div class="container">
@@ -17,8 +26,7 @@
             class="logo-kemenkeu"
           />
           <div class="profile-dropdown">
-            <!-- SVG icon profil user -->
-            <span class="profile-icon" tabindex="0">
+            <span class="profile-icon" tabindex="0" aria-label="Menu profil">
               <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
                 <circle cx="19" cy="19" r="19" fill="#E8EEFB" />
                 <path
@@ -27,9 +35,8 @@
                 />
               </svg>
             </span>
-            <div class="dropdown-content">
+            <div class="dropdown-content" role="menu">
               <a href="index.html">
-                <!-- Icon Dokumen (Kertas Kerja) -->
                 <svg
                   width="17"
                   height="17"
@@ -75,9 +82,7 @@
                 </svg>
                 Kertas Kerja
               </a>
-
-              <a href="Daftar.Html" class="logout-link">
-                <!-- Icon Logout -->
+              <a href="Daftar.html" class="logout-link">
                 <svg
                   width="17"
                   height="17"
@@ -90,7 +95,7 @@
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H8a2 2 0 01-2-2V7a2 2 0 012-2h3a2 2 0 012 2v1"
                   />
                 </svg>
                 Logout
@@ -103,9 +108,10 @@
           <img src="Gambar/Logo.png" alt="Icon" class="welcome-icon" />
           <div class="welcome-text">
             <span>Selamat Datang</span>
-            <h3>Dino</h3>
+            <h3 id="welcomeName">Dino</h3>
           </div>
         </div>
+
         <nav>
           <ul>
             <li>
@@ -113,14 +119,11 @@
                 ><span>🗒️</span> Riwayat Kertas kerja</a
               >
             </li>
-            <li>
-              <a href="Upload.html"><span>📂</span> Upload Kertas Kerja</a>
-            </li>
           </ul>
         </nav>
       </aside>
 
-      <!-- Main Content -->
+      <!-- Main -->
       <div class="main-content">
         <div class="search-row">
           <div class="search-box">
@@ -133,326 +136,581 @@
                 stroke="#3659b5"
                 stroke-width="2"
               >
-                <circle cx="11" cy="11" r="7" />
+                <circle cx="11" cy="11" r="7"></circle>
                 <line
                   x1="16.5"
                   y1="16.5"
                   x2="22"
                   y2="22"
                   stroke-linecap="round"
-                />
+                ></line>
               </svg>
             </span>
-
-            <input type="text" placeholder="Cari" />
-            <span class="icon-close">&#10005;</span>
+            <input id="searchInput" type="text" placeholder="Cari" />
+            <span class="icon-close" id="clearSearch" title="Bersihkan">×</span>
           </div>
-          <a href="Panitia.html" class="btn-tambah">
-            Tambah Kertas Kerja <span class="icon-plus">&#43;</span>
-          </a>
+
+          <a href="index.html" class="btn-tambah"
+            >Tambah Kertas Kerja <span class="icon-plus">+</span></a
+          >
         </div>
+
         <div class="riwayat-table">
-          <table>
+          <table class="no-wrap">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Tanggal & Waktu Pembuatan</th>
-                <th>Nama Objek</th>
-                <th style="text-align: center">Aksi</th>
+                <th class="col-no">No</th>
+                <th class="col-tanggal">Tanggal & Waktu Pembuatan</th>
+                <th class="col-objek">Nama Objek</th>
+                <th class="col-status">Status</th>
+                <th class="col-aksi" style="text-align: center">Aksi</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>19 Agustus 2025 | 12:10</td>
-                <td>Daihatsu Sigra 1.2 Kuda VA1W GLX/Deluxe</td>
-                <td class="aksi-td">
-                  <!-- LIHAT -->
-                  <button
-                    class="aksi-btn lihat-btn"
-                    title="Lihat Detail"
-                    onclick="showDetail()"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#37589a"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M1.458 12C2.732 7.943 6.522 5 12 5c5.478 0 9.268 2.943 10.542 7-.857 2.571-3.143 5.8-10.542 7-7.4-1.2-9.685-4.429-10.542-7zm10.542 2a2 2 0 100-4 2 2 0 000 4z"
-                      />
-                    </svg>
-                    <span>Lihat</span>
-                  </button>
-                  <!-- UNDUH -->
-                  <a class="aksi-btn unduh-btn" title="Unduh" href="#">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#37589a"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"
-                      />
-                    </svg>
-                    <span>Unduh</span>
-                  </a>
-                  <!-- HAPUS -->
-                  <button class="aksi-btn icon-btn" title="Hapus">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#e04848"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M8 7V4a2 2 0 012-2h2a2 2 0 012 2v3"
-                      />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>20 Agustus 2025 | 12:10</td>
-                <td>Daihatsu Sigra 1.2 MT</td>
-                <td class="aksi-td">
-                  <button
-                    class="aksi-btn lihat-btn"
-                    title="Lihat Detail"
-                    onclick="showDetail()"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#37589a"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M1.458 12C2.732 7.943 6.522 5 12 5c5.478 0 9.268 2.943 10.542 7-.857 2.571-3.143 5.8-10.542 7-7.4-1.2-9.685-4.429-10.542-7zm10.542 2a2 2 0 100-4 2 2 0 000 4z"
-                      />
-                    </svg>
-                    <span>Lihat</span>
-                  </button>
-                  <a class="aksi-btn unduh-btn" title="Unduh" href="#">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#37589a"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"
-                      />
-                    </svg>
-                    <span>Unduh</span>
-                  </a>
-                  <button class="aksi-btn icon-btn" title="Hapus">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#e04848"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M8 7V4a2 2 0 012-2h2a2 2 0 012 2v3"
-                      />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="riwayatBody"></tbody>
           </table>
         </div>
-        <img src="Gambar/Logo.png" alt="Watermark" class="watermark-bg" />
 
-        <!-- Modal Detail Kertas Kerja -->
-        <div class="modal-detail" id="modalDetail">
-          <div class="modal-detail-content">
-            <span class="close-modal" onclick="closeDetail()">&times;</span>
-            <div id="detailContent"></div>
-          </div>
-        </div>
+        <img src="Gambar/Logo.png" alt="Watermark" class="watermark-bg" />
       </div>
     </div>
 
-    <script>
-      // Untuk demo, data dummy mirip hasil HasilTaksir
-      function showDetail() {
-        document.getElementById("modalDetail").style.display = "block";
-        document.getElementById("detailContent").innerHTML = `
-      <div class="result-card-modal">
-        <h2 class="section-title-modal">Data Kendaraan dan Kondisi Fisik</h2>
-        <div class="vehicle-data-box-modal">
-          <img src="Gambar/Logo.png" class="logoe-modal" alt="" />
-          <div class="vehicle-group-modal">
-            <h2>IDENTIFIKASI</h2>
-            <div class="row-modal">
-              <div class="field-modal"><label>NAMA OBJEK</label><div class="val-modal">Daihatsu</div></div>
-              <div class="field-modal"><label>NUP</label><div class="val-modal">-</div></div>
-            </div>
-            <div class="row-modal">
-              <div class="field-modal"><label>LOKASI OBJEK</label><div class="val-modal">Bekasi</div></div>
-              <div class="field-modal"><label>KATEGORI LOKASI</label><div class="val-modal">2</div></div>
-            </div>
-            <div class="row-modal">
-              <div class="field-modal"><label>JENIS KENDARAAN</label><div class="val-modal">Roda 2 atau 3</div></div>
-              <div class="field-modal"><label>MEREK KENDARAAN</label><div class="val-modal">Caesar</div></div>
-              <div class="field-modal"><label>TIPE KENDARAAN</label><div class="val-modal">AN 112 D</div></div>
-            </div>
-            <div class="sub-group-modal">
-              <div class="sub-label-modal">Identitas Kendaraan</div>
-              <div class="row-modal">
-                <div class="field-modal"><label>NOMOR POLISI</label><div class="val-modal">DB 1234 GU</div></div>
-                <div class="field-modal"><label>DOKUMEN KEPEMILIKAN</label><div class="val-modal">BPKB</div></div>
-              </div>
-            </div>
-            <div class="row-modal">
-              <div class="field-modal"><label>PEMILIK DOKUMEN</label><div class="val-modal">Kementrian X</div></div>
-              <div class="field-modal"><label>MASA BERLAKU</label><div class="val-modal">Masih Berlaku</div></div>
-            </div>
-            <div class="sub-group-modal">
-              <div class="sub-label-modal">Keterangan</div>
-              <div class="row-modal">
-                <div class="field-modal"><label>PENGGUNAAN KENDARAAN</label><div class="val-modal">Pribadi</div></div>
-                <div class="field-modal"><label>KETERANGAN LAINNYA</label><div class="val-modal">-</div></div>
-              </div>
-            </div>
-            <h2>FISIK KENDARAAN</h2>
-            <div class="row-modal">
-              <div class="field-modal"><label>WARNA</label><div class="val-modal">Merah Hitam</div></div>
-              <div class="field-modal"><label>TAHUN PEMBUATAN</label><div class="val-modal">1915</div></div>
-              <div class="field-modal"><label>BAHAN BAKAR</label><div class="val-modal">Bensin</div></div>
-            </div>
-            <div class="row-modal">
-              <div class="field-modal" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val-modal">0,7 (Tingkat kerusakan sampai dengan 80%)</div></div>
-            </div>
-          </div>
+    <!-- ===================== MODAL HAPUS ===================== -->
+    <div id="delModal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal">
+        <h3>Hapus Kertas Kerja</h3>
+        <p id="delModalInfo" class="modal-desc">Apakah Anda yakin?</p>
+        <div class="modal-actions">
+          <button id="delNo" class="btn-modal">Tidak</button>
+          <button id="delYes" class="btn-modal primary">Ya</button>
         </div>
-        <div class="table-title-modal">
-          <span>Data Hasil Lelang</span>
-          <span class="brand-highlight-modal" id="lelangBrand">Caesar</span>
+        <div class="modal-status">
+          <div id="delSpinner" class="spinner"></div>
+          <div id="delCheck" class="checkmark">✓</div>
         </div>
-        <div class="table-responsive-modal">
-          <table>
-                        <thead>
-              <tr>
-                <th>No</th>
-                <th>Kode Lelang</th>
-                <th>Tipe</th>
-                <th>Harga Lelang</th>
-                <th>Waktu Lelang</th>
-                <th colspan="2" class="kategori-header">
-                  Kategori Lokasi Lelang
-                </th>
-                <th>Tahun Pembuatan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>EMT3NR</td>
-                <td>Sigra 1.2 MT</td>
-                <td>Rp 69 020 000</td>
-                <td>2023</td>
-                <td class="lokasi">Cirebon</td>
-                <td class="kategori">1</td>
-                <td>2019</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>MYV1BW</td>
-                <td>Sigra 1.2 MT</td>
-                <td>Rp 79 914 000</td>
-                <td>2022</td>
-                <td class="lokasi">Cirebon</td>
-                <td class="kategori">1</td>
-                <td>2016</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>XXXYXY</td>
-                <td>Sigra 1.2 MT</td>
-                <td>Rp 75 000 000</td>
-                <td>2021</td>
-                <td class="lokasi">Cirebon</td>
-                <td class="kategori">1</td>
-                <td>2018</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="table-title-modal" style="margin-top: 28px">Penyesuaian</div>
-        <div class="table-responsive-modal">
-          <table>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Tipe</th>
-                <th>Merk</th>
-                <th>Waktu</th>
-                <th>Lokasi</th>
-                <th>Tahun Pembuatan</th>
-                <th>Total</th>
-                <th>Nilai Taksiran</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td><td>0%</td><td>0%</td><td>4%</td><td>0%</td><td>0%</td><td>0%</td><td>Rp 69 768 000</td>
-              </tr>
-              <tr>
-                <td>2</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>Rp 69 768 000</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="nilai-row-modal">
-          <div class="nilai-box-modal">
-            <span class="nilai-label-modal">RATA - RATA NILAI TAKSIRAN</span>
-            <span class="nilai-val-modal" id="rataTaksir">Rp 69 768 000</span>
-          </div>
-          <div class="nilai-box-modal">
-            <span class="nilai-label-modal">TAKSIRAN NILAI LIMIT LELANG</span>
-            <span class="nilai-val-modal" id="limitTaksir">Rp 69 768 000</span>
-          </div>
-          <div class="nilai-box-modal">
-            <span class="nilai-label-modal">PEMBULATAN</span>
-            <span class="nilai-val-modal" id="pembulatan">Rp 69 768 000</span>
-          </div>
-        </div>
+        <div id="delHint" class="modal-hint"></div>
       </div>
-      `;
+    </div>
+    <!-- ======================================================= -->
+    <script src="config.js"></script>
+    <script>
+      /* ===================== Helpers & Config ===================== */
+      const $ = (q, el = document) => el.querySelector(q);
+      const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
+
+      // Pakai client SATKER dari auth.js agar header Authorization benar
+      const SATKER = (function () {
+        try {
+          return new Auth.ApiClient("satker");
+        } catch (e) {
+          return null;
+        }
+      })();
+      const HEAD = SATKER ? SATKER.headers() : {};
+      const API = (
+        typeof API_URL !== "undefined" && API_URL ? API_URL : ""
+      ).replace(/\/$/, "");
+
+      const POLL_MS = 20000; // interval auto-refresh saat tab aktif (ms)
+      const CACHE_BUST = true; // true: tambahkan ?t=timestamp ke URL preview
+
+      // set welcome name dari token satker
+      try {
+        const nm = Auth.getName("satker");
+        if (nm) document.getElementById("welcomeName").textContent = nm;
+      } catch (e) {}
+
+      function isValidDate(d) {
+        return d instanceof Date && !isNaN(d.getTime()) && d.getTime() > 0;
       }
-      function closeDetail() {
-        document.getElementById("modalDetail").style.display = "none";
+
+      // Parser tanggal fleksibel (lokal)
+      function parseBackendDate(v) {
+        if (!v && v !== 0) return null;
+        if (v instanceof Date) return isValidDate(v) ? v : null;
+        if (typeof v === "number") {
+          const d = new Date(v);
+          return isValidDate(d) ? d : null;
+        }
+        if (typeof v === "string") {
+          const s = v.trim();
+          const m = s.match(
+            /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2})(?:\.\d+)?)?$/
+          );
+          if (m) {
+            return new Date(
+              +m[1],
+              +m[2] - 1,
+              +m[3],
+              +m[4],
+              +m[5],
+              +(m[6] || 0)
+            );
+          }
+          const iso = s.replace(" ", "T").replace(/(\.\d{3})\d+$/, "$1");
+          const d2 = new Date(iso);
+          if (isValidDate(d2)) return d2;
+        }
+        return null;
       }
+
+      // --- Tambahkan di dekat helper lain ---
+      const ZONE_OFFSETS_MIN = { WIB: 7 * 60, WITA: 8 * 60, WIT: 9 * 60 };
+      // 👉 Ubah ini kalau backend kamu sebenarnya kirim WIB/WITA/UTC:
+      const BACKEND_ZONE = "WIT"; // asumsi sekarang data datang sebagai jam WIT (UTC+9)
+
+      // Zona waktu perangkat (user)
+      function getUserIanaTZ() {
+        try {
+          return (
+            Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Makassar"
+          );
+        } catch {
+          return "Asia/Makassar";
+        } // WITA default
+      }
+
+      // Parser tanggal fleksibel (tanpa zona) – sudah ada di kodenya
+      // function parseBackendDate(v) { ... }  // biarkan tetap
+
+      // Interpretasikan string dari backend sebagai "wall time" di BACKEND_ZONE,
+      // lalu ubah ke UTC (ms), baru nanti ditampilkan ke zona user.
+      function fromBackendWallToUTC(dateLike) {
+        const d = parseBackendDate(dateLike);
+        if (!d) return null;
+        // d saat ini dibuat sebagai 'local Date'. Kita butuh komponennya:
+        const Y = d.getFullYear(),
+          M = d.getMonth(),
+          D = d.getDate(),
+          h = d.getHours(),
+          m = d.getMinutes(),
+          s = d.getSeconds();
+        // Buat "waktu yang sama" di UTC lalu KURANGI offset zona backend
+        // supaya hasilnya adalah momen UTC yang ekuivalen.
+        const msAsUTC =
+          Date.UTC(Y, M, D, h, m, s) -
+          ZONE_OFFSETS_MIN[BACKEND_ZONE] * 60 * 1000;
+        return new Date(msAsUTC);
+      }
+
+      // --- Ganti fungsi fmtDateTime lama dengan yang ini ---
+      function fmtDateTime(value) {
+        try {
+          const utcDate = fromBackendWallToUTC(value);
+          if (!utcDate) return "-";
+          const tz = getUserIanaTZ();
+
+          const tgl = utcDate.toLocaleDateString("id-ID", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+            timeZone: tz,
+          });
+          const jam = utcDate.toLocaleTimeString("id-ID", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: tz,
+          });
+
+          return `${tgl} | ${jam}`;
+        } catch {
+          return "-";
+        }
+      }
+
+      function statusBadge(valid) {
+        return valid
+          ? '<span class="pill green">Tervalidasi</span>'
+          : '<span class="pill red">Belum divalidasi</span>';
+      }
+
+      /* ===================== URL utils ===================== */
+      function absUrl(path) {
+        if (!path) return "";
+        if (/^https?:\/\//i.test(path)) return path;
+        const base = (API_URL || "").replace(/\/$/, "");
+        const joined = path.startsWith("/") ? path : `/${path}`;
+        return base + joined;
+      }
+
+      // Mapper – TIDAK menganggap valid hanya karena ada mark.
+      function mapRow(raw) {
+        const id =
+          raw.id ??
+          raw.kertas_kerja_id ??
+          raw.kertasKerjaId ??
+          raw.uuid ??
+          raw._id ??
+          "";
+
+        const rawPath =
+          raw.pdf_path_raw ??
+          raw.pdf_raw ??
+          raw.pdf_url ??
+          raw.url_pdf ??
+          raw.preview_pdf_url ??
+          raw.file_url ??
+          raw.pdf_path ??
+          "";
+
+        const markPath =
+          raw.pdf_path_mark ??
+          raw.pdf_mark ??
+          raw.pdf_marked_url ??
+          raw.watermarked_pdf_url ??
+          "";
+
+        // parser boolean yang aman
+        const toBool = (v) => {
+          if (typeof v === "boolean") return v;
+          if (typeof v === "number") return v === 1;
+          if (typeof v === "string") {
+            const s = v.trim().toLowerCase();
+            if (
+              s === "true" ||
+              s === "1" ||
+              s === "ya" ||
+              /\btervalidasi\b/.test(s)
+            )
+              return true;
+            return false;
+          }
+          return false;
+        };
+
+        // 1) coba semua varian flag dari backend
+        let validated =
+          toBool(raw.is_verified) ||
+          toBool(raw.isVerified) ||
+          toBool(raw.is_valid) ||
+          toBool(raw.validated) ||
+          toBool(raw.status_validasi) ||
+          toBool(raw.status);
+
+        // 2) fallback: jika flag belum benar tapi file sudah watermarked
+        if (!validated) {
+          const looksMarked =
+            !!markPath ||
+            /validasi|watermark|wmk/i.test(String(rawPath)) ||
+            /validasi|watermark|wmk/i.test(String(markPath));
+          if (looksMarked) validated = true;
+        }
+
+        const rawAbs = absUrl(rawPath || raw.pdf_path || "");
+        const markAbs = absUrl(markPath || "");
+
+        // jika mark kosong tapi raw sudah jelas watermarked → pakai raw sebagai mark
+        const finalMarkAbs =
+          markAbs ||
+          (validated && /validasi|watermark|wmk/i.test(rawAbs) ? rawAbs : "");
+
+        return {
+          id: String(id),
+          created_at:
+            raw.created_at ?? raw.tanggal_dibuat ?? raw.createdAt ?? null,
+          nama_objek: raw.nama_objek ?? raw.nama ?? raw.objek ?? "-",
+          status_validasi: validated,
+
+          pdf_path_raw: rawPath || "",
+          pdf_path_mark: markPath || "",
+          pdf_path: raw.pdf_path ?? "",
+
+          raw_url_abs: rawAbs,
+          mark_url_abs: finalMarkAbs,
+        };
+      }
+
+      // Pilih URL preview:
+      // - Belum valid: RAW saja
+      // - Tervalidasi: MARK, fallback RAW bila MARK kosong
+      function getPreviewUrl(row) {
+        if (row.status_validasi) {
+          return row.mark_url_abs || row.raw_url_abs || null;
+        }
+        return row.raw_url_abs || null;
+      }
+
+      /* ===================== State ===================== */
+      let allRows = [];
+      let viewRows = [];
+      let pollTimer = null;
+
+      /* ===================== Render ===================== */
+      function renderRows(rows) {
+        const tbody = $("#riwayatBody");
+        tbody.innerHTML = "";
+
+        if (!rows.length) {
+          tbody.innerHTML =
+            '<tr><td colspan="5" style="text-align:center;padding:22px">Belum ada kertas kerja.</td></tr>';
+          return;
+        }
+
+        rows.forEach((row, i) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+  <td class="text-center">${i + 1}</td>
+  <td>${fmtDateTime(row.created_at)}</td>
+  <td class="truncate">${row.nama_objek || "-"}</td>
+  <td>${statusBadge(row.status_validasi)}</td>
+  <td class="aksi-td" style="display:flex;gap:8px;justify-content:center">
+    <!-- PREVIEW: teks saja, TANPA ikon -->
+    <button class="aksi-btn lihat-btn" title="Preview PDF" data-id="${row.id}">
+      <span>Preview</span>
+    </button>
+
+    <!-- HAPUS: ikon saja, TANPA teks -->
+    <button class="aksi-btn hapus-btn aksi-icon-btn" title="Hapus" data-action="hapus" data-id="${
+      row.id
+    }">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e04848" stroke-width="2" aria-hidden="true">
+        <polyline points="3 6 5 6 21 6"/>
+        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        <line x1="10" y1="11" x2="10" y2="17"/>
+        <line x1="14" y1="11" x2="14" y2="17"/>
+      </svg>
+    </button>
+  </td>
+`;
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      function applySearch() {
+        const q = ($("#searchInput").value || "").toLowerCase().trim();
+        if (!q) {
+          viewRows = [...allRows];
+          renderRows(viewRows);
+          return;
+        }
+        viewRows = allRows.filter((r) => {
+          const tanggal = fmtDateTime(r.created_at).toLowerCase();
+          const nama = (r.nama_objek || "").toLowerCase();
+          const status = r.status_validasi ? "tervalidasi" : "belum divalidasi";
+          return nama.includes(q) || tanggal.includes(q) || status.includes(q);
+        });
+        renderRows(viewRows);
+      }
+
+      /* ===================== Modal Hapus ===================== */
+      const delModal = {
+        el: $("#delModal"),
+        yes: $("#delYes"),
+        no: $("#delNo"),
+        info: $("#delModalInfo"),
+        spin: $("#delSpinner"),
+        check: $("#delCheck"),
+        hint: $("#delHint"),
+        open(infoText) {
+          this.reset();
+          this.info.textContent = infoText || "Apakah Anda yakin?";
+          this.el.style.display = "flex";
+          this.el.removeAttribute("aria-hidden");
+          return new Promise((resolve) => {
+            const onNo = () => {
+              this.close();
+              cleanup();
+              resolve(false);
+            };
+            const onYes = () => {
+              cleanup();
+              resolve(true);
+            };
+            const cleanup = () => {
+              this.no.removeEventListener("click", onNo);
+              this.yes.removeEventListener("click", onYes);
+            };
+            this.no.addEventListener("click", onNo);
+            this.yes.addEventListener("click", onYes);
+            this.el.addEventListener(
+              "click",
+              (e) => {
+                if (e.target === this.el) onNo();
+              },
+              { once: true }
+            );
+            document.addEventListener(
+              "keydown",
+              (e) => {
+                if (e.key === "Escape") onNo();
+              },
+              { once: true }
+            );
+          });
+        },
+        loading(text = "Menghapus…") {
+          this.spin.style.display = "inline-block";
+          this.hint.style.display = "block";
+          this.hint.textContent = text;
+          this.yes.disabled = true;
+          this.no.disabled = true;
+        },
+        success(text = "Berhasil dihapus") {
+          this.spin.style.display = "none";
+          this.check.style.display = "flex";
+          this.hint.style.display = "block";
+          this.hint.textContent = text;
+        },
+        failure(text = "Gagal menghapus") {
+          this.spin.style.display = "none";
+          this.check.style.display = "none";
+          this.hint.style.display = "block";
+          this.hint.textContent = text;
+          this.yes.disabled = false;
+          this.no.disabled = false;
+        },
+        reset() {
+          this.spin.style.display = "none";
+          this.check.style.display = "none";
+          this.hint.style.display = "none";
+          this.yes.disabled = false;
+          this.no.disabled = false;
+        },
+        close() {
+          this.el.style.display = "none";
+          this.el.setAttribute("aria-hidden", "true");
+        },
+      };
+
+      /* ===================== Actions ===================== */
+      function previewById(id) {
+        const row = allRows.find((r) => r.id === id);
+        if (!row) return alert("Data tidak ditemukan.");
+        const url = getPreviewUrl(row);
+        if (!url) return alert("File PDF belum tersedia.");
+
+        const finalUrl = CACHE_BUST
+          ? url + (url.includes("?") ? "&" : "?") + "t=" + Date.now()
+          : url;
+
+        window.open(finalUrl, "_blank", "noopener");
+      }
+
+      async function deleteById(id) {
+        const row = allRows.find((r) => r.id === id);
+        if (!row) {
+          alert("ID tidak ditemukan di daftar.");
+          return;
+        }
+
+        const infoLine = `${row.nama_objek || "-"} • ${fmtDateTime(
+          row.created_at
+        )}`;
+        const ok = await delModal.open(`Hapus kertas kerja ini?\n${infoLine}`);
+        if (!ok) return;
+
+        delModal.loading("Menghapus data & berkas di server…");
+
+        const snapshot = [...allRows]; // optimistic
+        allRows = allRows.filter((r) => r.id !== id);
+        applySearch();
+
+        const endpoint = `${API}/kertas-kerja/${encodeURIComponent(id)}`;
+        try {
+          const res = await fetch(endpoint, {
+            method: "DELETE",
+            headers: { ...SATKER.headers() },
+          });
+          if (res.ok) {
+            delModal.success("Berhasil dihapus");
+            setTimeout(() => delModal.close(), 800);
+            return;
+          }
+          allRows = snapshot; // rollback
+          applySearch();
+          let detail = "";
+          try {
+            detail = await res.text();
+          } catch {}
+          delModal.failure(
+            `Gagal (HTTP ${res.status}). ${detail || ""}`.trim()
+          );
+        } catch {
+          allRows = snapshot;
+          applySearch();
+          delModal.failure("Kesalahan jaringan. Coba lagi.");
+        }
+      }
+
+      /* ===================== Fetch ===================== */
+      async function loadHistory() {
+        const endpoint = `${API}/kertas-kerja/`;
+        try {
+          const res = await fetch(endpoint, {
+            headers: { ...SATKER.headers() },
+          });
+          const json = await res.json().catch(() => ({}));
+          const arr = Array.isArray(json?.data)
+            ? json.data
+            : Array.isArray(json)
+            ? json
+            : [];
+          allRows = arr.map(mapRow);
+          viewRows = [...allRows];
+          renderRows(viewRows);
+        } catch {
+          allRows = [];
+          viewRows = [];
+          renderRows(viewRows);
+        }
+      }
+
+      /* ===================== Auto-Refresh ===================== */
+      function startPolling() {
+        stopPolling();
+        pollTimer = setInterval(() => {
+          loadHistory();
+        }, POLL_MS);
+      }
+      function stopPolling() {
+        if (pollTimer) {
+          clearInterval(pollTimer);
+          pollTimer = null;
+        }
+      }
+
+      /* ===================== Init ===================== */
+      document.addEventListener("DOMContentLoaded", () => {
+        // cari
+        $("#searchInput")?.addEventListener("input", applySearch);
+        $("#clearSearch")?.addEventListener("click", () => {
+          $("#searchInput").value = "";
+          applySearch();
+        });
+
+        // delegasi tombol preview & hapus
+        $("#riwayatBody").addEventListener("click", (e) => {
+          const btnPrev = e.target.closest(".lihat-btn");
+          const btnDel = e.target.closest(".hapus-btn");
+          if (btnPrev) previewById(btnPrev.dataset.id);
+          if (btnDel) deleteById(btnDel.dataset.id);
+        });
+
+        // load awal + mulai polling
+        loadHistory().then(() => startPolling());
+
+        // refresh saat tab kembali aktif
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "visible") {
+            loadHistory();
+            startPolling();
+          } else {
+            stopPolling();
+          }
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        try {
+          const name = Auth.getName("satker");
+          if (name) {
+            const el = document.getElementById("welcomeName");
+            if (el) el.textContent = name;
+          }
+        } catch (e) {}
+      });
     </script>
   </body>
 </html>
