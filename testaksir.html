@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SirOTO | Data Kendaraan & Hasil Taksir</title>
+    <title>Data Kendaraan & Hasil Taksir | e-Taksir</title>
     <link rel="stylesheet" href="HasilTaksir.css" />
 
     <!-- Konfigurasi & Auth (WAJIB) -->
@@ -32,7 +32,11 @@
             />
           </svg>
         </button>
-        <img src="Gambar/D4.png" alt="Logo Kemenkeu" class="logo-kemenkeu" />
+        <img
+          src="Gambar/LogoDJKN.png"
+          alt="Logo Kemenkeu"
+          class="logo-kemenkeu"
+        />
       </div>
 
       <div class="result-card">
@@ -40,7 +44,7 @@
 
         <!-- IDENTITAS -->
         <div class="vehicle-data-box">
-          <img src="Gambar/siroto2.png" class="logoe" alt="" />
+          <img src="Gambar/Logo.png" class="logoe" alt="" />
           <div class="vehicle-group" id="vehicleGroup"></div>
         </div>
 
@@ -86,6 +90,8 @@
 
             <button id="btnCariTahap" class="btn-cari-pro">Cari</button>
           </div>
+
+          <div id="tahapInfo" class="tahap-info-pro"></div>
         </div>
 
         <!-- TABEL HASIL LELANG -->
@@ -172,11 +178,6 @@
           </div>
 
           <div class="btn-simpan-row">
-            <div
-              id="infoJumlah"
-              style="color: #c00; font-weight: 600; margin-top: 10px"
-            ></div>
-
             <button
               class="btn-simpan"
               id="btnSimpanKertasKerja"
@@ -205,6 +206,7 @@
         <div id="modalDesc" class="modal-desc"></div>
       </div>
     </div>
+
     <script>
       /* ===================== STATE & HELPERS ===================== */
       const API_BASE = (window.API_URL || "").replace(/\/+$/, ""); // tanpa trailing slash
@@ -314,79 +316,79 @@
 
       /* ===================== RENDER IDENTITAS ===================== */
       $("#vehicleGroup").innerHTML = `
-              <h2>IDENTIFIKASI</h2>
-              <div class="row">
-                <div class="field"><label>NAMA OBJEK</label><div class="val">${isi(
-                  inputLelang.nama_objek,
-                )}</div></div>
-                <div class="field"><label>NUP</label><div class="val">${isi(
-                  inputLelang.nup,
-                )}</div></div>
-              </div>
-              <div class="row">
-                <div class="field"><label>LOKASI OBJEK</label><div class="val">${isi(
-                  inputLelang.lokasi_objek,
-                )}</div></div>
-                <div class="field"><label>KATEGORI LOKASI</label><div class="val">${isi(
-                  inputLelang.kategori_lokasi,
-                )}</div></div>
-              </div>
-              <div class="row">
-                <div class="field"><label>JENIS KENDARAAN</label><div class="val">${isi(
-                  inputLelang.jenis_kendaraan,
-                )}</div></div>
-                <div class="field"><label>MERK KENDARAAN</label><div class="val">${isi(
-                  inputLelang.merek_kendaraan,
-                )}</div></div>
-                <div class="field"><label>TIPE KENDARAAN</label><div class="val">${isi(
-                  inputLelang.tipe_kendaraan,
-                )}</div></div>
-              </div>
-              <div class="sub-group">
-                <div class="sub-label">Identitas Kendaraan</div>
-                <div class="row">
-                  <div class="field"><label>NOMOR POLISI</label><div class="val">${isi(
-                    inputLelang.nomor_polisi,
-                  )}</div></div>
-                  <div class="field"><label>DOKUMEN KEPEMILIKAN</label><div class="val">${formatDokumenKepemilikan()}</div></div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="field"><label>PEMILIK DOKUMEN</label><div class="val">${isi(
-                  inputLelang.pemilik_dokumen,
-                )}</div></div>
-                <div class="field"><label>MASA BERLAKU</label><div class="val">${isi(
-                  inputLelang.masa_berlaku,
-                )}</div></div>
-              </div>
-              <div class="sub-group">
-                <div class="sub-label">Keterangan</div>
-                <div class="row">
-                  <div class="field"><label>PENGGUNAAN KENDARAAN</label><div class="val">${isi(
-                    inputLelang.penggunaan_kendaraan,
-                  )}</div></div>
-                  <div class="field"><label>KETERANGAN LAINNYA</label><div class="val">${isi(
-                    inputLelang.keterangan_lain || inputLelang.keterangan,
-                  )}</div></div>
-                </div>
-              </div>
-              <h2>FISIK KENDARAAN</h2>
-              <div class="row">
-                <div class="field"><label>WARNA</label><div class="val">${isi(
-                  inputLelang.warna,
-                )}</div></div>
-                <div class="field"><label>TAHUN PEMBUATAN</label><div class="val">${isi(
-                  inputLelang.tahun_pembuatan,
-                )}</div></div>
-                <div class="field"><label>BAHAN BAKAR</label><div class="val">${isi(
-                  inputLelang.bahan_bakar,
-                )}</div></div>
-              </div>
-              <div class="row">
-                <div class="field" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val">${isi(
-                  inputLelang.kondisi_kendaraan,
-                )}</div></div>
-              </div>`;
+        <h2>IDENTIFIKASI</h2>
+        <div class="row">
+          <div class="field"><label>NAMA OBJEK</label><div class="val">${isi(
+            inputLelang.nama_objek,
+          )}</div></div>
+          <div class="field"><label>NUP</label><div class="val">${isi(
+            inputLelang.nup,
+          )}</div></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>LOKASI OBJEK</label><div class="val">${isi(
+            inputLelang.lokasi_objek,
+          )}</div></div>
+          <div class="field"><label>KATEGORI LOKASI</label><div class="val">${isi(
+            inputLelang.kategori_lokasi,
+          )}</div></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>JENIS KENDARAAN</label><div class="val">${isi(
+            inputLelang.jenis_kendaraan,
+          )}</div></div>
+          <div class="field"><label>MERK KENDARAAN</label><div class="val">${isi(
+            inputLelang.merek_kendaraan,
+          )}</div></div>
+          <div class="field"><label>TIPE KENDARAAN</label><div class="val">${isi(
+            inputLelang.tipe_kendaraan,
+          )}</div></div>
+        </div>
+        <div class="sub-group">
+          <div class="sub-label">Identitas Kendaraan</div>
+          <div class="row">
+            <div class="field"><label>NOMOR POLISI</label><div class="val">${isi(
+              inputLelang.nomor_polisi,
+            )}</div></div>
+            <div class="field"><label>DOKUMEN KEPEMILIKAN</label><div class="val">${formatDokumenKepemilikan()}</div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field"><label>PEMILIK DOKUMEN</label><div class="val">${isi(
+            inputLelang.pemilik_dokumen,
+          )}</div></div>
+          <div class="field"><label>MASA BERLAKU</label><div class="val">${isi(
+            inputLelang.masa_berlaku,
+          )}</div></div>
+        </div>
+        <div class="sub-group">
+          <div class="sub-label">Keterangan</div>
+          <div class="row">
+            <div class="field"><label>PENGGUNAAN KENDARAAN</label><div class="val">${isi(
+              inputLelang.penggunaan_kendaraan,
+            )}</div></div>
+            <div class="field"><label>KETERANGAN LAINNYA</label><div class="val">${isi(
+              inputLelang.keterangan_lain || inputLelang.keterangan,
+            )}</div></div>
+          </div>
+        </div>
+        <h2>FISIK KENDARAAN</h2>
+        <div class="row">
+          <div class="field"><label>WARNA</label><div class="val">${isi(
+            inputLelang.warna,
+          )}</div></div>
+          <div class="field"><label>TAHUN PEMBUATAN</label><div class="val">${isi(
+            inputLelang.tahun_pembuatan,
+          )}</div></div>
+          <div class="field"><label>BAHAN BAKAR</label><div class="val">${isi(
+            inputLelang.bahan_bakar,
+          )}</div></div>
+        </div>
+        <div class="row">
+          <div class="field" style="flex:2;"><label>KONDISI KENDARAAN</label><div class="val">${isi(
+            inputLelang.kondisi_kendaraan,
+          )}</div></div>
+        </div>`;
       $("#lelangBrand").textContent = isi(inputLelang.merek_kendaraan);
 
       /* ===================== FIT (no scroll, no wrap) ===================== */
@@ -424,18 +426,18 @@
         const val = (value || "").toString().toUpperCase();
         if (mode === "auto") {
           return `<div class="kode-wrap">
-                  <input type="text" class="kode-input" value="${val}" maxlength="6" readonly style="background:#f6f7fb;cursor:not-allowed"/>
-                </div>`;
+            <input type="text" class="kode-input" value="${val}" maxlength="6" readonly style="background:#f6f7fb;cursor:not-allowed"/>
+          </div>`;
         }
         return `<div class="kode-wrap">
-                <input type="text" class="kode-input" maxlength="6" placeholder="KETIK & ENTER"
-                  value="${val}"
-                  oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')"
-                  onkeydown="if(event.key==='Enter'){event.preventDefault(); triggerAmbilKode(this);}"/>
-                <button class="kode-check" ${
-                  val.length === 6 ? "" : "disabled"
-                } title="Ambil data">✔</button>
-              </div>`;
+          <input type="text" class="kode-input" maxlength="6" placeholder="KETIK & ENTER"
+            value="${val}"
+            oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')"
+            onkeydown="if(event.key==='Enter'){event.preventDefault(); triggerAmbilKode(this);}"/>
+          <button class="kode-check" ${
+            val.length === 6 ? "" : "disabled"
+          } title="Ambil data">✔</button>
+        </div>`;
       }
 
       function renderPembanding() {
@@ -444,11 +446,11 @@
         if (!dataPembanding.length) {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-                  <td>1</td>
-                  <td>${kodeLelangCellHTML("", "manual")}</td>
-                  <td class="merek"></td><td class="tipe"></td><td class="harga"></td>
-                  <td class="waktu"></td><td class="lokasi"></td><td class="kategori"></td><td class="tahun"></td>
-                  <td class="fade-table-col aksi-cell"><button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button></td>`;
+            <td>1</td>
+            <td>${kodeLelangCellHTML("", "manual")}</td>
+            <td class="merek"></td><td class="tipe"></td><td class="harga"></td>
+            <td class="waktu"></td><td class="lokasi"></td><td class="kategori"></td><td class="tahun"></td>
+            <td class="fade-table-col aksi-cell"><button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button></td>`;
           tb.appendChild(tr);
           buildPenyesuaianFromPembanding();
           recalcAll();
@@ -460,22 +462,21 @@
           const tr = document.createElement("tr");
           const mode = d.manual ? "manual" : "auto";
           tr.innerHTML = `
-                  <td>${i + 1}</td>
-                  <td>${kodeLelangCellHTML(d.KodeLelang || "", mode)}</td>
-                  <td class="merek">${d.Merek || "-"}</td>
-                  <td class="tipe">${d.Tipe || "-"}</td>
-                  <td class="harga">${
-                    d.HargaLelang ? "Rp " + fmtIDR(+d.HargaLelang) : "-"
-                  }</td>
-                  <td class="waktu">${d.TahunTransaksi || "-"}</td>
-                  <td class="lokasi">${d.Lokasi || "-"}</td>
-                  <td class="kategori">${d.KategoriLokasi || "-"}</td>
-                  <td class="tahun">${d.TahunPembuatan || "-"}</td>
-                  <td class="fade-table-col aksi-cell"><button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button></td>`;
+            <td>${i + 1}</td>
+            <td>${kodeLelangCellHTML(d.KodeLelang || "", mode)}</td>
+            <td class="merek">${d.Merek || "-"}</td>
+            <td class="tipe">${d.Tipe || "-"}</td>
+            <td class="harga">${
+              d.HargaLelang ? "Rp " + fmtIDR(+d.HargaLelang) : "-"
+            }</td>
+            <td class="waktu">${d.TahunTransaksi || "-"}</td>
+            <td class="lokasi">${d.Lokasi || "-"}</td>
+            <td class="kategori">${d.KategoriLokasi || "-"}</td>
+            <td class="tahun">${d.TahunPembuatan || "-"}</td>
+            <td class="fade-table-col aksi-cell"><button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button></td>`;
           tb.appendChild(tr);
         });
         buildPenyesuaianFromPembanding();
-        validateJumlahPembanding(false);
         recalcAll();
         autoFitAll();
         saveDraft();
@@ -489,10 +490,10 @@
         const tr = document.createElement("tr");
         tr.classList.add("fade-in-row");
         tr.innerHTML = `
-                <td></td><td>${kodeLelangCellHTML("", "manual")}</td>
-                <td class="merek"></td><td class="tipe"></td><td class="harga"></td>
-                <td class="waktu"></td><td class="lokasi"></td><td class="kategori"></td><td class="tahun"></td>
-                <td class="fade-table-col aksi-cell"><button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button></td>`;
+          <td></td><td>${kodeLelangCellHTML("", "manual")}</td>
+          <td class="merek"></td><td class="tipe"></td><td class="harga"></td>
+          <td class="waktu"></td><td class="lokasi"></td><td class="kategori"></td><td class="tahun"></td>
+          <td class="fade-table-col aksi-cell"><button class="btn-hapus" onclick="hapusBaris(this)">Hapus</button></td>`;
         $("#tbodyPembanding").appendChild(tr);
         updateTableNumbers();
         autoFitAll();
@@ -512,50 +513,21 @@
         row.remove();
         updateTableNumbers();
         buildPenyesuaianFromPembanding();
-        validateJumlahPembanding(false);
         recalcAll();
         autoFitAll();
         saveDraft();
       }
-      function clamp(n) {
-        return Number(n) || 0; // bebas tanpa batas
-      }
 
-      function hitungPenyesuaianFrontend(d) {
-        const tahunInput = Number(inputLelang.tahun_pembuatan || 0);
-        const kategoriInput = Number(inputLelang.kategori_lokasi || 0);
-
-        // 🔥 pakai tahun sekarang sebagai tahun lelang utama
-        const tahunSekarang = new Date().getFullYear();
-
-        const waktuSelisih = tahunSekarang - Number(d.TahunTransaksi || 0);
-        const lokasiSelisih = kategoriInput - Number(d.KategoriLokasi || 0);
-        const tahunSelisih = tahunInput - Number(d.TahunPembuatan || 0);
-
-        return {
-          tipe: 0,
-          merek: 0,
-          waktu: clamp(waktuSelisih * 2),
-          lokasi: clamp(lokasiSelisih * 5),
-          tahun: clamp(tahunSelisih * 8),
-        };
-      }
       /* ===================== AMBIL DATA BY KODE ===================== */
       async function fetchByKode(kode) {
         const res = await fetch(`${API_BASE}/kertas-kerja/lelang/${kode}`, {
           headers: SATKER ? SATKER.headers() : {},
         });
-
+        if (!res.ok) throw new Error("HTTP " + res.status);
         const j = await res.json().catch(() => ({}));
-        console.log("=== RESPONSE API BY KODE ===");
-        console.log(j);
-
-        return {
-          data: normalizeRow(j?.data || {}),
-          penyesuaian: j?.data_penyesuaian || {},
-        };
+        const raw = j?.data || null;
+        return raw ? normalizeRow(raw) : null;
       }
-
       async function triggerAmbilKode(inputEl) {
         const row = inputEl.closest("tr");
         const btn = row.querySelector(".kode-check");
@@ -600,19 +572,8 @@
 
         btn.disabled = true;
         try {
-          let resData = dataLelangByKode[kode];
-
-          if (!resData) {
-            resData = await fetchByKode(kode);
-            dataLelangByKode[kode] = resData;
-          }
-
-          // 🔥 ambil data utama
-          const d = resData.data;
-
-          const p = hitungPenyesuaianFrontend(d);
-
-          // validasi
+          let d = dataLelangByKode[kode];
+          if (!d) d = await fetchByKode(kode);
           if (!d || !d.KodeLelang) {
             alert("Kode lelang tidak ditemukan. Silakan input ulang.");
             btn.disabled = false;
@@ -635,20 +596,11 @@
             KodeLelang: kode,
             manual: true,
             verified: true,
-            penyesuaian: {
-              tipe: p.tipe ?? 0,
-              merek: p.merek ?? 0,
-              waktu: p.waktu ?? 0,
-              lokasi: p.lokasi ?? 0,
-              tahun: p.tahun ?? 0, // 🔥 INI PERBAIKANNYA
-            },
           };
-
-          dataLelangByKode[kode] = resData;
+          dataLelangByKode[kode] = d;
 
           row.children[1].innerHTML = `<div class="kode-wrap"><input type="text" class="kode-input" value="${kode}" maxlength="6" readonly/></div>`;
           buildPenyesuaianFromPembanding();
-          validateJumlahPembanding(false);
           recalcAll();
           autoFitAll();
           saveDraft();
@@ -657,83 +609,15 @@
           btn.disabled = false;
         }
       });
-      function showLoadingTahap(tahap) {
-        const modal = document.getElementById("loadingTahapModal");
-        const number = document.getElementById("loadingTahapNumber");
-
-        number.textContent = tahap;
-
-        modal.style.display = "flex";
-      }
-
-      function hideLoadingTahap() {
-        const modal = document.getElementById("loadingTahapModal");
-        modal.style.display = "none";
-      }
 
       /* ===================== CARI TAHAP ===================== */
       $("#btnCariTahap").addEventListener("click", async () => {
         const tahap = +$("#tahapSelect").value;
         await cariPembandingTahap(tahap);
       });
-      function validateJumlahPembanding(showAlert = true) {
-        const n = dataPembanding.length;
-
-        const btn = $("#btnSimpanKertasKerja");
-        const section = $("#penyesuaianSection");
-
-        // 🔥 TAMBAHKAN DI SINI
-        const info = $("#infoJumlah");
-
-        if (n < 3) {
-          if (showAlert) {
-            alert(
-              "Penyesuaian tidak dapat dilakukan.\n" +
-                "Jumlah data pembanding belum memenuhi ketentuan minimum 3 data.\n" +
-                "Silakan melanjutkan pencarian data pembanding",
-            );
-          }
-
-          section.style.display = "block";
-          btn.style.display = "none";
-
-          // 🔴 tampilkan info
-          info.textContent = "Minimal 3 data pembanding untuk menyimpan";
-
-          return false;
-        }
-
-        if (n > 7) {
-          if (showAlert) {
-            alert(
-              "Jumlah data pembanding melebihi batas maksimum.\n" +
-                "Data pembanding yang diperbolehkan untuk penyesuaian adalah maksimal 7 data.\n" +
-                "Silakan memilih data pembanding yang paling sesuai dari data yang tersedia untuk melanjutkan penyesuaian",
-            );
-          }
-
-          section.style.display = "block";
-          btn.style.display = "none";
-
-          // 🔴 tampilkan info
-          info.textContent = "Maksimal 7 data pembanding yang diperbolehkan.";
-
-          return false;
-        }
-
-        // 🟢 valid
-        section.style.display = "block";
-        btn.style.display = "inline-block";
-
-        // 🔥 kosongkan info
-        info.textContent = "";
-
-        return true;
-      }
 
       async function cariPembandingTahap(tahap) {
-        showLoadingTahap(tahap);
-
+        $("#tahapInfo").textContent = `Memproses Tahap ${tahap}…`;
         try {
           const res = await fetch(`${API_BASE}/kertas-kerja/${tahap}`, {
             method: "POST",
@@ -744,83 +628,34 @@
               merek_kendaraan: inputLelang.merek_kendaraan,
               tipe_kendaraan: inputLelang.tipe_kendaraan,
               tahun_pembuatan: parseInt(inputLelang.tahun_pembuatan),
-              lokasi_objek: inputLelang.kpknl, // 🔥 pakai KPKNL
-
+              lokasi_objek: inputLelang.lokasi_objek,
               kategori_lokasi: inputLelang.kategori_lokasi,
               provinsi: inputLelang.provinsi,
             }),
           });
-
           const j = await res.json().catch(() => ({}));
           const arr = j?.data?.data_pembanding || [];
 
-          // 🔥 ambil kode dari string "(XXXXXX)"
-          function extractKode(str) {
-            const match = String(str || "").match(/\(([^)]+)\)/);
-            return match ? match[1].trim().toUpperCase() : "";
-          }
-
-          // 🔥 isi data pembanding + penyesuaian
+          let pushed = 0;
           arr.forEach((raw) => {
-            if (dataPembanding.length >= 7) return;
-
             const x = normalizeRow(raw);
-            const kode = String(x.KodeLelang || "")
-              .trim()
-              .toUpperCase();
-
-            const sudahAda = dataPembanding.some((d) => d.KodeLelang === kode);
-            if (sudahAda) return;
-
-            // 🔥 hitung frontend
-            const p = hitungPenyesuaianFrontend(x);
-
-            dataPembanding.push({
-              ...x,
-              manual: false,
-              penyesuaian: p,
-            });
+            if (!x.KodeLelang) return;
+            if ($("#tbodyPembanding").rows.length >= 7) return;
+            if (dataPembanding.find((d) => d.KodeLelang === x.KodeLelang))
+              return;
+            dataPembanding.push({ ...x, manual: false });
+            dataLelangByKode[x.KodeLelang] = x;
+            pushed++;
           });
 
           renderPembanding();
-          validateJumlahPembanding(false);
-          hideLoadingTahap();
-          const added = arr.length; // data dari tahap ini
-          const total = dataPembanding.length;
-
-          let message = "";
-
-          // ❌ 1. TIDAK ADA DATA
-          if (added === 0) {
-            message =
-              "Tidak ditemukan data pembanding yang sesuai. Silakan melanjutkan ke tahap berikutnya.";
-          }
-
-          // 🔸 2. ADA DATA TAPI BELUM CUKUP
-          else if (total < 3) {
-            message =
-              `Ditemukan ${added} data pembanding. Total data saat ini ${total}. ` +
-              `Jumlah data belum mencukupi. Silakan melanjutkan ke tahap berikutnya.`;
-          }
-
-          // ✅ 3. DATA SUDAH CUKUP (3–7)
-          else if (total >= 3 && total <= 7) {
-            message =
-              `Ditemukan ${added} data pembanding. Total data saat ini ${total}. ` +
-              `Data pembanding telah mencukupi. Silakan melanjutkan ke tahap penyesuaian.`;
-          }
-
-          // ⚠️ 4. DATA LEBIH DARI 7
-          else {
-            message =
-              "Jumlah data pembanding yang diperoleh melebihi batas maksimum (7 data).\n" +
-              "Silakan memilih data pembanding yang paling sesuai untuk melanjutkan ke tahap penyesuaian.";
-          }
-
-          showTahapModal(`Tahap ${tahap}`, message);
+          const len = $("#tbodyPembanding").rows.length;
+          showTahapModal(
+            `Tahap ${tahap}`,
+            `Ditambahkan ${pushed} data.\nTotal baris sekarang ${len} (butuh 3–7).\nSilakan pilih tahap lain atau tambah manual.`,
+          );
         } catch (e) {
-          hideLoadingTahap();
-          alert("Gagal memproses tahap. Coba lagi.");
+          $("#tahapInfo").textContent = "Gagal memproses. Coba lagi.";
         }
       }
 
@@ -829,57 +664,17 @@
         const dest = $("#tbodyPenyesuaian");
         dest.innerHTML = "";
         dataPembanding.forEach((d, i) => {
-          const p = d.penyesuaian || {};
           const row = document.createElement("tr");
           row.innerHTML = `
-                  <td>${i + 1}</td>
-                  <td class="peny-merek">${d.Merek || "-"}</td>
-        <!-- TIPE -->
-        <td>
-          <div class="peny-select-wrapper">
-            <select class="peny-select" data-col="tipe">
-              <option value="0" ${p.tipe == 0 ? "selected" : ""}>0%</option>
-              <option value="-8" ${p.tipe == -8 ? "selected" : ""}>-8%</option>
-              <option value="8" ${p.tipe == 8 ? "selected" : ""}>8%</option>
-            </select>
-          </div>
-        </td>
-
-        <!-- MEREK -->
-        <td>
-          <div class="peny-select-wrapper">
-            <select class="peny-select" data-col="merek">
-              <option value="0" ${p.merek == 0 ? "selected" : ""}>0%</option>
-              <option value="-8" ${p.merek == -8 ? "selected" : ""}>-8%</option>
-              <option value="8" ${p.merek == 8 ? "selected" : ""}>8%</option>
-            </select>
-          </div>
-        </td>
-
-        <!-- WAKTU (LOCK) -->
-        <td>
-          <input class="peny-input pct" data-col="waktu"
-            value="${p.waktu ?? 0}%"
-            readonly>
-        </td>
-
-        <!-- LOKASI (LOCK) -->
-        <td>
-          <input class="peny-input pct" data-col="lokasi"
-            value="${p.lokasi ?? 0}%"
-            readonly>
-        </td>
-
-        <!-- TAHUN (LOCK) -->
-        <td>
-          <input class="peny-input pct" data-col="tahun"
-            value="${p.tahun ?? 0}%"
-            readonly>
-        </td>
-
-        <td class="peny-total">0%</td>
-        <td class="peny-nilai">-</td>
-      `;
+            <td>${i + 1}</td>
+            <td class="peny-merek">${d.Merek || "-"}</td>
+            <td><input class="peny-input pct" data-col="tipe"   inputmode="numeric" placeholder="0%"></td>
+            <td><input class="peny-input pct" data-col="merek"  inputmode="numeric" placeholder="0%"></td>
+            <td><input class="peny-input pct" data-col="waktu"  inputmode="numeric" placeholder="0%"></td>
+            <td><input class="peny-input pct" data-col="lokasi" inputmode="numeric" placeholder="0%"></td>
+            <td><input class="peny-input pct" data-col="tahun"  inputmode="numeric" placeholder="0%"></td>
+            <td class="peny-total">0%</td>
+            <td class="peny-nilai">-</td>`;
           dest.appendChild(row);
         });
 
@@ -891,7 +686,7 @@
           inp.addEventListener("input", (e) => {
             let val = e.target.value;
             const isNeg = val.startsWith("-");
-            val = val.replace(/[^0-9]/g, "");
+            val = val.replace(/[^0-9]/g, "").slice(0, 2);
             e.target.value = (isNeg ? "-" : "") + val;
             recalcAll();
           });
@@ -901,12 +696,7 @@
             recalcAll();
           });
         });
-        $$("#tbodyPenyesuaian .peny-select").forEach((sel) => {
-          sel.addEventListener("change", () => {
-            recalcAll();
-            saveDraft();
-          });
-        });
+
         restorePctFromDraft();
         autoFitAll();
       }
@@ -916,7 +706,7 @@
         const m = String(v).match(/-?\d+/);
         if (!m) return 0;
         const n = parseInt(m[0], 10);
-        return Number(n) || 0;
+        return Math.max(-99, Math.min(99, n));
       };
       const roundToThousand = (n) => Math.round((+n || 0) / 1000) * 1000;
 
@@ -1006,20 +796,12 @@
       }
       function saveDraft() {
         const payload = {
-          inputSnapshot: {
-            lokasi_objek: inputLelang.lokasi_objek,
-            merek_kendaraan: inputLelang.merek_kendaraan,
-            tipe_kendaraan: inputLelang.tipe_kendaraan,
-            tahun_pembuatan: inputLelang.tahun_pembuatan,
-          },
           dataPembanding,
           penyesuaian: readPenyesuaianEditsForDraft(),
           ts: Date.now(),
         };
-
         sessionStorage.setItem(draftKey, JSON.stringify(payload));
       }
-
       function tryRestoreFromDraft() {
         const raw = sessionStorage.getItem(draftKey);
         if (!raw) return false;
@@ -1315,36 +1097,19 @@
 
       /* ===================== INIT ===================== */
       (function init() {
-        const draftRaw = sessionStorage.getItem(draftKey);
-
-        if (draftRaw) {
-          try {
-            const draft = JSON.parse(draftRaw);
-
-            // Cocokkan input dengan draft (cek lokasi / merek / tipe / tahun)
-            const sameInput =
-              draft?.inputSnapshot?.lokasi_objek === inputLelang.lokasi_objek &&
-              draft?.inputSnapshot?.merek_kendaraan ===
-                inputLelang.merek_kendaraan &&
-              draft?.inputSnapshot?.tipe_kendaraan ===
-                inputLelang.tipe_kendaraan &&
-              draft?.inputSnapshot?.tahun_pembuatan ===
-                inputLelang.tahun_pembuatan;
-
-            if (sameInput) {
-              tryRestoreFromDraft();
-
-              recalcAll();
-              validateJumlahPembanding(false); // 🔥 TAMBAHAN
-              return;
-            }
-          } catch {}
+        if (!tryRestoreFromDraft()) {
+          renderPembanding();
+          recalcAll();
         }
-
-        dataPembanding = [];
-        renderPembanding();
-        recalcAll();
-        validateJumlahPembanding(false); // 🔥 TAMBAHAN
+        window.addEventListener("storage", () => {
+          const fresh = JSON.parse(
+            sessionStorage.getItem("dataKertasKerja") || "{}",
+          );
+          if (fresh.kondisi_kendaraan) {
+            currentKondisiFactor = getKondisiFactor(fresh.kondisi_kendaraan);
+            recalcAll();
+          }
+        });
       })();
 
       function showTahapModal(title, message) {
@@ -1367,16 +1132,6 @@
             OK
           </button>
         </div>
-      </div>
-    </div>
-
-    <!-- LOADING MODAL TAHAP -->
-    <div id="loadingTahapModal" class="modal-backdrop">
-      <div class="modal">
-        <h3 id="loadingTahapText">
-          Memproses Tahap <span id="loadingTahapNumber"></span>
-          <span class="dots"> <span>.</span><span>.</span><span>.</span> </span>
-        </h3>
       </div>
     </div>
   </body>

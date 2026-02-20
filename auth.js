@@ -33,9 +33,9 @@
         Array.prototype.map
           .call(
             atob(str),
-            (c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)
+            (c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2),
           )
-          .join("")
+          .join(""),
       );
       return json;
     } catch {
@@ -192,7 +192,7 @@
       const res = await fetch(`${API}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nama_satker: username, password }),
+        body: JSON.stringify({ username, password }),
       }).then((r) => r.json());
 
       const token =

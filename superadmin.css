@@ -40,7 +40,13 @@ body {
 }
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
     sans-serif;
   background: var(--bg);
   color: #23304c;
@@ -68,10 +74,11 @@ body {
   margin-bottom: 16px;
 }
 .brand img {
-  height: 44px;
+  height: 36px; /* sebelumnya 44px → terlalu besar */
   width: auto;
-  display: block;
+  object-fit: contain;
 }
+
 .nav {
   display: flex;
   flex-direction: column;
@@ -83,9 +90,9 @@ body {
   gap: 12px;
   padding: 12px 14px;
   border-radius: 12px;
-  color: var(--blue-700);
+  color: #4e9a1f;
   text-decoration: none;
-  background: #eef3ff;
+  background: #f3f9ec;
   transition: 0.18s;
 }
 .nav-item:hover {
@@ -93,13 +100,29 @@ body {
   transform: translateY(-1px);
 }
 .nav-item.active {
-  background: var(--blue-700);
-  color: #fff;
+  background: #6fb32b;
+  color: #ffffff;
 }
 .nav-ico {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+.profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
 }
 
 /* Main + header */
@@ -111,7 +134,7 @@ body {
   gap: 22px;
 }
 .hero {
-  background: linear-gradient(90deg, var(--blue-700) 0%, #1f86d5 100%);
+  background: linear-gradient(90deg, #6fb32b, #8cc63f);
   color: #fff;
   border-radius: 20px;
   padding: 28px 32px;
@@ -120,6 +143,7 @@ body {
   justify-content: space-between;
   box-shadow: 0 8px 22px rgba(32, 78, 165, 0.18);
 }
+
 .hero-title {
   font-size: 28px;
   font-weight: 800;
@@ -131,10 +155,11 @@ body {
   gap: 14px;
 }
 .hero-logo {
-  height: 20px;
+  height: 50px;
   width: auto;
-  transition: 0.18s;
+  object-fit: contain;
 }
+
 .hero-logo:hover {
   transform: scale(1.06) rotate(-1deg);
 }
@@ -176,14 +201,18 @@ table tbody td:nth-child(4) {
   position: relative;
   width: 360px;
   max-width: 50vw;
-  border: 1.5px dashed #cfe0ff;
+  border: 1.5px dashed #cfe8b7;
+  background: #f8fff2;
   border-radius: 999px;
   padding: 8px 14px 8px 36px;
-  background: #f8fbff;
-  transition: box-shadow 0.18s, transform 0.12s;
+  transition:
+    box-shadow 0.18s,
+    transform 0.12s;
 }
 .search:focus-within {
-  box-shadow: 0 0 0 4px rgba(56, 109, 255, 0.1), var(--shadow);
+  box-shadow:
+    0 0 0 4px rgba(56, 109, 255, 0.1),
+    var(--shadow);
   transform: translateY(-1px);
 }
 .search-ico {
@@ -211,11 +240,13 @@ table tbody td:nth-child(4) {
   gap: 10px;
   padding: 8px 14px;
   border-radius: 999px;
-  border: 1.5px dashed #cfe0ff;
-  background: #f8fbff;
-  color: #2a3e87;
+  border: 1.5px dashed #cfe8b7;
+  background: #f8fff2;
   cursor: pointer;
-  transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+  transition:
+    background 0.18s,
+    transform 0.12s,
+    box-shadow 0.18s;
 }
 .filter-btn:hover {
   box-shadow: 0 8px 18px rgba(43, 74, 156, 0.14);
@@ -270,18 +301,19 @@ table tbody td:nth-child(4) {
 }
 .btn.ghost {
   background: #f1f5fb; /* abu-abu muda */
-  color: #1d2b4b;
+  color: #1d4b2d;
   border: 1px solid #d1d9e6;
 }
 .btn.ghost:hover {
-  background: #e3edfb;
+  background: #e3fbe6;
   transform: translateY(-1px);
 }
 
 /* PRIMARY & ADD: flat color (tanpa gradient) */
 .add-btn,
 .btn.primary {
-  background: #2577e2; /* biru solid */
+  background: linear-gradient(90deg, #6fb32b, #8cc63f);
+  box-shadow: 0 8px 18px rgba(111, 179, 43, 0.25);
   color: #fff;
   border: 0;
   border-radius: 12px;
@@ -289,14 +321,16 @@ table tbody td:nth-child(4) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 3px 10px rgba(37, 119, 226, 0.22);
-  transition: background 0.18s, transform 0.15s, box-shadow 0.2s;
+
+  transition:
+    background 0.18s,
+    transform 0.15s,
+    box-shadow 0.2s;
 }
 .add-btn:hover,
 .btn.primary:hover {
-  background: #1f6ed0; /* sedikit lebih gelap, tetap flat */
+  background: linear-gradient(90deg, #5aa025, #79b632);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 22px rgba(37, 119, 226, 0.28);
 }
 
 .btn.danger {
@@ -308,20 +342,34 @@ table tbody td:nth-child(4) {
 }
 
 .btn-logout {
-  margin-left: 15px;
-  background: #e63946;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+
+  border: 1.8px solid rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+
   padding: 6px 14px;
-  cursor: pointer;
+  font-weight: 600;
   font-size: 14px;
+
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: all 0.2s ease;
 }
+
 .btn-logout:hover {
-  background: #c92c3c;
+  background: #e74c3c;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(231, 76, 60, 0.25);
 }
 
 /* ===================== TABLE ===================== */
+
 .table-wrap {
   overflow-x: auto;
   border-radius: 14px;
@@ -334,11 +382,11 @@ table {
   table-layout: auto;
 }
 thead th {
-  background: #eaf0ff;
-  color: #3a4e91;
+  background: #eef7e8;
+  color: #3d6f1a;
   font-weight: 800;
-  font-size: 14px;
-  padding: 14px;
+  padding: 10px 12px;
+  font-size: 13.5px;
   position: relative;
   user-select: none;
   cursor: pointer;
@@ -350,7 +398,8 @@ thead th.actions-col {
   width: auto;
 }
 tbody td {
-  padding: 14px;
+  padding: 8px 12px;
+  font-size: 13px;
   border-top: 1px solid #f0f3ff;
   vertical-align: middle;
 }
@@ -381,7 +430,10 @@ tbody tr:hover {
   justify-content: center;
   gap: 6px;
   min-width: 96px;
-  transition: background 0.15s, border-color 0.15s, transform 0.04s,
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.04s,
     box-shadow 0.18s;
 }
 .btn-mini:hover {
@@ -416,7 +468,10 @@ tbody tr:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, transform 0.04s;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.04s;
 }
 .ico-btn:hover {
   background: #e2ebff;
@@ -519,11 +574,8 @@ button:focus-visible,
   justify-content: center;
   padding: 22px;
   z-index: 1000;
-  background: radial-gradient(
-      60% 80% at 50% 20%,
-      rgba(2, 32, 88, 0.18),
-      transparent 60%
-    ),
+  background:
+    radial-gradient(60% 80% at 50% 20%, rgba(2, 32, 88, 0.18), transparent 60%),
     var(--overlay);
   backdrop-filter: blur(3px) saturate(108%);
   animation: backdropFade 0.18s ease-out both;
@@ -545,7 +597,9 @@ button:focus-visible,
   width: min(680px, 94vw);
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 18px 50px rgba(2, 32, 88, 0.22), 0 6px 18px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 18px 50px rgba(2, 32, 88, 0.22),
+    0 6px 18px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   transform-origin: 50% 38%;
   animation: modalPop 0.28s cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
@@ -574,14 +628,15 @@ button:focus-visible,
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 16px 18px;
-  border-bottom: 1px solid var(--line);
-  background: #fff; /* flat putih */
+  padding: 18px 20px;
+  border-bottom: none;
+  background: linear-gradient(90deg, #6fb32b, #8cc63f);
+  color: #ffffff;
 }
 
 .modal-header h3 {
   margin: 0;
-  color: #022058;
+  color: #02581a;
   font-weight: 900;
   letter-spacing: 0.2px;
 }
@@ -589,16 +644,18 @@ button:focus-visible,
   width: 38px;
   height: 38px;
   border-radius: 12px;
-  background: #f1f5fb;
-  color: #022058;
+  background: rgba(255, 255, 255, 0.2);
+  color: #02581a;
   display: grid;
   place-items: center;
   border: 0;
   cursor: pointer;
-  transition: transform 0.12s, background 0.15s;
+  transition:
+    transform 0.12s,
+    background 0.15s;
 }
 .modal-close:hover {
-  background: #e3edfb;
+  background: rgba(255, 255, 255, 0.35);
   transform: translateY(-1px) rotate(-3deg);
 }
 .modal-body {
@@ -626,8 +683,8 @@ button:focus-visible,
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 3px solid #e5eeff;
-  border-top-color: var(--blue-600);
+  border: 4px solid #d1d5db; /* abu */
+  border-top: 4px solid #6fb32b; /* hijau DJKN */
   animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
@@ -682,17 +739,19 @@ button:focus-visible,
 }
 .field input,
 .field select {
-  padding: 10px 12px;
-  border: 1px solid #dfe6fb;
-  border-radius: 10px;
+  padding: 11px 13px;
+  border: 1.5px solid #dbe8c9;
+  border-radius: 12px;
   outline: none;
-  background: #fff;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  background: #f9fff3;
+  font-size: 14px;
+  transition: all 0.18s ease;
 }
 .field input:focus,
 .field select:focus {
-  border-color: #98b4ff;
-  box-shadow: 0 0 0 3px rgba(56, 109, 255, 0.12);
+  border-color: #6fb32b;
+  box-shadow: 0 0 0 3px rgba(111, 179, 43, 0.18);
+  background: #ffffff;
 }
 
 /* Ikon mata di dalam input (klik-untuk-toggle) */
@@ -717,7 +776,10 @@ button:focus-visible,
   place-items: center;
   cursor: pointer;
   opacity: 0.9;
-  transition: background 0.15s, opacity 0.15s, transform 0.1s;
+  transition:
+    background 0.15s,
+    opacity 0.15s,
+    transform 0.1s;
 }
 .toggle-pass:hover {
   background: #e7f0fa;
@@ -768,5 +830,113 @@ input[type="password"]::-ms-clear {
   }
   thead th.actions-col {
     width: auto;
+  }
+}
+#userTable {
+  table-layout: auto;
+}
+#userTable th,
+#userTable td {
+  white-space: nowrap;
+}
+#userTable td:nth-child(2) {
+  white-space: normal;
+  line-height: 1.2;
+}
+#userTable tr {
+  height: 44px;
+}
+#userTable td a {
+  white-space: nowrap;
+  font-size: 13px;
+}
+#userTable td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+tbody tr:nth-child(even) {
+  background: #fafdf7;
+}
+#userTable td:nth-child(2) {
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#userTable td:nth-child(2):hover {
+  white-space: normal;
+  overflow: visible;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+}
+/* ====== DJKN MODAL ENHANCEMENT ====== */
+
+/* body modal lebih lega */
+.modal-body {
+  padding: 22px 22px 12px;
+  background: #ffffff;
+}
+
+/* label */
+.field span {
+  color: #2f4f1d;
+  font-weight: 700;
+}
+
+/* tombol ghost */
+.btn.ghost {
+  border-radius: 12px;
+  background: #f4f6fb;
+}
+
+/* tombol mata password */
+.toggle-pass {
+  background: #eef7e8;
+}
+.toggle-pass:hover {
+  background: #e2f3d0;
+}
+
+/* spacing grid */
+.grid {
+  gap: 16px;
+}
+
+/* pesan bawah */
+#formMsg {
+  font-weight: 600;
+  color: #2f4f1d;
+}
+.dot-loader {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dot-loader span {
+  width: 10px;
+  height: 10px;
+  background: #6fb32b;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.dot-loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot-loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(-8px);
+    opacity: 1;
   }
 }

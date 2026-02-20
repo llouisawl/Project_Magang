@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap");
 
 :root {
-  --bg: #f5f7fa;
+  --bg: #f3f4f2;
   --card: #fff;
   --ink: #1e293b;
   --muted: #64748b;
@@ -23,8 +23,15 @@ body {
 }
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
   background: var(--bg);
   color: var(--ink);
 }
@@ -35,14 +42,20 @@ body {
   min-height: 100vh;
 }
 .sidebar {
-  background: #fff;
+  background: #ffffff;
   width: 450px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  border-right: 1.5px solid #e6e8ed;
-  padding: 30px 24px 0;
+  border-right: 1.5px solid #d6e8c6;
+  padding: 30px 24px 0 24px;
+  box-sizing: border-box;
 }
+.sidebar-header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
 .sidebar-header-flex {
   display: flex;
   align-items: center;
@@ -65,19 +78,23 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: #eef7e6;
+  border: 2px solid #d6e8c6;
+
   cursor: pointer;
-  border: 2px solid #e3e6f1;
-  background: #e8eefb;
-  transition: border 0.15s;
+  transition: all 0.2s ease;
 }
+
 .profile-icon:hover,
 .profile-icon:focus {
-  border: 2.5px solid #426bba;
-  outline: none;
+  border: 2.5px solid #6fb32b;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -107,22 +124,24 @@ body {
 }
 .dropdown-content a {
   color: #2d3757;
-  padding: 13px 18px;
+  padding: 13px 18px 13px 18px;
+  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 7px;
-  text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   border-bottom: 1px solid #f0f2f8;
-  transition: background 0.14s, color 0.13s;
+  transition:
+    background 0.14s,
+    color 0.13s;
+  gap: 7px;
 }
 .dropdown-content a:last-child {
   border-bottom: none;
 }
 .dropdown-content a:hover {
-  background: #eaf1fd;
-  color: #255ca8;
+  background: #eef7e6;
+  color: #206d1c;
 }
 .dropdown-content .logout-link {
   color: #e04848 !important;
@@ -147,14 +166,14 @@ body {
 }
 .welcome-text span {
   font-size: 28px;
-  color: #4b5563;
+  color: #7a8f5a;
   font-weight: 400;
   display: block;
   margin-bottom: 2px;
 }
 .welcome-text h3 {
   margin: 0;
-  color: #222;
+  color: #406d1c;
   font-size: 30px;
   font-weight: 600;
   line-height: 1.1;
@@ -162,7 +181,8 @@ body {
 .sidebar nav ul {
   list-style: none;
   padding: 0;
-  margin: 18px 0 0 10px;
+  margin-top: 18px;
+  margin-left: 10px;
 }
 .sidebar nav li {
   margin-bottom: 18px;
@@ -171,18 +191,13 @@ body {
   color: #333;
   text-decoration: none;
   font-size: 18px;
+  font-weight: 600;
   padding: 10px 12px;
   display: flex;
   align-items: center;
   border-radius: 7px;
-  transition: background 0.15s;
 }
-.sidebar nav a.active,
-.sidebar nav a:hover {
-  background: #426bba;
-  color: #fff;
-  font-weight: 600;
-}
+
 .sidebar nav a span {
   margin-right: 8px;
 }
@@ -218,7 +233,7 @@ body {
   margin-left: 5px;
 }
 .icon-search {
-  color: #3b82f6;
+  color: #6fb32b;
   font-size: 21px;
 }
 .icon-close {
@@ -229,7 +244,7 @@ body {
 }
 
 .btn-tambah {
-  background: #3976df;
+  background: linear-gradient(90deg, #6fb32b 0%, #a6d65d 100%);
   color: #fff;
   border: none;
   font-size: 16.3px;
@@ -244,7 +259,8 @@ body {
   transition: background 0.17s;
 }
 .btn-tambah:hover {
-  background: #255ca8;
+  background: linear-gradient(90deg, #6fb32b 0%, #6fb32b 100%);
+  transform: translateY(-2px) scale(1.03);
 }
 
 /* Table — disamakan gaya Hasil Lelang/Penyesuaian */
@@ -263,19 +279,18 @@ body {
 .riwayat-table table {
   width: 100%;
   border-collapse: collapse;
-  background: #f8fafc;
+  background: #e2f4dd;
 }
 .riwayat-table th,
 .riwayat-table td {
   border: 1px solid var(--line);
   padding: 9px 12px;
   font-size: 13px;
-  color: #1f2d4b;
+  color: #406d1c;
   text-align: left;
 }
 .riwayat-table th {
-  background: #e7ecf8;
-  color: #1d2b4b;
+  color: #6fb32b;
   font-weight: 800;
 }
 .riwayat-table td {
@@ -342,18 +357,20 @@ body {
   gap: 5px;
   border: none;
   background: #eaf1fd;
-  color: #37589a;
+  color: #6fb32b;
   font-size: 14px;
   font-weight: 700;
   border-radius: 8px;
   padding: 6px 12px;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.13s, color 0.13s;
+  transition:
+    background 0.13s,
+    color 0.13s;
 }
 .aksi-btn:hover {
   background: #d1e0fb;
-  color: #1a3a70;
+  color: #406d1c;
 }
 
 /* Watermark */
@@ -361,8 +378,8 @@ body {
   position: absolute;
   bottom: 18px;
   right: 40px;
-  width: 350px;
-  opacity: 0.09;
+  width: 250px;
+  opacity: 0.4;
   pointer-events: none;
   z-index: 0;
 }
@@ -458,20 +475,24 @@ body {
   padding: 10px 16px;
   font-weight: 800;
   cursor: pointer;
-  background: #eaf1fd;
-  color: #2c58a4;
-  transition: filter 0.15s, background 0.15s, color 0.15s;
+  background: #f7f4f4;
+  color: #406d1c;
+  transition:
+    filter 0.15s,
+    background 0.15s,
+    color 0.15s;
 }
 .btn-modal:hover {
-  background: #d1e0fb;
-  color: #1a3a70;
+  background: #6fb32b;
+  color: #2f5315;
 }
 .btn-modal.primary {
-  background: #2563eb;
+  background: linear-gradient(90deg, #6fb32b 0%, #8fd14b 100%);
   color: #fff;
 }
+
 .btn-modal.primary:hover {
-  background: #1d4ed8;
+  background: linear-gradient(90deg, #5aa520 0%, #6fb32b 100%);
 }
 
 .modal-status {
@@ -482,22 +503,25 @@ body {
   margin-top: 8px;
 }
 .spinner {
-  display: none;
-  width: 26px;
-  height: 26px;
-  border: 3px solid #e9eef9;
-  border-top: 3px solid #2563eb;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #d1d5db; /* abu */
+  border-top: 4px solid #6fb32b; /* hijau DJKN */
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+
+  animation: spin 1s linear infinite; /* INI WAJIB */
 }
+
+/* ANIMASI PUTAR */
 @keyframes spin {
-  from {
-    transform: rotate(0);
+  0% {
+    transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
+
 .checkmark {
   display: none;
   width: 28px;
@@ -563,16 +587,17 @@ body {
 /* ---- Tombol aksi konsisten Admin ---- */
 /* Preview = biru solid, teks putih */
 .aksi-btn.lihat-btn {
-  background: #2f80ed; /* solid */
+  background: linear-gradient(90deg, #6fb32b 0%, #8fd14b 100%);
   color: #fff;
-  border: 1px solid #1f53c7;
+  border: 1px solid #5aa520;
+  box-shadow: 0 2px 6px rgba(111, 179, 43, 0.35);
 }
 .aksi-btn.lihat-btn svg {
   stroke: #fff !important;
 }
 .aksi-btn.lihat-btn:hover {
-  background: #1d4ed8;
-  color: #fff;
+  background: linear-gradient(90deg, #5aa520 0%, #6fb32b 100%);
+  transform: translateY(-1px);
 }
 
 /* Hapus = gaya superadmin (merah lembut) */
@@ -592,4 +617,95 @@ body {
 /* Lebar kolom tombol agar muat dua pill */
 .col-aksi {
   width: 220px;
+}
+/* =========================
+   SIDEBAR NAV PROFESSIONAL
+   ========================= */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.nav-item {
+  margin-bottom: 6px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #334155;
+  text-decoration: none;
+}
+
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0fdf4;
+}
+
+.nav-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-item.active .nav-link {
+  background: linear-gradient(90deg, #ecfdf5, #f7fee7);
+  color: #166534;
+  box-shadow: inset 4px 0 0 #80dcae;
+}
+
+.nav-item.active .nav-icon {
+  background: #dcfce7;
+}
+
+/* ===============================
+   FORCE ACTIVE LOOK LIKE HOVER
+   =============================== */
+
+.nav-item.active .nav-link {
+  background: linear-gradient(90deg, #ecfdf5, #f7fee7);
+  color: #166534;
+
+  transform: translateX(4px); /* posisi geser seperti hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  border-radius: 12px;
+}
+
+/* garis hijau kiri tetap */
+.nav-item.active .nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 6px;
+  background: #80dcae;
+}
+
+/* icon juga seperti hover */
+.nav-item.active .nav-icon {
+  background: #dcfce7;
+  transform: scale(1.05);
+}
+
+/* animasi halus */
+.nav-link {
+  position: relative;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-icon {
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }

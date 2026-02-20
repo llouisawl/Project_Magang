@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -7,40 +7,89 @@
     <link rel="stylesheet" href="Admin.css" />
   </head>
   <body>
-    <!-- Header -->
     <header class="header">
-      <img
-        src="Gambar/Kemenkeu.png"
-        alt="Logo Kemenkeu"
-        class="logo-kemenkeu"
-      />
+      <div class="header-left">
+        <img src="Gambar/D4.png" class="logo-kemenkeu" />
+      </div>
+
+      <div class="header-center">
+        <!-- dikosongkan saja -->
+      </div>
+
       <div class="header-right">
-        <span class="welcome-text">Selamat Datang</span>
-        <span class="icon-vehicle">
-          <img src="Gambar/Putih.png" alt="Icon e-Taksir" height="38" />
-        </span>
-        <span class="user-role">Admin</span>
-        <!-- Tombol Logout Admin -->
-        <button
-          id="btnLogoutAdmin"
-          class="btn-logout"
-          type="button"
-          style="margin-left: 12px"
-        >
-          Logout
-        </button>
+        <div class="profile-dropdown">
+          <div class="profile-trigger" tabindex="0">
+            <!-- LINGKARAN PROFIL -->
+            <div class="profile-icon">
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <circle cx="19" cy="19" r="19" fill="#eef7e6" />
+                <path
+                  d="M19 19c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zM19 21c-4.41 0-8 2.24-8 5v2h16v-2c0-2.76-3.59-5-8-5z"
+                  fill="#6fb32b"
+                />
+              </svg>
+            </div>
+
+            <!-- NAMA ADMIN DI BAWAH LINGKARAN -->
+            <div class="admin-name" id="adminName">Admin</div>
+          </div>
+
+          <!-- DROPDOWN -->
+          <div class="dropdown-content">
+            <a href="#" id="btnLogoutAdmin" class="logout-link">
+              <svg
+                width="17"
+                height="17"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#e04848"
+                style="margin-right: 7px"
+              >
+                <path
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1"
+                />
+              </svg>
+              Logout
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 
     <main>
       <div class="container-table">
         <div class="table-header">
-          <h2>Monitoring Kertas Kerja</h2>
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Cari Kode Satker, NUP, atau Nama Objek..."
-          />
+          <div class="title-group">
+            <div class="title-with-logo">
+              <img src="Gambar/siroto2.png" class="logo-siroto-title" />
+              <div>
+                <h2>Monitoring Kertas Kerja</h2>
+                <p class="subtitle">
+                  Data seluruh kertas kerja penaksiran kendaraan
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+              <path
+                d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Cari Nama satker, NUP, atau nama objek..."
+            />
+          </div>
         </div>
 
         <div class="table-responsive">
@@ -48,11 +97,11 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Kode Satker</th>
+                <th>Nama Satker</th>
                 <th>NUP</th>
                 <th>Nama Objek</th>
+                <th>Jenis Kendaraan</th>
                 <th>Taksiran Nilai Limit Lelang</th>
-                <th>Status</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -71,31 +120,6 @@
             "
           >
             Tidak ada data kertas kerja.
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal konfirmasi upload -->
-      <div id="uploadModal" class="modal-backdrop" aria-hidden="true">
-        <div class="modal">
-          <h3>Konfirmasi Upload</h3>
-          <p>Apakah file yang Anda upload sudah benar?</p>
-          <p class="file-name">
-            File:
-            <a id="modalFileLink" href="#" target="_blank" rel="noopener">-</a>
-          </p>
-          <div class="modal-actions">
-            <button id="btnCancel" class="btn-modal" type="button">
-              Tidak
-            </button>
-            <button id="btnOk" class="btn-modal primary" type="button">
-              Ya
-            </button>
-          </div>
-          <div class="modal-status">
-            <div id="modalSpinner" class="spinner"></div>
-            <div id="modalCheck" class="checkmark">✓</div>
-            <div id="modalMsg" class="modal-desc"></div>
           </div>
         </div>
       </div>
@@ -233,10 +257,14 @@
           0;
 
         return {
-          id: it.id || it.kertas_kerja_id || it.uuid || it._id || null,
-          kode_satker: it.kode_satker || input.kode_satker || it.satker || "-",
+          nama_satker: it.nama_satker || input.nama_satker || "-",
           nup: it.nup || input.nup || "-",
           nama_objek: it.nama_objek || input.nama_objek || "-",
+          jenis_kendaraan:
+            it.jenis_kendaraan ||
+            it.jenisKendaraan ||
+            input.jenis_kendaraan || // ⬅️ dari input kendaraan
+            "-",
           hasil_nilai_taksiran: Number(nilai) || 0,
           validated,
           rawUrl: absUrl(rawPath),
@@ -264,20 +292,18 @@
         tr.dataset.markUrl = kk.markUrl || "";
 
         tr.innerHTML = `
-          <td>${idx + 1}</td>
-          <td>${kk.kode_satker}</td>
-          <td>${kk.nup}</td>
-          <td>${kk.nama_objek}</td>
-          <td>${fmtIDR(kk.hasil_nilai_taksiran)}</td>
-          <td class="status-cell">${makeStatusBadge(kk.validated)}</td>
-          <td class="aksi-cell">
-            <button type="button" class="btn-preview">Preview</button>
-            <label class="btn-upload">
-              <input type="file" class="hidden-file" accept="application/pdf" />
-              Upload
-            </label>
-          </td>
-        `;
+    <td>${idx + 1}</td>
+    <td>${kk.nama_satker}</td>
+    <td>${kk.nup}</td>
+    <td>${kk.nama_objek}</td>
+    <td>${kk.jenis_kendaraan}</td>
+    <td>${fmtIDR(kk.hasil_nilai_taksiran)}</td>
+    <td>
+      <button class="btn-preview" data-url="${kk.pdfUrl}">
+        Preview
+      </button>
+    </td>
+  `;
         return tr;
       }
 
@@ -324,10 +350,10 @@
           const list = Array.isArray(json?.data)
             ? json.data
             : Array.isArray(json?.result)
-            ? json.result
-            : Array.isArray(json)
-            ? json
-            : [];
+              ? json.result
+              : Array.isArray(json)
+                ? json
+                : [];
 
           ALL_ROWS = list.map(normalizeKK);
           VIEW_ROWS = [...ALL_ROWS];
@@ -539,9 +565,10 @@
           tbody.innerHTML = "";
 
           VIEW_ROWS = ALL_ROWS.filter((r) => {
-            const s1 = (r.kode_satker || "").toUpperCase();
+            const s1 = (r.nama_satker || "").toUpperCase();
             const s2 = (r.nup || "").toUpperCase();
             const s3 = (r.nama_objek || "").toUpperCase();
+
             return s1.includes(f) || s2.includes(f) || s3.includes(f);
           });
 
@@ -559,8 +586,8 @@
         try {
           const name = Auth.getName("admin");
           if (name) {
-            const el = document.querySelector(".welcome-text");
-            if (el) el.textContent = `Selamat Datang, ${name}`;
+            const el = document.getElementById("adminName");
+            if (el) el.textContent = name;
           }
         } catch (e) {}
       }

@@ -9,15 +9,23 @@
 body,
 input {
   font-family: "Inter", Arial, sans-serif;
-  background: #f8fafc;
-  color: #23304c;
+  background: #f3f4f2;
+  color: #234c26;
 }
 
 .logo-kemenkeu-login {
   position: fixed;
-  top: 20px;
+  top: 35px;
   left: 36px;
-  width: 220px;
+  width: 280px;
+  height: auto;
+  z-index: 11;
+}
+.logo-siroto-login {
+  position: fixed;
+  top: 20px;
+  right: 36px; /* kunci: pakai RIGHT, bukan left */
+  width: 180px; /* sesuaikan agar tidak terlalu dominan */
   height: auto;
   z-index: 11;
 }
@@ -26,7 +34,7 @@ input {
   position: relative;
   width: 100vw;
   min-height: 100vh;
-  background: #f8fafc;
+  background: #f3f4f2;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -78,7 +86,7 @@ form.sign-in-form {
 
 .title {
   font-size: 2rem;
-  color: #2577e2;
+  color: #6fb32b;
   margin-bottom: 20px;
   font-weight: 900;
   letter-spacing: 0.5px;
@@ -109,21 +117,27 @@ form.sign-in-form {
 .form-group input {
   width: 100%;
   padding: 10px 5px;
-  border: 1.3px solid #dde7f4;
+  border: 1.3px solid #e2f4dd;
   border-radius: 8px;
   font-size: 12px;
-  background: #f4f8fe;
-  color: #1d2b4b;
+  background: #ffffff;
+  color: #406d1c;
   font-family: inherit;
   outline: none;
   font-weight: 500;
   margin-bottom: 10px;
-  transition: border 0.18s, background 0.17s;
+  transition:
+    border 0.18s,
+    background 0.17s;
 }
 
 .form-group input:focus {
-  border-color: #2577e2;
-  background: #e7f0fa;
+  border-color: #6fb32b;
+  background: #f3f4f2;
+}
+
+.form-group input::placeholder {
+  color: #7a8f5a;
 }
 
 .red {
@@ -134,7 +148,7 @@ form.sign-in-form {
 .btn {
   width: 100%;
   max-width: 210px;
-  background: linear-gradient(90deg, #2577e2 0%, #4998ff 100%);
+  background: linear-gradient(90deg, #6fb32b 0%, #a6d65d 100%);
   border: none;
   outline: none;
   height: 38px;
@@ -145,16 +159,18 @@ form.sign-in-form {
   margin: 13px 0 7px 0;
   cursor: pointer;
   font-size: 1.06rem;
-  transition: background 0.18s, transform 0.15s;
+  transition:
+    background 0.18s,
+    transform 0.15s;
   box-shadow: 0 2px 8px #2a78e22b;
   letter-spacing: 0.6px;
 }
 
 .btn:hover,
 .btn:focus {
-  background: linear-gradient(90deg, #1958ac 0%, #398ce1 100%);
+  background: linear-gradient(90deg, #6fb32b 0%, #8dc63f 100%);
   color: #fff;
-  box-shadow: 0 4px 16px #2577e234;
+  box-shadow: 0 4px 16px #6fb32b34;
   transform: translateY(-2px) scale(1.03);
 }
 
@@ -170,13 +186,15 @@ form.sign-in-form {
   box-shadow: none;
   text-transform: uppercase;
   letter-spacing: 0.7px;
-  transition: background 0.15s, color 0.18s;
+  transition:
+    background 0.15s,
+    color 0.18s;
 }
 .btn.transparent:hover,
 .btn.transparent:focus {
-  background: #e3edfb;
-  color: #2577e2;
-  border-color: #2577e2;
+  background: #e9f2da;
+  color: #6fb32b;
+  border-color: #6fb32b;
 }
 
 .btn-signup,
@@ -184,16 +202,18 @@ form.sign-in-form {
   margin-top: 40px;
   width: 200px;
   padding: 10px 0;
-  background: linear-gradient(90deg, #022058 0%, #4998ff 100%);
+  background: linear-gradient(90deg, #6fb32b 0%, #a6d65d 100%);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 700;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background 0.18s, transform 0.13s;
+  transition:
+    background 0.18s,
+    transform 0.13s;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 10px #2577e230;
+  box-shadow: 0 2px 10px #6fb32b30;
   align-items: center;
 }
 
@@ -203,7 +223,7 @@ form.sign-in-form {
 
 .btn-signup:hover,
 .btn-login:hover {
-  background: linear-gradient(90deg, #1958ac 0%, #177de4 100%);
+  background: linear-gradient(90deg, #6fb32b 0%, #6fb32b 100%);
 }
 
 .login-extra {
@@ -211,7 +231,7 @@ form.sign-in-form {
 }
 
 .forgot-link {
-  color: #2577e2;
+  color: #6fb32b;
   text-decoration: underline;
   font-weight: 700;
   font-size: 0.7em;
@@ -227,7 +247,7 @@ form.sign-in-form {
 }
 
 .superadmin-link a {
-  color: #2577e2;
+  color: #6fb32b;
   font-weight: 700;
   text-decoration: underline;
 }
@@ -235,7 +255,9 @@ form.sign-in-form {
 form.sign-in-form {
   width: 450px;
   border-radius: 14px;
-  box-shadow: 0 4px 24px #a0b5d91a, 0 1.5px 8px #1d2b4b18;
+  box-shadow:
+    0 4px 24px #a0b5d91a,
+    0 1.5px 8px #1d2b4b18;
   padding: 42px 40px 22px 40px;
   margin: 42px auto 0 auto;
   display: flex;
@@ -268,19 +290,19 @@ form.sign-up-form {
   top: -15%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #022058 0%, #2577e2 100%);
+  background-image: linear-gradient(-45deg, #6fb32b 0%, #6fb32b 100%);
   transition: 1.8s cubic-bezier(0.77, 0, 0.175, 1);
   border-radius: 50%;
   z-index: 6;
 }
 
 .image {
-  width: 100%;
-  max-width: 340px;
-  min-width: 180px;
+  width: 800px;
+  max-width: 400px;
+  min-width: 200px;
   transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1);
   transition-delay: 0.4s;
-  margin: 10px 100px;
+  margin: 10px 40px;
 }
 
 .panel {
@@ -538,22 +560,24 @@ form.sign-up-form {
   height: 30px;
   border: 0;
   background: transparent;
-  color: #1d2b4b;
+  color: #264b1d;
   opacity: 0.7;
   cursor: pointer;
   display: grid;
   place-items: center;
   border-radius: 8px;
-  transition: background 0.15s, opacity 0.15s, transform 0.1s;
+  transition:
+    background 0.15s,
+    opacity 0.15s,
+    transform 0.1s;
 }
 .input-with-eye .toggle-pass:hover,
 .input-with-eye .toggle-pass:focus {
-  background: #e7f0fa;
   opacity: 1;
   outline: none;
 }
 .input-with-eye .toggle-pass.active {
-  color: #2577e2;
+  color: #6fb32b;
 }
 
 /* ====== Tombol: spinner loading ====== */
@@ -598,7 +622,9 @@ form.sign-up-form {
   width: min(520px, 92vw);
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(2, 32, 88, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 10px 30px rgba(2, 32, 88, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.06);
   padding: 24px 24px 20px 24px;
   position: relative;
   animation: pop 0.16s ease-out;
@@ -621,13 +647,14 @@ form.sign-up-form {
   height: 36px;
   border: 0;
   border-radius: 10px;
-  background: #f1f5fb;
-  color: #022058;
+  background: #e9f2da;
+  color: #6fb32b;
   font-size: 18px;
   cursor: pointer;
 }
 .modal-close:hover {
-  background: #e3edfb;
+  background: #6fb32b;
+  color: #e9f2da;
 }
 .modal-icon {
   margin: 6px 0 8px 0;
@@ -635,7 +662,7 @@ form.sign-up-form {
 .modal-title {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #022058;
+  color: #6fb32b;
   margin-bottom: 6px;
 }
 .modal-message {
@@ -657,12 +684,12 @@ form.sign-up-form {
   letter-spacing: 0.3px;
 }
 .modal-btn.primary {
-  background: linear-gradient(90deg, #022058 0%, #4998ff 100%);
+  background: linear-gradient(90deg, #6fb32b 0%, #a6d65d 100%);
   color: #fff;
 }
 .modal-btn.secondary {
-  background: #f1f5fb;
-  color: #022058;
+  background: #e9f2da;
+  color: #6fb32b;
 }
 
 /* Sembunyikan tombol reveal bawaan Edge/IE pada input password */
@@ -674,4 +701,27 @@ input[type="password"]::-ms-clear {
 /* Sedikit padding kanan agar teks tidak ketimpa tombol custom */
 .input-with-eye input {
   padding-right: 44px; /* ruang untuk tombol .toggle-pass */
+}
+
+.satker-list {
+  position: absolute;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d6e8c6;
+  border-radius: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  display: none;
+}
+
+.satker-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.satker-item:hover {
+  background: #eef7e6; /* hijau lembut DJKN */
 }

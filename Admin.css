@@ -1,170 +1,282 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
 
-/* ===== Theme ===== */
+/* ================= ROOT THEME ================= */
 :root {
-  --brand-700: #1958ac;
-  --brand-600: #2260a9;
-  --brand-500: #2f80ed;
-  --bg: #f3f5fa;
-  --ink: #243b63;
-  --muted: #6f86a5;
-  --border: #e9eef8;
-  --success: #16a34a;
-  --warning: #ffaf1a;
-  --danger: #e74c3c;
-  --shadow-lg: 0 12px 36px rgba(20, 34, 58, 0.2);
+  --primary: #6fb32b;
+  --primary-dark: #4f8f1f;
+  --primary-soft: #eaf6e2;
+
+  --bg: #f3f4f2;
+  --white: #ffffff;
+
+  --text-main: #1f2d1b;
+  --text-muted: #6b7280;
+
+  --border: #e5e7eb;
+
+  --shadow-soft: 0 4px 18px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  --danger: #e04848;
 }
 
-/* ===== Base ===== */
+/* ================= BASE ================= */
 * {
   box-sizing: border-box;
-}
-html,
-body {
-  height: 100%;
-}
-body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
+  padding: 0;
 }
 
-/* ===== Header ===== */
+body {
+  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  color: var(--text-main);
+}
+
+/* ================= HEADER ================= */
 .header {
-  max-width: 1120px;
-  margin: 24px auto 0;
-  padding: 28px 36px;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 18px 28px;
+
+  background: linear-gradient(90deg, #8cc63f, #6fb32b);
+  border-radius: 20px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 28px;
-  color: #fff;
-  background: linear-gradient(90deg, #2d53a3 0%, #2386d9 100%);
-  box-shadow: 0 12px 30px rgba(23, 61, 136, 0.18);
+
+  box-shadow: var(--shadow-medium);
 }
-.logo-kemenkeu {
-  height: 55px;
-  width: auto;
+
+.header-left {
+  display: flex;
+  align-items: center;
 }
+
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
 .header-right {
   display: flex;
   align-items: center;
-  gap: 18px;
-}
-.welcome-text {
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-.icon-vehicle img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-}
-.user-role {
-  font-size: 28px;
-  font-weight: 800;
+  gap: 14px;
 }
 
-/* ===== Layout ===== */
+.logo-kemenkeu {
+  height: 40px;
+}
+
+.icon-vehicle {
+  width: 150px;
+}
+
+.welcome-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.user-role {
+  font-weight: 700;
+  color: white;
+}
+
+.btn-logout {
+  border: none;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-logout:hover {
+  background-color: #dc2626;
+}
+
+.btn-logout svg,
+.btn-logout i {
+  pointer-events: none;
+}
+
+/* ================= MAIN ================= */
 main {
-  padding: 32px 16px;
+  padding: 10px 20px 40px;
 }
+.title-group h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2f6d1f;
+  letter-spacing: -0.2px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.title-with-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-siroto-title {
+  width: 100px;
+  object-fit: contain;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+/* ================= CARD ================= */
 .container-table {
-  max-width: 1120px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 13px;
-  box-shadow: 0 2px 13px rgba(32, 56, 95, 0.1);
-  padding: 26px 24px 32px;
+  max-width: 1200px;
+  margin: auto;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 28px 26px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 }
+
+/* ================= HEADER TABLE ================= */
 .table-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  align-items: center;
+  margin-bottom: 22px;
 }
+
 .table-header h2 {
-  margin: 0;
-  color: var(--brand-600);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 800;
+  color: var(--primary-dark);
 }
 
-#searchInput {
-  width: 360px;
-  max-width: 100%;
-  padding: 9px 14px;
-  border: 1.5px solid var(--brand-600);
-  border-radius: 8px;
-  background: #f7fafc;
-  outline: 0;
-  transition: border-color 0.15s;
-}
-#searchInput:focus {
-  border-color: #2090e9;
-}
-
-/* ===== Table ===== */
-.table-responsive {
-  overflow-x: auto;
-  margin-top: 10px;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-th,
-td {
-  padding: 12px 10px;
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-  white-space: nowrap;
-}
-th {
-  background: #f5f8fc;
-  color: #295484;
-  font-weight: 700;
-}
-.aksi-cell {
+/* search */
+.search-box {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px 12px;
+  width: 320px;
+  transition: 0.2s;
 }
 
-/* ===== Buttons (download removed) ===== */
-.btn-preview,
-.btn-upload {
-  border: 0;
-  border-radius: 8px;
-  padding: 7px 14px;
+.search-box svg {
+  color: #9ca3af;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
   font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  transition: filter 0.15s, transform 0.04s;
 }
+
+.search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(111, 179, 43, 0.15);
+}
+
+/* ================= TABLE ================= */
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid #eef2f7;
+  background: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+/* HEADER */
+th {
+  background: #f3f7f0;
+  color: #2f6d1f;
+  font-weight: 700;
+  padding: 15px 14px;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* BODY */
+td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1f2937;
+}
+
+/* zebra subtle */
+tbody tr:nth-child(even) {
+  background: #fcfcfc;
+}
+
+/* hover halus */
+tbody tr:hover {
+  background: #f5f7f9;
+  transition: background 0.15s ease;
+}
+
+/* ================= BUTTON ================= */
 .btn-preview {
-  background: var(--brand-500);
+  background: linear-gradient(135deg, #6fb32b, #8cc63f);
+  color: white;
+  border: none;
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
+
 .btn-preview:hover {
-  filter: brightness(0.93);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(111, 179, 43, 0.25);
 }
-.btn-upload {
-  background: var(--warning);
+
+/* ================= EMPTY ================= */
+#emptyState {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
 }
-.btn-upload:hover {
-  filter: brightness(0.92);
-}
-.btn-upload input[type="file"] {
-  display: none;
-}
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-center {
+    text-align: center;
+  }
+
+  .table-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
 }
 
 /* ===== Badge Status ===== */
@@ -274,7 +386,9 @@ button:disabled {
   cursor: pointer;
   background: #e5ecff;
   color: #1e3a8a;
-  transition: background 0.15s, transform 0.04s;
+  transition:
+    background 0.15s,
+    transform 0.04s;
 }
 .btn-modal:hover {
   background: #d7e3ff;
@@ -378,10 +492,122 @@ button:disabled {
   color: #fff;
   border: none;
   border-radius: 6px;
-  padding: 6px 14px;
+  padding: 5px 8px;
   cursor: pointer;
   font-size: 14px;
 }
 .btn-logout:hover {
   background: #c92c3c;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card h4 {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.stat-card p {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.admin-name {
+  font-size: 12px;
+  color: white;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.profile-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #d6e8c6;
+  transition: border 0.15s;
+  background: #eef7e6;
+}
+.profile-icon:hover,
+.profile-icon:focus {
+  border: 2.5px solid #6fb32b;
+  outline: none;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 4px; /* sejajar vertikal dengan icon */
+  left: 50px; /* ⬅️ ini kunci: geser ke kanan dari icon */
+  background-color: #fff;
+  min-width: 100px;
+  box-shadow: 0 2px 15px #6e7da62e;
+  border-radius: 10px;
+  z-index: 102;
+  overflow: hidden;
+  animation: fadeindrop 0.13s;
+}
+@keyframes fadeindrop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.profile-dropdown:hover .dropdown-content,
+.profile-icon:focus + .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  color: #2d3757;
+  padding: 10px 14px 10px 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f2f8;
+  transition:
+    background 0.14s,
+    color 0.13s;
+  gap: 7px;
+}
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+.dropdown-content a:hover {
+  background: #eef7e6;
+  color: #206d1c;
+}
+.dropdown-content .logout-link {
+  color: #e04848 !important;
+  font-weight: 600;
+}
+.dropdown-content .logout-link:hover {
+  background: #ffecec;
+  color: #ad2323 !important;
 }

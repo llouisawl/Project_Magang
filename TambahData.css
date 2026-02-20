@@ -24,6 +24,13 @@
   --muted: #6c87d7;
 
   --overlay: rgba(15, 23, 42, 0.42);
+  --primary: #6fb32b;
+  --primary-dark: #4e9a1f;
+  --primary-soft: #eaf7e3;
+  --primary-border: #cfe8b7;
+
+  --text-dark: #1d2b4b;
+  --text-muted: #6b7280;
 }
 
 * {
@@ -35,7 +42,13 @@ body {
 }
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
     sans-serif;
   background: var(--bg);
   color: #23304c;
@@ -62,7 +75,7 @@ body {
   margin-bottom: 16px;
 }
 .brand img {
-  height: 44px;
+  height: 36px;
   width: auto;
   display: block;
 }
@@ -77,9 +90,9 @@ body {
   gap: 12px;
   padding: 12px 14px;
   border-radius: 12px;
-  color: var(--blue-700);
+  color: #4e9a1f;
   text-decoration: none;
-  background: #eef3ff;
+  background: #f3f9ec;
   transition: 0.18s;
 }
 .nav-item:hover {
@@ -87,8 +100,8 @@ body {
   transform: translateY(-1px);
 }
 .nav-item.active {
-  background: var(--blue-700);
-  color: #fff;
+  background: #6fb32b;
+  color: #ffffff;
 }
 .nav-ico {
   display: inline-flex;
@@ -103,17 +116,17 @@ body {
   fill: none;
 }
 .nav-item {
-  color: var(--blue-700);
-}
-.nav-item:not(.active):hover {
-  color: #23408d;
+  color: #4e9a1f;
 }
 .nav-item.active {
   color: #fff;
 }
 .nav-item,
 .nav-item .nav-ico svg {
-  transition: color 0.18s ease, background 0.18s ease, transform 0.15s ease;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease,
+    transform 0.15s ease;
 }
 
 /* Main + header */
@@ -127,7 +140,7 @@ body {
   min-width: 0; /* biarkan shrink saat ada sibling sidebar */
 }
 .hero {
-  background: linear-gradient(90deg, var(--blue-700) 0%, #1f86d5 100%);
+  background: linear-gradient(90deg, #6fb32b, #8cc63f);
   color: #fff;
   border-radius: 20px;
   padding: 28px 32px;
@@ -136,6 +149,7 @@ body {
   justify-content: space-between;
   box-shadow: 0 8px 22px rgba(32, 78, 165, 0.18);
 }
+
 .hero-title {
   font-size: 28px;
   font-weight: 800;
@@ -147,10 +161,11 @@ body {
   gap: 14px;
 }
 .hero-logo {
-  height: 20px;
+  height: 50px;
   width: auto;
-  transition: 0.18s;
+  object-fit: contain;
 }
+
 .hero-logo:hover {
   transform: scale(1.06) rotate(-1deg);
 }
@@ -161,20 +176,31 @@ body {
 
 /* Tombol logout */
 .btn-logout {
-  background: var(--danger);
-  color: #fff;
-  border: 0;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+
+  border: 1.8px solid rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 14px;
+
   cursor: pointer;
-  transition: background 0.18s, transform 0.15s;
-}
-.btn-logout:hover {
-  filter: brightness(0.95);
-  transform: translateY(-1px);
+  backdrop-filter: blur(2px);
+  transition: all 0.2s ease;
 }
 
+.btn-logout:hover {
+  background: #e74c3c;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(231, 76, 60, 0.25);
+}
 /* Card */
 .card {
   background: var(--card);
@@ -202,14 +228,19 @@ body {
   position: relative;
   width: 360px;
   max-width: 50vw;
-  border: 1.5px dashed #cfe0ff;
+  border: 1.5px dashed var(--primary-border);
+  background: #f8fff2;
   border-radius: 999px;
   padding: 8px 14px 8px 36px;
-  background: #f8fbff;
-  transition: box-shadow 0.18s, transform 0.12s;
+
+  transition:
+    box-shadow 0.18s,
+    transform 0.12s;
 }
 .search:focus-within {
-  box-shadow: 0 0 0 4px rgba(56, 109, 255, 0.1), var(--shadow);
+  box-shadow:
+    0 0 0 4px rgba(56, 109, 255, 0.1),
+    var(--shadow);
   transform: translateY(-1px);
 }
 .search-ico {
@@ -227,7 +258,10 @@ body {
   font: inherit;
   color: #23304c;
 }
-
+.search-ico svg path,
+.search-ico svg circle {
+  stroke: var(--primary-dark);
+}
 /* Buttons */
 .btn {
   border: 0;
@@ -238,25 +272,25 @@ body {
   letter-spacing: 0.3px;
 }
 .btn.ghost {
-  background: #f1f5fb;
-  color: #1d2b4b;
+  background: #fbfff8;
+  color: #1d4b2d;
   border: 1px solid #d1d9e6;
 }
 .btn.ghost:hover {
-  background: #e3edfb;
+  background: #e3fbe6;
   transform: translateY(-1px);
 }
 .btn.primary {
-  background: #2577e2;
+  background: var(--primary);
+  box-shadow: 0 3px 10px rgba(111, 179, 43, 0.25);
   color: #fff;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(37, 119, 226, 0.22);
   transition: 0.18s;
 }
 .btn.primary:hover {
-  background: linear-gradient(90deg, #1958ac 0%, #177de4 100%);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 22px rgba(37, 119, 226, 0.28);
+  background: var(--primary-dark);
+  box-shadow: 0 8px 20px rgba(111, 179, 43, 0.35);
 }
 .btn.danger {
   background: #e74c3c;
@@ -270,7 +304,7 @@ body {
 .table-wrap {
   overflow-x: auto;
   border-radius: 14px;
-  border: 1px solid var(--line);
+  border: 1px solid #d9edc8;
   /* ===== OVERRIDE: beri ruang bawah untuk scrollbar agar tidak menutupi baris ===== */
   padding-bottom: 6px;
 }
@@ -280,8 +314,8 @@ table {
   background: #fff;
 }
 thead th {
-  background: #eaf0ff;
-  color: #3a4e91;
+  background: #eef7e8;
+  color: #3d6f1a;
   font-weight: 800;
   font-size: 14px;
   padding: 14px;
@@ -292,7 +326,7 @@ tbody td {
   border-top: 1px solid #f0f3ff;
 }
 tbody tr:hover {
-  background: linear-gradient(0deg, #fafcff, #ffffff);
+  background: linear-gradient(0deg, #f6fff0, #ffffff);
 }
 .text-center {
   text-align: center;
@@ -326,17 +360,20 @@ td.empty {
 }
 .field span {
   font-size: 13px;
-  color: #3a4e91;
+  color: #3d6f1a;
   font-weight: 700;
 }
 .field input,
 .field select {
   padding: 10px 12px;
-  border: 1px solid #dfe6fb;
+  border: 1px solid var(--primary-border);
+  background: #fbfff8;
   border-radius: 10px;
   outline: none;
-  background: #fff;
-  transition: border-color 0.15s, box-shadow 0.15s;
+
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 .field input:focus,
 .field select:focus {
@@ -392,6 +429,10 @@ td.empty {
   justify-content: center;
   gap: 10px;
   padding: 12px 18px 18px;
+}
+.card h3 {
+  color: var(--primary-dark);
+  font-weight: 800;
 }
 
 /* Spinner & checkmark */
@@ -539,4 +580,15 @@ body {
 .search {
   max-width: 560px;
   width: 100%;
+}
+#prevPage,
+#nextPage {
+  border: 1px solid #cfe8b7;
+  background: #f3f9ec;
+  color: #3d6f1a;
+}
+
+#prevPage:hover,
+#nextPage:hover {
+  background: #e2f3d2;
 }

@@ -1,0 +1,2888 @@
+[
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN KONAWE SELATAN",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KOTA BANJARMASIN",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KOTA BANJAR BARU",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN ENDE",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN MURUNG RAYA",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KOTA MANADO",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KOTA PONTIANAK",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KOTA KUPANG",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KOTA PANGKAL PINANG",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KABUPATEN GORONTALO",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KOTA PALANGKA RAYA",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN TANAH BUMBU",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN TAPIN",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA SURABAYA",
+    "KPKNL": " Surabaya",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KOTA SINGKAWANG",
+    "KPKNL": " Singkawang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KABUPATEN BANGKA TENGAH",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KOTA BALIKPAPAN",
+    "KPKNL": " Balikpapan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN MOROWALI",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DI YOGYAKARTA",
+    "KOTA": "KOTA YOGYAKARTA",
+    "KPKNL": " Yogyakarta",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN KETAPANG",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DKI JAKARTA",
+    "KOTA": "KOTA JAKARTA TIMUR",
+    "KPKNL": " Jakarta V",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KABUPATEN POHUWATO",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN BALANGAN",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN BENGKULU UTARA",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN TOJO UNA-UNA",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN MAROS",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA MOJOKERTO",
+    "KPKNL": " Sidoarjo",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KOTA PRABUMULIH",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN SUKOHARJO",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KOTA AMBON",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN WONOGIRI",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN PANGKAJENE DAN KEPULAUAN",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN JEMBER",
+    "KPKNL": " Jember",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN ASAHAN",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN LUWU TIMUR",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA PEMATANG SIANTAR",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN SABU RAIJUA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KOTA PAREPARE",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KOTA JAMBI",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN LUWU",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DKI JAKARTA",
+    "KOTA": "KOTA JAKARTA PUSAT",
+    "KPKNL": " Jakarta V",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN PENAJAM PASER UTARA",
+    "KPKNL": " Balikpapan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN LAMPUNG SELATAN",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DI YOGYAKARTA",
+    "KOTA": "KABUPATEN SLEMAN",
+    "KPKNL": " Yogyakarta",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN GRESIK",
+    "KPKNL": " Surabaya",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN TANJUNG JABUNG BARAT",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KOTA DENPASAR",
+    "KPKNL": " Denpasar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN BANYUMAS",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA MEDAN",
+    "KPKNL": " Medan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN PURWOREJO",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN SIKKA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN BEKASI",
+    "KPKNL": " Bekasi",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN MANOKWARI",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN GIANYAR",
+    "KPKNL": " Denpasar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN BUTON UTARA",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DKI JAKARTA",
+    "KOTA": "KOTA JAKARTA SELATAN",
+    "KPKNL": " Jakarta II",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN CILACAP",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN SUMBAWA",
+    "KPKNL": " Bima",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KOTA TERNATE",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN BANYUWANGI",
+    "KPKNL": " Jember",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KOTA BENGKULU",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI BARAT",
+    "KOTA": "KABUPATEN MAJENE",
+    "KPKNL": " Mamuju",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN KUDUS",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KOTA KENDARI",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KOTA TANGERANG SELATAN",
+    "KPKNL": " Tangerang I",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KOTA TEGAL",
+    "KPKNL": " Tegal",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KOTA SAMARINDA",
+    "KPKNL": " Samarinda",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KOTA PALEMBANG",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA PADANG PANJANG",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KABUPATEN BONE BOLANGO",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA KEDIRI",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KOTA GORONTALO",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KOTA SERANG",
+    "KPKNL": " Serang",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN SIDENRENG RAPPANG",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN SAMBAS",
+    "KPKNL": " Singkawang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA BUKITTINGGI",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA PADANG",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN LAMANDAU",
+    "KPKNL": " Pangkalan Bun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KOTA BANDA ACEH",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH BARAT",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN PATI",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN KARAWANG",
+    "KPKNL": " Purwakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN REJANG LEBONG",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN TAPANULI TENGAH",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KOTA SEMARANG",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA PAYAKUMBUH",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN LIMA PULUH KOTA",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA MADIUN",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN LAMPUNG UTARA",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA TANJUNG BALAI",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KOTA SURAKARTA",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN TELUK WONDAMA",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN BOYOLALI",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN DEMAK",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KOTA MAKASSAR",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI BARAT",
+    "KOTA": "KABUPATEN MAMUJU",
+    "KPKNL": " Mamuju",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN NGANJUK",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA MALANG",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN CIAMIS",
+    "KPKNL": " Tasikmalaya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KOTA MATARAM",
+    "KPKNL": " Mataram",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN KEPULAUAN ARU",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN BATANG",
+    "KPKNL": " Pekalongan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN LOMBOK BARAT",
+    "KPKNL": " Mataram",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN LOMBOK TIMUR",
+    "KPKNL": " Mataram",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA CIMAHI",
+    "KPKNL": " Bandung",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KOTA SORONG",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN NIAS BARAT",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN BANDUNG BARAT",
+    "KPKNL": " Bandung",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH TENGAH",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA PROBOLINGGO",
+    "KPKNL": " Jember",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DKI JAKARTA",
+    "KOTA": "KOTA JAKARTA UTARA",
+    "KPKNL": " Jakarta II",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH BARAT DAYA",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA BOGOR",
+    "KPKNL": " Bogor",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN BREBES",
+    "KPKNL": " Tegal",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN SIDOARJO",
+    "KPKNL": " Sidoarjo",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KOTA LANGSA",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA TASIKMALAYA",
+    "KPKNL": " Tasikmalaya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KABUPATEN GORONTALO UTARA",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN SEMARANG",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN KAPUAS HULU",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA BANDUNG",
+    "KPKNL": " Bandung",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KABUPATEN BOALEMO",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN KAYONG UTARA",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN KEPULAUAN TALAUD",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN KOLAKA",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN SEKADAU",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DI YOGYAKARTA",
+    "KOTA": "KABUPATEN KULON PROGO",
+    "KPKNL": " Yogyakarta",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KOTA LUBUKLINGGAU",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN PADANG LAWAS UTARA",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KOTA PEKANBARU",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN BANGGAI",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN TANGGAMUS",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KOTA TANGERANG",
+    "KPKNL": " Tangerang II",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN KUTAI KARTANEGARA",
+    "KPKNL": " Samarinda",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA SUKABUMI",
+    "KPKNL": " Bogor",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN MUSI RAWAS UTARA",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI BARAT",
+    "KOTA": "KABUPATEN PASANGKAYU",
+    "KPKNL": " Mamuju",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH TENGGARA",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN TUBAN",
+    "KPKNL": " Surabaya",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN BULUKUMBA",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN SUMENEP",
+    "KPKNL": " Pamekasan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN MALANG",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KOTA TUAL",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN UTARA",
+    "KOTA": "KABUPATEN TANA TIDUNG",
+    "KPKNL": " Tarakan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN KLUNGKUNG",
+    "KPKNL": " Denpasar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN GUNUNG MAS",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KOTA TIDORE KEPULAUAN",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN GARUT",
+    "KPKNL": " Tasikmalaya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN EMPAT LAWANG",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KOTA PALU",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN OGAN KOMERING ILIR",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN MANDAILING NATAL",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN TIMOR TENGAH SELATAN",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN MALUKU TENGAH",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN MELAWI",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH SINGKIL",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN NGAWI",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN TANA TORAJA",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN LAHAT",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN KEPULAUAN SULA",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN TOBA SAMOSIR",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA PADANGSIDIMPUAN",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN BANJARNEGARA",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN BOGOR",
+    "KPKNL": " Bogor",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN BARITO SELATAN",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN PULANG PISAU",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN SINTANG",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KOTA PALOPO",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN TEMANGGUNG",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN PENUKAL ABAB LEMATANG ILIR",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN KAMPAR",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN POSO",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN BELU",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN MANGGARAI BARAT",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN MALAKA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN MANGGARAI",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN BENER MERIAH",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DI YOGYAKARTA",
+    "KOTA": "KABUPATEN BANTUL",
+    "KPKNL": " Yogyakarta",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN SUMEDANG",
+    "KPKNL": " Bandung",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN SANGGAU",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN BANTAENG",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KOTA SUBULUSSALAM",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN PRINGSEWU",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN HULU SUNGAI TENGAH",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN KARANGANYAR",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN KEPULAUAN MERANTI",
+    "KPKNL": " Dumai",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN LEBONG",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN JEMBRANA",
+    "KPKNL": " Singaraja",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN HALMAHERA SELATAN",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN BUTON SELATAN",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN KUPANG",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN SUMBAWA BARAT",
+    "KPKNL": " Bima",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN TANAH DATAR",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN TEBO",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KOTA BITUNG",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN MALUKU TENGGARA",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN KLATEN",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN RAJA AMPAT",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN BANYU ASIN",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN DONGGALA",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN UTARA",
+    "KOTA": "KOTA TARAKAN",
+    "KPKNL": " Tarakan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN PESAWARAN",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN JOMBANG",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN SUBANG",
+    "KPKNL": " Purwakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN KOTAWARINGIN BARAT",
+    "KPKNL": " Pangkalan Bun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN MUSI BANYUASIN",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN KUTAI TIMUR",
+    "KPKNL": " Bontang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA TEBING TINGGI",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN BOMBANA",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN KOLAKA UTARA",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN RIAU",
+    "KOTA": "KABUPATEN NATUNA",
+    "KPKNL": " Batam",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA BEKASI",
+    "KPKNL": " Bekasi",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN ALOR",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN MAGELANG",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA GUNUNGSITOLI",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN BOLAANG MONGONDOW UTARA",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN HALMAHERA BARAT",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KOTA BIMA",
+    "KPKNL": " Bima",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN ROKAN HILIR",
+    "KPKNL": " Dumai",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN NIAS SELATAN",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN TAPANULI UTARA",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KABUPATEN PANDEGLANG",
+    "KPKNL": " Serang",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KEPULAUAN RIAU",
+    "KOTA": "KABUPATEN BINTAN",
+    "KPKNL": " Batam",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN UTARA",
+    "KOTA": "KABUPATEN BULUNGAN",
+    "KPKNL": " Tarakan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN TANAH LAUT",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN TEGAL",
+    "KPKNL": " Tegal",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA BINJAI",
+    "KPKNL": " Medan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN BARRU",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA DEPOK",
+    "KPKNL": " Bogor",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "DKI JAKARTA",
+    "KOTA": "KOTA JAKARTA BARAT",
+    "KPKNL": " Jakarta II",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "KALIMANTAN UTARA",
+    "KOTA": "KABUPATEN NUNUKAN",
+    "KPKNL": " Tarakan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN KOTA BARU",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN SUMBA TIMUR",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN PACITAN",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN MALUKU BARAT DAYA",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN SITUBONDO",
+    "KPKNL": " Jember",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN BANJAR",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN GOWA",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KOTA BONTANG",
+    "KPKNL": " Bontang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN PESISIR SELATAN",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN INDRAGIRI HILIR",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KABUPATEN BELITUNG TIMUR",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN BADUNG",
+    "KPKNL": " Denpasar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN SINJAI",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN MERAUKE",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN WAJO",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA BLITAR",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN OGAN KOMERING ULU TIMUR",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN BANDUNG",
+    "KPKNL": " Bandung",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN KEBUMEN",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA BATU",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH TIMUR",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN TAKALAR",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN KEPULAUAN TANIMBAR",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH JAYA",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KOTA KOTAMOBAGU",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN OGAN KOMERING ULU SELATAN",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN SRAGEN",
+    "KPKNL": " Surakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN LABUHAN BATU",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN BANGKALAN",
+    "KPKNL": " Pamekasan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KOTA BANDAR LAMPUNG",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN SAMOSIR",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN SOLOK SELATAN",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KABUPATEN SERANG",
+    "KPKNL": " Serang",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN PROBOLINGGO",
+    "KPKNL": " Jember",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN SIGI",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN KAPUAS",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN BUTON",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN BENGKALIS",
+    "KPKNL": " Dumai",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN PAKPAK BHARAT",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KOTA BAUBAU",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN BLORA",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN KEPULAUAN MENTAWAI",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KOTA JAYAPURA",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN PURWAKARTA",
+    "KPKNL": " Purwakarta",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN KARO",
+    "KPKNL": " Medan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN OGAN KOMERING ULU",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN MAGETAN",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN JEPARA",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN BIAK NUMFOR",
+    "KPKNL": " Biak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN MERANGIN",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN ROTE NDAO",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN LAMPUNG TENGAH",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN GROBOGAN",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN MUARO JAMBI",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN BENGKAYANG",
+    "KPKNL": " Singkawang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN PADANG LAWAS",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN KEPAHIANG",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN PURBALINGGA",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN BARITO UTARA",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN PONOROGO",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN KERINCI",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN HULU SUNGAI UTARA",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN KUBU RAYA",
+    "KPKNL": " Pontianak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KABUPATEN BANGKA BARAT",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN OGAN ILIR",
+    "KPKNL": " Palembang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KOTA D U M A I",
+    "KPKNL": " Dumai",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN BONE",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN KOTAWARINGIN TIMUR",
+    "KPKNL": " Pangkalan Bun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN LABUHAN BATU UTARA",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN BENGKULU SELATAN",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN TABANAN",
+    "KPKNL": " Denpasar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN MUARA ENIM",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN TRENGGALEK",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN HUMBANG HASUNDUTAN",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN SELUMA",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN NGADA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN BULELENG",
+    "KPKNL": " Singaraja",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH BESAR",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KOTA LHOKSEUMAWE",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN PINRANG",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH TAMIANG",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN KATINGAN",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN PEMALANG",
+    "KPKNL": " Tegal",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN SORONG",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN TABALONG",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KOTA SABANG",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN INDRAGIRI HULU",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN BUNGO",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN TORAJA UTARA",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN ENREKANG",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KABUPATEN KARANG ASEM",
+    "KPKNL": " Singaraja",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN SUKABUMI",
+    "KPKNL": " Bogor",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN ACEH SELATAN",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA PARIAMAN",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN LAMPUNG BARAT",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN ROKAN HULU",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KOTA PEKALONGAN",
+    "KPKNL": " Pekalongan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN TIMOR TENGAH UTARA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN TULUNGAGUNG",
+    "KPKNL": " Malang",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN NAGEKEO",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN SOLOK",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN RIAU",
+    "KOTA": "KOTA TANJUNG PINANG",
+    "KPKNL": " Batam",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN SERUYAN",
+    "KPKNL": " Pangkalan Bun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN PAMEKASAN",
+    "KPKNL": " Pamekasan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN LAMONGAN",
+    "KPKNL": " Surabaya",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN BOJONEGORO",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN LAMPUNG TIMUR",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN DHARMASRAYA",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN KEPULAUAN SANGIHE",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN BURU",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN BENGKULU TENGAH",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN HALMAHERA UTARA",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KABUPATEN LEBAK",
+    "KPKNL": " Serang",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN GAYO LUES",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN PADANG PARIAMAN",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN SIAU TAGULANDANG BIARO",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN SIMALUNGUN",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN MALUKU TENGGARA BARAT",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN SOPPENG",
+    "KPKNL": " Parepare",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN DOMPU",
+    "KPKNL": " Bima",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN SERAM BAGIAN BARAT",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI BARAT",
+    "KOTA": "KABUPATEN MAMUJU TENGAH",
+    "KPKNL": " Mamuju",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA CIREBON",
+    "KPKNL": " Cirebon",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN TASIKMALAYA",
+    "KPKNL": " Tasikmalaya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN DEIYAI",
+    "KPKNL": " Biak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN LOMBOK TENGAH",
+    "KPKNL": " Mataram",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "DI YOGYAKARTA",
+    "KOTA": "KABUPATEN GUNUNG KIDUL",
+    "KPKNL": " Yogyakarta",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN WAY KANAN",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN CIREBON",
+    "KPKNL": " Cirebon",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN KONAWE UTARA",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KOTA SALATIGA",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN MADIUN",
+    "KPKNL": " Madiun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KOTA PASURUAN",
+    "KPKNL": " Sidoarjo",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN MIMIKA",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN PASAMAN BARAT",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN KAUR",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN SORONG SELATAN",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN HALMAHERA TIMUR",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN PESISIR BARAT",
+    "KPKNL": " Bandar Lampung",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN PEKALONGAN",
+    "KPKNL": " Pekalongan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN AGAM",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN LANDAK",
+    "KPKNL": " Singkawang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN MINAHASA SELATAN",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN KUANTAN SINGINGI",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KOTA MAGELANG",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN MAJALENGKA",
+    "KPKNL": " Cirebon",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN KAIMANA",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN LUWU UTARA",
+    "KPKNL": " Palopo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN SUMBA BARAT",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI BARAT",
+    "KOTA": "KABUPATEN POLEWALI MANDAR",
+    "KPKNL": " Mamuju",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN BUOL",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN PASER",
+    "KPKNL": " Balikpapan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN MINAHASA",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN MOJOKERTO",
+    "KPKNL": " Sidoarjo",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN SIMEULUE",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN KENDAL",
+    "KPKNL": " Pekalongan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN KEPULAUAN YAPEN",
+    "KPKNL": " Biak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA SOLOK",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN LANGKAT",
+    "KPKNL": " Medan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KOTA METRO",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN TULANGBAWANG",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN BIREUEN",
+    "KPKNL": " Lhokseumawe",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN KUTAI BARAT",
+    "KPKNL": " Samarinda",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN DELI SERDANG",
+    "KPKNL": " Medan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KOTA PAGAR ALAM",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN SUKAMARA",
+    "KPKNL": " Pangkalan Bun",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN KUNINGAN",
+    "KPKNL": " Cirebon",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN NAGAN RAYA",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN BATU BARA",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN SUMBA BARAT DAYA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN MINAHASA UTARA",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN PASURUAN",
+    "KPKNL": " Sidoarjo",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN INDRAMAYU",
+    "KPKNL": " Cirebon",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN WONOSOBO",
+    "KPKNL": " Purwokerto",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN PIDIE JAYA",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN SERAM BAGIAN TIMUR",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KABUPATEN BANGKA",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN KONAWE",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN JENEPONTO",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN LEMBATA",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN NIAS UTARA",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN BERAU",
+    "KPKNL": " Bontang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI SELATAN",
+    "KOTA": "KABUPATEN KEPULAUAN SELAYAR",
+    "KPKNL": " Makassar",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI BARAT",
+    "KOTA": "KABUPATEN MAMASA",
+    "KPKNL": " Mamuju",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KABUPATEN CIANJUR",
+    "KPKNL": " Bogor",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN FAKFAK",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN HULU SUNGAI SELATAN",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN PULAU MOROTAI",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN DAIRI",
+    "KPKNL": " Pematang Siantar",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU UTARA",
+    "KOTA": "KABUPATEN HALMAHERA TENGAH",
+    "KPKNL": " Ternate",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KABUPATEN TANGERANG",
+    "KPKNL": " Tangerang I",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "BANTEN",
+    "KOTA": "KOTA CILEGON",
+    "KPKNL": " Serang",
+    "KATEGORI LOKASI": "2"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN SUMBA TENGAH",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN SERDANG BEDAGAI",
+    "KPKNL": " Medan",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN BOLAANG MONGONDOW",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN PEGUNUNGAN BINTANG",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KABUPATEN BOLAANG MONGONDOW TIMUR",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN S I A K",
+    "KPKNL": " Dumai",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TENGAH",
+    "KOTA": "KABUPATEN REMBANG",
+    "KPKNL": " Semarang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN JAYAPURA",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN RIAU",
+    "KOTA": "KOTA BATAM",
+    "KPKNL": " Batam",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "KALIMANTAN BARAT",
+    "KOTA": "KABUPATEN MEMPAWAH",
+    "KPKNL": " Singkawang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN NIAS",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "LAMPUNG",
+    "KOTA": "KABUPATEN MESUJI",
+    "KPKNL": " Metro",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN TELUK BINTUNI",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KABUPATEN BANGKA SELATAN",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KOTA SUNGAI PENUH",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN LABUHAN BATU SELATAN",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN LUMAJANG",
+    "KPKNL": " Jember",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN TANJUNG JABUNG TIMUR",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN BATANG HARI",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN NABIRE",
+    "KPKNL": " Biak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KOTA SAWAH LUNTO",
+    "KPKNL": " Padang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN SELATAN",
+    "KOTA": "KABUPATEN BARITO KUALA",
+    "KPKNL": " Banjarmasin",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA SIBOLGA",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA BARAT",
+    "KOTA": "KABUPATEN PASAMAN",
+    "KPKNL": " Bukittinggi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN KOLAKA TIMUR",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN LOMBOK UTARA",
+    "KPKNL": " Mataram",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN TOLI-TOLI",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN SAMPANG",
+    "KPKNL": " Pamekasan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BENGKULU",
+    "KOTA": "KABUPATEN MUKOMUKO",
+    "KPKNL": " Bengkulu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TIMUR",
+    "KOTA": "KABUPATEN MAHAKAM HULU",
+    "KPKNL": " Samarinda",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KABUPATEN PELALAWAN",
+    "KPKNL": " Pekanbaru",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "PAPUA BARAT",
+    "KOTA": "KABUPATEN MANOKWARI SELATAN",
+    "KPKNL": " Sorong",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA SELATAN",
+    "KOTA": "KABUPATEN MUSI RAWAS",
+    "KPKNL": " Lahat",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN BANGKA BELITUNG",
+    "KOTA": "KABUPATEN BELITUNG",
+    "KPKNL": " Pangkal Pinang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGGARA",
+    "KOTA": "KABUPATEN MUNA",
+    "KPKNL": " Kendari",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN SUPIORI",
+    "KPKNL": " Biak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "MALUKU",
+    "KOTA": "KABUPATEN BURU SELATAN",
+    "KPKNL": " Ambon",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN YAHUKIMO",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA BARAT",
+    "KOTA": "KOTA BANJAR",
+    "KPKNL": " Tasikmalaya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KEPULAUAN RIAU",
+    "KOTA": "KABUPATEN LINGGA",
+    "KPKNL": " Batam",
+    "KATEGORI LOKASI": "1"
+  },
+  {
+    "PROVINSI": "SULAWESI UTARA",
+    "KOTA": "KOTA TOMOHON",
+    "KPKNL": " Manado",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN FLORES TIMUR",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "ACEH",
+    "KOTA": "KABUPATEN PIDIE",
+    "KPKNL": " Banda Aceh",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KABUPATEN TAPANULI SELATAN",
+    "KPKNL": " Padang Sidempuan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KABUPATEN BARITO TIMUR",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA BARAT",
+    "KOTA": "KABUPATEN BIMA",
+    "KPKNL": " Bima",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "NUSA TENGGARA TIMUR",
+    "KOTA": "KABUPATEN MANGGARAI TIMUR",
+    "KPKNL": " Kupang",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SULAWESI TENGAH",
+    "KOTA": "KABUPATEN MOROWALI UTARA",
+    "KPKNL": " Palu",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAMBI",
+    "KOTA": "KABUPATEN SAROLANGUN",
+    "KPKNL": " Jambi",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN PANIAI",
+    "KPKNL": " Biak",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "PAPUA",
+    "KOTA": "KABUPATEN PUNCAK",
+    "KPKNL": " Jayapura",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "BALI",
+    "KOTA": "KOTA SINGARAJA",
+    "KPKNL": " Singaraja",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "SUMATERA UTARA",
+    "KOTA": "KOTA KISARAN",
+    "KPKNL": " Kisaran",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "RIAU",
+    "KOTA": "KOTA DUMAI",
+    "KPKNL": " Dumai",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "JAWA TIMUR",
+    "KOTA": "KABUPATEN PAMEKASAN",
+    "KPKNL": " Pamekasan",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KOTA PALANGKARAYA",
+    "KPKNL": " Palangkaraya",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "GORONTALO",
+    "KOTA": "KOTA GORONTALO",
+    "KPKNL": " Gorontalo",
+    "KATEGORI LOKASI": "3"
+  },
+  {
+    "PROVINSI": "KALIMANTAN TENGAH",
+    "KOTA": "KOTA PANGKALAN BUN",
+    "KPKNL": " Pangkalan Bun",
+    "KATEGORI LOKASI": "3"
+  }
+]

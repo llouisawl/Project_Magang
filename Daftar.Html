@@ -4,15 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Daftar.css" />
-    <title>e-Taksir | Login & Daftar</title>
+    <title>SirOTO | Login & Daftar</title>
   </head>
   <body>
     <!-- Logo Kemenkeu Kiri Atas -->
-    <img
-      src="Gambar/Kemenkeu.png"
-      alt="Logo Kemenkeu"
-      class="logo-kemenkeu-login"
-    />
+    <img src="Gambar/D4.png" alt="Logo Kemenkeu" class="logo-kemenkeu-login" />
+
+    <img src="Gambar/New.png" alt="Logo Sir Oto" class="logo-siroto-login" />
 
     <div class="container">
       <div class="forms-container">
@@ -31,7 +29,7 @@
               <input
                 id="userlogin"
                 type="text"
-                name="nama_satker"
+                name="username"
                 placeholder="Username"
                 required
               />
@@ -83,13 +81,30 @@
             <h2 class="title">Daftar Akun</h2>
 
             <div class="form-group">
-              <label for="satker">Nama Satker <span class="red">*</span></label>
+              <label for="satker">Username <span class="red">*</span></label>
               <input
-                id="satker"
+                id="username"
                 type="text"
-                placeholder="Isi dengan nama Satker"
+                placeholder="Buat Username akun anda"
                 required
               />
+            </div>
+
+            <div class="form-group">
+              <label for="satkerInput"
+                >Nama Satker <span class="red">*</span></label
+              >
+
+              <input
+                id="satkerInput"
+                type="text"
+                placeholder="Ketik untuk mencari satker..."
+                autocomplete="off"
+                required
+              />
+
+              <!-- container suggestion -->
+              <div id="satkerList" class="satker-list"></div>
             </div>
 
             <div class="form-group">
@@ -97,8 +112,8 @@
               <input
                 id="kodekl"
                 type="text"
-                placeholder="Isi dengan Kode Satker"
-                required
+                placeholder="Kode K/L otomatis"
+                readonly
               />
             </div>
 
@@ -191,7 +206,7 @@
               Daftar Akun
             </button>
           </div>
-          <img src="Gambar/Putih.png" class="image" alt="" />
+          <img src="Gambar/Logo3.png" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
@@ -204,7 +219,7 @@
               Login Sekarang
             </button>
           </div>
-          <img src="Gambar/Logo2.png" class="image" alt="" />
+          <img src="Gambar/Logo3.png" class="image" alt="" />
         </div>
       </div>
     </div>
@@ -240,10 +255,10 @@
       const sign_up_btn = document.querySelector("#sign-up-btn");
       const container = document.querySelector(".container");
       sign_up_btn.addEventListener("click", () =>
-        container.classList.add("sign-up-mode")
+        container.classList.add("sign-up-mode"),
       );
       sign_in_btn.addEventListener("click", () =>
-        container.classList.remove("sign-up-mode")
+        container.classList.remove("sign-up-mode"),
       );
 
       // ================= Modal util =================
@@ -318,7 +333,7 @@
       function isStrongPassword(s) {
         // ≥8, ada huruf besar, huruf kecil, dan karakter khusus
         return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(
-          String(s)
+          String(s),
         );
       }
 
@@ -352,7 +367,7 @@
           btn.innerHTML = show ? ICON_EYE_SLASH : ICON_EYE;
           btn.setAttribute(
             "aria-label",
-            show ? "Sembunyikan password" : "Tampilkan password"
+            show ? "Sembunyikan password" : "Tampilkan password",
           );
         });
       });
@@ -422,6 +437,52 @@
           }
         });
 
+      // ====== Load Satker dari JSON & Auto isi Kode K/L ======
+      const satkerInput = document.getElementById("satkerInput");
+      const satkerList = document.getElementById("satkerList");
+      const kodeKlInput = document.getElementById("kodekl");
+
+      let satkerData = [];
+
+      fetch("satker.json")
+        .then((res) => res.json())
+        .then((data) => (satkerData = data));
+
+      satkerInput.addEventListener("input", function () {
+        const keyword = this.value.toLowerCase();
+        satkerList.innerHTML = "";
+
+        if (!keyword) {
+          satkerList.style.display = "none";
+          return;
+        }
+
+        const filtered = satkerData.filter((item) =>
+          item["Nama Satker"].toLowerCase().includes(keyword),
+        );
+
+        filtered.slice(0, 15).forEach((item) => {
+          const div = document.createElement("div");
+          div.className = "satker-item";
+          div.textContent = item["Nama Satker"];
+          div.addEventListener("click", () => {
+            satkerInput.value = item["Nama Satker"];
+            kodeKlInput.value = item["Kode KL"];
+            satkerList.style.display = "none";
+          });
+          satkerList.appendChild(div);
+        });
+
+        satkerList.style.display = filtered.length ? "block" : "none";
+      });
+
+      // klik di luar → tutup list
+      document.addEventListener("click", (e) => {
+        if (!satkerInput.contains(e.target) && !satkerList.contains(e.target)) {
+          satkerList.style.display = "none";
+        }
+      });
+
       // ================= REGISTER =================
       (function () {
         const API = (window.API_URL || "").replace(/\/+$/, "");
@@ -431,7 +492,10 @@
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
 
-          const nama_satker = document.getElementById("satker").value.trim();
+          const username = document.getElementById("username").value.trim();
+          const nama_satker = document
+            .getElementById("satkerInput")
+            .value.trim();
           const kode_kl = document
             .getElementById("kodekl")
             .value.trim()
@@ -444,6 +508,13 @@
           const repass = document.getElementById("repass").value;
 
           // Validasi
+          if (!username)
+            return showModal({
+              type: "warning",
+              title: "Username wajib diisi",
+              message: "Mohon isi Username akun.",
+            });
+
           if (!nama_satker)
             return showModal({
               type: "warning",
@@ -480,6 +551,7 @@
 
           // Kirim
           const payload = {
+            username,
             nama_satker,
             kode_kl,
             email,
@@ -500,7 +572,7 @@
               throw new Error(
                 body?.message ||
                   body?.error ||
-                  `Gagal mendaftar (HTTP ${res.status}).`
+                  `Gagal mendaftar (HTTP ${res.status}).`,
               );
 
             // Sukses: tampilkan modal tanpa tombol; hanya ✕ untuk menutup dan balik ke login

@@ -1,14 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>e-Taksir | Panitia Penaksir</title>
+    <title>SirOTO | Satker</title>
     <link rel="stylesheet" href="index.css" />
 
     <!-- Konfigurasi & Auth -->
     <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- Select2 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- jQuery (WAJIB untuk Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Kunci halaman khusus SATKER -->
     <script>
@@ -25,18 +36,14 @@
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-header-flex">
-          <img
-            src="Gambar/Kemenkeu.png"
-            alt="Logo Kemenkeu"
-            class="logo-kemenkeu"
-          />
+          <img src="Gambar/D4.png" alt="Logo Kemenkeu" class="logo-kemenkeu" />
           <div class="profile-dropdown">
             <span class="profile-icon" tabindex="0">
               <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-                <circle cx="19" cy="19" r="19" fill="#E8EEFB" />
+                <circle cx="19" cy="19" r="19" fill="#eef7e6" />
                 <path
                   d="M19 19c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zM19 21c-4.41 0-8 2.24-8 5v2h16v-2c0-2.76-3.59-5-8-5z"
-                  fill="#426bba"
+                  fill="#6fb32b"
                 />
               </svg>
             </span>
@@ -64,7 +71,7 @@
         </div>
 
         <div class="welcome-row">
-          <img src="Gambar/Logo.png" alt="Icon" class="welcome-icon" />
+          <img src="Gambar/siroto2.png" alt="Icon" class="welcome-icon" />
           <div class="welcome-text">
             <span>Selamat Datang</span>
             <h3 id="welcomeName">Pengguna</h3>
@@ -73,10 +80,24 @@
 
         <nav>
           <ul>
-            <li>
-              <a href="Riwayat.html" class="active"
-                ><span>🗒️</span> Riwayat Kertas kerja</a
-              >
+            <li class="nav-item active">
+              <a href="Riwayat.html" class="nav-link">
+                <span class="nav-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#22c55e"
+                    stroke-width="2"
+                  >
+                    <path d="M3 3v5h5"></path>
+                    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+                    <polyline points="12 7 12 12 15 15"></polyline>
+                  </svg>
+                </span>
+                <span class="nav-text">Riwayat Kertas Kerja</span>
+              </a>
             </li>
           </ul>
         </nav>
@@ -102,37 +123,35 @@
             <div class="row">
               <div class="input-group">
                 <label>Lokasi Objek</label>
-                <input
-                  list="daftar-lokasi"
-                  name="lokasi_objek"
-                  id="lokasi_objek"
-                  placeholder="Ketik lokasi objek..."
-                  required
-                />
-                <datalist id="daftar-lokasi"></datalist>
+                <select name="lokasi_objek" id="lokasi_objek" required></select>
               </div>
+
               <div class="input-group">
                 <label>Kategori Lokasi</label>
-                <select name="kategori_lokasi" required>
-                  <option value="">Pilih</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
+                <input
+                  type="text"
+                  id="kategori_lokasi"
+                  name="kategori_lokasi"
+                  class="locked-input"
+                  readonly
+                  placeholder="Otomatis dari lokasi"
+                  required
+                />
               </div>
+
               <div class="input-group">
                 <label>Provinsi</label>
                 <input
-                  list="daftar-provinsi"
-                  name="provinsi"
-                  id="provinsi"
-                  placeholder="Ketik provinsi"
-                  required
                   type="text"
+                  id="provinsi"
+                  name="provinsi"
+                  readonly
+                  class="locked-input"
+                  placeholder="Otomatis dari lokasi"
+                  required
                 />
-                <datalist id="daftar-provinsi"></datalist>
               </div>
+              <input type="hidden" id="kpknl" name="kpknl" />
             </div>
 
             <div class="row">
@@ -142,7 +161,7 @@
                   name="jenis_kendaraan"
                   id="jenis_kendaraan"
                   required
-                  onchange="tampilkanCC()"
+                  onchange="updateMerek()"
                 >
                   <option value="">Pilih</option>
                   <option value="Roda 2 atau 3">Roda 2 atau 3</option>
@@ -172,25 +191,25 @@
             <div class="row">
               <div class="input-group">
                 <label>Merek Kendaraan</label>
-                <input
-                  list="daftar-merek"
+                <select
                   name="merek_kendaraan"
                   id="merek_kendaraan"
-                  placeholder="Ketik merek kendaraan..."
                   required
-                />
-                <datalist id="daftar-merek"></datalist>
+                  onchange="updateTipe()"
+                >
+                  <option value="">Pilih Merek</option>
+                </select>
               </div>
               <div class="input-group">
                 <label>Tipe Kendaraan</label>
-                <input
-                  list="datalist-tipe"
+                <select
                   id="tipe_kendaraan"
                   name="tipe_kendaraan"
-                  placeholder="Ketik atau pilih tipe kendaraan..."
                   required
-                />
-                <datalist id="datalist-tipe"></datalist>
+                  disabled
+                >
+                  <option value="">Pilih Tipe</option>
+                </select>
               </div>
               <div class="input-group">
                 <label>Nomor Polisi</label>
@@ -245,7 +264,13 @@
               </div>
               <div class="input-group">
                 <label>Pemilik Dokumen</label>
-                <input type="text" name="pemilik_dokumen" required />
+                <input
+                  type="text"
+                  id="pemilik_dokumen"
+                  name="pemilik_dokumen"
+                  readonly
+                  class="locked-input"
+                />
               </div>
             </div>
 
@@ -261,8 +286,17 @@
                 </select>
               </div>
               <div class="input-group">
-                <label>Penggunaan Kendaraan</label>
-                <input type="text" name="penggunaan_kendaraan" />
+                <div class="input-group">
+                  <label>Penggunaan Kendaraan</label>
+                  <input
+                    type="text"
+                    id="penggunaan_kendaraan"
+                    name="penggunaan_kendaraan"
+                    readonly
+                    class="locked-input"
+                    value="Kendaraan Dinas"
+                  />
+                </div>
               </div>
             </div>
 
@@ -279,25 +313,21 @@
             <div class="row">
               <div class="input-group">
                 <label>Warna</label>
-                <input
-                  list="daftar-warna"
-                  name="warna"
-                  id="warna"
-                  placeholder="Ketik warna kendaraan..."
-                  required
-                />
-                <datalist id="daftar-warna"></datalist>
+                <select name="warna" id="warna" required>
+                  <option value="">Pilih Warna Kendaraan</option>
+                </select>
               </div>
               <div class="input-group">
                 <label>Tahun Pembuatan</label>
                 <input
-                  list="daftar-tahun"
+                  type="number"
                   name="tahun_pembuatan"
                   id="tahun_pembuatan"
-                  placeholder="Tahun..."
+                  placeholder="Contoh: 2018"
+                  min="1900"
+                  max="2099"
                   required
                 />
-                <datalist id="daftar-tahun"></datalist>
               </div>
               <div class="input-group">
                 <label>Bahan Bakar</label>
@@ -326,6 +356,10 @@
           </section>
 
           <div class="actions">
+            <button type="button" class="btn-clear" onclick="openClearModal()">
+              Clear Data
+            </button>
+
             <button type="submit" class="submit-btn">Data Pembanding</button>
           </div>
         </form>
@@ -375,10 +409,10 @@
       // Sinkronisasi checkboxes dokumen kepemilikan
       document.addEventListener("DOMContentLoaded", () => {
         const chkBpkb = document.querySelector(
-          'input[name="dokumen_kepemilikan[]"][value="BPKB"]'
+          'input[name="dokumen_kepemilikan[]"][value="BPKB"]',
         );
         const chkStnk = document.querySelector(
-          'input[name="dokumen_kepemilikan[]"][value="STNK"]'
+          'input[name="dokumen_kepemilikan[]"][value="STNK"]',
         );
         const chkLain = document.getElementById("lainnyaCheckbox");
         const txtLain = document.getElementById("lainnyaInput");
@@ -441,10 +475,10 @@
             // Dokumen kepemilikan + Tidak Ada
             const dokumen = [];
             const bpkb = this.querySelector(
-              'input[name="dokumen_kepemilikan[]"][value="BPKB"]'
+              'input[name="dokumen_kepemilikan[]"][value="BPKB"]',
             )?.checked;
             const stnk = this.querySelector(
-              'input[name="dokumen_kepemilikan[]"][value="STNK"]'
+              'input[name="dokumen_kepemilikan[]"][value="STNK"]',
             )?.checked;
             const chkLain = this.querySelector("#lainnyaCheckbox")?.checked;
             const txtLain = (
@@ -476,32 +510,123 @@
             })();
             formData.kondisi_kendaraan = rawKondisi;
             formData.faktor_kondisi = faktor;
+            formData.kpknl = fd.get("kpknl"); // 🔥 TAMBAHAN
 
+            // Hapus flow lama & draft lama
+            sessionStorage.removeItem("kk_flow_id");
+
+            // Hapus semua draft sebelumnya
+            Object.keys(sessionStorage).forEach((key) => {
+              if (key.startsWith("kk_draft_")) {
+                sessionStorage.removeItem(key);
+              }
+            });
+
+            // Simpan data terbaru
             sessionStorage.setItem("dataKertasKerja", JSON.stringify(formData));
+
+            // Redirect
             window.location.href = "HasilTaksir.html";
           });
       });
     </script>
 
-    <!-- ====== DATA LIST (Tipe dari Tipe.json) ====== -->
     <script>
-      fetch("Tipe.json")
-        .then((response) => response.json())
+      let dataKendaraan = [];
+
+      fetch("JenisKendaraan.json")
+        .then((res) => res.json())
         .then((data) => {
-          const tipeList = data.map((item) => String(item.TIPE));
-          const datalist = document.getElementById("datalist-tipe");
-          datalist.innerHTML = "";
-          tipeList.forEach((tipe) => {
-            if (tipe && tipe.trim() !== "") {
-              const option = document.createElement("option");
-              option.value = tipe;
-              datalist.appendChild(option);
-            }
-          });
+          dataKendaraan = data;
+          console.log("Data kendaraan:", dataKendaraan.length);
         })
-        .catch((err) => {
-          console.error("Gagal load tipe kendaraan:", err);
+        .catch((err) => console.error("Gagal load JSON", err));
+    </script>
+
+    <script>
+      function getKategoriObjek() {
+        const jenis = document.getElementById("jenis_kendaraan").value;
+        if (jenis === "Roda 2 atau 3") return "motor";
+        if (jenis === "Roda 4 atau lebih") return "mobil";
+        return null;
+      }
+
+      function updateMerek() {
+        const kategori = getKategoriObjek();
+        const selectMerek = $("#merek_kendaraan");
+        const selectTipe = $("#tipe_kendaraan");
+
+        selectMerek.empty().append('<option value="">Pilih Merek</option>');
+        selectTipe
+          .empty()
+          .append('<option value="">Pilih Tipe</option>')
+          .prop("disabled", true);
+
+        if (!kategori) return;
+
+        const merekUnik = [
+          ...new Set(
+            dataKendaraan
+              .filter(
+                (d) => d["KATEGORI OBJEK"].trim().toLowerCase() === kategori,
+              )
+              .map((d) => d["MEREK"].trim()),
+          ),
+        ];
+
+        merekUnik.sort().forEach((merek) => {
+          selectMerek.append(new Option(merek, merek));
         });
+
+        selectMerek.trigger("change.select2");
+      }
+
+      function updateTipe() {
+        const kategori = getKategoriObjek();
+        const merek = $("#merek_kendaraan").val();
+        const selectTipe = $("#tipe_kendaraan");
+
+        selectTipe
+          .empty()
+          .append('<option value="">Pilih Tipe</option>')
+          .prop("disabled", true);
+
+        if (!kategori || !merek) return;
+
+        const tipeUnik = [
+          ...new Set(
+            dataKendaraan
+              .filter(
+                (d) =>
+                  d["KATEGORI OBJEK"].trim().toLowerCase() === kategori &&
+                  d["MEREK"].trim().toLowerCase() === merek.toLowerCase(),
+              )
+              .map((d) => d["TIPE"].trim()),
+          ),
+        ];
+
+        tipeUnik.sort().forEach((tipe) => {
+          selectTipe.append(new Option(tipe, tipe));
+        });
+
+        selectTipe.prop("disabled", false).trigger("change.select2");
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $("#merek_kendaraan").select2({
+          placeholder: "Pilih Merek",
+          allowClear: true,
+          width: "resolve",
+        });
+
+        $("#tipe_kendaraan").select2({
+          placeholder: "Pilih Tipe",
+          allowClear: true,
+          width: "resolve",
+        });
+      });
     </script>
 
     <script>
@@ -902,269 +1027,91 @@
         "White Silver",
       ];
 
-      // Isi datalist otomatis
-      const datalist = document.getElementById("daftar-warna");
-      daftarWarna.forEach(function (warna) {
-        const opt = document.createElement("option");
-        opt.value = warna;
-        datalist.appendChild(opt);
-      });
-    </script>
+      function initWarna() {
+        const selectWarna = document.getElementById("warna");
+        selectWarna.innerHTML =
+          '<option value="">Pilih Warna Kendaraan</option>';
 
-    <script>
-      const daftarMerek = [
-        "Acmat",
-        "Ariel Motor",
-        "Audi",
-        "Auverland",
-        "Bajaj",
-        "Beijing",
-        "Benelli",
-        "BMW",
-        "Bosowa",
-        "BSA (British Small Arms)",
-        "Caesar",
-        "Cherokee",
-        "Chevrolet",
-        "Daihatsu",
-        "Datsun",
-        "Dayang",
-        "Defender",
-        "Diablo",
-        "Ducati",
-        "Dyna",
-        "Fiat",
-        "Ford",
-        "Forklift",
-        "Fukuda",
-        "Garuda",
-        "Golden Dragon",
-        "Happy",
-        "Harley",
-        "Hino",
-        "Honda",
-        "Hyosung",
-        "Hyundai",
-        "Isuzu",
-        "Iveco",
-        "Jeep",
-        "Jialing",
-        "Kaisar",
-        "Kancil",
-        "Kanzen",
-        "Katana",
-        "Kawasaki",
-        "KBM",
-        "Kia",
-        "Kijang",
-        "KTM",
-        "Kymco",
-        "Lamborghini",
-        "Land Rover",
-        "Lexus",
-        "Lifan",
-        "Matchless",
-        "Mazda",
-        "Mercedes",
-        "Mercedes Benz",
-        "Mercedes-Benz",
-        "Millenium",
-        "Minerva",
-        "Mini",
-        "Mitsubishi",
-        "Monstrac",
-        "Montrada",
-        "Morin",
-        "Nasha",
-        "Nissan",
-        "Nozomi",
-        "Opel",
-        "Peugeot",
-        "Porsche",
-        "Prima",
-        "Prisma",
-        "Proton",
-        "Pulsar",
-        "Qestar",
-        "Range Rover",
-        "Rantis",
-        "Reo",
-        "Royal Enfield",
-        "Samsung",
-        "Sanex",
-        "Scania",
-        "Serena",
-        "Strada",
-        "Subaru",
-        "Suzuki",
-        "Taft",
-        "Timor",
-        "Tossa",
-        "Toyota",
-        "Trisheda",
-        "TVS",
-        "Unimog",
-        "Vespa",
-        "Viar",
-        "Viva",
-        "Volvo",
-        "VW",
-        "Wuling",
-        "Yamaha",
-      ];
+        daftarWarna.sort().forEach((warna) => {
+          const opt = document.createElement("option");
+          opt.value = warna;
+          opt.textContent = warna;
+          selectWarna.appendChild(opt);
+        });
 
-      // Isi datalist otomatis
-      const datalistMerek = document.getElementById("daftar-merek");
-      daftarMerek.forEach(function (merek) {
-        const opt = document.createElement("option");
-        opt.value = merek;
-        datalistMerek.appendChild(opt);
-      });
-    </script>
-
-    <script>
-      const daftarLokasi = [
-        "Ambon",
-        "Balikpapan",
-        "Banda Aceh",
-        "Bandar Lampung",
-        "Bandung",
-        "Banjarmasin",
-        "Batam",
-        "Bekasi",
-        "Bengkulu",
-        "Biak",
-        "Bima",
-        "Bogor",
-        "Bontang",
-        "Bukittinggi",
-        "Cirebon",
-        "Denpasar",
-        "Dumai",
-        "Gorontalo",
-        "Jakarta I",
-        "Jakarta II",
-        "Jakarta III",
-        "Jakarta IV",
-        "Jakarta V",
-        "Jambi",
-        "Jayapura",
-        "Jember",
-        "Kendari",
-        "Kisaran",
-        "Kupang",
-        "Lahat",
-        "Lhokseumawe",
-        "Madiun",
-        "Makassar",
-        "Malang",
-        "Mamuju",
-        "Manado",
-        "Mataram",
-        "Medan",
-        "Metro",
-        "Padang",
-        "Padang Sidempuan",
-        "Palangkaraya",
-        "Palembang",
-        "Palopo",
-        "Palu",
-        "Pamekasan",
-        "Pangkal Pinang",
-        "Pangkalan Bun",
-        "Parepare",
-        "Pekalongan",
-        "Pekanbaru",
-        "Pematang Siantar",
-        "Pontianak",
-        "Purwakarta",
-        "Purwokerto",
-        "Samarinda",
-        "Semarang",
-        "Serang",
-        "Sidoarjo",
-        "Singaraja",
-        "Singkawang",
-        "Sorong",
-        "Surabaya",
-        "Surakarta",
-        "Tangerang I",
-        "Tangerang II",
-        "Tarakan",
-        "Tasikmalaya",
-        "Tegal",
-        "Ternate",
-        "Yogyakarta",
-      ];
-
-      const datalistLokasi = document.getElementById("daftar-lokasi");
-      daftarLokasi.forEach(function (lokasi) {
-        const opt = document.createElement("option");
-        opt.value = lokasi;
-        datalistLokasi.appendChild(opt);
-      });
-    </script>
-
-    <script>
-      const daftarProvinsi = [
-        "Nanggroe Aceh Darussalam",
-        "Sumatera Utara",
-        "Sumatera Selatan",
-        "Sumatera Barat",
-        "Bengkulu",
-        "Riau",
-        "Kepulauan Riau",
-        "Jambi",
-        "Lampung",
-        "Bangka Belitung",
-        "Kalimantan Barat",
-        "Kalimantan Timur",
-        "Kalimantan Selatan",
-        "Kalimantan Tengah",
-        "Kalimantan Utara",
-        "Banten",
-        "DKI Jakarta",
-        "Jawa Barat",
-        "Jawa Tengah",
-        "Daerah Istimewa Yogyakarta",
-        "Jawa Timur",
-        "Bali",
-        "Nusa Tenggara Timur",
-        "Nusa Tenggara Barat",
-        "Gorontalo",
-        "Sulawesi Barat",
-        "Sulawesi Tengah",
-        "Sulawesi Utara",
-        "Sulawesi Tenggara",
-        "Sulawesi Selatan",
-        "Maluku Utara",
-        "Maluku",
-        "Papua Barat",
-        "Papua",
-        "Papua Tengah",
-        "Papua Pegunungan",
-        "Papua Selatan",
-        "Papua Barat Daya",
-      ];
-
-      const datalistProvinsi = document.getElementById("daftar-provinsi");
-      daftarProvinsi.forEach(function (prov) {
-        const opt = document.createElement("option");
-        opt.value = prov;
-        datalistProvinsi.appendChild(opt);
-      });
-    </script>
-
-    <script>
-      // Isi datalist dari 1980 - tahun sekarang
-      const tahunAwal = 1900;
-      const tahunAkhir = new Date().getFullYear();
-      const datalistTahun = document.getElementById("daftar-tahun");
-      for (let t = tahunAwal; t <= tahunAkhir; t++) {
-        const opt = document.createElement("option");
-        opt.value = t;
-        datalistTahun.appendChild(opt);
+        $("#warna").select2({
+          width: "100%",
+          placeholder: "Pilih Warna Kendaraan",
+        });
       }
+
+      document.addEventListener("DOMContentLoaded", initWarna);
+    </script>
+
+    <script>
+      let lokasiData = [];
+
+      fetch("Lokasii.json")
+        .then((res) => res.json())
+        .then((data) => {
+          lokasiData = data;
+          initLokasiDropdown(data);
+        });
+
+      function initLokasiDropdown(data) {
+        const select = $("#lokasi_objek");
+
+        select.empty().append('<option value="">Pilih Lokasi Objek</option>');
+
+        data.forEach((item) => {
+          const kota = item["KOTA"];
+          select.append(new Option(kota, kota));
+        });
+
+        select.select2({
+          placeholder: "Cari Kota / Lokasi",
+          allowClear: true,
+          width: "100%",
+        });
+      }
+
+      // AUTO ISI
+      $(document).on("change", "#lokasi_objek", function () {
+        const val = $(this).val();
+
+        if (!val) {
+          $("#provinsi").val("");
+          $("#kategori_lokasi").val("");
+          $("#kpknl").val("");
+          return;
+        }
+
+        const data = lokasiData.find((l) => l["KOTA"] === val);
+
+        if (!data) return;
+
+        $("#provinsi").val(data["PROVINSI"]);
+        $("#kategori_lokasi").val(data["KATEGORI LOKASI"] || "3");
+
+        // 🔥 ambil dari kolom kosong ("")
+        // ✅ ambil dari field KPKNL
+        $("#kpknl").val(data["KPKNL"] || "");
+      });
+    </script>
+
+    <script>
+      document
+        .getElementById("tahun_pembuatan")
+        .addEventListener("input", function () {
+          const tahun = parseInt(this.value, 10);
+          const sekarang = new Date().getFullYear();
+
+          if (tahun < 1900 || tahun > sekarang) {
+            this.setCustomValidity("Tahun tidak valid");
+          } else {
+            this.setCustomValidity("");
+          }
+        });
     </script>
 
     <script>
@@ -1176,7 +1123,7 @@
       document.addEventListener("DOMContentLoaded", function () {
         document
           .querySelectorAll(
-            '#kertasKerjaForm input[type="text"], #kertasKerjaForm input[list]'
+            '#kertasKerjaForm input[type="text"], #kertasKerjaForm input[list]',
           )
           .forEach(function (input) {
             input.addEventListener("input", function () {
@@ -1191,6 +1138,40 @@
           });
       });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        try {
+          // Ambil token satker
+          const token = localStorage.getItem("jwt_satker");
+          if (!token) return;
+
+          // Parse payload JWT (pakai helper auth.js)
+          const payload = (function () {
+            const part = token.split(".")[1];
+            const json = atob(part.replace(/-/g, "+").replace(/_/g, "/"));
+            return JSON.parse(
+              decodeURIComponent(
+                json
+                  .split("")
+                  .map(
+                    (c) =>
+                      "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2),
+                  )
+                  .join(""),
+              ),
+            );
+          })();
+
+          const namaSatker = payload?.data?.satker;
+          if (namaSatker) {
+            const input = document.getElementById("pemilik_dokumen");
+            if (input) input.value = namaSatker;
+          }
+        } catch (e) {
+          console.warn("Gagal mengisi Pemilik Dokumen dari token", e);
+        }
+      });
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -1199,6 +1180,36 @@
         // cukup dari helper (sudah ada fallback per-role di auth.js)
         el.textContent = Auth.getName("satker") || "Pengguna";
       });
+    </script>
+    <script>
+      function isiPemilikDokumenDariToken() {
+        try {
+          const token = localStorage.getItem("jwt_satker");
+          if (!token) return;
+
+          const part = token.split(".")[1];
+          const json = atob(part.replace(/-/g, "+").replace(/_/g, "/"));
+          const payload = JSON.parse(
+            decodeURIComponent(
+              json
+                .split("")
+                .map(
+                  (c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2),
+                )
+                .join(""),
+            ),
+          );
+
+          const namaSatker = payload?.data?.satker;
+          if (namaSatker) {
+            document.getElementById("pemilik_dokumen").value = namaSatker;
+          }
+        } catch (e) {
+          console.warn("Gagal isi pemilik dokumen", e);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", isiPemilikDokumenDariToken);
     </script>
 
     <!-- ====== LOGOUT SATKER ====== -->
@@ -1216,5 +1227,97 @@
         }
       });
     </script>
+
+    <script>
+      function openClearModal() {
+        document.getElementById("clearModal").style.display = "flex";
+      }
+
+      function closeClearModal() {
+        document.getElementById("clearModal").style.display = "none";
+        document.getElementById("clearLoading").style.display = "none";
+      }
+
+      function confirmClearData() {
+        const loading = document.getElementById("clearLoading");
+        const text = document.getElementById("clearLoadingText");
+
+        // tampilkan loading
+        loading.style.display = "block";
+
+        // animasi titik-titik
+        let dot = 0;
+        const anim = setInterval(() => {
+          dot = (dot + 1) % 4;
+          text.innerText = "Menghapus data" + ".".repeat(dot);
+        }, 400);
+
+        // delay sedikit biar smooth
+        setTimeout(() => {
+          clearInterval(anim);
+
+          const form = document.getElementById("kertasKerjaForm");
+
+          // reset form
+          form.reset();
+
+          // reset SELECT2
+          $("#merek_kendaraan").val(null).trigger("change");
+          $("#tipe_kendaraan").val(null).trigger("change");
+          $("#lokasi_objek").val(null).trigger("change");
+          $("#warna").val(null).trigger("change");
+
+          // reset field otomatis
+          document.getElementById("kategori_lokasi").value = "";
+          document.getElementById("provinsi").value = "";
+
+          // checkbox
+          document
+            .querySelectorAll('input[name="dokumen_kepemilikan[]"]')
+            .forEach((c) => (c.checked = false));
+
+          document.getElementById("lainnyaCheckbox").checked = false;
+          document.getElementById("lainnyaInput").value = "";
+          document.getElementById("lainnyaInput").style.display = "none";
+          document.getElementById("tidakAdaCheckbox").checked = false;
+
+          // CC
+          document.getElementById("cc_roda2").style.display = "none";
+          document.getElementById("cc_roda4").style.display = "none";
+
+          // disable tipe
+          $("#tipe_kendaraan").prop("disabled", true);
+
+          // hapus session
+          sessionStorage.removeItem("dataKertasKerja");
+
+          isiPemilikDokumenDariToken();
+
+          closeClearModal();
+        }, 900);
+      }
+    </script>
+
+    <!-- MODAL CLEAR DATA -->
+    <div class="modal-backdrop" id="clearModal">
+      <div class="modal">
+        <h3>Hapus Data Form</h3>
+        <p>Apakah Anda yakin ingin menghapus seluruh data yang sudah diisi?</p>
+
+        <div class="modal-actions">
+          <button class="btn-modal" onclick="closeClearModal()">Tidak</button>
+
+          <button class="btn-modal primary" onclick="confirmClearData()">
+            Ya, Hapus
+          </button>
+        </div>
+
+        <!-- loading -->
+        <div class="modal-loading" id="clearLoading">
+          <div class="spinner"></div>
+          <p id="clearLoadingText">Menghapus data...</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

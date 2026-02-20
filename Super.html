@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Superadmin • Validasi User | e-Taksir</title>
+    <title>Superadmin • Validasi User</title>
 
     <!-- Gaya utama konsisten (versi yang sudah kamu update sebelumnya) -->
     <link rel="stylesheet" href="superadmin.css" />
@@ -40,7 +40,10 @@
         cursor: pointer;
         color: #1d2b4b;
         opacity: 0.9;
-        transition: background 0.15s, opacity 0.15s, transform 0.1s;
+        transition:
+          background 0.15s,
+          opacity 0.15s,
+          transform 0.1s;
       }
       .input-with-eye .toggle-pass:hover {
         background: #e7f0fa;
@@ -55,7 +58,7 @@
       }
 
       .help.success {
-        color: #1e874b;
+        color: #1d4b2d;
       }
       .help.danger {
         color: #e74c3c;
@@ -68,7 +71,7 @@
         flex-direction: column;
         gap: 10px;
         margin-top: 12px;
-        color: #324e9b;
+        color: #1d4b2d;
       }
       .action-feedback.show {
         display: flex;
@@ -77,8 +80,8 @@
         width: 28px;
         height: 28px;
         border-radius: 50%;
-        border: 3px solid #e5eeff;
-        border-top-color: #2577e2;
+        border: 4px solid #d1d5db; /* abu */
+        border-top: 4px solid #6fb32b; /* hijau DJKN */
         animation: spin 0.8s linear infinite;
       }
       .action-feedback .check {
@@ -106,7 +109,7 @@
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="brand">
-          <img src="Gambar/Kemenkeu.png" alt="Kementerian Keuangan" />
+          <img src="Gambar/D4.png" alt="Kementerian Keuangan" />
         </div>
         <nav class="nav">
           <a class="nav-item active" href="#">
@@ -147,13 +150,13 @@
               >
                 <path
                   d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                  stroke="#2b4a9c"
+                  stroke="#4e9a1f"
                   stroke-width="1.7"
                 />
-                <path d="M14 2v6h6" stroke="#2b4a9c" stroke-width="1.7" />
+                <path d="M14 2v6h6" stroke="#4e9a1f" stroke-width="1.7" />
                 <path
                   d="M16 13H8M16 17H8M10 9H8"
-                  stroke="#2b4a9c"
+                  stroke="#4e9a1f"
                   stroke-width="1.7"
                   stroke-linecap="round"
                 />
@@ -167,11 +170,53 @@
       <!-- Main -->
       <main class="main">
         <header class="hero">
-          <div class="hero-title">Selamat Datang</div>
+          <div class="hero-title">
+            <span class="profile">
+              <span class="profile-icon">
+                <!-- ICON USER -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M4 20c0-4 4-6 8-6s8 2 8 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+              SuperAdmin
+            </span>
+          </div>
+
           <div class="hero-right">
-            <span class="hero-role">SuperAdmin</span>
-            <img src="Gambar/DJKN.png" alt="Logo DJKN" class="hero-logo" />
-            <button id="btnLogout" class="btn-logout" style="margin-left: 12px">
+            <img src="Gambar/New.png" alt="Logo SirOTO" class="hero-logo" />
+
+            <button id="btnLogout" class="btn-logout">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <polyline
+                  points="16 17 21 12 16 7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <line
+                  x1="21"
+                  y1="12"
+                  x2="9"
+                  y2="12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
               Logout
             </button>
           </div>
@@ -193,12 +238,12 @@
                       cx="11"
                       cy="11"
                       r="7"
-                      stroke="#6C87D7"
+                      stroke="#3d6f1a"
                       stroke-width="2"
                     />
                     <path
                       d="M21 21l-3.5-3.5"
-                      stroke="#6C87D7"
+                      stroke="#3d6f1a"
                       stroke-width="2"
                       stroke-linecap="round"
                     />
@@ -225,12 +270,12 @@
                         cx="12"
                         cy="7"
                         r="4"
-                        stroke="#6C87D7"
+                        stroke="#3d6f1a"
                         stroke-width="2"
                       />
                       <path
                         d="M5.5 21a7.5 7.5 0 0 1 13 0"
-                        stroke="#6C87D7"
+                        stroke="#3d6f1a"
                         stroke-width="2"
                         stroke-linecap="round"
                       />
@@ -247,7 +292,7 @@
                   >
                     <path
                       d="M6 9l6 6 6-6"
-                      stroke="#6C87D7"
+                      stroke="#3d6f1a"
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -323,6 +368,20 @@
             </svg>
           </button>
         </div>
+        <!-- Modal: Loading Proses -->
+        <div class="modal" id="loadingModal" aria-hidden="true">
+          <div
+            class="modal-card"
+            style="text-align: center; padding: 40px 20px"
+          >
+            <div class="dot-loader">
+              <span></span><span></span><span></span>
+            </div>
+            <p style="margin-top: 14px; font-weight: 600; color: #3d6f1a">
+              Membuat Admin
+            </p>
+          </div>
+        </div>
 
         <form id="userForm" class="modal-body">
           <div class="grid">
@@ -355,7 +414,7 @@
                 name="kode_kl"
                 maxlength="6"
                 inputmode="numeric"
-                oninput="this.value=this.value.replace(/\D/g,'')"
+                oninput="this.value = this.value.replace(/\D/g, '')"
               />
             </label>
           </div>
@@ -363,14 +422,15 @@
           <!-- ADMIN fields -->
           <div class="grid admin-fields" style="display: none">
             <label class="field">
-              <span>Nama</span>
-              <input type="text" name="nama_admin" />
+              <span>Username</span>
+              <input type="text" name="username" required />
               <small
                 class="help danger"
-                data-dup="nama_admin"
+                data-dup="username"
                 style="display: none"
-                >Nama admin sudah dipakai.</small
               >
+                Username sudah dipakai.
+              </small>
             </label>
 
             <label class="field">
@@ -573,7 +633,6 @@
         </div>
       </div>
     </div>
-
     <script>
       /* ========= Helpers ========= */
       const $ = (q, el = document) => el.querySelector(q);
@@ -634,7 +693,7 @@
           .trim();
         if (
           ["2", "active", "verified", "terverifikasi", "tervalidasi"].includes(
-            t
+            t,
           )
         )
           return "Tervalidasi";
@@ -648,8 +707,8 @@
           st === "Tervalidasi"
             ? "pill green"
             : st === "Ditolak"
-            ? "pill red"
-            : "pill gray";
+              ? "pill red"
+              : "pill gray";
         const text = st === "Menunggu" ? "Menunggu Validasi" : st;
         return `<span class="${cls} pill--with-dot">${text}</span>`;
       }
@@ -689,16 +748,25 @@
           u.is_verified !== undefined
             ? statusFromIsVerified(u.is_verified)
             : u.status
-            ? normalizeStatusLabel(u.status)
-            : "Menunggu";
+              ? normalizeStatusLabel(u.status)
+              : "Menunggu";
         return {
           ...u,
           id: String(userId),
           role,
           status,
-          nama_admin: u.nama || u.nama_admin || "",
-          nama_satker: u.nama_satker || u.nama || "",
-          kpknl: u.kpknl || u.kantor || "",
+          nama_admin: u.username || u.nama_admin || u.nama || u.name || "",
+          kpknl:
+            u.kpknl ||
+            u.kpknl_name ||
+            u.nama_kpknl ||
+            u.kantor ||
+            u.office ||
+            u.satker_kpknl ||
+            u.kpknlNama ||
+            "",
+          nama_satker:
+            u.nama_satker || u.namaSatker || u.satker || u.nama || "",
           joinedAt: u.joinedAt ?? u.created_at ?? u.createdAt ?? null,
         };
       }
@@ -714,8 +782,8 @@
           const arr = Array.isArray(json?.data)
             ? json.data
             : Array.isArray(json)
-            ? json
-            : [];
+              ? json
+              : [];
           return arr.map(normalizeUser);
         } catch (e) {
           console.error("getUsers error:", e);
@@ -723,6 +791,7 @@
           return [];
         }
       }
+
       async function createAdminApi(payload) {
         try {
           const res = await fetch(ENDPOINT_CREATE_ADMIN, {
@@ -749,7 +818,7 @@
       async function validateUser(userId) {
         const res = await fetch(
           `${API_BASE}/user/validate/${encodeURIComponent(userId)}`,
-          { method: "PATCH", headers: authHeaders() }
+          { method: "PATCH", headers: authHeaders() },
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return true;
@@ -757,7 +826,7 @@
       async function rejectUser(userId) {
         const res = await fetch(
           `${API_BASE}/user/invalidate/${encodeURIComponent(userId)}`,
-          { method: "PATCH", headers: authHeaders() }
+          { method: "PATCH", headers: authHeaders() },
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return true;
@@ -765,7 +834,7 @@
       async function deleteUserApi(userId) {
         const res = await fetch(
           `${API_BASE}/user/${encodeURIComponent(userId)}`,
-          { method: "DELETE", headers: authHeaders() }
+          { method: "DELETE", headers: authHeaders() },
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return true;
@@ -842,7 +911,7 @@
             const s = `${u.nama_satker || u.nama_admin || ""} ${
               u.email || ""
             } ${u.kode_kl || ""} ${u.kpknl || ""} ${normalizeStatusLabel(
-              u.status
+              u.status,
             )} ${u.role || ""}`.toLowerCase();
             if (!s.includes(q)) continue;
           }
@@ -926,8 +995,8 @@
             html += `
             <tr>
               <td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td><td>${
-              u.kode_kl || "-"
-            }</td><td>${statusCell}</td>
+                u.kode_kl || "-"
+              }</td><td>${statusCell}</td>
               <td class="actions">
                 <div class="actions-flex">
                   <button class="btn-mini success btn-joy" data-validate="${
@@ -967,7 +1036,7 @@
       const roleBtn = $("#roleBtn"),
         roleDropdown = $("#roleDropdown");
       roleBtn.addEventListener("click", () =>
-        roleDropdown.classList.toggle("open")
+        roleDropdown.classList.toggle("open"),
       );
       roleDropdown.addEventListener("click", (e) => {
         const btn = e.target.closest("button[data-role]");
@@ -1042,10 +1111,10 @@
       function toggleRoleFields() {
         const showAdmin = roleSelect.value === "Admin";
         $$(".admin-fields").forEach(
-          (el) => (el.style.display = showAdmin ? "grid" : "none")
+          (el) => (el.style.display = showAdmin ? "grid" : "none"),
         );
         $$(".satker-fields").forEach(
-          (el) => (el.style.display = showAdmin ? "none" : "grid")
+          (el) => (el.style.display = showAdmin ? "none" : "grid"),
         );
       }
 
@@ -1080,10 +1149,10 @@
         window._recheckDuplicates?.();
       });
       $("#modalClose").addEventListener("click", () =>
-        closeModalById("userModal")
+        closeModalById("userModal"),
       );
       $("#modalCancel").addEventListener("click", () =>
-        closeModalById("userModal")
+        closeModalById("userModal"),
       );
 
       // Eye toggle (klik, bukan tahan)
@@ -1104,7 +1173,7 @@
           toggle.title = show ? "Sembunyikan password" : "Tampilkan password";
         }
         toggle.addEventListener("click", () =>
-          setMode(input.type === "password")
+          setMode(input.type === "password"),
         );
       })();
 
@@ -1147,12 +1216,13 @@
       /* ===== DUPLICATE CHECK realtime: nama_admin & email ===== */
       (function duplicateWatcher() {
         const form = document.getElementById("userForm");
-        const nameInput = form.querySelector('[name="nama_admin"]');
+        const nameInput = form.querySelector('[name="username"]');
+
         const emailInput = form.querySelector('[name="email"]');
         const passInput = form.querySelector('[name="password"]');
         const submitBtn = document.getElementById("modalSubmitBtn");
 
-        const helpNama = document.querySelector('[data-dup="nama_admin"]');
+        const helpNama = document.querySelector('[data-dup="username"]');
         const helpEmail = document.querySelector('[data-dup="email"]');
         const norm = (s) => (s || "").trim().toLowerCase();
         const pwdOK = (p) =>
@@ -1175,21 +1245,23 @@
           const kandidatNama = norm(nameInput?.value);
           const kandidatEmail = norm(emailInput?.value);
           const adminList = users.filter(
-            (u) => (u.role || "").toLowerCase() === "admin"
+            (u) => (u.role || "").toLowerCase() === "admin",
           );
 
-          const namaSudahAda =
+          const usernameSudahAda =
             kandidatNama &&
             adminList.some(
-              (u) => norm(u.nama_admin || u.nama) === kandidatNama
+              (u) =>
+                norm(u.username || u.nama_admin || u.nama) === kandidatNama,
             );
+
           const emailSudahAda =
             kandidatEmail &&
             adminList.some((u) => norm(u.email) === kandidatEmail);
 
           if (helpNama) {
-            helpNama.textContent = "Nama admin sudah terdaftar.";
-            helpNama.style.display = namaSudahAda ? "block" : "none";
+            helpNama.textContent = "Username sudah dipakai.";
+            helpNama.style.display = usernameSudahAda ? "block" : "none";
           }
           if (helpEmail) {
             helpEmail.textContent = "Email sudah terdaftar.";
@@ -1197,7 +1269,7 @@
           }
 
           const passOk = pwdOK(passInput?.value || "");
-          submitBtn.disabled = !passOk || namaSudahAda || emailSudahAda;
+          submitBtn.disabled = !passOk || usernameSudahAda || emailSudahAda;
         }
         nameInput?.addEventListener("input", debounce(check));
         emailInput?.addEventListener("input", debounce(check));
@@ -1216,55 +1288,57 @@
       // Submit Tambah Admin (munculkan modal sukses seperti gambar 4)
       $("#userForm").addEventListener("submit", async (e) => {
         e.preventDefault();
+
         const form = e.target;
         if (form.dataset.mode !== "create-admin") return;
 
-        const msg = $("#formMsg"),
-          btn = $("#modalSubmitBtn");
-        msg.style.display = "block";
-        msg.textContent = "Menyimpan…";
-        setBtnLoading(btn, true);
+        showLoading(); // 🔥 tampilkan modal loading
 
         try {
           const fd = new FormData(form);
           const d = Object.fromEntries(fd.entries());
+
           const payload = {
-            nama_admin: (d.nama_admin || "").trim(),
+            username: (d.username || "").trim(),
             email: (d.email || "").trim().toLowerCase(),
             password: (d.password || "").trim(),
             kpknl: d.kpknl || "KPKNL Manado",
           };
 
           window._recheckDuplicates?.();
-          if (btn.disabled) {
-            msg.textContent = "Perbaiki data di atas.";
-            setBtnLoading(btn, false);
+          if ($("#modalSubmitBtn").disabled) {
+            hideLoading();
+            alert("Perbaiki data di atas.");
             return;
           }
 
           const created = await createAdminApi(payload);
+
           if (created) {
             created.role = "Admin";
-            created.nama_admin = payload.nama_admin;
+            created.username = payload.username;
+            created.nama_admin = payload.username;
             created.kpknl = payload.kpknl;
             created.joinedAt = new Date().toISOString();
             created.is_verified = 2;
             created.status = "Aktif";
+
             users.unshift(created);
             renderTable();
-
-            setBtnDone(btn);
-            msg.textContent = "Admin berhasil ditambahkan.";
-            closeModalById("userModal");
-            showInfo("Admin berhasil ditambahkan dan statusnya <b>Aktif</b>.");
+            setTimeout(() => {
+              hideLoading();
+              closeModalById("userModal");
+              showInfo(
+                "Admin berhasil ditambahkan dan statusnya <b>Aktif</b>.",
+              );
+            }, 400);
           } else {
-            msg.textContent = "Gagal menambah admin.";
+            hideLoading();
+            alert("Gagal menambah admin.");
           }
         } catch (err) {
-          console.error(err);
-          msg.textContent = err?.message || "Terjadi kesalahan.";
-        } finally {
-          setBtnLoading(btn, false);
+          hideLoading();
+          alert(err?.message || "Terjadi kesalahan.");
         }
       });
 
@@ -1293,7 +1367,7 @@
 
       /* ========= Aksi Validasi / Nonaktif / Tolak (modal loading -> centang) ========= */
       $("#validateClose").addEventListener("click", () =>
-        closeModalById("validateModal")
+        closeModalById("validateModal"),
       );
       $("#validateModal").addEventListener("click", (e) => {
         if (e.target.id === "validateModal") closeModalById("validateModal");
@@ -1422,6 +1496,20 @@
         users = await getUsers();
         renderTable();
       })();
+
+      function showLoading() {
+        const m = document.getElementById("loadingModal");
+        if (!m) return;
+        m.classList.add("open");
+        m.setAttribute("aria-hidden", "false");
+      }
+
+      function hideLoading() {
+        const m = document.getElementById("loadingModal");
+        if (!m) return;
+        m.classList.remove("open");
+        m.setAttribute("aria-hidden", "true");
+      }
     </script>
   </body>
 </html>

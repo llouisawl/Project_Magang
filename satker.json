@@ -1,0 +1,3826 @@
+[
+  {
+    "Nama Satker":"Badan Karantina Indonesia",
+    "Kode KL":"127012800690895000KD"
+  },
+  {
+    "Nama Satker":"BADAN KEPEGAWAIAN NEGARA",
+    "Kode KL":"088011751667896000KD"
+  },
+  {
+    "Nama Satker":"BADAN METEOROLOGI KLIMATOLOGI DAN GEOFISIKA",
+    "Kode KL":"075011700289122000KD"
+  },
+  {
+    "Nama Satker":"STASIUN METEOROLOGI NAHA",
+    "Kode KL":"075011800289157000KD"
+  },
+  {
+    "Nama Satker":"STASIUN METEOROLOGI KELAS III KASIGUNCU POSO",
+    "Kode KL":"075011800289161000KD"
+  },
+  {
+    "Nama Satker":"STASIUN METEOROLOGI SULTAN BANTILAN",
+    "Kode KL":"075011800418107000KD"
+  },
+  {
+    "Nama Satker":"STASIUN PEMANTAU ATMOSFER GLOBAL LORE LINDU BARIRI",
+    "Kode KL":"075012800437271000KD"
+  },
+  {
+    "Nama Satker":"STASIUN METEOROLOGI EMALAMO",
+    "Kode KL":"075012800437746000KD"
+  },
+  {
+    "Nama Satker":"STASIUN METEOROLOGI GAMAR MALAMO",
+    "Kode KL":"075012800518011000KD"
+  },
+  {
+    "Nama Satker":"STASIUN METEOROLOGI OESMAN SADIK",
+    "Kode KL":"075012800526945000KD"
+  },
+  {
+    "Nama Satker":"STASIUN GEOFISIKA TERNATE",
+    "Kode KL":"075013100437225000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL",
+    "Kode KL":"066011700418323000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KAB. KEPL. SANGIHE",
+    "Kode KL":"066011700419259000KD"
+  },
+  {
+    "Nama Satker":"Badan Narkotika Nasional Kabupaten Bolaang Mongondow",
+    "Kode KL":"066011700682672000KD"
+  },
+  {
+    "Nama Satker":"BNNP SULUT",
+    "Kode KL":"066011700689760000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KOTA BITUNG",
+    "Kode KL":"066011700689774000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KOTA MANADO",
+    "Kode KL":"066011800682689000KD"
+  },
+  {
+    "Nama Satker":"BNNP SULAWESI TENGAH",
+    "Kode KL":"066011800689032000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KABUPATEN MOROWALI",
+    "Kode KL":"066011800689728000KD"
+  },
+  {
+    "Nama Satker":"BNNK DONGGALA",
+    "Kode KL":"066011800689732000KD"
+  },
+  {
+    "Nama Satker":"BNN KABUPATEN POSO",
+    "Kode KL":"066012800682740000KD"
+  },
+  {
+    "Nama Satker":"BNN PROVINSI MALUKU UTARA",
+    "Kode KL":"066012800689884000KD"
+  },
+  {
+    "Nama Satker":"BNNK  KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"066013100310153000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KAB. GORONTALO",
+    "Kode KL":"066013100419263000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KABUPATEN BOALEMO",
+    "Kode KL":"066013100682715000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL PROV. GORONTALO",
+    "Kode KL":"066013100689781000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KOTA GORONTALO",
+    "Kode KL":"066013100689795000KD"
+  },
+  {
+    "Nama Satker":"BADAN NARKOTIKA NASIONAL KABUPATEN  BONE BOLANGO",
+    "Kode KL":"066013102689807000KD"
+  },
+  {
+    "Nama Satker":"BADAN PEMERIKSA KEUANGAN",
+    "Kode KL":"004011700450825000KD"
+  },
+  {
+    "Nama Satker":"BPK RI PERWAKILAN PROVINSI SULAWESI UTARA",
+    "Kode KL":"004011800890660000KD"
+  },
+  {
+    "Nama Satker":"BPK PERWAKILAN PROVINSI SULAWESI TENGAH",
+    "Kode KL":"004012800890682000KD"
+  },
+  {
+    "Nama Satker":"BPK RI Perwakilan Provinsi Maluku Utara",
+    "Kode KL":"004013100890639000KD"
+  },
+  {
+    "Nama Satker":"BADAN PENGAWAS OBAT DAN MAKANAN",
+    "Kode KL":"063011700432901000KD"
+  },
+  {
+    "Nama Satker":"BALAI BESAR POM MANADO",
+    "Kode KL":"063011700690472000KD"
+  },
+  {
+    "Nama Satker":"LOKA POM DI KABUPATEN KEPULAUAN SANGIHE",
+    "Kode KL":"063011800432917000KD"
+  },
+  {
+    "Nama Satker":"BALAI PENGAWAS OBAT DAN MAKANAN DI PALU",
+    "Kode KL":"063011800690473000KD"
+  },
+  {
+    "Nama Satker":"Loka Pengawas Obat Dan Makanan di Kabupaten Banggai",
+    "Kode KL":"063012800419508000KD"
+  },
+  {
+    "Nama Satker":"BALAI PENGAWAS OBAT DAN MAKANAN DI SOFIFI",
+    "Kode KL":"063012800690462000KD"
+  },
+  {
+    "Nama Satker":"LOKA PENGAWAS OBAT DAN MAKANAN DI KABUPATEN PULAU MOROTAI",
+    "Kode KL":"063013100672859000KD"
+  },
+  {
+    "Nama Satker":"BADAN PENGAWAS PEMILIHAN UMUM",
+    "Kode KL":"115011700419663000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Kota Bitung",
+    "Kode KL":"115011700686421000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Provinsi Sulawesi Utara",
+    "Kode KL":"115011800419831000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Kota Palu",
+    "Kode KL":"115013100419665000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Kabupaten Gorontalo",
+    "Kode KL":"115013100419804000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Kabupaten Boalemo",
+    "Kode KL":"115013100686190000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Kabupaten Pohuwato",
+    "Kode KL":"115013100686438000KD"
+  },
+  {
+    "Nama Satker":"Sekretariat Bawaslu Provinsi Gorontalo",
+    "Kode KL":"115013100686512000KD"
+  },
+  {
+    "Nama Satker":"BADAN PENGAWASAN KEUANGAN DAN PEMBANGUNAN",
+    "Kode KL":"089011700450618000KD"
+  },
+  {
+    "Nama Satker":"Perwakilan BPKP Provinsi Sulawesi Utara",
+    "Kode KL":"089011800450712000KD"
+  },
+  {
+    "Nama Satker":"PERWAKILAN BPKP PROVINSI SULAWESI TENGAH",
+    "Kode KL":"089012800689287000KD"
+  },
+  {
+    "Nama Satker":"PERWAKILAN BPKP PROVINSI MALUKU UTARA",
+    "Kode KL":"089013100689270000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK",
+    "Kode KL":"054011700416005000KD"
+  },
+  {
+    "Nama Satker":"BPS KAB. BOLAANG MONGONDOW UTARA",
+    "Kode KL":"054011700428701000KD"
+  },
+  {
+    "Nama Satker":"BPS SULUT",
+    "Kode KL":"054011700428717000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KOTA MANADO",
+    "Kode KL":"054011700428723000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. KEPL. SANGIHE",
+    "Kode KL":"054011700428732000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN MINAHASA",
+    "Kode KL":"054011700428748000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN BOLAANG MONGONDOW",
+    "Kode KL":"054011700535422000KD"
+  },
+  {
+    "Nama Satker":"BPS KOTA BITUNG",
+    "Kode KL":"054011700667388000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN KEPULAUAN TALAUD",
+    "Kode KL":"054011700668671000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN MINAHASA SELATAN",
+    "Kode KL":"054011700668685000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN MINAHASA UTARA",
+    "Kode KL":"054011700668692000KD"
+  },
+  {
+    "Nama Satker":"BPS KOTA TOMOHON",
+    "Kode KL":"054011700682317000KD"
+  },
+  {
+    "Nama Satker":"BPS KOTA KOTAMOBAGU",
+    "Kode KL":"054011700689135000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. KEPL. SITARO",
+    "Kode KL":"054011700690696000KD"
+  },
+  {
+    "Nama Satker":"BPS Kabupaten Bolaang Mongondow Timur",
+    "Kode KL":"054011800428779000KD"
+  },
+  {
+    "Nama Satker":"BPS PROVINSI SULAWESI TENGAH",
+    "Kode KL":"054011800428785000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN DONGGALA",
+    "Kode KL":"054011800428791000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN TOLITOLI",
+    "Kode KL":"054011800428805000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN POSO",
+    "Kode KL":"054011800428811000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. BANGGAI",
+    "Kode KL":"054011800576647000KD"
+  },
+  {
+    "Nama Satker":"BPS KOTA PALU",
+    "Kode KL":"054011800637258000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN BANGGAI KEPULAUAN",
+    "Kode KL":"054011800637262000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN MOROWALI",
+    "Kode KL":"054011800637279000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN BUOL",
+    "Kode KL":"054011800667392000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN PARIGI MOUTONG",
+    "Kode KL":"054011800667400000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN TOJO UNA-UNA",
+    "Kode KL":"054011800682370000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN SIGI",
+    "Kode KL":"054012800280823000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN PULAU MOROTAI",
+    "Kode KL":"054012800429156000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN HALMAHERA BARAT",
+    "Kode KL":"054012800429162000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN HALMAHERA TENGAH",
+    "Kode KL":"054012800636914000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK PROVINSI MALUKU UTARA",
+    "Kode KL":"054012800637312000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KOTA TERNATE",
+    "Kode KL":"054012800667524000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"054012800667531000KD"
+  },
+  {
+    "Nama Satker":"BPS KABUPATEN KEPULAUAN SULA",
+    "Kode KL":"054012800668728000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN HALMAHERA SELATAN",
+    "Kode KL":"054012800668732000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KABUPATEN HALMAHERA TIMUR",
+    "Kode KL":"054012800668749000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KOTA TIDORE KEPULAUAN",
+    "Kode KL":"054013100428754000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. GORONTALO",
+    "Kode KL":"054013100428760000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KOTA GORONTALO",
+    "Kode KL":"054013100636900000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK PROV. GORONTALO",
+    "Kode KL":"054013100637241000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. BOALEMO",
+    "Kode KL":"054013100667481000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. POHUWATO",
+    "Kode KL":"054013100667498000KD"
+  },
+  {
+    "Nama Satker":"BADAN PUSAT STATISTIK KAB. BONE BOLANGO",
+    "Kode KL":"054013100673584000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN REPUBLIK INDONESIA",
+    "Kode KL":"006011700007783000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN TINGGI SULAWESI UTARA",
+    "Kode KL":"006011700007790000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI MANADO",
+    "Kode KL":"006011700007805000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI KEPULAUAN SANGIHE",
+    "Kode KL":"006011700007812000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI KOTAMOBAGU",
+    "Kode KL":"006011700007826000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI MINAHASA",
+    "Kode KL":"006011700007830000KD"
+  },
+  {
+    "Nama Satker":"KEJARI BITUNG",
+    "Kode KL":"006011700007847000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI TOMOHON",
+    "Kode KL":"006011700007851000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI MINAHASA SELATAN",
+    "Kode KL":"006011700009560000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI KEPULAUAN SIAU TAGULANDANG BIARO",
+    "Kode KL":"006011700009577000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI KEPULAUAN TALAUD DI BEO",
+    "Kode KL":"006011700009709000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI BOLAANG MONGONDOW UTARA",
+    "Kode KL":"006011700009713000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI KOTAMOBAGU DI DUMOGA",
+    "Kode KL":"006011700664429000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI MINAHASA UTARA",
+    "Kode KL":"006011800007872000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN TINGGI SULAWESI TENGAH",
+    "Kode KL":"006011800007889000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI PALU",
+    "Kode KL":"006011800007893000KD"
+  },
+  {
+    "Nama Satker":"KEJARI PARIGI MOUTONG",
+    "Kode KL":"006011800007901000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI DONGGALA",
+    "Kode KL":"006011800007915000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI DONGGALA DI SABANG",
+    "Kode KL":"006011800007922000KD"
+  },
+  {
+    "Nama Satker":"CABJARI TOMPE",
+    "Kode KL":"006011800007936000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI TOLITOLI",
+    "Kode KL":"006011800007940000KD"
+  },
+  {
+    "Nama Satker":"CABJARI LAULALANG",
+    "Kode KL":"006011800007957000KD"
+  },
+  {
+    "Nama Satker":"CABJARI OGOTUA",
+    "Kode KL":"006011800007978000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI TOLITOLI DI BANGKIR",
+    "Kode KL":"006011800007982000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI POSO",
+    "Kode KL":"006011800007999000KD"
+  },
+  {
+    "Nama Satker":"KANTOR CABANG KEJARI TOJO UNA UNA DI WAKAI",
+    "Kode KL":"006011800008001000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI MOROWALI",
+    "Kode KL":"006011800008018000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI WAY KANAN",
+    "Kode KL":"006011800008022000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI TOJO UNA-UNA",
+    "Kode KL":"006011800008039000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI BANGGAI",
+    "Kode KL":"006011800008043000KD"
+  },
+  {
+    "Nama Satker":"CABJARI BUNTA",
+    "Kode KL":"006011800008050000KD"
+  },
+  {
+    "Nama Satker":"KEJARI BANGGAI LAUT",
+    "Kode KL":"006011800008064000KD"
+  },
+  {
+    "Nama Satker":"CABJARI PAGIMANA",
+    "Kode KL":"006011800008071000KD"
+  },
+  {
+    "Nama Satker":"CABJARI BUOL DI LOKODIDI",
+    "Kode KL":"006011800008085000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI BUOL DI PALELEH",
+    "Kode KL":"006011800008092000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI PARIGI MOUTONG DI TINOMBO",
+    "Kode KL":"006011800009293000KD"
+  },
+  {
+    "Nama Satker":"CABANG KEJAKSAAN NEGERI PARIGI MOUTONG  DI MOUTONG",
+    "Kode KL":"006011800009645000KD"
+  },
+  {
+    "Nama Satker":"CABJARI POSO DI TENTENA",
+    "Kode KL":"006011800664433000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI BUOL",
+    "Kode KL":"006011800691163000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI SIGI",
+    "Kode KL":"006012800008593000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI TERNATE",
+    "Kode KL":"006012800008601000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI TOBELO",
+    "Kode KL":"006012800008615000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI TIDORE KEPULAUAN",
+    "Kode KL":"006012800008622000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI HALMAHERA TENGAH",
+    "Kode KL":"006012800008636000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI LABUHA",
+    "Kode KL":"006012800008640000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI SANANA",
+    "Kode KL":"006012800008657000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI KEPULAUAN MOROTAI",
+    "Kode KL":"006012800008661000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI   HALMAHERA BARAT",
+    "Kode KL":"006012800650007000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI HALMAHERA TIMUR",
+    "Kode KL":"006012800650021000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI PULAU TALIABU",
+    "Kode KL":"006012800650332000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN TINGGI MALUKU UTARA",
+    "Kode KL":"006013100007868000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI KOTA GORONTALO",
+    "Kode KL":"006013100009272000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI BOALEMO",
+    "Kode KL":"006013100009432000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI KAB. GORONTALO",
+    "Kode KL":"006013100009556000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI GORONTALO UTARA",
+    "Kode KL":"006013100650346000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN TINGGI GORONTALO",
+    "Kode KL":"006013100664408000KD"
+  },
+  {
+    "Nama Satker":"KEJAKSAAN NEGERI BONE BOLANGO",
+    "Kode KL":"006013100664412000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN AGAMA RI",
+    "Kode KL":"025011700171169000KD"
+  },
+  {
+    "Nama Satker":"SEKJEN KEMENTERIAN AGAMA KAB. BOLSEL",
+    "Kode KL":"025011700171408000KD"
+  },
+  {
+    "Nama Satker":"Kantor Kemenag Kab. Boltim",
+    "Kode KL":"025011700419229000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENAG PROV SULUT ( SEKJEN)",
+    "Kode KL":"025011700419235000KD"
+  },
+  {
+    "Nama Satker":"SEKJEN KANTOR KEMENTERIAN AGAMA KOTA MANADO",
+    "Kode KL":"025011700419250000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG SANGIHE (SEKJEN)",
+    "Kode KL":"025011700419272000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BOLAANG MONGONDOW",
+    "Kode KL":"025011700445325000KD"
+  },
+  {
+    "Nama Satker":"SEKJEN KANTOR KEMENAG KAB. MINAHASA UTARA",
+    "Kode KL":"025011700547526000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KOTA BITUNG",
+    "Kode KL":"025011700653636000KD"
+  },
+  {
+    "Nama Satker":"SEKRETARIAT JENDERAL KANKEMENAG KAB. KEPL. TALAUD",
+    "Kode KL":"025011700681989000KD"
+  },
+  {
+    "Nama Satker":"SEKERTARIAT JENDRAL KEMENTERIAN AGAMA KAB. MITRA",
+    "Kode KL":"025011700681993000KD"
+  },
+  {
+    "Nama Satker":"KANKEMENAG KAB. BOLMUT ( SEKJEN )",
+    "Kode KL":"025011700682008000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. KEPL. SITARO (SETJEN)",
+    "Kode KL":"025011800181214000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. SIGI",
+    "Kode KL":"025011800418910000KD"
+  },
+  {
+    "Nama Satker":"Kemenag Morowali Utara (Sekjen)",
+    "Kode KL":"025011800419332000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. DONGGALA",
+    "Kode KL":"025011800419354000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB. BANGGAI",
+    "Kode KL":"025011800445356000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. TOJO UNA UNA",
+    "Kode KL":"025011800614905000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA PALU (SEKJEN)",
+    "Kode KL":"025011800635361000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BUOL",
+    "Kode KL":"025011800635396000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. MOROWALI (SEKJEN)",
+    "Kode KL":"025011800635439000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BANGGAI KEPULAUAN",
+    "Kode KL":"025011800653856000KD"
+  },
+  {
+    "Nama Satker":"SETJEN KANTOR KEMENTERIAN AGAMA KABUPATEN PARIGI MOUTONG",
+    "Kode KL":"025012800280816000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN PULAU MOROTAI",
+    "Kode KL":"025012800418913000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN AGAMA KABUPATEN TALIABU",
+    "Kode KL":"025012800419838000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALMAHERA BARAT",
+    "Kode KL":"025012800419844000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALMAHERA TENGAH SEKJEN",
+    "Kode KL":"025012800626376000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENTERIAN AGAMA PROVINSI MALUKU UTARA",
+    "Kode KL":"025012800650083000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA TERNATE 01",
+    "Kode KL":"025012800664098000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. KEPULAUAN SULA - 664098",
+    "Kode KL":"025012800664103000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALSEL",
+    "Kode KL":"025012800664110000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"025012800664124000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALMAHERA TIMUR",
+    "Kode KL":"025012800664220000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA TIDORE KEPULAUAN",
+    "Kode KL":"025013100419281000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA GORONTALO",
+    "Kode KL":"025013100419301000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO",
+    "Kode KL":"025013100635286000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. BOALEMO",
+    "Kode KL":"025013100648648000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN AGAMA PROV. GORONTALO (01)",
+    "Kode KL":"025013100653732000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. BONE BOLANGO",
+    "Kode KL":"025013100653746000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. POHUWATO",
+    "Kode KL":"025013100681511000KD"
+  },
+  {
+    "Nama Satker":"Kantor Kementerian Agama Kab. Gorontalo Utara",
+    "Kode KL":"025031700171171000KD"
+  },
+  {
+    "Nama Satker":"BIMAS ISLAM KEMENAG BOLSEL",
+    "Kode KL":"025031700171410000KD"
+  },
+  {
+    "Nama Satker":"KABUPATEN BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"025031700419230000KD"
+  },
+  {
+    "Nama Satker":"BIDANG BIMAS ISLAM KANWIL KEMENAG PROV.SULUT",
+    "Kode KL":"025031700419238000KD"
+  },
+  {
+    "Nama Satker":"BIMAS ISLAM KANTOR KEMENTERIAN AGAMA KOTA MANADO",
+    "Kode KL":"025031700419251000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB SANGIHE (BIMAS ISLAM)",
+    "Kode KL":"025031700419267000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN MINAHASA",
+    "Kode KL":"025031700419273000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BOLAANG MONGONDOW",
+    "Kode KL":"025031700445326000KD"
+  },
+  {
+    "Nama Satker":"BIMAS ISLAM KANTOR KEMENAG KAB. MINAHASA UTARA",
+    "Kode KL":"025031700664132000KD"
+  },
+  {
+    "Nama Satker":"BIMAS ISLAM KEMENAG KAB. MINSEL",
+    "Kode KL":"025031700681977000KD"
+  },
+  {
+    "Nama Satker":"SEKSI BIMAS ISLAM KEMENTERIAN AGAMA KOTA KOTAMOBAGU",
+    "Kode KL":"025031700681996000KD"
+  },
+  {
+    "Nama Satker":"KANKEMENAG KAB. BOLMUT ( BIMAS ISLAM )",
+    "Kode KL":"025031700682009000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. KEPL. SITARO (BIMAS ISLAM)",
+    "Kode KL":"025031800401855000KD"
+  },
+  {
+    "Nama Satker":"Kemenag Kab. Banggai Laut (Bimas Islam)",
+    "Kode KL":"025031800419318000KD"
+  },
+  {
+    "Nama Satker":"BIMBINGAN MASYARAKAT ISLAM",
+    "Kode KL":"025031800419326000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. TOLITOLI",
+    "Kode KL":"025031800419349000KD"
+  },
+  {
+    "Nama Satker":"KEMENAG POSO",
+    "Kode KL":"025031800419357000KD"
+  },
+  {
+    "Nama Satker":"KEMENAG BANGGAI",
+    "Kode KL":"025031800445357000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. TOJO UNA UNA",
+    "Kode KL":"025031800614906000KD"
+  },
+  {
+    "Nama Satker":"DITJEN BIMAS ISLAM",
+    "Kode KL":"025031800635362000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BUOL",
+    "Kode KL":"025031800635440000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BANGGAI  KEPULAUAN",
+    "Kode KL":"025031800653857000KD"
+  },
+  {
+    "Nama Satker":"BIMAS ISLAM KANTOR KEMENTERIAN AGAMA KABUPATEN PARIGI MOUTONG",
+    "Kode KL":"025032800280818000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN PULAU MOROTAI",
+    "Kode KL":"025032800401856000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. PULAU TALIABU",
+    "Kode KL":"025032800419839000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALMAHERA BARAT",
+    "Kode KL":"025032800419845000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALMAHERA TENGAH BIMAS",
+    "Kode KL":"025032800626377000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENTERIAN AGAMA PROVINSI MALUKU UTARA",
+    "Kode KL":"025032800650086000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA TERNATE (03)",
+    "Kode KL":"025032800664099000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN KEPULAUAN SULA - 664099",
+    "Kode KL":"025032800664104000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. HALMAHERA SELATAN SEKSI BIMAS ISLAM",
+    "Kode KL":"025032800664111000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"025032800664125000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN HALMAHERA TIMUR",
+    "Kode KL":"025032800664221000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA TIDORE KEPULAUAN",
+    "Kode KL":"025033100419282000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA GORONTALO",
+    "Kode KL":"025033100419302000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO (03)",
+    "Kode KL":"025033100635287000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. BOALEMO (03)",
+    "Kode KL":"025033100648649000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN AGAMA PROV. GORONTALO (03)",
+    "Kode KL":"025033100653733000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. BONE BOLANGO (03)",
+    "Kode KL":"025033100653747000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. POHUWATO (03)",
+    "Kode KL":"025033100681512000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO UTARA (03)",
+    "Kode KL":"025041700171101000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Tsanawiyah Negeri 3 Bolaang Mongondow Timur",
+    "Kode KL":"025041700171172000KD"
+  },
+  {
+    "Nama Satker":"PENDIS KEMENTERIAN AGAMA KAB. BOLSEL",
+    "Kode KL":"025041700171417000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 2 BOLAANG MONGONDOW UTARA",
+    "Kode KL":"025041700175302000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 1 BITUNG",
+    "Kode KL":"025041700419231000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENAG PROV.SULUT (PENDIS)",
+    "Kode KL":"025041700419239000KD"
+  },
+  {
+    "Nama Satker":"PENDIDIKAN ISLAM KANTOR KEMENTERIAN AGAMA KOTA MANADO",
+    "Kode KL":"025041700419241000KD"
+  },
+  {
+    "Nama Satker":"MAN 1 KOTA MOBAGU",
+    "Kode KL":"025041700419252000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB SANGIHE ( PENDIS )",
+    "Kode KL":"025041700419268000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN MINAHASA",
+    "Kode KL":"025041700419274000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BOLAANG MONGONDOW",
+    "Kode KL":"025041700425168000KD"
+  },
+  {
+    "Nama Satker":"MTS NEGERI 1 KOTAMOBAGU",
+    "Kode KL":"025041700426081000KD"
+  },
+  {
+    "Nama Satker":"MTSN MANADO",
+    "Kode KL":"025041700426251000KD"
+  },
+  {
+    "Nama Satker":"IAIN MANADO",
+    "Kode KL":"025041700445327000KD"
+  },
+  {
+    "Nama Satker":"Pendis Kantor Kemenag Kab. Minahasa Utara",
+    "Kode KL":"025041700537440000KD"
+  },
+  {
+    "Nama Satker":"MAN Model 1 Manado",
+    "Kode KL":"025041700547528000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KOTA BITUNG",
+    "Kode KL":"025041700574739000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI TAHUNA",
+    "Kode KL":"025041700574743000KD"
+  },
+  {
+    "Nama Satker":"MTS NEGERI 2 BOLAANG MONGONDOW",
+    "Kode KL":"025041700661647000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 1 BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"025041700661651000KD"
+  },
+  {
+    "Nama Satker":"MTS NEGERI 1 MINAHASA",
+    "Kode KL":"025041700661668000KD"
+  },
+  {
+    "Nama Satker":"MADARSAH TSANAWIYAH NEGERI LOLAK",
+    "Kode KL":"025041700664133000KD"
+  },
+  {
+    "Nama Satker":"PENDIS KEMENAG KAB. MINSEL",
+    "Kode KL":"025041700674505000KD"
+  },
+  {
+    "Nama Satker":"MTs NEGERI 1 BOLAANG MONGONDOW UTARA",
+    "Kode KL":"025041700674512000KD"
+  },
+  {
+    "Nama Satker":"MTS NEGERI 2 KOTAMOBAGU",
+    "Kode KL":"025041700674526000KD"
+  },
+  {
+    "Nama Satker":"MTsN 1 BITUNG",
+    "Kode KL":"025041700675158000KD"
+  },
+  {
+    "Nama Satker":"MAN 1 BOLAANG MONGONDOW",
+    "Kode KL":"025041700676696000KD"
+  },
+  {
+    "Nama Satker":"MTSN BINIHA",
+    "Kode KL":"025041700676701000KD"
+  },
+  {
+    "Nama Satker":"MTS NEGERI 2 BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"025041700676722000KD"
+  },
+  {
+    "Nama Satker":"MTsN 1 Bolaang Mongondow Selatan",
+    "Kode KL":"025041800180116000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 2 POSO",
+    "Kode KL":"025041800181217000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. SIGI",
+    "Kode KL":"025041800307267000KD"
+  },
+  {
+    "Nama Satker":"UNIVERSITAS ISLAM NEGERI DATOKARAMA PALU",
+    "Kode KL":"025041800308187000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 2 KOTA PALU",
+    "Kode KL":"025041800309580000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1  KOTA  PALU",
+    "Kode KL":"025041800418193000KD"
+  },
+  {
+    "Nama Satker":"Kantor Kementerian Agama Kab. Morowali Utara",
+    "Kode KL":"025041800418194000KD"
+  },
+  {
+    "Nama Satker":"Kantor Kementerian Agama Kab. Banggai Laut",
+    "Kode KL":"025041800418195000KD"
+  },
+  {
+    "Nama Satker":"MAN Insan Cendekia Kota Palu",
+    "Kode KL":"025041800419319000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENAG SULTENG",
+    "Kode KL":"025041800419327000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. TOLITOLI",
+    "Kode KL":"025041800419335000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. DONGGALA",
+    "Kode KL":"025041800419350000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTRIAN AGAMA KABUPATEN POSO",
+    "Kode KL":"025041800419358000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB. BANGGAI",
+    "Kode KL":"025041800420047000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Aliyah Negeri Donggala",
+    "Kode KL":"025041800420048000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Aliyah Negeri 2 Banggai",
+    "Kode KL":"025041800420049000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 2 BANGGAI KEPULAUAN",
+    "Kode KL":"025041800420050000KD"
+  },
+  {
+    "Nama Satker":"MAN 3 PARIGI MOUTONG",
+    "Kode KL":"025041800420051000KD"
+  },
+  {
+    "Nama Satker":"MTSN 4 Parigi Moutong",
+    "Kode KL":"025041800420052000KD"
+  },
+  {
+    "Nama Satker":"MTsN 2 Tojo Una Una",
+    "Kode KL":"025041800420053000KD"
+  },
+  {
+    "Nama Satker":"MAN SIGI",
+    "Kode KL":"025041800425803000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI TOLITOLI",
+    "Kode KL":"025041800445358000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. TOJO UNAUNA",
+    "Kode KL":"025041800537461000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1 BANGGAI",
+    "Kode KL":"025041800537475000KD"
+  },
+  {
+    "Nama Satker":"MTsN 1 Buol",
+    "Kode KL":"025041800537482000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 1 PALU",
+    "Kode KL":"025041800537496000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Aliyah Negeri Banggai",
+    "Kode KL":"025041800574750000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 2 KOTA PALU",
+    "Kode KL":"025041800574764000KD"
+  },
+  {
+    "Nama Satker":"MTSN 2 PARIGI",
+    "Kode KL":"025041800574771000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI LABUAN KAB. DONGGALA",
+    "Kode KL":"025041800574785000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI PARIGI DI SAUSU",
+    "Kode KL":"025041800574792000KD"
+  },
+  {
+    "Nama Satker":"MTSN 2 DONGGALA",
+    "Kode KL":"025041800574807000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI BUNOBOGU",
+    "Kode KL":"025041800574811000KD"
+  },
+  {
+    "Nama Satker":"MTS. NEGERI 1 POSO",
+    "Kode KL":"025041800576139000KD"
+  },
+  {
+    "Nama Satker":"MAN 2 PARIGI",
+    "Kode KL":"025041800604570000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 3 KOTA PALU",
+    "Kode KL":"025041800604587000KD"
+  },
+  {
+    "Nama Satker":"MTSN BUNGKU TENGAH",
+    "Kode KL":"025041800604591000KD"
+  },
+  {
+    "Nama Satker":"MTSN 2 POSO",
+    "Kode KL":"025041800604609000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 3 POSO",
+    "Kode KL":"025041800604613000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Tsanawiyah Negeri 1 Morowali Utara",
+    "Kode KL":"025041800604620000KD"
+  },
+  {
+    "Nama Satker":"MTsN 2 MOROWALI UTARA",
+    "Kode KL":"025041800604634000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI MOUTONG",
+    "Kode KL":"025041800604655000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI TOTIKUM KABUPATEN BANGGAI KEPULAUAN",
+    "Kode KL":"025041800604662000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 1 BANGGAI LAUT",
+    "Kode KL":"025041800604676000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI MOMUNU",
+    "Kode KL":"025041800604680000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 1 TOLITOLI",
+    "Kode KL":"025041800604697000KD"
+  },
+  {
+    "Nama Satker":"MAN POSO",
+    "Kode KL":"025041800604702000KD"
+  },
+  {
+    "Nama Satker":"MAN BIAU",
+    "Kode KL":"025041800635363000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BUOL",
+    "Kode KL":"025041800635441000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BANGGAI  KEPULAUAN",
+    "Kode KL":"025041800653858000KD"
+  },
+  {
+    "Nama Satker":"PENDIS KANTOR KEMENTERIAN AGAMA KABUPATEN PARIGI MOUTONG",
+    "Kode KL":"025041800661672000KD"
+  },
+  {
+    "Nama Satker":"MTSN 4 BUOL",
+    "Kode KL":"025041800661689000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 4 KOTA PALU",
+    "Kode KL":"025041800661693000KD"
+  },
+  {
+    "Nama Satker":"MTS. NEGERI DAMSOL KARYA MUKTI",
+    "Kode KL":"025041800661701000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 2 TOLITOLI",
+    "Kode KL":"025041800662478000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 1 PARIGI MOUTONG KAB. PARIGI MOUTONG",
+    "Kode KL":"025041800662482000KD"
+  },
+  {
+    "Nama Satker":"MAN BANGGAI LAUT",
+    "Kode KL":"025041800676682000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI TOJO UNA UNA",
+    "Kode KL":"025041800680391000KD"
+  },
+  {
+    "Nama Satker":"MAN Morowali",
+    "Kode KL":"025041800680409000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI AMPANA KOTA KAB. TOJO UNA-UNA",
+    "Kode KL":"025042800280745000KD"
+  },
+  {
+    "Nama Satker":"MAN INSAN CENDEKIA HALMAHERA BARAT",
+    "Kode KL":"025042800280819000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN PULAU MOROTAI",
+    "Kode KL":"025042800307740000KD"
+  },
+  {
+    "Nama Satker":"IAIN TERNATE",
+    "Kode KL":"025042800309679000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 1 TERNATE",
+    "Kode KL":"025042800309683000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI TERNATE",
+    "Kode KL":"025042800419840000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN HALMAHERA BARAT",
+    "Kode KL":"025042800420086000KD"
+  },
+  {
+    "Nama Satker":"MAN Pulau Taliabu",
+    "Kode KL":"025042800420087000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Aliyah Negeri 2 Tidore Kepulauan",
+    "Kode KL":"025042800553640000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI DOKIRI",
+    "Kode KL":"025042800601302000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI MAREKU",
+    "Kode KL":"025042800601319000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI1 HALMAHERA TENGAH",
+    "Kode KL":"025042800601330000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI DOKULAMO",
+    "Kode KL":"025042800601344000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI GOTALAMO",
+    "Kode KL":"025042800601365000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI FATCEY SANANA",
+    "Kode KL":"025042800601372000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI GURUAPIN",
+    "Kode KL":"025042800601386000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 1 TIDORE",
+    "Kode KL":"025042800601408000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI GALELA",
+    "Kode KL":"025042800601412000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI SANANA",
+    "Kode KL":"025042800626378000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN AGAMA PROVINSI MALUKU UTARA BIDANG PENDIDIKAN ISLAM",
+    "Kode KL":"025042800650087000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN AGAMA KOTA TERNATE 04",
+    "Kode KL":"025042800661871000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 3 TIDORE",
+    "Kode KL":"025042800661888000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI 1 TALIABU",
+    "Kode KL":"025042800661892000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI CEMARA JAYA",
+    "Kode KL":"025042800662592000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI PATANI GEBE",
+    "Kode KL":"025042800664105000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN HALMAHERA SELATAN (PENDIDIKAN)",
+    "Kode KL":"025042800664112000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"025042800664222000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA TIDORE KEPULAUAN",
+    "Kode KL":"025042800674732000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI BABANG",
+    "Kode KL":"025042800674746000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI MOROTAI TIMUR",
+    "Kode KL":"025042800674750000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI MABA SELATAN",
+    "Kode KL":"025042800675357000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI 2 Halmahera Utara",
+    "Kode KL":"025042800675361000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI WEDA",
+    "Kode KL":"025042800680022000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH TSANAWIYAH NEGERI GORUA",
+    "Kode KL":"025043100309573000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1 KOTA GORONTALO",
+    "Kode KL":"025043100419283000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KOTA GORONTALO (04)",
+    "Kode KL":"025043100419297000KD"
+  },
+  {
+    "Nama Satker":"MAN 1 KOTA GORONTALO",
+    "Kode KL":"025043100419303000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO (04)",
+    "Kode KL":"025043100425452000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1 KABUPATEN GORONTALO",
+    "Kode KL":"025043100426267000KD"
+  },
+  {
+    "Nama Satker":"IAIN SULTAN AMAI GORONTALO",
+    "Kode KL":"025043100537454000KD"
+  },
+  {
+    "Nama Satker":"MAN 1 KABUPATEN GORONTALO",
+    "Kode KL":"025043100553551000KD"
+  },
+  {
+    "Nama Satker":"MTSN 2 KABUPATEN GORONTALO",
+    "Kode KL":"025043100554052000KD"
+  },
+  {
+    "Nama Satker":"Madrasah Tsanawiyah Negeri 1 Boalemo",
+    "Kode KL":"025043100635288000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. BOALEMO (Ditjen Pendidikan Agama Is",
+    "Kode KL":"025043100648651000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN AGAMA PROV. GORONTALO (04)",
+    "Kode KL":"025043100653512000KD"
+  },
+  {
+    "Nama Satker":"MADRASAH ALIYAH NEGERI INSAN CENDEKIA GORONTALO",
+    "Kode KL":"025043100653748000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. POHUWATO (04)",
+    "Kode KL":"025043100661804000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1 POHUWATO",
+    "Kode KL":"025043100661811000KD"
+  },
+  {
+    "Nama Satker":"MTSN 3 KABUPATEN GORONTALO",
+    "Kode KL":"025043100661825000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1 BONE BOLANGO",
+    "Kode KL":"025043100662550000KD"
+  },
+  {
+    "Nama Satker":"MAN 1 BOALEMO",
+    "Kode KL":"025043100662567000KD"
+  },
+  {
+    "Nama Satker":"MAN 2 KABUPATEN GORONTALO",
+    "Kode KL":"025043100674530000KD"
+  },
+  {
+    "Nama Satker":"MTSN 2 POHUWATO",
+    "Kode KL":"025043100674547000KD"
+  },
+  {
+    "Nama Satker":"MTSN 2 BOALEMO",
+    "Kode KL":"025043100675162000KD"
+  },
+  {
+    "Nama Satker":"MAN 1 POHUWATO",
+    "Kode KL":"025043100676739000KD"
+  },
+  {
+    "Nama Satker":"MTSN 1 GORONTALO UTARA",
+    "Kode KL":"025043100681513000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO UTARA (04)",
+    "Kode KL":"025051700419232000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENAG PROV.SULUT (BIMAS KRISTEN)",
+    "Kode KL":"025051700419275000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BOLAANG MONGONDOW",
+    "Kode KL":"025051700547529000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KOTA BITUNG",
+    "Kode KL":"025051700664134000KD"
+  },
+  {
+    "Nama Satker":"BIMAS KRISTEN KEMENAG KAB. MINSEL",
+    "Kode KL":"025051700673076000KD"
+  },
+  {
+    "Nama Satker":"INSTITUT AGAMA KRISTEN NEGERI MANADO",
+    "Kode KL":"025051700681998000KD"
+  },
+  {
+    "Nama Satker":"KANKEMENAG KAB. BOLMUT ( BIMAS KRISTEN )",
+    "Kode KL":"025051800181218000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. SIGI",
+    "Kode KL":"025051800418012000KD"
+  },
+  {
+    "Nama Satker":"Kemenag Morowali Utara (Kristen)",
+    "Kode KL":"025051800419336000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. DONGGALA",
+    "Kode KL":"025051800419351000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTRIAN AGAMA KABUPATEN POSO",
+    "Kode KL":"025051800419359000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB. BANGGAI",
+    "Kode KL":"025051800445359000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. TOJO UNAUNA",
+    "Kode KL":"025051800614908000KD"
+  },
+  {
+    "Nama Satker":"KEMENAG KOTA PALU",
+    "Kode KL":"025051800635399000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB. MOROWALI",
+    "Kode KL":"025051800635442000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BANGGAI  KEPULAUAN",
+    "Kode KL":"025051800653859000KD"
+  },
+  {
+    "Nama Satker":"BIMAS KRISTEN KANTOR KEMENTERIAN AGAMA KABUPATEN PARIGI",
+    "Kode KL":"025052800626379000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN AGAMA PROVINSI MALUKU UTARA BIDANG BIMAS KRISTEN",
+    "Kode KL":"025053100648653000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN AGAMA PROV. GORONTALO (05)",
+    "Kode KL":"025061800419321000KD"
+  },
+  {
+    "Nama Satker":"BIMAS KATOLIK",
+    "Kode KL":"025071700419243000KD"
+  },
+  {
+    "Nama Satker":"BIMAS HINDU KANTOR KEMENTERIAN AGAMA KOTA MANADO",
+    "Kode KL":"025071700681981000KD"
+  },
+  {
+    "Nama Satker":"SEKSI BIMAS HINDU KEMENTERIAN AGAMA KOTA KOTAMOBAGU",
+    "Kode KL":"025071800419322000KD"
+  },
+  {
+    "Nama Satker":"KANWIL SULTENG BIMAS HINDU",
+    "Kode KL":"025071800419353000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTRIAN AGAMA KABUPATEN POSO",
+    "Kode KL":"025071800419362000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KAB. BANGGAI (HINDHU)",
+    "Kode KL":"025071800653862000KD"
+  },
+  {
+    "Nama Satker":"BIMAS HINDU KANTOR KEMENTERIAN AGAMA KABUPATEN PARIGI MOUTONG",
+    "Kode KL":"025073100648655000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN AGAMA PROV. GORONTALO (07)",
+    "Kode KL":"025091700171413000KD"
+  },
+  {
+    "Nama Satker":"KABUPATEN BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"025091700419237000KD"
+  },
+  {
+    "Nama Satker":"PENY. HAJI UMROH KANWIL KEMENAG PROV.SULUT",
+    "Kode KL":"025091700419245000KD"
+  },
+  {
+    "Nama Satker":"PENYELENGGARA HAJI & UMRAH KANTOR KEMENTERIAN AGAMA KOTA MANADO",
+    "Kode KL":"025091700419278000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KABUPATEN BOLAANG MONGONDOW",
+    "Kode KL":"025091700547531000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENAG KOTA BITUNG",
+    "Kode KL":"025091700664136000KD"
+  },
+  {
+    "Nama Satker":"PENYELENGGARA HAJI KEMENAG KAB. MINSEL",
+    "Kode KL":"025091700681982000KD"
+  },
+  {
+    "Nama Satker":"SEKSI PENY. HAJI DAN UMRAH KEMENTERIAN AGAMA KOTA KOTAMOBAGU",
+    "Kode KL":"025091700681995000KD"
+  },
+  {
+    "Nama Satker":"PENYELENGGARA HAJI DAN UMRAH KEMENTERIAN AGAMA KAB. MITRA",
+    "Kode KL":"025091800418433000KD"
+  },
+  {
+    "Nama Satker":"Kemenag Kab. Banggai Laut (Haji & Umrah)",
+    "Kode KL":"025091800419325000KD"
+  },
+  {
+    "Nama Satker":"KANWIL PHU",
+    "Kode KL":"025092800626384000KD"
+  },
+  {
+    "Nama Satker":"KANWIL KEMENTERIAN AGAMA PROVINSI MALUKU UTARA",
+    "Kode KL":"025093100419305000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO (09)",
+    "Kode KL":"025093100648657000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN AGAMA PROV. GORONTALO (09)",
+    "Kode KL":"025093100681514000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KEMENTERIAN AGAMA KAB. GORONTALO UTARA (09)",
+    "Kode KL":"025111700426205000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN AGRARIA DAN TATA RUANG\/BPN",
+    "Kode KL":"056011700171175000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN  BOLAANG MONGONDOW UTARA",
+    "Kode KL":"056011700429010000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. BOLAANG MONGONDOW SELATAN",
+    "Kode KL":"056011700429015000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"056011700429905000KD"
+  },
+  {
+    "Nama Satker":"Kantor Pertanahan Kabupaten Kepulauan Siau Tagulandang Biaro",
+    "Kode KL":"056011700431581000KD"
+  },
+  {
+    "Nama Satker":"KANWIL BPN SULAWESI UTARA",
+    "Kode KL":"056011700431597000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA MANADO",
+    "Kode KL":"056011700431601000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN KEPULAUAN SANGIHE",
+    "Kode KL":"056011700431617000KD"
+  },
+  {
+    "Nama Satker":"KANTAH KAB MINAHASA",
+    "Kode KL":"056011700431623000KD"
+  },
+  {
+    "Nama Satker":"Kantor Pertanahan Kab. Bolaang Mongondow",
+    "Kode KL":"056011700531521000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA BITUNG",
+    "Kode KL":"056011700655413000KD"
+  },
+  {
+    "Nama Satker":"KANTAH TALAUD",
+    "Kode KL":"056011700666390000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA TOMOHON",
+    "Kode KL":"056011700669102000KD"
+  },
+  {
+    "Nama Satker":"KANTAH MINAHASA UTARA",
+    "Kode KL":"056011700670611000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN MINAHASA SELATAN",
+    "Kode KL":"056011700689376000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA KOTAMOBAGU",
+    "Kode KL":"056011700689380000KD"
+  },
+  {
+    "Nama Satker":"KANTAH MITRA",
+    "Kode KL":"056011800429002000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN BANGGAI LAUT",
+    "Kode KL":"056011800429004000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN MOROWALI UTARA",
+    "Kode KL":"056011800431654000KD"
+  },
+  {
+    "Nama Satker":"KANWIL BPN PROV. SULAWESI TENGAH",
+    "Kode KL":"056011800431660000KD"
+  },
+  {
+    "Nama Satker":"KANTAH KAB. DONGGALA",
+    "Kode KL":"056011800431679000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. TOLITOLI",
+    "Kode KL":"056011800431685000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN POSO",
+    "Kode KL":"056011800431691000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN BANGGAI",
+    "Kode KL":"056011800605817000KD"
+  },
+  {
+    "Nama Satker":"Kantor Pertanahan Kota Palu",
+    "Kode KL":"056011800649987000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. MOROWALI",
+    "Kode KL":"056011800655352000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. BUOL",
+    "Kode KL":"056011800655370000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN PARIGI MOUTONG",
+    "Kode KL":"056011800666980000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. BANGKEP",
+    "Kode KL":"056011800670625000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB.TOJO UNA - UNA",
+    "Kode KL":"056011800689423000KD"
+  },
+  {
+    "Nama Satker":"KANTAH SIGI",
+    "Kode KL":"056012800280332000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"056012800280536000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN KEPULAUAN SULA",
+    "Kode KL":"056012800429019000KD"
+  },
+  {
+    "Nama Satker":"Kantor Pertanahan Kab. Halmahera Timur",
+    "Kode KL":"056012800432031000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN HALMAHERA BARAT",
+    "Kode KL":"056012800432040000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN HALMAHERA TENGAH",
+    "Kode KL":"056012800649952000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA TERNATE",
+    "Kode KL":"056012800662660000KD"
+  },
+  {
+    "Nama Satker":"KANWIL BPN PROVINSI MALUKU UTARA",
+    "Kode KL":"056012800675645000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA TIDORE KEPULAUAN",
+    "Kode KL":"056012800681670000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN HALMAHERA SELATAN",
+    "Kode KL":"056012800689403000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN PULAU MOROTAI",
+    "Kode KL":"056013100431632000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KOTA GORONTALO",
+    "Kode KL":"056013100431648000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KABUPATEN GORONTALO",
+    "Kode KL":"056013100637401000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Badan Pertanahan Nasional Provinsi Gorontalo",
+    "Kode KL":"056013100649966000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. BOALEMO",
+    "Kode KL":"056013100670646000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PERTANAHAN KAB. BONE BOLANGO",
+    "Kode KL":"056013100675603000KD"
+  },
+  {
+    "Nama Satker":"Kementerian Hak Asasi Manusia",
+    "Kode KL":"136011800694844000KD"
+  },
+  {
+    "Nama Satker":"Kementerian Hukum",
+    "Kode KL":"135011700692018000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN HUKUM SULAWESI UTARA",
+    "Kode KL":"135012800692034000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN HUKUM MALUKU UTARA",
+    "Kode KL":"135013100692033000KD"
+  },
+  {
+    "Nama Satker":"KANTOR WILAYAH KEMENTERIAN HUKUM GORONTALO",
+    "Kode KL":"135131700693165000KD"
+  },
+  {
+    "Nama Satker":"Kementerian Imigrasi dan Pemasyarakatan",
+    "Kode KL":"137031700692867000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas I TPI Manado",
+    "Kode KL":"137031700692885000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Imigrasi Sulawesi Utara",
+    "Kode KL":"137031700692908000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas II TPI Bitung",
+    "Kode KL":"137031700692959000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas II TPI Tahuna",
+    "Kode KL":"137031700692967000KD"
+  },
+  {
+    "Nama Satker":"Rumah Detensi Imigrasi Manado",
+    "Kode KL":"137031700692985000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas II Non TPI Kotamobagu",
+    "Kode KL":"137031800692855000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas I TPI Palu",
+    "Kode KL":"137031800692918000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Imigrasi Sulawesi Tengah",
+    "Kode KL":"137031800692988000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas II Non TPI Banggai",
+    "Kode KL":"137032800692925000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas I TPI Ternate",
+    "Kode KL":"137032800692939000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Imigrasi Maluku Utara",
+    "Kode KL":"137032800692956000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas II Non TPI Tobelo",
+    "Kode KL":"137033100692938000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Imigrasi Gorontalo",
+    "Kode KL":"137033100692953000KD"
+  },
+  {
+    "Nama Satker":"Kantor Imigrasi Kelas I TPI Gorontalo",
+    "Kode KL":"137041700692101000KD"
+  },
+  {
+    "Nama Satker":"Bapas Kelas I Manado",
+    "Kode KL":"137041700692378000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIA Manado",
+    "Kode KL":"137041700692379000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Amurang",
+    "Kode KL":"137041700692380000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Tondano",
+    "Kode KL":"137041700692381000KD"
+  },
+  {
+    "Nama Satker":"Lembaga Pembinaan Khusus Anak Kelas II Tomohon",
+    "Kode KL":"137041700692382000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIB Kotamobagu",
+    "Kode KL":"137041700692384000KD"
+  },
+  {
+    "Nama Satker":"Lembaga Pemasyarakatan Kelas IIB Tahuna",
+    "Kode KL":"137041700692385000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Enemawira",
+    "Kode KL":"137041700692386000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Tamako",
+    "Kode KL":"137041700692387000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Lirung",
+    "Kode KL":"137041700692388000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Tagulandang",
+    "Kode KL":"137041700692389000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Ulu Siau",
+    "Kode KL":"137041700692513000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Pemasyarakatan Sulawesi Utara",
+    "Kode KL":"137041700692543000KD"
+  },
+  {
+    "Nama Satker":"Lapas Perempuan Kelas IIB Manado",
+    "Kode KL":"137041700692578000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIA Manado",
+    "Kode KL":"137041700692685000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Bitung",
+    "Kode KL":"137041800692102000KD"
+  },
+  {
+    "Nama Satker":"Bapas Kelas I Palu",
+    "Kode KL":"137041800692120000KD"
+  },
+  {
+    "Nama Satker":"Lembaga Pembinaan Khusus Anak Kelas II Palu",
+    "Kode KL":"137041800692390000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIA Palu",
+    "Kode KL":"137041800692391000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIB Donggala",
+    "Kode KL":"137041800692392000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Parigi",
+    "Kode KL":"137041800692393000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Toli-Toli",
+    "Kode KL":"137041800692394000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Leok",
+    "Kode KL":"137041800692395000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Luwuk",
+    "Kode KL":"137041800692396000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Kolonodale",
+    "Kode KL":"137041800692397000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIB Poso",
+    "Kode KL":"137041800692488000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Ampana",
+    "Kode KL":"137041800692525000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Pemasyarakatan Sulawesi Tengah",
+    "Kode KL":"137041800692547000KD"
+  },
+  {
+    "Nama Satker":"Lapas Perempuan Kelas III Palu",
+    "Kode KL":"137041800692599000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIA Palu",
+    "Kode KL":"137041800692614000KD"
+  },
+  {
+    "Nama Satker":"Bapas Kelas II Luwuk",
+    "Kode KL":"137042800692111000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Tobello",
+    "Kode KL":"137042800692112000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Sanana",
+    "Kode KL":"137042800692124000KD"
+  },
+  {
+    "Nama Satker":"Lembaga Pembinaan Khusus Anak Kelas II Ternate",
+    "Kode KL":"137042800692440000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIB Ternate",
+    "Kode KL":"137042800692441000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas III Labuha",
+    "Kode KL":"137042800692549000KD"
+  },
+  {
+    "Nama Satker":"Lapas Perempuan Kelas III Ternate",
+    "Kode KL":"137042800692581000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Jailolo",
+    "Kode KL":"137042800692593000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIB Soa Siu",
+    "Kode KL":"137042800692615000KD"
+  },
+  {
+    "Nama Satker":"Bapas Kelas II Ternate",
+    "Kode KL":"137042800692636000KD"
+  },
+  {
+    "Nama Satker":"Bapas Kelas II Tidore",
+    "Kode KL":"137042800692671000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Pemasyarakatan Maluku Utara",
+    "Kode KL":"137042800692682000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIA Ternate",
+    "Kode KL":"137042800692798000KD"
+  },
+  {
+    "Nama Satker":"Rutan Kelas IIB Weda",
+    "Kode KL":"137043100692121000KD"
+  },
+  {
+    "Nama Satker":"Lembaga Pembinaan Khusus Anak Kelas II Gorontalo",
+    "Kode KL":"137043100692383000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIA Gorontalo",
+    "Kode KL":"137043100692548000KD"
+  },
+  {
+    "Nama Satker":"Lapas Perempuan Kelas III Gorontalo",
+    "Kode KL":"137043100692583000KD"
+  },
+  {
+    "Nama Satker":"Lapas Kelas IIB Boalemo",
+    "Kode KL":"137043100692670000KD"
+  },
+  {
+    "Nama Satker":"Kantor Wilayah Ditjen Pemasyarakatan Gorontalo",
+    "Kode KL":"137043100692722000KD"
+  },
+  {
+    "Nama Satker":"Bapas Kelas II Gorontalo",
+    "Kode KL":"137043100692797000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KEBUDAYAAN",
+    "Kode KL":"140031800693327000KD"
+  },
+  {
+    "Nama Satker":"Balai Pelestarian Kebudayaan Wilayah XVIII",
+    "Kode KL":"140032800693307000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KEHUTANAN",
+    "Kode KL":"143031800693671000KD"
+  },
+  {
+    "Nama Satker":"Balai Pemantapan Kawasan Hutan Wilayah XVI",
+    "Kode KL":"143033100693670000KD"
+  },
+  {
+    "Nama Satker":"Balai Pemantapan Kawasan Hutan Wilayah XV",
+    "Kode KL":"143041700693632000KD"
+  },
+  {
+    "Nama Satker":"Balai Taman Nasional Bunaken",
+    "Kode KL":"143041800693594000KD"
+  },
+  {
+    "Nama Satker":"Balai KSDA Sulawesi Tengah",
+    "Kode KL":"143041800693624000KD"
+  },
+  {
+    "Nama Satker":"Balai Taman Nasional Kepulauan Togean",
+    "Kode KL":"143041800693630000KD"
+  },
+  {
+    "Nama Satker":"Balai Besar Taman Nasional Lore Lindu",
+    "Kode KL":"143042800693626000KD"
+  },
+  {
+    "Nama Satker":"Balai Taman Nasional Aketajawe Lolobata",
+    "Kode KL":"143051800693560000KD"
+  },
+  {
+    "Nama Satker":"BPDAS Palu Poso",
+    "Kode KL":"143053100693559000KD"
+  },
+  {
+    "Nama Satker":"BPDAS Bone Limboto",
+    "Kode KL":"143061800693535000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KELAUTAN DAN PERIKANAN",
+    "Kode KL":"032031700633707000KD"
+  },
+  {
+    "Nama Satker":"PELABUHAN PERIKANAN SAMUDERA BITUNG",
+    "Kode KL":"032032800427661000KD"
+  },
+  {
+    "Nama Satker":"PELABUHAN PERIKANAN NUSANTARA TERNATE",
+    "Kode KL":"032033100310719000KD"
+  },
+  {
+    "Nama Satker":"PELABUHAN PERIKANAN NUSANTARA KWANDANG",
+    "Kode KL":"032051700170445000KD"
+  },
+  {
+    "Nama Satker":"Stasiun PSDKP Tahuna",
+    "Kode KL":"032051700440822000KD"
+  },
+  {
+    "Nama Satker":"Pangkalan PSDKP Bitung",
+    "Kode KL":"032121700238010000KD"
+  },
+  {
+    "Nama Satker":"POLITEKNIK KELAUTAN DAN PERIKANAN BITUNG",
+    "Kode KL":"032121700239260000KD"
+  },
+  {
+    "Nama Satker":"BALAI PELATIHAN DAN PENYULUHAN PERIKANAN  BITUNG",
+    "Kode KL":"032123100403833000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KEPENDUDUKAN DAN PEMBANGUNAN KELUARGA\/BKKBN",
+    "Kode KL":"068011700018445000KD"
+  },
+  {
+    "Nama Satker":"PERWAKILAN BKKBN PROVINSI SULUT",
+    "Kode KL":"068011800433051000KD"
+  },
+  {
+    "Nama Satker":"PERWAKILAN BKKBN PROVINSI SULAWESI TENGAH",
+    "Kode KL":"068012800631631000KD"
+  },
+  {
+    "Nama Satker":"PERWAKILAN BKKBN PROVINSI MALUKU UTARA",
+    "Kode KL":"068013100631627000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KESEHATAN",
+    "Kode KL":"024031700690794000KD"
+  },
+  {
+    "Nama Satker":"Balai Laboratorium Kesehatan Masyarakat Manado",
+    "Kode KL":"024031800690795000KD"
+  },
+  {
+    "Nama Satker":"Balai Laboratorium Kesehatan Masyarakat Donggala",
+    "Kode KL":"024041700325155000KD"
+  },
+  {
+    "Nama Satker":"RSUP RATATOTOK BUYAT",
+    "Kode KL":"024041700538815000KD"
+  },
+  {
+    "Nama Satker":"RSUP Prof. Dr. R. D. Kandou",
+    "Kode KL":"024051700415840000KD"
+  },
+  {
+    "Nama Satker":"BKK KELAS II BITUNG",
+    "Kode KL":"024051800415856000KD"
+  },
+  {
+    "Nama Satker":"BKK KELAS II POSO",
+    "Kode KL":"024052800449962000KD"
+  },
+  {
+    "Nama Satker":"BKK KELAS I TERNATE",
+    "Kode KL":"024053100449978000KD"
+  },
+  {
+    "Nama Satker":"BKK KELAS I GORONTALO",
+    "Kode KL":"024121700632327001KD"
+  },
+  {
+    "Nama Satker":"KEPERAWATAN",
+    "Kode KL":"024121700632327004KD"
+  },
+  {
+    "Nama Satker":"KESEHATAN LINGKUNGAN",
+    "Kode KL":"024121700632327005KD"
+  },
+  {
+    "Nama Satker":"FARMASI",
+    "Kode KL":"024121700632327007KD"
+  },
+  {
+    "Nama Satker":"ANALIS KESEHATAN",
+    "Kode KL":"024121700632327010KD"
+  },
+  {
+    "Nama Satker":"REKTORAT",
+    "Kode KL":"024121800632331000KD"
+  },
+  {
+    "Nama Satker":"POLITEKNIK KESEHATAN PALU",
+    "Kode KL":"024121800632331003KD"
+  },
+  {
+    "Nama Satker":"KESLING",
+    "Kode KL":"024121800632331004KD"
+  },
+  {
+    "Nama Satker":"KEPERAWATAN POSO",
+    "Kode KL":"024123100447560000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KETENAGAKERJAAN",
+    "Kode KL":"026132800452595000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KEUANGAN",
+    "Kode KL":"015042700119862000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Manado",
+    "Kode KL":"015042700119876000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Gorontalo",
+    "Kode KL":"015042700409917000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Bitung",
+    "Kode KL":"015042700410000000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Tobelo",
+    "Kode KL":"015042700410150000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Ternate",
+    "Kode KL":"015042700410172000KD"
+  },
+  {
+    "Nama Satker":"Kanwil DJP Sulawesi Utara, Tengah, Gorontalo, dan Maluku Utara",
+    "Kode KL":"015042700525495000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Luwuk",
+    "Kode KL":"015042700636207000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Tahuna",
+    "Kode KL":"015042700636211000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Toli Toli",
+    "Kode KL":"015042700636228000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Poso",
+    "Kode KL":"015042700663665000KD"
+  },
+  {
+    "Nama Satker":"KPP Pratama Kotamobagu",
+    "Kode KL":"015052200175163000KD"
+  },
+  {
+    "Nama Satker":"KANWIL DJBC SULAWESI BAGIAN UTARA",
+    "Kode KL":"015052200180641000KD"
+  },
+  {
+    "Nama Satker":"KPPBC TMP C MOROWALI",
+    "Kode KL":"015052200411296000KD"
+  },
+  {
+    "Nama Satker":"KPPBC TMP C BITUNG",
+    "Kode KL":"015052200411300000KD"
+  },
+  {
+    "Nama Satker":"KPPBC TMP C MANADO",
+    "Kode KL":"015052200411316000KD"
+  },
+  {
+    "Nama Satker":"KPPBC TMP C GORONTALO",
+    "Kode KL":"015052200526881000KD"
+  },
+  {
+    "Nama Satker":"KPPBC TMP C LUWUK",
+    "Kode KL":"015052200532551000KD"
+  },
+  {
+    "Nama Satker":"PSOBC TIPE B PANTOLOAN",
+    "Kode KL":"015082400528310000KD"
+  },
+  {
+    "Nama Satker":"KPPN PALU",
+    "Kode KL":"015082400528324000KD"
+  },
+  {
+    "Nama Satker":"Kantor Pelayanan Perbendaharaan Negara Luwuk",
+    "Kode KL":"015082400528331000KD"
+  },
+  {
+    "Nama Satker":"KPPN POSO",
+    "Kode KL":"015082400528345000KD"
+  },
+  {
+    "Nama Satker":"KPPN TOLI TOLI",
+    "Kode KL":"015082400613807000KD"
+  },
+  {
+    "Nama Satker":"KANWIL DJPB PROVINSI SULAWESI TENGAH",
+    "Kode KL":"015082600497622000KD"
+  },
+  {
+    "Nama Satker":"KPPN MARISA",
+    "Kode KL":"015082600528281000KD"
+  },
+  {
+    "Nama Satker":"KPPN GORONTALO",
+    "Kode KL":"015082600648741000KD"
+  },
+  {
+    "Nama Satker":"KANWIL DJPB PROV. GORONTALO",
+    "Kode KL":"015082700497607000KD"
+  },
+  {
+    "Nama Satker":"KPPN Bitung",
+    "Kode KL":"015082700528260000KD"
+  },
+  {
+    "Nama Satker":"KANWIL DJPb PROV. SULAWESI UTARA",
+    "Kode KL":"015082700528277000KD"
+  },
+  {
+    "Nama Satker":"KPPN MANADO",
+    "Kode KL":"015082700635197000KD"
+  },
+  {
+    "Nama Satker":"KPPN KOTAMOBAGU",
+    "Kode KL":"015082800452878000KD"
+  },
+  {
+    "Nama Satker":"KPPN TOBELO",
+    "Kode KL":"015082800528497000KD"
+  },
+  {
+    "Nama Satker":"KPPN TERNATE",
+    "Kode KL":"015082800662787000KD"
+  },
+  {
+    "Nama Satker":"KANWIL DJPB PROVINSI MALUKU UTARA",
+    "Kode KL":"015091600537979000KD"
+  },
+  {
+    "Nama Satker":"KANWIL DJKN SULUTTENGOMALUT",
+    "Kode KL":"015091600537983000KD"
+  },
+  {
+    "Nama Satker":"KPKNL MANADO",
+    "Kode KL":"015091600538002000KD"
+  },
+  {
+    "Nama Satker":"KPKNL PALU",
+    "Kode KL":"015091600538023000KD"
+  },
+  {
+    "Nama Satker":"KANTOR PELAYANAN KEKAYAAN NEGARA DAN LELANG GORONTALO",
+    "Kode KL":"015091600538133000KD"
+  },
+  {
+    "Nama Satker":"KPKNL TERNATE",
+    "Kode KL":"015111700636799000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN KOMUNIKASI DAN DIGITAL",
+    "Kode KL":"059061700432700000KD"
+  },
+  {
+    "Nama Satker":"BPSDMP KOMINFO MANADO",
+    "Kode KL":"059091700694705000KD"
+  },
+  {
+    "Nama Satker":"BALAI MONITOR SPEKTRUM FREKUENSI RADIO KELAS II MANADO",
+    "Kode KL":"059092800694723000KD"
+  },
+  {
+    "Nama Satker":"LOKA MONITOR SPEKTRUM FREKUENSI RADIO TERNATE",
+    "Kode KL":"059093100694725000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN P2MI\/BP2MI",
+    "Kode KL":"104011700426484000KD"
+  },
+  {
+    "Nama Satker":"BP3MI SULAWESI UTARA",
+    "Kode KL":"104011800426413000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN PENDIDIKAN DASAR DAN MENENGAH",
+    "Kode KL":"138031700693353000KD"
+  },
+  {
+    "Nama Satker":"Balai Guru dan Tenaga Kependidikan Provinsi Sulawesi Utara",
+    "Kode KL":"138031800693354000KD"
+  },
+  {
+    "Nama Satker":"Balai Guru dan Tenaga Kependidikan Provinsi Sulawesi Tengah",
+    "Kode KL":"138032800693363000KD"
+  },
+  {
+    "Nama Satker":"Kantor Guru dan Tenaga Kependidikan Provinsi Maluku Utara",
+    "Kode KL":"138033100693366000KD"
+  },
+  {
+    "Nama Satker":"Kantor Guru dan Tenaga Kependidikan Provinsi Gorontalo",
+    "Kode KL":"138041700693224000KD"
+  },
+  {
+    "Nama Satker":"BPMP PROVINSI SULAWESI UTARA",
+    "Kode KL":"138041800693225000KD"
+  },
+  {
+    "Nama Satker":"BPMP PROVINSI SULAWESI TENGAH",
+    "Kode KL":"138042800693253000KD"
+  },
+  {
+    "Nama Satker":"BPMP PROVINSI MALUKU UTARA",
+    "Kode KL":"138043100693228000KD"
+  },
+  {
+    "Nama Satker":"BPMP PROVINSI GORONTALO",
+    "Kode KL":"138121700693285000KD"
+  },
+  {
+    "Nama Satker":"BALAI BAHASA PROVINSI SULAWESI UTARA",
+    "Kode KL":"138121800693283000KD"
+  },
+  {
+    "Nama Satker":"BALAI BAHASA PROVINSI SULAWESI TENGAH",
+    "Kode KL":"138122800693295000KD"
+  },
+  {
+    "Nama Satker":"BALAI BAHASA PROVINSI  MALUKU UTARA",
+    "Kode KL":"138123100693294000KD"
+  },
+  {
+    "Nama Satker":"Kementerian Pendidikan Tinggi, Sains, dan Teknologi",
+    "Kode KL":"139031700693382001KD"
+  },
+  {
+    "Nama Satker":"FAKULTAS KEDOKTERAN",
+    "Kode KL":"139031700693383000KD"
+  },
+  {
+    "Nama Satker":"UNIVERSITAS NEGERI MANADO",
+    "Kode KL":"139031700693383076KD"
+  },
+  {
+    "Nama Satker":"Subsatker 076",
+    "Kode KL":"139031700693486000KD"
+  },
+  {
+    "Nama Satker":"POLITEKNIK NEGERI MANADO",
+    "Kode KL":"139031700693504000KD"
+  },
+  {
+    "Nama Satker":"POLITEKNIK NEGERI NUSA UTARA",
+    "Kode KL":"139031800693385000KD"
+  },
+  {
+    "Nama Satker":"UNIVERSITAS TADULAKO",
+    "Kode KL":"139032800693394000KD"
+  },
+  {
+    "Nama Satker":"UNIVERSITAS KHAIRUN",
+    "Kode KL":"139033100693384002KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN PERHUBUNGAN",
+    "Kode KL":"022031700403864000KD"
+  },
+  {
+    "Nama Satker":"BPTD KELAS II SULAWESI UTARA",
+    "Kode KL":"022031700403864003KD"
+  },
+  {
+    "Nama Satker":"EX LLAJ SULUT",
+    "Kode KL":"022031700403864004KD"
+  },
+  {
+    "Nama Satker":"Ex LLASDP sulut",
+    "Kode KL":"022031800403861000KD"
+  },
+  {
+    "Nama Satker":"BALAI PENGELOLA TRANSPORTASI DARAT KELAS II SULAWESI TENGAH",
+    "Kode KL":"022032800403866000KD"
+  },
+  {
+    "Nama Satker":"BALAI PENGELOLA TRANSPORTASI DARAT KELAS II MALUKU UTARA",
+    "Kode KL":"022033100403863000KD"
+  },
+  {
+    "Nama Satker":"BALAI PENGELOLA TRANSPORTASI DARAT KELAS II GORONTALO",
+    "Kode KL":"022041700287317000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KESYAHBANDARAN DAN OTORITAS PELABUHAN MANADO",
+    "Kode KL":"022041700287338000KD"
+  },
+  {
+    "Nama Satker":"UPP KELAS II TAHUNA",
+    "Kode KL":"022041700287342000KD"
+  },
+  {
+    "Nama Satker":"DISTRIK NAVIGASI KELAS I BITUNG",
+    "Kode KL":"022041700413582000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UPP KELAS III MELONGUANE",
+    "Kode KL":"022041700413783000KD"
+  },
+  {
+    "Nama Satker":"KESYAHBANDARAN DAN OTORITAS PELABUHAN BITUNG",
+    "Kode KL":"022041700521730000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS II AMURANG",
+    "Kode KL":"022041700521751000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UPP KELAS III LABUAN UKI",
+    "Kode KL":"022041700535457000KD"
+  },
+  {
+    "Nama Satker":"PANGKALAN PLP KLS II BITUNG",
+    "Kode KL":"022041700559328000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KLS. III LIKUPANG",
+    "Kode KL":"022041800287370000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KESYAHBANDARAN DAN OTORITAS PELABUHAN KELAS II  TELUK PALU",
+    "Kode KL":"022041800287384000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS III POSO",
+    "Kode KL":"022041800287391000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UPP KELAS II LUWUK",
+    "Kode KL":"022041800413591000KD"
+  },
+  {
+    "Nama Satker":"KUPP KOLONODALE",
+    "Kode KL":"022041800413602000KD"
+  },
+  {
+    "Nama Satker":"UNIT PENYELENGGARA PELABUHAN AMPANA",
+    "Kode KL":"022041800413611000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS III BUNTA",
+    "Kode KL":"022041800521789000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UPP PAGIMANA",
+    "Kode KL":"022041800559332000KD"
+  },
+  {
+    "Nama Satker":"UNIT PENYELENGGARA PELABUHAN OGOAMAS",
+    "Kode KL":"022041800559353000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS II BANGGAI",
+    "Kode KL":"022041800690780000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS III BUNGKU",
+    "Kode KL":"022042800287541000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KESYAHBANDARAN DAN OTORITAS PELABUHAN KELAS II TERNATE",
+    "Kode KL":"022042800413658000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS II LABUHA\/BABANG",
+    "Kode KL":"022042800413664000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN KELAS III SANANA",
+    "Kode KL":"022042800559400000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA  PELABUHAN SOASIO",
+    "Kode KL":"022042800559421000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA PELABUHAN JAILOLO",
+    "Kode KL":"022042800690779000KD"
+  },
+  {
+    "Nama Satker":"Kantor Unit Penyelenggara Pelabuhan Kelas III Sofifi",
+    "Kode KL":"022043100652563000KD"
+  },
+  {
+    "Nama Satker":"KANTOR KESYAHBANDARAN DAN OTORITAS PELABUHAN KELAS IV ANGGREK",
+    "Kode KL":"022051700413978000KD"
+  },
+  {
+    "Nama Satker":"UNIT PENYELENGGARA BANDAR UDARA NAHA TAHUNA",
+    "Kode KL":"022051700522007000KD"
+  },
+  {
+    "Nama Satker":"BANDARA MELONGUANE",
+    "Kode KL":"022051800180945000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UPBU KELAS III TANJUNG API AMPANA",
+    "Kode KL":"022051800288401000KD"
+  },
+  {
+    "Nama Satker":"BLU UPBU MUTIARA SIS AL-JUFRI",
+    "Kode KL":"022051800413859000KD"
+  },
+  {
+    "Nama Satker":"BANDAR UDARA KASIGUNCU POSO",
+    "Kode KL":"022051800413984000KD"
+  },
+  {
+    "Nama Satker":"BANDAR UDARA SYUKURAN AMINUDDIN AMIR LUWUK",
+    "Kode KL":"022051800413990000KD"
+  },
+  {
+    "Nama Satker":"BANDAR UDARA SULTAN BANTILAN TOLITOLI",
+    "Kode KL":"022051800466250000KD"
+  },
+  {
+    "Nama Satker":"BANDARA POGOGUL BUOL",
+    "Kode KL":"022051800649045000KD"
+  },
+  {
+    "Nama Satker":"Unit Penyelenggara Bandar Udara Kelas III Morowali",
+    "Kode KL":"022052800288457000KD"
+  },
+  {
+    "Nama Satker":"KANTOR BLU UPBU SULTAN BABULLAH TERNATE",
+    "Kode KL":"022052800414211000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA BANDAR UDARA OESMAN SADIK - LABUHA",
+    "Kode KL":"022052800449491000KD"
+  },
+  {
+    "Nama Satker":"BANDAR UDARA EMALAMO SANANA",
+    "Kode KL":"022052800449493000KD"
+  },
+  {
+    "Nama Satker":"BANDAR UDARA PITU MOROTAI",
+    "Kode KL":"022052800521992000KD"
+  },
+  {
+    "Nama Satker":"KANTOR UNIT PENYELENGGARA BANDAR UDARA KELAS III KUABANG",
+    "Kode KL":"022053100288393000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN PERINDUSTRIAN",
+    "Kode KL":"019071700247246000KD"
+  },
+  {
+    "Nama Satker":"BALAI STANDARDISASI DAN PELAYANAN JASA INDUSTRI MANADO",
+    "Kode KL":"019101800579347000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN PERTAHANAN",
+    "Kode KL":"012221700344336000KD"
+  },
+  {
+    "Nama Satker":"KOREM 131\/SANTIAGO",
+    "Kode KL":"012221700344336001KD"
+  },
+  {
+    "Nama Satker":"MAKOREM 131\/STG",
+    "Kode KL":"012221700344336002KD"
+  },
+  {
+    "Nama Satker":"KODIM 1301\/SANGIHE",
+    "Kode KL":"012221700344336003KD"
+  },
+  {
+    "Nama Satker":"KODIM 1302\/MINAHASA",
+    "Kode KL":"012221700344336004KD"
+  },
+  {
+    "Nama Satker":"KODIM 1303\/BOLMONG",
+    "Kode KL":"012221700344336007KD"
+  },
+  {
+    "Nama Satker":"KODIM 1310\/BITUNG",
+    "Kode KL":"012221700344336009KD"
+  },
+  {
+    "Nama Satker":"KODIM 1312\/TALAUD",
+    "Kode KL":"012221700344337000KD"
+  },
+  {
+    "Nama Satker":"KOREM 132\/TADULAKO",
+    "Kode KL":"012221700344337001KD"
+  },
+  {
+    "Nama Satker":"KODIM 1305\/TOLITOLI",
+    "Kode KL":"012221700344885000KD"
+  },
+  {
+    "Nama Satker":"Rumkit Tingkat III DR. Sindhu Trisno Palu",
+    "Kode KL":"012221700418216001KD"
+  },
+  {
+    "Nama Satker":"DENMADAM",
+    "Kode KL":"012221700418216008KD"
+  },
+  {
+    "Nama Satker":"TOPDAM",
+    "Kode KL":"012221700418216015KD"
+  },
+  {
+    "Nama Satker":"YONARMED 19",
+    "Kode KL":"012221700418216017KD"
+  },
+  {
+    "Nama Satker":"DENZIPUR 4",
+    "Kode KL":"012221700418216018KD"
+  },
+  {
+    "Nama Satker":"YONIF R 712\/WT",
+    "Kode KL":"012221700418217002KD"
+  },
+  {
+    "Nama Satker":"DENZIBANG 1\/XIII MANADO",
+    "Kode KL":"012221700418217003KD"
+  },
+  {
+    "Nama Satker":"DENZIBANG 2\/XIII PALU",
+    "Kode KL":"012221700418219004KD"
+  },
+  {
+    "Nama Satker":"GUDPALRAH\/A 13-31-01",
+    "Kode KL":"012221700418221001KD"
+  },
+  {
+    "Nama Satker":"GUDKESRAH XIII\/MERDEKA",
+    "Kode KL":"012221700418221002KD"
+  },
+  {
+    "Nama Satker":"DENKESYAH MANADO",
+    "Kode KL":"012221700418221003KD"
+  },
+  {
+    "Nama Satker":"DENKESYAH PALU",
+    "Kode KL":"012221700418221005KD"
+  },
+  {
+    "Nama Satker":"Rumkit Tk IV Dr. Yanto, Sp Ot Poso",
+    "Kode KL":"012221700418222000KD"
+  },
+  {
+    "Nama Satker":"BEKANGDAM XIII\/MERDEKA",
+    "Kode KL":"012221700418222008KD"
+  },
+  {
+    "Nama Satker":"DENHAR JASA INT XIII-44-13",
+    "Kode KL":"012221700418223000KD"
+  },
+  {
+    "Nama Satker":"RINDAM XIII\/MERDEKA",
+    "Kode KL":"012221700418392000KD"
+  },
+  {
+    "Nama Satker":"RUMKIT TK.II R.W MONGINSIDI",
+    "Kode KL":"012221700684279001KD"
+  },
+  {
+    "Nama Satker":"MAKOREM 133\/NW",
+    "Kode KL":"012221700685069000KD"
+  },
+  {
+    "Nama Satker":"KODIM 1309\/MANADO",
+    "Kode KL":"012221700685070000KD"
+  },
+  {
+    "Nama Satker":"Kodim 1306\/ Kota Palu",
+    "Kode KL":"012231700344682000KD"
+  },
+  {
+    "Nama Satker":"KODAERAL VIII",
+    "Kode KL":"012231700344682001KD"
+  },
+  {
+    "Nama Satker":"RUMKITAL",
+    "Kode KL":"012231700344685000KD"
+  },
+  {
+    "Nama Satker":"LANAL TAHUNA",
+    "Kode KL":"012231700344685001KD"
+  },
+  {
+    "Nama Satker":"LANAL MELONGUANE",
+    "Kode KL":"012231800344669000KD"
+  },
+  {
+    "Nama Satker":"LANAL PALU",
+    "Kode KL":"012231800344686000KD"
+  },
+  {
+    "Nama Satker":"LANAL TOLI-TOLI",
+    "Kode KL":"012232800344700000KD"
+  },
+  {
+    "Nama Satker":"LANAL TERNATE",
+    "Kode KL":"012232800344702000KD"
+  },
+  {
+    "Nama Satker":"LANAL MOROTAI",
+    "Kode KL":"012233100344687000KD"
+  },
+  {
+    "Nama Satker":"PANGKALAN TNI AL GORONTALO",
+    "Kode KL":"012241951344845000KD"
+  },
+  {
+    "Nama Satker":"Pangkalan TNI AU Sam Ratulangi",
+    "Kode KL":"012241951344845001KD"
+  },
+  {
+    "Nama Satker":"Rumkit TNI AU Sam Ratulangi Manado",
+    "Kode KL":"012242502344856000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN PERTANIAN",
+    "Kode KL":"018091700238027000KD"
+  },
+  {
+    "Nama Satker":"Balai Perakitan dan Pengujian Tanaman Palma",
+    "Kode KL":"018093100450856000KD"
+  },
+  {
+    "Nama Satker":"KEMENTERIAN SOSIAL",
+    "Kode KL":"027041700690580000KD"
+  },
+  {
+    "Nama Satker":"Sentra \"Tumou Tou\" Manado",
+    "Kode KL":"027041800690585000KD"
+  },
+  {
+    "Nama Satker":"KEPOLISIAN NEGARA REPUBLIK INDONESIA",
+    "Kode KL":"060011700352649000KD"
+  },
+  {
+    "Nama Satker":"POLRES BOLAANG MONGONDOW",
+    "Kode KL":"060011700352650000KD"
+  },
+  {
+    "Nama Satker":"POLRES BOLAANG MONGONDOW UTARA",
+    "Kode KL":"060011700352652000KD"
+  },
+  {
+    "Nama Satker":"POLRES BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"060011700536760000KD"
+  },
+  {
+    "Nama Satker":"BID HUMAS POLDA SULUT",
+    "Kode KL":"060011700647067000KD"
+  },
+  {
+    "Nama Satker":"SPRIPIM",
+    "Kode KL":"060011700647071000KD"
+  },
+  {
+    "Nama Satker":"BIRO OPERASI POLDA SULUT",
+    "Kode KL":"060011700647092000KD"
+  },
+  {
+    "Nama Satker":"DIT INTELKAM",
+    "Kode KL":"060011700647100000KD"
+  },
+  {
+    "Nama Satker":"DIT RESKRIMUM POLDA SULUT",
+    "Kode KL":"060011700647121000KD"
+  },
+  {
+    "Nama Satker":"DIT LANTAS",
+    "Kode KL":"060011700647177000KD"
+  },
+  {
+    "Nama Satker":"BIRO LOGISTIK POLDA SULUT",
+    "Kode KL":"060011700647181000KD"
+  },
+  {
+    "Nama Satker":"SATBRIMOBDA SULUT",
+    "Kode KL":"060011700647198000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT KEPOLISIAN PERAIRAN DAN UDARA",
+    "Kode KL":"060011700647210000KD"
+  },
+  {
+    "Nama Satker":"BID DOKKES",
+    "Kode KL":"060011700647224000KD"
+  },
+  {
+    "Nama Satker":"POLRESTA MANADO",
+    "Kode KL":"060011700647231000KD"
+  },
+  {
+    "Nama Satker":"POLRES MINAHASA",
+    "Kode KL":"060011700647245000KD"
+  },
+  {
+    "Nama Satker":"POLRES BITUNG",
+    "Kode KL":"060011700647266000KD"
+  },
+  {
+    "Nama Satker":"POLRES KOTAMOBAGU",
+    "Kode KL":"060011700651728000KD"
+  },
+  {
+    "Nama Satker":"BIDANG TEKNOLOGI INFORMASI DAN KOMUNIKASI POLDA SULUT",
+    "Kode KL":"060011700651732000KD"
+  },
+  {
+    "Nama Satker":"RUMKIT BHAYANGKARA TK. III MANADO",
+    "Kode KL":"060011700655214000KD"
+  },
+  {
+    "Nama Satker":"POLRES TALAUD",
+    "Kode KL":"060011700665658000KD"
+  },
+  {
+    "Nama Satker":"RESOR MINAHASA UTARA",
+    "Kode KL":"060011700665662000KD"
+  },
+  {
+    "Nama Satker":"POLRES MINSEL",
+    "Kode KL":"060011700665679000KD"
+  },
+  {
+    "Nama Satker":"POLRES TOMOHON",
+    "Kode KL":"060011700669762000KD"
+  },
+  {
+    "Nama Satker":"DIT RES NARKOBA",
+    "Kode KL":"060011700679017000KD"
+  },
+  {
+    "Nama Satker":"RORENA POLDA SULUT",
+    "Kode KL":"060011700679809000KD"
+  },
+  {
+    "Nama Satker":"DIT RESKRIMSUS POLDA SULUT",
+    "Kode KL":"060011700679813000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT PENGAMANAN OBJEK VITALPOLDA SULUT",
+    "Kode KL":"060011800181220000KD"
+  },
+  {
+    "Nama Satker":"POLRES SIGI",
+    "Kode KL":"060011800352658000KD"
+  },
+  {
+    "Nama Satker":"Polres Morowali",
+    "Kode KL":"060011800536762000KD"
+  },
+  {
+    "Nama Satker":"HUMAS POLDA SULTENG",
+    "Kode KL":"060011800646854000KD"
+  },
+  {
+    "Nama Satker":"SPRIPIM POLDA SULTENG",
+    "Kode KL":"060011800646882000KD"
+  },
+  {
+    "Nama Satker":"DIREKTUR INTELKAM",
+    "Kode KL":"060011800646896000KD"
+  },
+  {
+    "Nama Satker":"DITRESKRIMUM",
+    "Kode KL":"060011800646901000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT SAMAPTA KORPS SABHARA POLDA SULAWESI TENGAH",
+    "Kode KL":"060011800646918000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT LALU LINTAS",
+    "Kode KL":"060011800646964000KD"
+  },
+  {
+    "Nama Satker":"BIRO LOGISTIK",
+    "Kode KL":"060011800646971000KD"
+  },
+  {
+    "Nama Satker":"SATUAN BRIMOB POLDA SULTENG",
+    "Kode KL":"060011800647004000KD"
+  },
+  {
+    "Nama Satker":"BIDDOKKES",
+    "Kode KL":"060011800647011000KD"
+  },
+  {
+    "Nama Satker":"POLRES DONGGALA",
+    "Kode KL":"060011800647025000KD"
+  },
+  {
+    "Nama Satker":"POLRES TOLITOLI",
+    "Kode KL":"060011800647032000KD"
+  },
+  {
+    "Nama Satker":"POLRES POSO",
+    "Kode KL":"060011800647046000KD"
+  },
+  {
+    "Nama Satker":"POLRES BANGGAI",
+    "Kode KL":"060011800647050000KD"
+  },
+  {
+    "Nama Satker":"POLRESTA PALU",
+    "Kode KL":"060011800651707000KD"
+  },
+  {
+    "Nama Satker":"SPN POLDA SULAWESI TENGAH",
+    "Kode KL":"060011800655188000KD"
+  },
+  {
+    "Nama Satker":"POLRES MOROWALI UTARA",
+    "Kode KL":"060011800655192000KD"
+  },
+  {
+    "Nama Satker":"POLRES BUOL",
+    "Kode KL":"060011800665620000KD"
+  },
+  {
+    "Nama Satker":"POLRES BANGGAI KEPULAUAN",
+    "Kode KL":"060011800665637000KD"
+  },
+  {
+    "Nama Satker":"POLRES PARIGI MOUTONG",
+    "Kode KL":"060011800665641000KD"
+  },
+  {
+    "Nama Satker":"POLRES TOJO UNA-UNA",
+    "Kode KL":"060011800679834000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT PAMOBVIT",
+    "Kode KL":"060011800679841000KD"
+  },
+  {
+    "Nama Satker":"RS BHAYANGKARA PALU",
+    "Kode KL":"060012800280830000KD"
+  },
+  {
+    "Nama Satker":"KEPOLISIAN RESOR PULAU MOROTAI",
+    "Kode KL":"060012800536773000KD"
+  },
+  {
+    "Nama Satker":"Bidang Hukum Polda malut",
+    "Kode KL":"060012800536774000KD"
+  },
+  {
+    "Nama Satker":"KEPOLISIAN DAERAH BIDANG HUBUNGAN MASYARAKAT",
+    "Kode KL":"060012800647465000KD"
+  },
+  {
+    "Nama Satker":"POLRES TERNATE",
+    "Kode KL":"060012800647490000KD"
+  },
+  {
+    "Nama Satker":"POLRESTA TIDORE",
+    "Kode KL":"060012800651863000KD"
+  },
+  {
+    "Nama Satker":"SPRIPIM",
+    "Kode KL":"060012800655310000KD"
+  },
+  {
+    "Nama Satker":"POLRES HALMAHERA UTARA",
+    "Kode KL":"060012800665726000KD"
+  },
+  {
+    "Nama Satker":"POLRES HALMAHERA BARAT",
+    "Kode KL":"060012800665730000KD"
+  },
+  {
+    "Nama Satker":"POLRES HALMAHERA SELATAN",
+    "Kode KL":"060012800665747000KD"
+  },
+  {
+    "Nama Satker":"POLRES KEPULAUAN SULA",
+    "Kode KL":"060012800665751000KD"
+  },
+  {
+    "Nama Satker":"KEPOLISIAN RESOR HALMAHERA TIMUR",
+    "Kode KL":"060012800665971000KD"
+  },
+  {
+    "Nama Satker":"POLRES HALMAHERA TENGAH",
+    "Kode KL":"060012800669915000KD"
+  },
+  {
+    "Nama Satker":"BIRO SDM POLDA MALUKU UTARA",
+    "Kode KL":"060012800669922000KD"
+  },
+  {
+    "Nama Satker":"BIRO LOGISTIK POLDA MALUT",
+    "Kode KL":"060012800669957000KD"
+  },
+  {
+    "Nama Satker":"BIDDOKKES POLDA MALUKU UTARA",
+    "Kode KL":"060012800669961000KD"
+  },
+  {
+    "Nama Satker":"BIDANG KEUANGAN",
+    "Kode KL":"060012800669982000KD"
+  },
+  {
+    "Nama Satker":"DIT INTELKAM POLDA MALUKU UTARA",
+    "Kode KL":"060012800669999000KD"
+  },
+  {
+    "Nama Satker":"RESKRIM UMUM KEPOLISIAN DAERAH MALUKU UTARA",
+    "Kode KL":"060012800670011000KD"
+  },
+  {
+    "Nama Satker":"DITLANTAS POLDA MALUKU UTARA",
+    "Kode KL":"060012800679194000KD"
+  },
+  {
+    "Nama Satker":"BIRO RENA POLDA MALUKU UTARA",
+    "Kode KL":"060012800679930000KD"
+  },
+  {
+    "Nama Satker":"DITRESKRIMSUS",
+    "Kode KL":"060012800690531000KD"
+  },
+  {
+    "Nama Satker":"RUMAH SAKIT BHAYANGKARA TK IV TERNATE",
+    "Kode KL":"060012800970107000KD"
+  },
+  {
+    "Nama Satker":"POLRES TALIABU",
+    "Kode KL":"060012800970111000KD"
+  },
+  {
+    "Nama Satker":"SATUAN BRIMOB POLDA MALUKU UTARA",
+    "Kode KL":"060012800970127000KD"
+  },
+  {
+    "Nama Satker":"DITPOLAIRUD POLDA MALUKU UTARA",
+    "Kode KL":"060013100352659000KD"
+  },
+  {
+    "Nama Satker":"POLRES GORONTALO UTARA",
+    "Kode KL":"060013100536768000KD"
+  },
+  {
+    "Nama Satker":"BIDANG HUMAS POLDA GORONTALO",
+    "Kode KL":"060013100641001000KD"
+  },
+  {
+    "Nama Satker":"RS BHAYANGKARA TK. IV POLDA GORONTALO",
+    "Kode KL":"060013100647270000KD"
+  },
+  {
+    "Nama Satker":"POLRES GORONTALO KOTA",
+    "Kode KL":"060013100647287000KD"
+  },
+  {
+    "Nama Satker":"POLRES GORONTALO",
+    "Kode KL":"060013100651842000KD"
+  },
+  {
+    "Nama Satker":"STAF PRIBADI PIMPINAN POLDA GORONTALO",
+    "Kode KL":"060013100651859000KD"
+  },
+  {
+    "Nama Satker":"POLRES POHUWATO",
+    "Kode KL":"060013100655303000KD"
+  },
+  {
+    "Nama Satker":"POLRES BOALEMO",
+    "Kode KL":"060013100665683000KD"
+  },
+  {
+    "Nama Satker":"POLRES BONE BOLANGO",
+    "Kode KL":"060013100669779000KD"
+  },
+  {
+    "Nama Satker":"BIRO OPERASI POLDA GORONTALO",
+    "Kode KL":"060013100669790000KD"
+  },
+  {
+    "Nama Satker":"BIRO LOGISTIK POLDA GORONTALO",
+    "Kode KL":"060013100669805000KD"
+  },
+  {
+    "Nama Satker":"BIDANG PROFESI DAN PENGAMANAN POLDA GORONTALO",
+    "Kode KL":"060013100669812000KD"
+  },
+  {
+    "Nama Satker":"BIDANG TEKNOLOGI INFORMASI DAN KOMUNIKASI POLDA GORONTALO",
+    "Kode KL":"060013100669826000KD"
+  },
+  {
+    "Nama Satker":"BIDANG KEDOKTERAN DAN KESEHATAN POLDA GORONTALO",
+    "Kode KL":"060013100669830000KD"
+  },
+  {
+    "Nama Satker":"BIDANG KEUANGAN POLDA GORONTALO",
+    "Kode KL":"060013100669847000KD"
+  },
+  {
+    "Nama Satker":"YANMA POLDA GORONTALO",
+    "Kode KL":"060013100669851000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT INTELIJEN KEAMANAN POLDA GORONTALO",
+    "Kode KL":"060013100669868000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT RESERSE KRIMINAL UMUM POLDA GORONTALO",
+    "Kode KL":"060013100669872000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT SAMAPTA POLDA GORONTALO",
+    "Kode KL":"060013100669889000KD"
+  },
+  {
+    "Nama Satker":"DIREKTORAT LALU LINTAS POLDA GORONTALO",
+    "Kode KL":"060013100970091000KD"
+  },
+  {
+    "Nama Satker":"KOMISI NASIONAL HAK ASASI MANUSIA",
+    "Kode KL":"074011800555072000KD"
+  },
+  {
+    "Nama Satker":"KOMISI PEMILIHAN UMUM",
+    "Kode KL":"076011700654514000KD"
+  },
+  {
+    "Nama Satker":"KPU PROVINSI SULAWESI UTARA",
+    "Kode KL":"076011700658951000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. BOLAANG MONGONDOW",
+    "Kode KL":"076011700658965000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN MINAHASA",
+    "Kode KL":"076011700658972000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. KEPL. SANGIHE",
+    "Kode KL":"076011700658986000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN KEPULAUAN TALAUD",
+    "Kode KL":"076011700658990000KD"
+  },
+  {
+    "Nama Satker":"KOMISI PEMILIHAN UMUM KAB. MINSEL",
+    "Kode KL":"076011700659005000KD"
+  },
+  {
+    "Nama Satker":"KPU MINUT",
+    "Kode KL":"076011700659012000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA MANADO",
+    "Kode KL":"076011700659026000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA BITUNG",
+    "Kode KL":"076011700659030000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA TOMOHON",
+    "Kode KL":"076011700670294000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTAMOBAGU",
+    "Kode KL":"076011700670302000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN MINAHASA TENGGARA",
+    "Kode KL":"076011700670316000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN BOLAANG MONGONDOW UTARA",
+    "Kode KL":"076011700670320000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN KEPL. SIAU TAGULANDAG BIARO",
+    "Kode KL":"076011700670955000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB.BOLAANG MONGONDOW SELATAN",
+    "Kode KL":"076011700670962000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN BOLAANG MONGONDOW TIMUR",
+    "Kode KL":"076011800181305000KD"
+  },
+  {
+    "Nama Satker":"KPU  KABUPATEN BANGGAI LAUT",
+    "Kode KL":"076011800181403000KD"
+  },
+  {
+    "Nama Satker":"KPU Kab Morowali Utara",
+    "Kode KL":"076011800654521000KD"
+  },
+  {
+    "Nama Satker":"KPU PROVINSI SULAWESI TENGAH",
+    "Kode KL":"076011800659047000KD"
+  },
+  {
+    "Nama Satker":"KOMISI PEMILIHAN UMUM KABUPATEN BANGGAI KEPULAUAN",
+    "Kode KL":"076011800659051000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN BANGGAI",
+    "Kode KL":"076011800659068000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. POSO",
+    "Kode KL":"076011800659072000KD"
+  },
+  {
+    "Nama Satker":"KOMISI PEMILIHAN UMUM KABUPATEN MOROWALI",
+    "Kode KL":"076011800659089000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN DONGGALA",
+    "Kode KL":"076011800659093000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN TOLITOLI",
+    "Kode KL":"076011800659101000KD"
+  },
+  {
+    "Nama Satker":"KOMISI PEMILIHAN UMUM KABUPATEN BUOL",
+    "Kode KL":"076011800659115000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. PARIGI MOUTONG",
+    "Kode KL":"076011800659122000KD"
+  },
+  {
+    "Nama Satker":"KOMISI PEMILIHAN UMUM KAB.TOJO UNA-UNA",
+    "Kode KL":"076011800659136000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA PALU",
+    "Kode KL":"076011800670976000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN SIGI",
+    "Kode KL":"076012800280903000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN PULAU TALIABU",
+    "Kode KL":"076012800654577000KD"
+  },
+  {
+    "Nama Satker":"KPU PROVINSI MALUKU UTARA",
+    "Kode KL":"076012800659651000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN HALMAHERA BARAT",
+    "Kode KL":"076012800659665000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN HALMAHERA TENGAH",
+    "Kode KL":"076012800659672000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN HALMAHERA UTARA",
+    "Kode KL":"076012800659686000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. HALMAHERA SELATAN",
+    "Kode KL":"076012800659690000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN HALMAHERA TIMUR",
+    "Kode KL":"076012800659708000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN KEPULAUAN SULA",
+    "Kode KL":"076012800659712000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA TERNATE",
+    "Kode KL":"076012800659729000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA TIDORE",
+    "Kode KL":"076012800680739000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN PULAU MOROTAI",
+    "Kode KL":"076013100654556000KD"
+  },
+  {
+    "Nama Satker":"KPU PROV. GORONTALO",
+    "Kode KL":"076013100659520000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. GORONTALO",
+    "Kode KL":"076013100659534000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. BOALEMO",
+    "Kode KL":"076013100659541000KD"
+  },
+  {
+    "Nama Satker":"KPU KABUPATEN BONE BOLANGO",
+    "Kode KL":"076013100659555000KD"
+  },
+  {
+    "Nama Satker":"KPU KAB. POHUWATO",
+    "Kode KL":"076013100659562000KD"
+  },
+  {
+    "Nama Satker":"KPU KOTA GORONTALO",
+    "Kode KL":"076013100670362000KD"
+  },
+  {
+    "Nama Satker":"LEMBAGA PENYIARAN PUBLIK TVRI",
+    "Kode KL":"117011700700233000KD"
+  },
+  {
+    "Nama Satker":"TVRI STASIUN SULAWESI UTARA",
+    "Kode KL":"117011800700231000KD"
+  },
+  {
+    "Nama Satker":"TVRI STASIUN SULAWESI TENGAH",
+    "Kode KL":"117013100700215000KD"
+  },
+  {
+    "Nama Satker":"LPP RADIO REPUBLIK INDONESIA",
+    "Kode KL":"116011700700137000KD"
+  },
+  {
+    "Nama Satker":"RRI MANADO",
+    "Kode KL":"116011700700165000KD"
+  },
+  {
+    "Nama Satker":"LPP RRI TAHUNA",
+    "Kode KL":"116011800700148000KD"
+  },
+  {
+    "Nama Satker":"LPP RRI PALU",
+    "Kode KL":"116011800700169000KD"
+  },
+  {
+    "Nama Satker":"RRI TOLITOLI",
+    "Kode KL":"116012800700168000KD"
+  },
+  {
+    "Nama Satker":"RRI STASIUN TERNATE",
+    "Kode KL":"116013100700125000KD"
+  },
+  {
+    "Nama Satker":"MAHKAMAH AGUNG",
+    "Kode KL":"005011700099312000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI MANADO",
+    "Kode KL":"005011700099329000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI MANADO",
+    "Kode KL":"005011700099333000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI KOTAMOBAGU",
+    "Kode KL":"005011700099340000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI TAHUNA",
+    "Kode KL":"005011700099354000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI TONDANO",
+    "Kode KL":"005011700307225000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA MANADO",
+    "Kode KL":"005011700307232000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA KOTAMOBAGU",
+    "Kode KL":"005011700307246000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA TAHUNA",
+    "Kode KL":"005011700401888000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA LOLAK",
+    "Kode KL":"005011700401889000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA BOLAANG UKI",
+    "Kode KL":"005011700401890000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA BOROKKO",
+    "Kode KL":"005011700401891000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA TUTUYAN",
+    "Kode KL":"005011700401925000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI MELONGUANE",
+    "Kode KL":"005011700402681000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI AGAMA MANADO",
+    "Kode KL":"005011700402701000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA TONDANO",
+    "Kode KL":"005011700526734000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI TATA USAHA NEGARA MANADO",
+    "Kode KL":"005011700531872000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TATA USAHA NEGARA MANADO",
+    "Kode KL":"005011700568725000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI BITUNG",
+    "Kode KL":"005011700604751000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA BITUNG",
+    "Kode KL":"005011700663360000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN MILITER III-17 MANADO",
+    "Kode KL":"005011700670210000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI AIRMADIDI",
+    "Kode KL":"005011700673034000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI AMURANG",
+    "Kode KL":"005011700682171000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA AMURANG",
+    "Kode KL":"005011800099375000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI PALU",
+    "Kode KL":"005011800099382000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI TOLITOLI",
+    "Kode KL":"005011800099396000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI LUWUK",
+    "Kode KL":"005011800099401000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI POSO",
+    "Kode KL":"005011800307271000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA PALU",
+    "Kode KL":"005011800307288000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA TOLITOLI",
+    "Kode KL":"005011800307292000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA POSO",
+    "Kode KL":"005011800307300000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA LUWUK",
+    "Kode KL":"005011800400534000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI SULAWESI TENGAH",
+    "Kode KL":"005011800401884000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA AMPANA",
+    "Kode KL":"005011800477202000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI DONGGALA",
+    "Kode KL":"005011800576249000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI AGAMA PALU",
+    "Kode KL":"005011800578850000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TATA USAHA NEGARA PALU",
+    "Kode KL":"005011800604765000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA DONGGALA",
+    "Kode KL":"005011800652102000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA BUOL",
+    "Kode KL":"005011800652119000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA BUNGKU",
+    "Kode KL":"005011800652123000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA BANGGAI",
+    "Kode KL":"005011800670248000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI BUOL",
+    "Kode KL":"005011800672980000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI PARIGI",
+    "Kode KL":"005011800682192000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA PARIGI",
+    "Kode KL":"005012800099731000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI TERNATE",
+    "Kode KL":"005012800099748000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI TOBELO",
+    "Kode KL":"005012800099752000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI LABUHA",
+    "Kode KL":"005012800099769000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI SOASIO",
+    "Kode KL":"005012800307782000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA TERNATE",
+    "Kode KL":"005012800307796000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA MOROTAI",
+    "Kode KL":"005012800307801000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA SOASIO",
+    "Kode KL":"005012800307818000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA LABUHA",
+    "Kode KL":"005012800401972000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI SANANA",
+    "Kode KL":"005012800401973000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI BOBONG",
+    "Kode KL":"005012800440740000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI AGAMA MALUKU UTARA",
+    "Kode KL":"005012800664522000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI MALUKU UTARA",
+    "Kode KL":"005013100099361000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI GORONTALO",
+    "Kode KL":"005013100307250000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA GORONTALO",
+    "Kode KL":"005013100400208000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI LIMBOTO",
+    "Kode KL":"005013100401892000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA SUWAWA",
+    "Kode KL":"005013100401893000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA KWANDANG",
+    "Kode KL":"005013100401969000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TATA USAHA NEGARA GORONTALO",
+    "Kode KL":"005013100402690000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA LIMBOTO",
+    "Kode KL":"005013100440734000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI AGAMA GORONTALO",
+    "Kode KL":"005013100477218000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI TILAMUTA",
+    "Kode KL":"005013100652130000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN AGAMA TILAMUTA",
+    "Kode KL":"005013100664539000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN TINGGI GORONTALO",
+    "Kode KL":"005013100670184000KD"
+  },
+  {
+    "Nama Satker":"PENGADILAN NEGERI MARISA",
+    "Kode KL":"005013100682185000KD"
+  }
+]

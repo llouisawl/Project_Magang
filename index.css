@@ -3,19 +3,20 @@
 body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
-  background: #f5f7fa;
+  background: #f3f4f2;
+  color: #23304c;
 }
 .container {
   display: flex;
   min-height: 100vh;
 }
 .sidebar {
-  background: #fff;
+  background: #ffffff;
   width: 450px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  border-right: 1.5px solid #e6e8ed;
+  border-right: 1.5px solid #d6e8c6;
   padding: 30px 24px 0 24px;
   box-sizing: border-box;
 }
@@ -58,13 +59,13 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 2px solid #e3e6f1;
+  border: 2px solid #d6e8c6;
   transition: border 0.15s;
-  background: #e8eefb;
+  background: #eef7e6;
 }
 .profile-icon:hover,
 .profile-icon:focus {
-  border: 2.5px solid #426bba;
+  border: 2.5px solid #6fb32b;
   outline: none;
 }
 .dropdown-content {
@@ -103,15 +104,17 @@ body {
   font-size: 15px;
   font-weight: 500;
   border-bottom: 1px solid #f0f2f8;
-  transition: background 0.14s, color 0.13s;
+  transition:
+    background 0.14s,
+    color 0.13s;
   gap: 7px;
 }
 .dropdown-content a:last-child {
   border-bottom: none;
 }
 .dropdown-content a:hover {
-  background: #eaf1fd;
-  color: #255ca8;
+  background: #eef7e6;
+  color: #206d1c;
 }
 .dropdown-content .logout-link {
   color: #e04848 !important;
@@ -143,14 +146,14 @@ body {
 
 .welcome-text span {
   font-size: 28px;
-  color: #4b5563;
+  color: #7a8f5a;
   font-weight: 400;
   display: block;
   margin-bottom: 2px;
 }
 .welcome-text h3 {
   margin: 0;
-  color: #222;
+  color: #406d1c;
   font-size: 30px;
   font-weight: 600;
   line-height: 1.1;
@@ -165,9 +168,10 @@ body {
   margin-bottom: 18px;
 }
 .sidebar nav ul li a {
-  color: #333;
+  color: #7a8f5a;
   text-decoration: none;
   font-size: 18px;
+  font-weight: 600;
   padding: 10px 12px;
   display: flex;
   align-items: center;
@@ -179,18 +183,18 @@ body {
 }
 
 .sidebar nav ul li a:hover {
-  background: #426bba;
+  background: #6fb32b;
   color: #fff;
-  font-weight: 600;
+  font-weight: 800px;
 }
 main {
   flex: 1;
   padding: 0px 20px 0 20px;
-  background: #f5f7fa;
+  background: #f3f4f2;
 }
 main h1 {
   font-size: 24px;
-  color: #31405f;
+  color: #406d1c;
   margin-bottom: 10px;
   font-weight: 700;
   text-align: center;
@@ -199,7 +203,9 @@ form {
   background: #fff;
   padding: 20px 30px;
   border-radius: 13px;
-  box-shadow: 0 2px 12px #dbe3ee44;
+  box-shadow:
+    0 4px 24px rgba(111, 179, 43, 0.12),
+    0 1.5px 8px rgba(0, 0, 0, 0.06);
   max-width: 1000px;
   margin: 18px auto 0 auto;
 }
@@ -217,7 +223,7 @@ form {
 }
 section h2 {
   font-size: 15px;
-  color: #202e4c;
+  color: #6fb32b;
   margin-top: 0;
   margin-bottom: 7px;
   font-weight: 800;
@@ -246,15 +252,17 @@ section h2 {
   font-size: 15px;
   padding: 7px 10px;
   border-radius: 7px;
-  border: 1px solid #61769a;
+  border: 1.3px solid #e2f4dd;
   margin-bottom: 0;
-  background: #f7f9fc;
+  background: #ffffff;
   outline: none;
   transition: border 0.2s;
+  color: #406d1c;
 }
 .input-group input:focus,
 .input-group select:focus {
-  border: 1.5px solid #3683f6;
+  border-color: #6fb32b;
+  background: #f3f4f2;
 }
 .actions {
   display: flex;
@@ -262,7 +270,8 @@ section h2 {
   margin-top: 20px;
 }
 .submit-btn {
-  background: #1b883b;
+  background: linear-gradient(90deg, #6fb32b 0%, #a6d65d 100%);
+  box-shadow: 0 2px 10px #6fb32b30;
   color: #fff;
   padding: 10px 15px;
   font-size: 15px;
@@ -273,7 +282,8 @@ section h2 {
   transition: background 0.2s;
 }
 .submit-btn:hover {
-  background: #167c32;
+  background: linear-gradient(90deg, #6fb32b 0%, #6fb32b 100%);
+  transform: translateY(-2px) scale(1.03);
 }
 /* --- Tambahan untuk checkbox-group --- */
 .checkbox-group label {
@@ -285,8 +295,9 @@ section h2 {
 }
 .checkbox-group input[type="checkbox"] {
   margin-right: 7px;
-  accent-color: #376cd6;
+  accent-color: #6fb32b;
 }
+
 #lainnyaInput {
   display: none;
   margin-left: 8px;
@@ -324,5 +335,380 @@ section h2 {
     width: 52px;
     height: 52px;
     padding: 4px;
+  }
+}
+
+.locked-input {
+  background-color: #f1f5fb;
+  color: #475569;
+  cursor: not-allowed;
+}
+
+/* ================================= */
+/* SELECT2 SAMA DENGAN INPUT-GROUP */
+/* ================================= */
+
+.input-group .select2-container {
+  width: 100% !important;
+}
+
+/* Kotak utama select2 */
+.input-group .select2-container--default .select2-selection--single {
+  height: auto;
+  min-height: 38px;
+  padding: 7px 10px; /* SAMA DENGAN input */
+  border-radius: 7px;
+  border: 1.3px solid #e2f4dd;
+  background: #ffffff;
+  font-size: 15px;
+  color: #406d1c;
+  display: flex;
+  align-items: center;
+  transition:
+    border 0.2s,
+    background 0.2s;
+}
+
+/* Text terpilih */
+.input-group
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  padding-left: 0;
+}
+
+/* Arrow dropdown */
+.input-group
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  height: 100%;
+  right: 6px;
+}
+/* Focus state (SAMA seperti input/select) */
+.input-group
+  .select2-container--default.select2-container--focus
+  .select2-selection--single {
+  border-color: #6fb32b;
+  background: #f3f4f2;
+  outline: none;
+}
+
+/* Dropdown container */
+.select2-dropdown {
+  border-radius: 10px;
+  border: 1.3px solid #e2f4dd;
+  box-shadow: 0 6px 18px rgba(111, 179, 43, 0.18);
+  font-size: 15px;
+}
+
+/* Search box di dropdown */
+.select2-search--dropdown .select2-search__field {
+  padding: 7px 10px;
+  font-size: 15px;
+  border-radius: 7px;
+  border: 1.3px solid #e2f4dd;
+  outline: none;
+}
+
+.select2-search--dropdown .select2-search__field:focus {
+  border-color: #6fb32b;
+}
+
+/* Item hasil */
+.select2-results__option {
+  padding: 8px 12px;
+  font-size: 15px;
+}
+
+/* Hover */
+.select2-results__option--highlighted {
+  background-color: #eef7e6 !important;
+  color: #206d1c !important;
+}
+
+/* Selected */
+.select2-results__option--selected {
+  background-color: #6fb32b !important;
+  color: #ffffff;
+}
+
+/* Disabled */
+.input-group
+  .select2-container--default
+  .select2-selection--single[aria-disabled="true"] {
+  background-color: #f1f5fb;
+  color: #475569;
+  cursor: not-allowed;
+}
+
+/* Hilangkan tombol clear Select2 */
+.select2-selection__clear {
+  display: none !important;
+}
+
+/* =========================
+   SIDEBAR NAV PROFESSIONAL
+   ========================= */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.nav-item {
+  margin-bottom: 6px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #334155;
+  text-decoration: none;
+}
+
+/* ICON */
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f0fdf4;
+}
+
+.nav-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-link:hover {
+  background: linear-gradient(90deg, #f6fff0, #ecfdf5);
+  color: #166534;
+
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.nav-link:hover .nav-icon {
+  background: #dcfce7;
+  transform: scale(1.05);
+}
+
+/* ACTIVE STATE */
+.nav-item.active .nav-link {
+  background: linear-gradient(90deg, #ecfdf5, #f0fdf4);
+  color: #166534;
+  box-shadow: inset 4px 0 0 #80dcae;
+  transform: translateX(2px);
+}
+.nav-link:active {
+  transform: scale(0.97);
+}
+
+.nav-item.active .nav-link:hover {
+  background: linear-gradient(90deg, #ecfdf5, #f7fee7);
+}
+
+/* ACTIVE ICON */
+.nav-item.active .nav-icon {
+  background: #dcfce7;
+}
+.nav-link {
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-icon {
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ===============================
+   HOVER = SAMA PERSIS DENGAN RIWAYAT
+   =============================== */
+
+/* hover card */
+.nav-link:hover {
+  background: linear-gradient(90deg, #ecfdf5, #f7fee7);
+  color: #166534;
+
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* GARIS HIJAU KIRI (INI YANG BELUM ADA) */
+.nav-link:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 6px;
+  background: #80dcae;
+}
+
+/* ICON hover */
+.nav-link:hover .nav-icon {
+  background: #dcfce7;
+  transform: scale(1.05);
+}
+.nav-link::before {
+  opacity: 0;
+  transform: scaleY(0.6);
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover::before,
+.nav-item.active .nav-link::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.input-group .select2-container--default .select2-selection--single {
+  height: 38px !important;
+  padding: 7px 10px !important;
+  border-radius: 7px !important;
+  border: 1.3px solid #e2f4dd !important;
+
+  display: flex;
+  align-items: center;
+}
+/* tombol clear */
+.btn-clear {
+  background: #f1f5f9;
+  color: #334155;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-clear:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+/* posisi tombol */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+/* =========================
+   MODAL DJKN STYLE (GLOBAL)
+   ========================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* box modal */
+.modal {
+  width: min(460px, 92vw);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  padding: 26px 24px 22px;
+  text-align: center;
+  animation: fadeScale 0.25s ease;
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* title */
+.modal h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #2f6f1f;
+  margin-bottom: 8px;
+}
+
+/* text */
+.modal p {
+  font-size: 15px;
+  color: #334155;
+  margin-bottom: 18px;
+}
+
+/* button container */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* tombol tidak */
+.btn-modal {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 800;
+  cursor: pointer;
+  background: #eef7e6;
+  color: #2f6f1f;
+  transition: all 0.2s;
+}
+
+.btn-modal:hover {
+  background: #dff0d2;
+}
+
+/* tombol ya (primary DJKN) */
+.btn-modal.primary {
+  background: linear-gradient(135deg, #6fb32b, #5aa120);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(111, 179, 43, 0.35);
+}
+
+.btn-modal.primary:hover {
+  filter: brightness(0.95);
+}
+
+/* =========================
+   SPINNER LOADING
+   ========================= */
+.modal-loading {
+  display: none;
+  margin-top: 14px;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #e5f2da;
+  border-top: 3px solid #6fb32b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
