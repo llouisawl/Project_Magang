@@ -150,6 +150,7 @@
       /* ===================== Backward Compatibility ===================== */
       // For legacy functions that might use these variables
       const API = window.API_BASE_URL;
+      const TOKEN = localStorage.getItem("jwt_admin") || "";
       const CACHE_BUST = true; // tambahkan timestamp ke URL preview agar tidak di-cache
 
       /* ===================== Helpers ===================== */
@@ -328,8 +329,20 @@
           </tr>`;
 
         try {
-          // ✅ Use new API service
-          const list = await api.kertasKerja.list();
+          // Use explicit legacy endpoint `/kertas-kerja/all`
+          const resp = await fetch(`${API}/kertas-kerja/all`, {
+            headers: {
+              Authorization: TOKEN ? `Bearer ${TOKEN}` : "",
+              "Content-Type": "application/json",
+            },
+          });
+          if (!resp.ok) throw new Error("Gagal memuat data dari server.");
+          const json = await resp.json();
+          const list = Array.isArray(json?.data)
+            ? json.data
+            : Array.isArray(json)
+            ? json
+            : [];
 
           // Handle empty list
           if (!list || list.length === 0) {

@@ -338,8 +338,8 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s).toLowerCase());
       }
       function isStrongPassword(s) {
-        // ≥8, ada huruf besar, huruf kecil, dan karakter khusus
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(
+        // ≥8, ada huruf besar dan huruf kecil
+        return /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(
           String(s),
         );
       }
@@ -545,7 +545,7 @@
               type: "warning",
               title: "Password Belum Memenuhi Ketentuan",
               message:
-                "Minimal 8 karakter dan mengandung huruf besar, huruf kecil, serta karakter khusus.",
+                "Minimal 8 karakter dan mengandung huruf besar serta huruf kecil.",
             });
           }
           if (password !== repass) {

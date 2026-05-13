@@ -21,6 +21,13 @@
       } catch (e) {}
       // ✅ Initialize API Service
       const api = window.initializeApiService();
+      const SATKER = (() => {
+        try {
+          return new Auth.ApiClient("satker");
+        } catch {
+          return null;
+        }
+      })();
     </script>
   </head>
   <body>
@@ -210,6 +217,61 @@
 
       const POLL_MS = 20000; // interval auto-refresh saat tab aktif (ms)
       const CACHE_BUST = true; // true: tambahkan ?t=timestamp ke URL preview
+
+      function base64UrlDecode(str) {
+        try {
+          const normalized = String(str || "")
+            .replace(/-/g, "+")
+            .replace(/_/g, "/");
+          return decodeURIComponent(
+            Array.prototype.map
+              .call(atob(normalized), (c) => {
+                return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+              })
+              .join(""),
+          );
+        } catch {
+          return "{}";
+        }
+      }
+
+      function parseJwt(token) {
+        if (!token || token.split(".").length < 2) return {};
+        try {
+          return JSON.parse(base64UrlDecode(token.split(".")[1]));
+        } catch {
+          return {};
+        }
+      }
+
+      function getUserIdFromJwt(role = "satker") {
+        const tokenKey =
+          role === "admin"
+            ? "jwt_admin"
+            : role === "superadmin"
+            ? "jwt_superadmin"
+            : "jwt_satker";
+        const token = localStorage.getItem(tokenKey);
+        if (!token) return "";
+
+        const claims = parseJwt(token);
+        return (
+          claims.user_Id ||
+          claims.user_id ||
+          claims.userid ||
+          claims.userId ||
+          claims.id ||
+          claims.sub ||
+          claims.uid ||
+          claims?.data?.user_Id ||
+          claims?.data?.user_id ||
+          claims?.data?.id ||
+          claims?.user?.user_Id ||
+          claims?.user?.user_id ||
+          claims?.user?.id ||
+          ""
+        );
+      }
 
       // set welcome name dari token satker
       try {
@@ -529,31 +591,33 @@
       /* ===================== Fetch ===================== */
 async function loadHistory() {
   try {
-    // ✅ Use new API service
-    const json = await api.kertasKerja.list();
-    const arr = Array.isArray(json?.data)
-      ? json.data
-      : Array.isArray(json)
-      ? json
-      : [];
+    const userId = getUserIdFromJwt("satker");
+    if (!userId) {
+      throw new Error("user_Id tidak ditemukan di JWT satker.");
+    }
 
-    // mapping dulu
+    const res = await fetch(`${API_URL.replace(/\/$/, "")}/kertas-kerja/?user_Id=${encodeURIComponent(userId)}`, {
+      headers: SATKER ? SATKER.headers() : {},
+    });
+
+    const json = await res.json().catch(() => ({}));
+    const arr = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
     const mapped = arr.map(mapRow);
 
-    // 🔥 SORT TERBARU DI ATAS
     mapped.sort((a, b) => {
       const da = fromBackendWallToUTC(a.created_at)?.getTime() || 0;
       const db = fromBackendWallToUTC(b.created_at)?.getTime() || 0;
-      return db - da; // descending (terbaru dulu)
+      return db - da;
     });
 
     allRows = mapped;
     viewRows = [...allRows];
     renderRows(viewRows);
-  } catch {
+  } catch (e) {
     allRows = [];
     viewRows = [];
     renderRows(viewRows);
+    console.error("loadHistory failed:", e);
   }
 }
 

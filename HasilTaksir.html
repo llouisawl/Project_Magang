@@ -19,8 +19,25 @@
       try {
         Auth.protectPage("satker");
       } catch (e) {}
-      // ✅ Initialize API Service
-      const api = window.initializeApiService();
+
+      // Initialize API Service jika tersedia
+      try {
+        var api = window.initializeApiService ? window.initializeApiService() : null;
+      } catch (e) {}
+
+      // Fallback: pastikan API_BASE selalu terdefinisi
+      if (typeof API_BASE === "undefined") {
+        var API_BASE = window.API_BASE || window.API_URL || "http://localhost:8080";
+      }
+
+      // Fallback: getAuthHeaders() — ambil token dari localStorage
+      function getAuthHeaders(extra) {
+        const token =
+          localStorage.getItem("jwt_satker") ||
+          localStorage.getItem("jwt_admin") ||
+          localStorage.getItem("jwt_superadmin") || "";
+        return Object.assign({ "Content-Type": "application/json", Authorization: "Bearer " + token }, extra || {});
+      }
     </script>
   </head>
   <body>
@@ -540,13 +557,21 @@
       }
       /* ===================== AMBIL DATA BY KODE ===================== */
       async function fetchByKode(kode) {
-        // ✅ Use new API service
-        const j = await api.kertasKerja.get(kode);
+        const res = await fetch(
+          `${API_BASE}/kertas-kerja/lelang/${encodeURIComponent(kode)}`,
+          {
+            method: "GET",
+            headers: getAuthHeaders(),
+          },
+        );
+        const j = await res.json().catch(() => ({}));
         console.log("=== RESPONSE API BY KODE ===");
         console.log(j);
 
+        const payload = j?.data || j || {};
+
         return {
-          data: normalizeRow(j?.data || {}),
+          data: normalizeRow(payload),
           penyesuaian: j?.data_penyesuaian || {},
         };
       }
@@ -732,9 +757,7 @@
         try {
           const res = await fetch(`${API_BASE}/kertas-kerja/${tahap}`, {
             method: "POST",
-            headers: SATKER
-              ? SATKER.headers({ "Content-Type": "application/json" })
-              : { "Content-Type": "application/json" },
+            headers: getAuthHeaders(),
             body: JSON.stringify({
               merek_kendaraan: inputLelang.merek_kendaraan,
               tipe_kendaraan: inputLelang.tipe_kendaraan,
@@ -815,6 +838,7 @@
           showTahapModal(`Tahap ${tahap}`, message);
         } catch (e) {
           hideLoadingTahap();
+          console.log(e)
           alert("Gagal memproses tahap. Coba lagi.");
         }
       }
@@ -1279,9 +1303,7 @@
 
           const res = await fetch(`${API_BASE}/kertas-kerja/`, {
             method: "POST",
-            headers: SATKER
-              ? SATKER.headers({ "Content-Type": "application/json" })
-              : { "Content-Type": "application/json" },
+            headers: getAuthHeaders(),
             body: JSON.stringify(payload),
           });
 

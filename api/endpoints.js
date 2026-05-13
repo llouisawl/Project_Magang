@@ -17,8 +17,8 @@
 
     // --------- Kertas Kerja (Admin) ---------
     kertasKerja: {
-      list: "/kertas-kerja/all",
-      get: (id) => `/kertas-kerja/${id}`,
+      list: "/kertas-kerja/",
+      getAll: `/kertas-kerja/all`,
       validate: (id) => `/kertas-kerja/${id}/validate`,
       upload: "/kertas-kerja/upload",
       delete: (id) => `/kertas-kerja/${id}`,
