@@ -9,6 +9,11 @@
     <!-- Konfigurasi & Auth -->
     <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
     <!-- Select2 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
@@ -28,6 +33,8 @@
           Auth.protectPage("satker");
         } catch (e) {}
       })();
+      // ✅ Initialize API Service
+      const api = window.initializeApiService();
     </script>
   </head>
 
@@ -531,17 +538,19 @@
       });
     </script>
 
-    <script>
+    <!-- <script>
       let dataKendaraan = [];
 
-      fetch("JenisKendaraan.json")
-        .then((res) => res.json())
-        .then((data) => {
-          dataKendaraan = data;
+      (async () => {
+        try {
+          const json = await api.http.get(api.endpoints.master.jenisKendaraan);
+          dataKendaraan = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
           console.log("Data kendaraan:", dataKendaraan.length);
-        })
-        .catch((err) => console.error("Gagal load JSON", err));
-    </script>
+        } catch (err) {
+          console.error("Gagal load master data kendaraan", err);
+        }
+      })();
+    </script> -->
 
     <script>
       function getKategoriObjek() {
@@ -551,7 +560,7 @@
         return null;
       }
 
-      function updateMerek() {
+      async function updateMerek() {
         const kategori = getKategoriObjek();
         const selectMerek = $("#merek_kendaraan");
         const selectTipe = $("#tipe_kendaraan");
@@ -564,24 +573,19 @@
 
         if (!kategori) return;
 
-        const merekUnik = [
-          ...new Set(
-            dataKendaraan
-              .filter(
-                (d) => d["KATEGORI OBJEK"].trim().toLowerCase() === kategori,
-              )
-              .map((d) => d["MEREK"].trim()),
-          ),
-        ];
-
-        merekUnik.sort().forEach((merek) => {
-          selectMerek.append(new Option(merek, merek));
-        });
-
-        selectMerek.trigger("change.select2");
+        try {
+          const json = await api.http.get(`/data-lelang/merek`);
+          const merekList = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
+          merekList.forEach((merek) => {
+            selectMerek.append(new Option(merek, merek));
+          });
+          selectMerek.trigger("change.select2");
+        } catch (e) {
+          console.error("Gagal memuat merek:", e);
+        }
       }
 
-      function updateTipe() {
+      async function updateTipe() {
         const kategori = getKategoriObjek();
         const merek = $("#merek_kendaraan").val();
         const selectTipe = $("#tipe_kendaraan");
@@ -593,23 +597,16 @@
 
         if (!kategori || !merek) return;
 
-        const tipeUnik = [
-          ...new Set(
-            dataKendaraan
-              .filter(
-                (d) =>
-                  d["KATEGORI OBJEK"].trim().toLowerCase() === kategori &&
-                  d["MEREK"].trim().toLowerCase() === merek.toLowerCase(),
-              )
-              .map((d) => d["TIPE"].trim()),
-          ),
-        ];
-
-        tipeUnik.sort().forEach((tipe) => {
-          selectTipe.append(new Option(tipe, tipe));
-        });
-
-        selectTipe.prop("disabled", false).trigger("change.select2");
+        try {
+          const json = await api.http.get(`/data-lelang/tipe?merek=${encodeURIComponent(merek)}`);
+          const tipeList = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
+          tipeList.forEach((tipe) => {
+            selectTipe.append(new Option(tipe, tipe));
+          });
+          selectTipe.prop("disabled", false).trigger("change.select2");
+        } catch (e) {
+          console.error("Gagal memuat tipe:", e);
+        }
       }
     </script>
 

@@ -129,6 +129,11 @@
     <script src="config.js"></script>
     <!-- Auth utilities (guard + per-role token) -->
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
 
     <script>
       /* ===================== ROUTE GUARD (Admin only) ===================== */
@@ -139,20 +144,12 @@
         } catch (e) {}
       })();
 
-      /* ===================== Konfigurasi & Token ===================== */
-      const API =
-        (typeof API_URL !== "undefined" && API_URL) ||
-        (typeof API_BASE !== "undefined" && API_BASE) ||
-        "";
+      /* ===================== Initialize API Service ===================== */
+      const api = window.initializeApiService();
 
-      // ⛔ Penting: hanya pakai token ADMIN, jangan fallback ke token generik
-      const TOKEN = localStorage.getItem("jwt_admin") || "";
-      const HEADERS_AUTH = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
-
-      const LIST_ENDPOINT = "/kertas-kerja/all"; // GET
-      const VALIDATE_ENDPOINT = (id) =>
-        `/kertas-kerja/validasi/${encodeURIComponent(id)}`; // PATCH (multipart, field: pdf_file)
-
+      /* ===================== Backward Compatibility ===================== */
+      // For legacy functions that might use these variables
+      const API = window.API_BASE_URL;
       const CACHE_BUST = true; // tambahkan timestamp ke URL preview agar tidak di-cache
 
       /* ===================== Helpers ===================== */
@@ -331,29 +328,17 @@
           </tr>`;
 
         try {
-          const res = await fetch(trimSlashR(API) + LIST_ENDPOINT, {
-            headers: { ...HEADERS_AUTH },
-          });
+          // ✅ Use new API service
+          const list = await api.kertasKerja.list();
 
-          // Ada backend yang balas 204 No Content
-          if (res.status === 204) {
+          // Handle empty list
+          if (!list || list.length === 0) {
             ALL_ROWS = [];
             VIEW_ROWS = [];
             tbody.innerHTML = "";
             $("#emptyState").style.display = "block";
             return;
           }
-
-          if (!res.ok) throw new Error("HTTP " + res.status);
-
-          const json = await res.json().catch(() => ({}));
-          const list = Array.isArray(json?.data)
-            ? json.data
-            : Array.isArray(json?.result)
-              ? json.result
-              : Array.isArray(json)
-                ? json
-                : [];
 
           ALL_ROWS = list.map(normalizeKK);
           VIEW_ROWS = [...ALL_ROWS];
@@ -486,25 +471,8 @@
         const fd = new FormData();
         fd.append("pdf_file", file);
 
-        const res = await fetch(trimSlashR(API) + VALIDATE_ENDPOINT(kkId), {
-          method: "PATCH",
-          body: fd,
-          headers: { ...HEADERS_AUTH }, // jangan set Content-Type manual
-        });
-
-        if (!res.ok) {
-          let msg = `Upload gagal (HTTP ${res.status})`;
-          try {
-            const j = await res.json();
-            if (j?.message) msg = j.message;
-          } catch {}
-          throw new Error(msg);
-        }
-
-        let data = {};
-        try {
-          data = await res.json();
-        } catch {}
+        // ✅ Use new API service with FormData support
+        const data = await api.kertasKerja.validate(kkId, fd);
 
         const payload = data?.data || data || {};
         const mark =

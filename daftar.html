@@ -249,7 +249,14 @@
 
     <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
     <script>
+      // ✅ Initialize API Service
+      const api = window.initializeApiService();
       // ================= Toggle panel (punyamu) =================
       const sign_in_btn = document.querySelector("#sign-in-btn");
       const sign_up_btn = document.querySelector("#sign-up-btn");
@@ -485,7 +492,7 @@
 
       // ================= REGISTER =================
       (function () {
-        const API = (window.API_URL || "").replace(/\/+$/, "");
+        const API = window.API_BASE_URL;
         const form = document.getElementById("formRegister");
         const btn = document.getElementById("btnRegister");
 

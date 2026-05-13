@@ -9,11 +9,18 @@
     <!-- Konfigurasi & Auth (WAJIB) -->
     <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
     <script>
       // Kunci halaman untuk role S A T K E R
       try {
         Auth.protectPage("satker");
       } catch (e) {}
+      // ✅ Initialize API Service
+      const api = window.initializeApiService();
     </script>
   </head>
   <body>
@@ -207,15 +214,6 @@
     </div>
     <script>
       /* ===================== STATE & HELPERS ===================== */
-      const API_BASE = (window.API_URL || "").replace(/\/+$/, ""); // tanpa trailing slash
-      const SATKER = (() => {
-        try {
-          return new Auth.ApiClient("satker");
-        } catch {
-          return null;
-        }
-      })();
-
       const $ = (q, el = document) => el.querySelector(q);
       const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
       const fmtIDR = (n) => (isFinite(n) ? n.toLocaleString("id-ID") : "-");
@@ -542,11 +540,8 @@
       }
       /* ===================== AMBIL DATA BY KODE ===================== */
       async function fetchByKode(kode) {
-        const res = await fetch(`${API_BASE}/kertas-kerja/lelang/${kode}`, {
-          headers: SATKER ? SATKER.headers() : {},
-        });
-
-        const j = await res.json().catch(() => ({}));
+        // ✅ Use new API service
+        const j = await api.kertasKerja.get(kode);
         console.log("=== RESPONSE API BY KODE ===");
         console.log(j);
 

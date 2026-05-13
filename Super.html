@@ -15,6 +15,8 @@
       try {
         Auth.protectPage("superadmin");
       } catch (e) {}
+      // ✅ Initialize API Service (GLOBAL)
+      window.api = window.initializeApiService();
     </script>
 
     <!-- Tambahan tipis khusus halaman (posisi ikon mata & blok feedback) -->
@@ -139,7 +141,7 @@
             </span>
             Validasi User
           </a>
-          <a class="nav-item" href="TambahData.html">
+          <a class="nav-item" href="UploadDataLelang.html">
             <span class="nav-ico">
               <svg
                 width="18"
@@ -162,7 +164,7 @@
                 />
               </svg>
             </span>
-            Tambah Data Lelang
+            Upload Data Lelang
           </a>
         </nav>
       </aside>
@@ -755,7 +757,28 @@
           id: String(userId),
           role,
           status,
-          nama_admin: u.username || u.nama_admin || u.nama || u.name || "",
+          username:
+            u.username ||
+            u.nama_admin ||
+            u.nama ||
+            u.name ||
+            u.user_name ||
+            "",
+          nama_admin:
+            u.username ||
+            u.nama_admin ||
+            u.nama ||
+            u.name ||
+            u.user_name ||
+            "",
+          kode_kl:
+            u.kode_kl ||
+            u.kodekl ||
+            u.kodeKL ||
+            u.code_kl ||
+            u.kl_code ||
+            u.kodeKementerian ||
+            "",
           kpknl:
             u.kpknl ||
             u.kpknl_name ||
@@ -851,38 +874,19 @@
       /* ========= Header Dinamis ========= */
       function renderHeader() {
         const thead = $("#userTable thead");
-        if (roleFilter === "Admin") {
-          thead.innerHTML = `
+        const allColumns = `
           <tr>
             <th data-key="joinedAt">Tanggal Masuk</th>
-            <th data-key="nama_admin">Nama</th>
+            <th data-key="username">Username</th>
             <th data-key="email">Email</th>
-            <th data-key="role">Role</th>
-            <th data-key="kpknl">KPKNL</th>
-            <th data-key="status">Status</th>
-            <th class="actions-col">Aksi</th>
-          </tr>`;
-        } else if (roleFilter === "Satker") {
-          thead.innerHTML = `
-          <tr>
-            <th data-key="joinedAt">Tanggal Masuk</th>
             <th data-key="nama_satker">Nama Satker</th>
-            <th data-key="email">Email</th>
-            <th data-key="role">Role</th>
             <th data-key="kode_kl">Kode K/L</th>
-            <th data-key="status">Status</th>
+            <th data-key="kpknl">KPKNL</th>
+            <th data-key="role">Role</th>
+            <th data-key="is_verified">Status</th>
             <th class="actions-col">Aksi</th>
           </tr>`;
-        } else {
-          thead.innerHTML = `
-          <tr>
-            <th data-key="joinedAt">Tanggal Masuk</th>
-            <th data-key="nama_satker">Nama</th>
-            <th data-key="email">Email</th>
-            <th data-key="role">Role</th>
-            <th data-key="status">Status</th>
-          </tr>`;
-        }
+        thead.innerHTML = allColumns;
         $$("#userTable thead th[data-key]").forEach((th) => {
           th.addEventListener("click", () => {
             const key = th.dataset.key;
@@ -969,8 +973,14 @@
           if (roleFilter === "Admin") {
             html += `
             <tr>
-              <td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td>
-              <td>${u.kpknl || "-"}</td><td>${statusCell}</td>
+              <td>${tgl}</td>
+              <td>${u.username || "-"}</td>
+              <td>${email}</td>
+              <td>${u.nama_satker || "-"}</td>
+              <td>${u.kode_kl || "-"}</td>
+              <td>${u.kpknl || "-"}</td>
+              <td>${roleTxt}</td>
+              <td>${u.is_verified || statusCell}</td>
               <td class="actions">
                 <div class="actions-flex">
                   <button class="btn-mini success btn-joy" data-validate="${
@@ -994,9 +1004,14 @@
           } else if (roleFilter === "Satker") {
             html += `
             <tr>
-              <td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td><td>${
-                u.kode_kl || "-"
-              }</td><td>${statusCell}</td>
+              <td>${tgl}</td>
+              <td>${u.username || "-"}</td>
+              <td>${email}</td>
+              <td>${u.nama_satker || "-"}</td>
+              <td>${u.kode_kl || "-"}</td>
+              <td>${u.kpknl || "-"}</td>
+              <td>${roleTxt}</td>
+              <td>${u.is_verified || statusCell}</td>
               <td class="actions">
                 <div class="actions-flex">
                   <button class="btn-mini success btn-joy" data-validate="${
@@ -1021,7 +1036,32 @@
             const statusCellAll = isAdmin
               ? pillAdminLabel(stAdmin)
               : pill(stSatker);
-            html += `<tr><td>${tgl}</td><td>${nama}</td><td>${email}</td><td>${roleTxt}</td><td>${statusCellAll}</td></tr>`;
+            html += `
+            <tr>
+              <td>${tgl}</td>
+              <td>${u.username || "-"}</td>
+              <td>${email}</td>
+              <td>${u.nama_satker || "-"}</td>
+              <td>${u.kode_kl || "-"}</td>
+              <td>${u.kpknl || "-"}</td>
+              <td>${roleTxt}</td>
+              <td>${u.is_verified || statusCellAll}</td>
+              <td class="actions">
+                <div class="actions-flex">
+                  <button class="btn-mini success btn-joy" data-validate="${u.id}">
+                    <span class="btn-label">${actionLabel}</span>
+                  </button>
+                  <button class="ico-btn danger" data-delete="${u.id}" title="Hapus">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e04848" stroke-width="2" aria-hidden="true">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        <line x1="10" y1="11" x2="10" y2="17"/>
+                        <line x1="14" y1="11" x2="14" y2="17"/>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>`;
           }
         }
         tbody.innerHTML = html;

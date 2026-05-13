@@ -7,12 +7,20 @@
     <link rel="stylesheet" href="Riwayat.css" />
 
     <!-- Auth per-role -->
+    <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
     <script>
       // Kunci halaman untuk satker
       try {
         Auth.protectPage("satker");
       } catch (e) {}
+      // ✅ Initialize API Service
+      const api = window.initializeApiService();
     </script>
   </head>
   <body>
@@ -199,19 +207,6 @@
       /* ===================== Helpers & Config ===================== */
       const $ = (q, el = document) => el.querySelector(q);
       const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
-
-      // Pakai client SATKER dari auth.js agar header Authorization benar
-      const SATKER = (function () {
-        try {
-          return new Auth.ApiClient("satker");
-        } catch (e) {
-          return null;
-        }
-      })();
-      const HEAD = SATKER ? SATKER.headers() : {};
-      const API = (
-        typeof API_URL !== "undefined" && API_URL ? API_URL : ""
-      ).replace(/\/$/, "");
 
       const POLL_MS = 20000; // interval auto-refresh saat tab aktif (ms)
       const CACHE_BUST = true; // true: tambahkan ?t=timestamp ke URL preview
@@ -517,26 +512,13 @@
         allRows = allRows.filter((r) => r.id !== id);
         applySearch();
 
-        const endpoint = `${API}/kertas-kerja/${encodeURIComponent(id)}`;
         try {
-          const res = await fetch(endpoint, {
-            method: "DELETE",
-            headers: { ...SATKER.headers() },
-          });
-          if (res.ok) {
-            delModal.success("Berhasil dihapus");
-            setTimeout(() => delModal.close(), 800);
-            return;
-          }
-          allRows = snapshot; // rollback
-          applySearch();
-          let detail = "";
-          try {
-            detail = await res.text();
-          } catch {}
-          delModal.failure(
-            `Gagal (HTTP ${res.status}). ${detail || ""}`.trim(),
-          );
+          // ✅ Use new API service
+          await api.kertasKerja.delete(id);
+          api.http.clearCache();
+          delModal.success("Berhasil dihapus");
+          setTimeout(() => delModal.close(), 800);
+          return;
         } catch {
           allRows = snapshot;
           applySearch();
@@ -546,13 +528,9 @@
 
       /* ===================== Fetch ===================== */
 async function loadHistory() {
-  const endpoint = `${API}/kertas-kerja/`;
   try {
-    const res = await fetch(endpoint, {
-      headers: { ...SATKER.headers() },
-    });
-    const json = await res.json().catch(() => ({}));
-
+    // ✅ Use new API service
+    const json = await api.kertasKerja.list();
     const arr = Array.isArray(json?.data)
       ? json.data
       : Array.isArray(json)
