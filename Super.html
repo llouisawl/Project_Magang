@@ -1360,7 +1360,7 @@
             created.nama_admin = payload.username;
             created.kpknl = payload.kpknl;
             created.joinedAt = new Date().toISOString();
-            created.is_verified = 2;
+            created.is_verified = payload.is_verified;
             created.status = "Aktif";
 
             users.unshift(created);
