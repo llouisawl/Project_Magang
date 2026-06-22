@@ -544,7 +544,7 @@
         const tahunSekarang = new Date().getFullYear();
 
         const waktuSelisih = tahunSekarang - Number(d.TahunTransaksi || 0);
-        const lokasiSelisih = kategoriInput - Number(d.KategoriLokasi || 0);
+        const lokasiSelisih = Number(d.KategoriLokasi) - Number(kategoriInput) || 0;
         const tahunSelisih = tahunInput - Number(d.TahunPembuatan || 0);
 
         return {
