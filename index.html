@@ -1045,6 +1045,15 @@
       document.addEventListener("DOMContentLoaded", initWarna);
     </script>
 
+    <!-- ✅ Helper function untuk ambil auth headers -->
+    <script>
+      function getAuthHeaders(extra) {
+        const token =
+          localStorage.getItem("jwt_satker") || "";
+        return Object.assign({ "Content-Type": "application/json", Authorization: "Bearer " + token }, extra || {});
+      }
+    </script>
+
     <script>
       let lokasiData = [];
 
@@ -1072,8 +1081,8 @@
         });
       }
 
-      // AUTO ISI
-      $(document).on("change", "#lokasi_objek", function () {
+      // AUTO ISI & LOAD KATEGORI LOKASI FROM API
+      $(document).on("change", "#lokasi_objek", async function () {
         const val = $(this).val();
 
         if (!val) {
@@ -1088,11 +1097,39 @@
         if (!data) return;
 
         $("#provinsi").val(data["PROVINSI"]);
-        $("#kategori_lokasi").val(data["KATEGORI LOKASI"] || "3");
-
-        // 🔥 ambil dari kolom kosong ("")
-        // ✅ ambil dari field KPKNL
         $("#kpknl").val(data["KPKNL"] || "");
+
+        const kota = val; // gunakan KOTA sebagai parameter
+        if (kota) {
+          try {
+            const kotaEncoded = encodeURIComponent(kota.trim());
+            const apiBase = window.API_BASE || window.API_URL || "http://localhost:8080";
+            const endpoint = `${apiBase}/kertas-kerja/kategori-lokasi/${kotaEncoded}`;
+            
+            const res = await fetch(endpoint, {
+              headers: getAuthHeaders(),
+            });
+
+            if (res.ok) {
+              const result = await res.json().catch(() => ({}));
+              if (result && result.kategori_lokasi !== undefined && result.kategori_lokasi !== null) {
+                $("#kategori_lokasi").val(result.kategori_lokasi);
+              } else {
+                // API not return kategori_lokasi → kosongkan field
+                $("#kategori_lokasi").val("");
+              }
+            } else {
+              // Gagal fetch → kosongkan field
+              $("#kategori_lokasi").val("");
+            }
+          } catch (e) {
+            // Error → kosongkan field
+            $("#kategori_lokasi").val("");
+          }
+        } else {
+          // Tidak ada KOTA → kosongkan field
+          $("#kategori_lokasi").val("");
+        }
       });
     </script>
 
@@ -1165,7 +1202,6 @@
             if (input) input.value = namaSatker;
           }
         } catch (e) {
-          console.warn("Gagal mengisi Pemilik Dokumen dari token", e);
         }
       });
     </script>
