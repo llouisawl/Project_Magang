@@ -291,9 +291,9 @@ body {
   color: #fff;
   border: none;
   border-radius: 999px;
-  padding: 14px 34px;
+  padding: 9px 24px;
 
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 900;
   cursor: pointer;
 
@@ -529,7 +529,7 @@ tbody tr:hover {
 .btn-modal {
   border: none;
   border-radius: 12px;
-  padding: 10px 18px;
+  padding: 9px 20px;
   font-weight: 800;
   cursor: pointer;
   background: #eef7e6;
@@ -816,6 +816,178 @@ tbody tr:hover {
   width: 100%;
   text-align: center;
 }
+/* ===============================
+   DASHBOARD PENCARIAN DATA PEMBANDING (pengganti Looker Studio)
+   =============================== */
+.lelang-dashboard {
+  background: linear-gradient(180deg, #f6fff0, #ffffff);
+  border: 2px solid #cde7b0;
+  border-radius: 16px; /* Sedikit dirampingkan */
+  padding: 20px 24px; /* Padding atas-bawah dikurangi agar lebih compact */
+  margin: 16px 0 24px;
+}
+
+.dashboard-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #2f7d1a;
+}
+
+.summary-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 160px;
+  background: linear-gradient(135deg, #6fb32b, #5aa120);
+  color: #fff;
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 20px rgba(111, 179, 43, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-label {
+  font-size: 11px;
+  font-weight: 800;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+.summary-val {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/* =========================================================
+   TWEAK TOM SELECT (SEARCHABLE DROPDOWN)
+   ========================================================= */
+.ts-control {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px solid #bfe2a8;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #ffffff;
+  min-height: 38px;
+  box-shadow: none;
+}
+.ts-control.focus {
+  border-color: #65a30d;
+  box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.25);
+}
+.ts-dropdown {
+  border-radius: 10px;
+  border: 1px solid #bfe2a8;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 1000;
+}
+.ts-dropdown .option:hover,
+.ts-dropdown .active {
+  background-color: #eef7e6;
+  color: #2f6f1f;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 16px 12px;
+  margin-bottom: 18px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-field label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.filter-input,
+.filter-field select {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 2px solid #bfe2a8;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  transition: all 0.18s ease;
+}
+
+.filter-input:focus,
+.filter-field select:focus {
+  border-color: #65a30d;
+  box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.25);
+}
+
+.filter-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; /* Memastikan tombol sejajar dengan input di sebelahnya */
+  gap: 10px;
+}
+
+.dashboard-hint {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.pagination-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+#pageInfo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.row-pick {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .filter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .summary-row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* samakan dropdown dengan input penyesuaian */
 .peny-select {
   width: 90px;
