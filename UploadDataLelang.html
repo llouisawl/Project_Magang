@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superadmin • Upload Data Lelang</title>
+
+    <!-- CSS halaman ini -->
+    <link rel="stylesheet" href="TambahData.css" />
+
+    <!-- Wajib: config + auth + guard role superadmin -->
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
+    <script>
+      try {
+        Auth.protectPage("superadmin");
+      } catch (e) {}
+      // ✅ Initialize API Service (GLOBAL)
+      window.api = window.initializeApiService();
+    </script>
+
+    <style>
+      .upload-section {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .upload-container {
+        border: 2px dashed #4998ff;
+        border-radius: 16px;
+        padding: 48px 24px;
+        text-align: center;
+        background: linear-gradient(135deg, #f5f7fd 0%, #eaf7e3 100%);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .upload-container:hover {
+        border-color: #6fb32b;
+        background: linear-gradient(135deg, #eaf7e3 0%, #f5f7fd 100%);
+      }
+
+      .upload-container.drag-over {
+        border-color: #6fb32b;
+        background: #e9f7ef;
+        box-shadow: 0 0 0 8px rgba(111, 179, 43, 0.1);
+      }
+
+      .upload-icon {
+        font-size: 64px;
+        margin-bottom: 16px;
+      }
+
+      .upload-text {
+        margin-bottom: 12px;
+      }
+
+      .upload-text h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #022058;
+        margin-bottom: 8px;
+      }
+
+      .upload-text p {
+        margin: 0;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      .upload-file-input {
+        display: none;
+      }
+
+      .btn-select-file {
+        background: #6fb32b;
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-select-file:hover {
+        background: #4e9a1f;
+        box-shadow: 0 4px 12px rgba(111, 179, 43, 0.3);
+      }
+
+      .file-list {
+        background: #ffffff;
+        border: 1px solid #e6ecfb;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        background: #f5f7fd;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .file-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .file-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+      }
+
+      .file-icon {
+        font-size: 24px;
+      }
+
+      .file-details {
+        flex: 1;
+      }
+
+      .file-name {
+        font-weight: 600;
+        color: #1d2b4b;
+        margin: 0;
+      }
+
+      .file-size {
+        font-size: 12px;
+        color: #6b7280;
+        margin: 4px 0 0 0;
+      }
+
+      .file-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-remove {
+        background: #ffecec;
+        color: #e74c3c;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-remove:hover {
+        background: #ffd6d6;
+      }
+
+      .upload-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 24px;
+      }
+
+      .btn-primary {
+        background: #6fb32b;
+        color: white;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        background: #4e9a1f;
+        box-shadow: 0 4px 12px rgba(111, 179, 43, 0.3);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .btn-cancel {
+        background: #e6ecfb;
+        color: #2b4a9c;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-cancel:hover {
+        background: #d3dff5;
+      }
+
+      .alert {
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: none;
+        animation: slideIn 0.3s ease;
+      }
+
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .alert.show {
+        display: block;
+      }
+
+      .alert-success {
+        background: #e9f7ef;
+        border: 1px solid #bfe8d1;
+        color: #2bae66;
+      }
+
+      .alert-error {
+        background: #ffecec;
+        border: 1px solid #ffd6d6;
+        color: #e74c3c;
+      }
+
+      .alert-info {
+        background: #eef7e6;
+        border: 1px solid #cfe8b7;
+        color: #4e9a1f;
+      }
+
+      .alert-warning {
+        background: #fffbea;
+        border: 1px solid #f5d97a;
+        color: #92650a;
+      }
+
+      .alert-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .info-box {
+        background: #eef7e6;
+        border-left: 4px solid #6fb32b;
+        padding: 16px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      .info-box h5 {
+        margin: 0 0 8px 0;
+        color: #4e9a1f;
+        font-weight: 600;
+      }
+
+      .info-box ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #6b7280;
+        font-size: 14px;
+      }
+
+      .info-box li {
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="brand">
+          <img src="Gambar/D4.png" alt="Kementerian Keuangan" />
+        </div>
+
+        <nav class="nav">
+          <a class="nav-item" href="Super.html">
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"
+                  stroke="#4e9a1f"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+                <circle
+                  cx="9"
+                  cy="7"
+                  r="4"
+                  stroke="#4e9a1f"
+                  stroke-width="1.7"
+                />
+                <path
+                  d="M17 11l2 2 4-4"
+                  stroke="#4e9a1f"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            Validasi User
+          </a>
+
+          <a
+            class="nav-item active"
+            href="UploadDataLelang.html"
+            id="navUpload"
+            data-route="upload"
+          >
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  stroke="#2b4a9c"
+                  stroke-width="1.7"
+                />
+                <path d="M14 2v6h6" stroke="#2b4a9c" stroke-width="1.7" />
+                <path d="M12 11v6M9 14h6" stroke="#2b4a9c" stroke-width="1.7" stroke-linecap="round" />
+              </svg>
+            </span>
+            Upload Data Lelang
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <header class="hero">
+          <div class="hero-title">Upload Data Lelang</div>
+          <div class="hero-right">
+            <img src="Gambar/New.png" alt="Logo SirOTO" class="hero-logo" />
+
+            <button id="btnLogout" class="btn-logout">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <polyline
+                  points="16 17 21 12 16 7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <line
+                  x1="21"
+                  y1="12"
+                  x2="9"
+                  y2="12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <!-- Alert Messages -->
+        <div id="alertBox" class="alert"></div>
+
+        <!-- Upload Section -->
+        <section class="card">
+          <h3>Upload File Excel</h3>
+
+          <div class="upload-section">
+            <!-- Drag & Drop Area -->
+            <div class="upload-container" id="uploadContainer">
+              <div class="upload-icon">📊</div>
+              <div class="upload-text">
+                <h4>Drag & drop file Excel di sini</h4>
+                <p>atau klik tombol di bawah untuk memilih file</p>
+              </div>
+              <button class="btn-select-file" id="btnSelectFile">
+                Pilih File
+              </button>
+              <input
+                type="file"
+                id="uploadFileInput"
+                class="upload-file-input"
+                accept=".xlsx,.xls,.csv"
+              />
+            </div>
+
+            <!-- File List -->
+            <div id="fileListContainer" class="file-list" style="display: none">
+              <h4 style="margin-top: 0">File yang dipilih:</h4>
+              <div id="fileList"></div>
+            </div>
+
+            <!-- Upload Actions -->
+            <div id="actionsContainer" class="upload-actions" style="display: none">
+              <button class="btn-cancel" id="btnCancelUpload">Batal</button>
+              <button class="btn-primary" id="btnUpload">
+                <span>Upload Sekarang</span>
+              </button>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+              <h5>📋 Format File Excel</h5>
+              <ul>
+                <li>File harus berformat .xlsx, .xls, atau .csv</li>
+                <li>
+                  Kolom yang diperlukan: Kode, Kategori, Tahun, Provinsi, Kota,
+                  KPKNL, Lokasi 1-6, Lokasi 7-12, Merek, Tipe, Tahun Buat, Warna,
+                  Harga Laku
+                </li>
+                <li>Ukuran file maksimal: 10 MB</li>
+                <li>Jangan ubah urutan kolom</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Upload History -->
+        <section class="card" style="margin-top: 24px">
+          <h3>Riwayat Upload</h3>
+          <div id="historyContainer">
+            <table id="historyTable" class="table-no-break">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>File</th>
+                  <th>Jumlah Data</th>
+                  <th>Status</th>
+                  <th>Pesan</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody">
+                <tr>
+                  <td colspan="5" class="empty">Belum ada history upload</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Script -->
+    <script>
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => document.querySelectorAll(selector);
+
+      let selectedFile = null;
+
+      // Drag & Drop
+      const uploadContainer = $("#uploadContainer");
+      const uploadFileInput = $("#uploadFileInput");
+
+      uploadContainer.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadContainer.classList.add("drag-over");
+      });
+
+      uploadContainer.addEventListener("dragleave", () => {
+        uploadContainer.classList.remove("drag-over");
+      });
+
+      uploadContainer.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadContainer.classList.remove("drag-over");
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFileSelect(files[0]);
+        }
+      });
+
+      // File input click
+      $("#btnSelectFile").addEventListener("click", () => {
+        uploadFileInput.click();
+      });
+
+      uploadFileInput.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+
+      function handleFileSelect(file) {
+        console.log("File selected:", file.name, file.type, file.size);
+        // Validasi file
+        const validTypes = [
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "application/vnd.ms-excel",
+          "text/csv",
+        ];
+
+        if (!validTypes.includes(file.type)) {
+          console.warn("Invalid file type:", file.type);
+          showAlert(
+            "error",
+            "File tidak valid",
+            "Hanya file .xlsx, .xls, atau .csv yang diizinkan"
+          );
+          return;
+        }
+
+        const maxSize = 10 * 1024 * 1024; // 10 MB
+        if (file.size > maxSize) {
+          console.warn("File too large:", file.size);
+          showAlert("error", "File terlalu besar", "Ukuran maksimal 10 MB");
+          return;
+        }
+
+        selectedFile = file;
+        console.log("File set to selectedFile, calling displayFileList");
+        displayFileList();
+      }
+
+      function displayFileList() {
+        if (!selectedFile) return;
+
+        const fileList = $("#fileList");
+        const fileSize = (selectedFile.size / 1024).toFixed(2);
+
+        fileList.innerHTML = `
+          <div class="file-item">
+            <div class="file-info">
+              <div class="file-icon">📄</div>
+              <div class="file-details">
+                <p class="file-name">${selectedFile.name}</p>
+                <p class="file-size">${fileSize} KB</p>
+              </div>
+            </div>
+            <div class="file-actions">
+              <button class="btn-remove" id="btnRemoveFile">Hapus</button>
+            </div>
+          </div>
+        `;
+
+        $("#btnRemoveFile").addEventListener("click", removeFile);
+
+        $("#fileListContainer").style.display = "block";
+        $("#actionsContainer").style.display = "flex";
+      }
+
+      function removeFile() {
+        selectedFile = null;
+        uploadFileInput.value = "";
+        $("#fileListContainer").style.display = "none";
+        $("#actionsContainer").style.display = "none";
+      }
+
+      // Upload
+      $("#btnUpload").addEventListener("click", (e) => {
+        console.log("Upload button clicked, selectedFile:", selectedFile);
+        uploadFile();
+      });
+      $("#btnCancelUpload").addEventListener("click", removeFile);
+
+      async function uploadFile() {
+        if (!selectedFile) return;
+
+        const btn = $("#btnUpload");
+        const uploadedFileName = selectedFile.name;
+
+        const token =
+          localStorage.getItem("jwt_satker") ||
+          localStorage.getItem("jwt_admin") ||
+          localStorage.getItem("jwt_superadmin");
+
+        if (!token) {
+          showAlert("error", "Error", "Token tidak ditemukan. Silakan login kembali.");
+          return;
+        }
+
+        // Ubah tombol jadi indikator loading
+        btn.disabled = true;
+        btn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="animation:spin 1s linear infinite">
+            <circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="3" stroke-dasharray="31.4" stroke-dashoffset="10"/>
+          </svg>
+          <span>Memproses...</span>
+        `;
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        const uploadUrl = API_URL.replace(/\/$/, "") + "/data-lelang/upload-excel";
+
+        function resetBtn() {
+          btn.disabled = false;
+          btn.innerHTML = "<span>Upload Sekarang</span>";
+        }
+
+        let uploadResponse, responseText, response = {};
+
+        try {
+          uploadResponse = await fetch(uploadUrl, {
+            method: "POST",
+            body: formData,
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          responseText = await uploadResponse.text();
+          if (responseText.trim()) {
+            try { response = JSON.parse(responseText); }
+            catch { response = { message: responseText }; }
+          }
+        } catch (fetchErr) {
+          resetBtn();
+          showAlert(
+            "warning",
+            "&#x26A0;&#xFE0F; Koneksi Terputus",
+            "Browser tidak bisa membaca response dari server (CORS/timeout di tunnel). " +
+            "<br><b>Cek database — data kemungkinan sudah tersimpan.</b> Jangan upload ulang sebelum verifikasi."
+          );
+          return;
+        }
+
+        resetBtn();
+
+        const isSuccess = uploadResponse.ok &&
+          (!response.status_code || response.status_code === "success");
+
+        if (isSuccess) {
+          const msg = response.message ||
+            (response.rows_inserted
+              ? `${Number(response.rows_inserted).toLocaleString("id-ID")} records berhasil diimport`
+              : "Data berhasil diupload ke database.");
+
+          showAlert("success", "&#x2705; Upload Berhasil", msg);
+
+          const hist = JSON.parse(localStorage.getItem("upload_history") || "[]");
+          hist.unshift({
+            tanggal: new Date().toLocaleString("id-ID"),
+            file: uploadedFileName,
+            jumlah: response.rows_inserted ?? "-",
+            status: "Berhasil",
+            pesan: response.message || "Upload sukses",
+          });
+          localStorage.setItem("upload_history", JSON.stringify(hist.slice(0, 10)));
+
+          removeFile();
+          loadUploadHistory();
+        } else {
+          showAlert("error", "Upload Gagal",
+            response.message || `HTTP ${uploadResponse.status}: ${responseText}`);
+        }
+      }
+      function showAlert(type, title, message) {
+        const alertBox = $("#alertBox");
+        alertBox.className = `alert show alert-${type}`;
+        alertBox.innerHTML = `
+          <div class="alert-title">${title}</div>
+          <div>${message}</div>
+        `;
+
+        // success auto-hide, warning & error tetap tampil sampai user dismiss
+        if (type === "success") {
+          setTimeout(() => alertBox.classList.remove("show"), 5000);
+        }
+      }
+
+      // Load history
+      function loadUploadHistory() {
+        try {
+          const historyBody = $("#historyBody");
+          const history = JSON.parse(localStorage.getItem("upload_history") || "[]");
+
+          if (history.length === 0) {
+            historyBody.innerHTML = '<tr><td colspan="5" class="empty">Belum ada history upload</td></tr>';
+            return;
+          }
+
+          historyBody.innerHTML = history.map(h => `
+            <tr>
+              <td>${h.tanggal}</td>
+              <td>${h.file}</td>
+              <td>${typeof h.jumlah === "number" ? Number(h.jumlah).toLocaleString("id-ID") : h.jumlah}</td>
+              <td><span style="color:#2bae66;font-weight:600">✓ ${h.status}</span></td>
+              <td>${h.pesan}</td>
+            </tr>
+          `).join("");
+        } catch (e) {
+          console.error("Gagal load history", e);
+        }
+      }
+
+      // Logout
+      document.getElementById("btnLogout")?.addEventListener("click", () => {
+        try {
+          Auth.logout();
+        } catch {}
+        try {
+          localStorage.clear();
+          sessionStorage.clear();
+        } catch {}
+        location.href = "daftar.html";
+      });
+
+      // Load history on page load
+      document.addEventListener("DOMContentLoaded", loadUploadHistory);
+    </script>
+  </body>
+</html>

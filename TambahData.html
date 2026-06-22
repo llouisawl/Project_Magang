@@ -11,10 +11,17 @@
     <!-- Wajib: config + auth + guard role superadmin -->
     <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
     <script>
       try {
         Auth.protectPage("superadmin");
       } catch (e) {}
+      // ✅ Initialize API Service
+      const api = window.initializeApiService();
     </script>
   </head>
   <body>
@@ -89,6 +96,32 @@
               </svg>
             </span>
             Tambah Data Lelang
+          </a>
+
+          <a
+            class="nav-item"
+            href="UploadDataLelang.html"
+            id="navUpload"
+            data-route="upload"
+          >
+            <span class="nav-ico">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  stroke="#6fb32b"
+                  stroke-width="1.7"
+                />
+                <path d="M14 2v6h6" stroke="#6fb32b" stroke-width="1.7" />
+                <path d="M12 11v6M9 14h6" stroke="#6fb32b" stroke-width="1.7" stroke-linecap="round" />
+              </svg>
+            </span>
+            Upload Data Lelang
           </a>
         </nav>
       </aside>
@@ -433,23 +466,6 @@
       const $ = (q, el = document) => el.querySelector(q);
       const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
 
-      const API_BASE = (window.API_URL || "").replace(/\/+$/, "");
-      const ENDPOINT_ADD = `${API_BASE}/data-lelang/tambah-data`;
-      const ENDPOINT_LIST = `${API_BASE}/data-lelang/`;
-      const ENDPOINT_DOWNLOAD = `${API_BASE}/data-lelang/download`;
-
-      const SUPER = (() => {
-        try {
-          return new Auth.ApiClient("superadmin");
-        } catch {
-          return null;
-        }
-      })();
-      const headersJson = () =>
-        SUPER
-          ? SUPER.headers({ "Content-Type": "application/json" })
-          : { "Content-Type": "application/json" };
-
       // Format angka ribuan (input harga)
       function formatRibuanDenganTitik(v) {
         const d = String(v).replace(/[^\d]/g, "");
@@ -558,10 +574,8 @@
         const tb = $("#lelangBody");
         tb.innerHTML = `<tr><td colspan="13" class="empty">Memuat data…</td></tr>`;
         try {
-          const res = await fetch(ENDPOINT_LIST, {
-            headers: SUPER ? SUPER.headers() : {},
-          });
-          const json = await res.json().catch(() => ({}));
+          // ✅ Use new API service
+          const json = await api.dataLelang.list();
           const arr = Array.isArray(json?.data)
             ? json.data
             : Array.isArray(json)
@@ -630,24 +644,12 @@
 
         try {
           setBtnLoading(btn, true);
-          const res = await fetch(ENDPOINT_ADD, {
-            method: "POST",
-            headers: headersJson(),
-            body: JSON.stringify(payload),
-          });
-          if (!res.ok) {
-            let msg = `Gagal simpan (HTTP ${res.status})`;
-            try {
-              const j = await res.json();
-              if (j?.message) msg = j.message;
-            } catch {}
-            throw new Error(msg);
-          }
-          await res.json().catch(() => ({}));
+          await api.dataLelang.create(payload);
           hint.textContent = "Berhasil disimpan.";
           setBtnDone(btn);
           e.target.reset();
           showInfo("Data lelang <b>berhasil ditambahkan</b>.");
+          api.http.clearCache();
           loadList();
         } catch (err) {
           hint.textContent = err?.message || "Gagal menyimpan.";
@@ -666,19 +668,31 @@
           return null;
         }
       }
-      async function loadTipeDatalist() {
-        const data = await tryFetchJson("Tipe.json");
+      async function loadTipeDatalist(merek = "") {
         const datalist = $("#datalist-tipe");
         datalist.innerHTML = "";
-        if (Array.isArray(data)) {
-          const tipeList = data
-            .map((item) => String(item.TIPE))
-            .filter(Boolean);
+        
+        if (!merek || !merek.trim()) {
+          return; // Jangan load jika merek kosong
+        }
+        
+        try {
+          // ✅ Use API endpoint
+          const json = await api.http.get(api.endpoints.dataLelang.tipe(merek.trim()));
+          const tipeList = Array.isArray(json?.data) 
+            ? json.data 
+            : (Array.isArray(json) ? json : []);
+          
           tipeList.forEach((tipe) => {
             const option = document.createElement("option");
-            option.value = tipe;
-            datalist.appendChild(option);
+            const tipeValue = typeof tipe === "string" ? tipe : tipe?.tipe || tipe?.TIPE || "";
+            if (tipeValue) {
+              option.value = tipeValue;
+              datalist.appendChild(option);
+            }
           });
+        } catch (e) {
+          console.error("Gagal memuat tipe:", e);
         }
       }
       function uniqueSorted(arr) {
@@ -777,114 +791,31 @@
         });
       })();
 
-      (function isiDaftarMerek() {
-        const daftarMerek = [
-          "Acmat",
-          "Ariel Motor",
-          "Audi",
-          "Auverland",
-          "Bajaj",
-          "Beijing",
-          "Benelli",
-          "BMW",
-          "Bosowa",
-          "BSA (British Small Arms)",
-          "Caesar",
-          "Cherokee",
-          "Chevrolet",
-          "Daihatsu",
-          "Datsun",
-          "Dayang",
-          "Defender",
-          "Diablo",
-          "Ducati",
-          "Dyna",
-          "Fiat",
-          "Ford",
-          "Forklift",
-          "Fukuda",
-          "Garuda",
-          "Golden Dragon",
-          "Happy",
-          "Harley",
-          "Hino",
-          "Honda",
-          "Hyosung",
-          "Hyundai",
-          "Isuzu",
-          "Iveco",
-          "Jeep",
-          "Jialing",
-          "Kaisar",
-          "Kancil",
-          "Kanzen",
-          "Katana",
-          "Kawasaki",
-          "KBM",
-          "Kia",
-          "Kijang",
-          "KTM",
-          "Kymco",
-          "Lamborghini",
-          "Land Rover",
-          "Lexus",
-          "Lifan",
-          "Matchless",
-          "Mazda",
-          "Mercedes",
-          "Mercedes Benz",
-          "Mercedes-Benz",
-          "Millenium",
-          "Minerva",
-          "Mini",
-          "Mitsubishi",
-          "Monstrac",
-          "Montrada",
-          "Morin",
-          "Nasha",
-          "Nissan",
-          "Nozomi",
-          "Opel",
-          "Peugeot",
-          "Porsche",
-          "Prima",
-          "Prisma",
-          "Proton",
-          "Pulsar",
-          "Qestar",
-          "Range Rover",
-          "Rantis",
-          "Reo",
-          "Royal Enfield",
-          "Samsung",
-          "Sanex",
-          "Scania",
-          "Serena",
-          "Strada",
-          "Subaru",
-          "Suzuki",
-          "Taft",
-          "Timor",
-          "Tossa",
-          "Toyota",
-          "Trisheda",
-          "TVS",
-          "Unimog",
-          "Vespa",
-          "Viar",
-          "Viva",
-          "Volvo",
-          "VW",
-          "Wuling",
-          "Yamaha",
-        ];
+      // ✅ Load Merek dari API Backend
+      async function loadMerekDatalist() {
         const datalistMerek = $("#daftar-merek");
-        daftarMerek.forEach((m) => {
-          const opt = document.createElement("option");
-          opt.value = m;
-          datalistMerek.appendChild(opt);
-        });
-      })();
+        datalistMerek.innerHTML = "";
+        
+        try {
+          const json = await api.http.get(api.endpoints.dataLelang.merek);
+          const merekList = Array.isArray(json?.data) 
+            ? json.data 
+            : (Array.isArray(json) ? json : []);
+          
+          merekList.forEach((merek) => {
+            const opt = document.createElement("option");
+            const merekValue = typeof merek === "string" ? merek : merek?.merek || merek?.brand || "";
+            if (merekValue) {
+              opt.value = merekValue;
+              datalistMerek.appendChild(opt);
+            }
+          });
+        } catch (e) {
+          console.error("Gagal memuat merek:", e);
+        }
+      }
+      
+      loadMerekDatalist();
 
       (function isiDaftarWarna() {
         const daftarWarna = [
@@ -949,11 +880,8 @@
         const btn = $("#btnDownload");
         setBtnLoading(btn, true); // pakai spinner yang sudah ada
         try {
-          const res = await fetch(ENDPOINT_DOWNLOAD, {
-            headers: SUPER ? SUPER.headers() : {},
-          });
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const blob = await res.blob();
+          // ✅ Use new API service
+          const blob = await api.dataLelang.download();
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
           a.href = url;
@@ -1016,8 +944,13 @@
           location.href = "daftar.html";
         });
 
-        // Datalist tambahan
-        loadTipeDatalist();
+        // ✅ Event listener untuk merek field - reload tipe ketika merek berubah
+        const merekInput = document.querySelector("input[name='merek']");
+        if (merekInput) {
+          merekInput.addEventListener("change", (e) => {
+            loadTipeDatalist(e.target.value);
+          });
+        }
 
         // Ambil data awal
         loadList();

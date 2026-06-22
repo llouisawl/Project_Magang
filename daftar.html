@@ -112,8 +112,16 @@
               <input
                 id="kodekl"
                 type="text"
-                placeholder="Kode K/L otomatis"
-                readonly
+                placeholder="Kode K/L"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="kpknl">KPKNL <span class="red">*</span></label>
+              <input
+                id="kpknl"
+                type="text"
+                placeholder="KPKNL Wilayah"
               />
             </div>
 
@@ -249,7 +257,14 @@
 
     <script src="config.js"></script>
     <script src="auth.js"></script>
+    <!-- ✅ NEW: API Service Modules -->
+    <script src="api/config.js"></script>
+    <script src="api/http-client.js"></script>
+    <script src="api/endpoints.js"></script>
+    <script src="api/api-service.js"></script>
     <script>
+      // ✅ Initialize API Service
+      const api = window.initializeApiService();
       // ================= Toggle panel (punyamu) =================
       const sign_in_btn = document.querySelector("#sign-in-btn");
       const sign_up_btn = document.querySelector("#sign-up-btn");
@@ -331,8 +346,8 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s).toLowerCase());
       }
       function isStrongPassword(s) {
-        // ≥8, ada huruf besar, huruf kecil, dan karakter khusus
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(
+        // ≥8, ada huruf besar dan huruf kecil
+        return /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(
           String(s),
         );
       }
@@ -442,50 +457,50 @@
       const satkerList = document.getElementById("satkerList");
       const kodeKlInput = document.getElementById("kodekl");
 
-      let satkerData = [];
+      // let satkerData = [];
 
-      fetch("satker.json")
-        .then((res) => res.json())
-        .then((data) => (satkerData = data));
+      // fetch("satker.json")
+      //   .then((res) => res.json())
+      //   .then((data) => (satkerData = data));
 
-      satkerInput.addEventListener("input", function () {
-        const keyword = this.value.toLowerCase();
-        satkerList.innerHTML = "";
+      // satkerInput.addEventListener("input", function () {
+      //   const keyword = this.value.toLowerCase();
+      //   satkerList.innerHTML = "";
 
-        if (!keyword) {
-          satkerList.style.display = "none";
-          return;
-        }
+      //   if (!keyword) {
+      //     satkerList.style.display = "none";
+      //     return;
+      //   }
 
-        const filtered = satkerData.filter((item) =>
-          item["Nama Satker"].toLowerCase().includes(keyword),
-        );
+      //   const filtered = satkerData.filter((item) =>
+      //     item["Nama Satker"].toLowerCase().includes(keyword),
+      //   );
 
-        filtered.slice(0, 15).forEach((item) => {
-          const div = document.createElement("div");
-          div.className = "satker-item";
-          div.textContent = item["Nama Satker"];
-          div.addEventListener("click", () => {
-            satkerInput.value = item["Nama Satker"];
-            kodeKlInput.value = item["Kode KL"];
-            satkerList.style.display = "none";
-          });
-          satkerList.appendChild(div);
-        });
+      //   filtered.slice(0, 15).forEach((item) => {
+      //     const div = document.createElement("div");
+      //     div.className = "satker-item";
+      //     div.textContent = item["Nama Satker"];
+      //     div.addEventListener("click", () => {
+      //       satkerInput.value = item["Nama Satker"];
+      //       kodeKlInput.value = item["Kode KL"];
+      //       satkerList.style.display = "none";
+      //     });
+      //     satkerList.appendChild(div);
+      //   });
 
-        satkerList.style.display = filtered.length ? "block" : "none";
-      });
+      //   satkerList.style.display = filtered.length ? "block" : "none";
+      // });satkerData
 
-      // klik di luar → tutup list
-      document.addEventListener("click", (e) => {
-        if (!satkerInput.contains(e.target) && !satkerList.contains(e.target)) {
-          satkerList.style.display = "none";
-        }
-      });
+      // // klik di luar → tutup list
+      // document.addEventListener("click", (e) => {
+      //   if (!satkerInput.contains(e.target) && !satkerList.contains(e.target)) {
+      //     satkerList.style.display = "none";
+      //   }
+      // });
 
       // ================= REGISTER =================
       (function () {
-        const API = (window.API_URL || "").replace(/\/+$/, "");
+        const API = window.API_BASE_URL;
         const form = document.getElementById("formRegister");
         const btn = document.getElementById("btnRegister");
 
@@ -493,6 +508,7 @@
           e.preventDefault();
 
           const username = document.getElementById("username").value.trim();
+          const kpknl = document.getElementById("kpknl").value.trim();
           const nama_satker = document
             .getElementById("satkerInput")
             .value.trim();
@@ -538,7 +554,7 @@
               type: "warning",
               title: "Password Belum Memenuhi Ketentuan",
               message:
-                "Minimal 8 karakter dan mengandung huruf besar, huruf kecil, serta karakter khusus.",
+                "Minimal 8 karakter dan mengandung huruf besar serta huruf kecil.",
             });
           }
           if (password !== repass) {
@@ -556,6 +572,7 @@
             kode_kl,
             email,
             password,
+            kpknl,
             role: "Satker",
             status: "Menunggu Validasi",
           };
