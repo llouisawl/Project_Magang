@@ -325,14 +325,17 @@ body {
    ========================================================= */
 .fit-wrap {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;    /* Berubah: agar bisa digeser ke samping jika perlu */
+  overflow-y: hidden;  /* Berubah: sembunyikan scroll vertikal ganda */
   margin-bottom: 12px;
+  padding-bottom: 8px; /* Memberi ruang agar bayangan tabel tidak terpotong */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
+  transform-origin: top left;
 }
 
 th,

@@ -995,6 +995,7 @@ function collectFilters(page = 1) {
         if (!rows.length) {
           tb.innerHTML = `<tr><td colspan="12">Tidak ada data yang cocok dengan filter.</td></tr>`;
           applyFilterTahap(); // Sinkronkan tabel bawah
+          setTimeout(() => autoFitAll(), 50);
           return;
         }
 
@@ -1017,6 +1018,8 @@ function collectFilters(page = 1) {
         });
 
         applyFilterTahap();
+
+        setTimeout(() => autoFitAll(), 50); 
       }
 
       function evaluateTahapDJKN(row, tahapStr) {
