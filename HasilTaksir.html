@@ -200,23 +200,25 @@
               <label>Pilih Tahap (DJKN)</label>
               <select id="tahapSelector" style="width: 100%; padding: 10px; border-radius: 10px; border: 2px solid #bfe2a8; font-weight: bold;">
                 <option value="">-- Tampilkan Semua Hasil --</option>
-                <option value="1">Tahap 1 (Wilayah Kerja, Merk Sama, Tipe Sama, Thn Sama)</option>
-                <option value="2">Tahap 2 (Urutan Pertama, Merk Sama, Tipe Sama, Thn Sama)</option>
-                <option value="3">Tahap 3 (Wilayah Kerja, Merk Sama, Tipe Beda, Thn ±5)</option>
-                <option value="4">Tahap 4 (Urutan Pertama, Merk Sama, Tipe Beda, Thn ±5)</option>
-                <option value="5">Tahap 5 (Urutan Kedua, Merk Sama, Tipe Sama, Thn Sama)</option>
-                <option value="6">Tahap 6 (Urutan Kedua, Merk Sama, Tipe Beda, Thn ±5)</option>
-                <option value="7">Tahap 7 (Urutan Ketiga, Merk Sama, Tipe Sama, Thn Sama)</option>
-                <option value="8">Tahap 8 (Urutan Ketiga, Merk Sama, Tipe Beda, Thn ±5)</option>
-                <option value="9">Tahap 9 (Wilayah Kerja, Merk Beda, Tipe Mendekati, Thn ±5)</option>
-                <option value="10">Tahap 10 (Urutan 1/2/3, Merk Beda, Tipe Mendekati, Thn ±5)</option>
+                <option value="1">Tahap 1</option>
+                <option value="2">Tahap 2</option>
+                <option value="3">Tahap 3</option>
+                <option value="4">Tahap 4 </option>
+                <option value="5">Tahap 5 </option>
+                <option value="6">Tahap 6</option>
+                <option value="7">Tahap 7</option>
+                <option value="8">Tahap 8</option>
+                <option value="9">Tahap 9</option>
+                <option value="10">Tahap 10</option>
               </select>
             </div>
 
             <p class="dashboard-hint">
               Centang baris yang lolos seleksi tahap ini (maks. 7) untuk ditambah ke <strong>Data Pembanding</strong>.
             </p>
-
+            <div id="panduanTahap" class="dashboard-hint" style="margin: 16px 0; padding: 15px; border-left: 5px solid #6fb32b; background: #fbfdf9; display: none;">
+              <h3><strong>Kriteria Tahap:</strong> <span id="textPanduan">-</span></h3>
+            </div>
             <div class="fit-wrap" id="containerTabelTahap" style="margin-top: 12px;">
               <table id="tabelHasilTahap" class="no-wrap auto-fit">
                 <thead>
@@ -363,7 +365,18 @@
       </div>
     </div>
     <script>
-
+      const panduanTahap = {
+        1: "Wilayah Kerja (KPKNL sama), Merek Sama, Tipe Sama, Tahun Sama.",
+        2: "Urutan Pertama (Provinsi sama), Merek Sama, Tipe Sama, Tahun Sama.",
+        3: "Wilayah Kerja (KPKNL sama), Merek Sama, Tipe Beda, Tahun ±5.",
+        4: "Urutan Pertama (Provinsi sama), Merek Sama, Tipe Beda, Tahun ±5.",
+        5: "Urutan Kedua (Wilayah Regional), Merek Sama, Tipe Sama, Tahun Sama.",
+        6: "Urutan Kedua (Wilayah Regional), Merek Sama, Tipe Beda, Tahun ±5.",
+        7: "Urutan Ketiga (Seluruh Indonesia), Merek Sama, Tipe Sama, Tahun Sama.",
+        8: "Urutan Ketiga (Seluruh Indonesia), Merek Sama, Tipe Beda, Tahun ±5.",
+        9: "Wilayah Kerja, Merek Beda, Tipe Mendekati, Tahun ±5.",
+        10: "Urutan 1/2/3, Merek Beda, Tipe Mendekati, Tahun ±5."
+      };
       /* ===================== STATE & HELPERS ===================== */
       const $ = (q, el = document) => el.querySelector(q);
       const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
@@ -815,7 +828,6 @@
         const btn = $("#btnSimpanKertasKerja");
         const section = $("#penyesuaianSection");
 
-        // 🔥 TAMBAHKAN DI SINI
         const info = $("#infoJumlah");
 
         if (n < 3) {
@@ -830,7 +842,6 @@
           section.style.display = "block";
           btn.style.display = "none";
 
-          // 🔴 tampilkan info
           info.textContent = "Minimal 3 data pembanding untuk menyimpan";
 
           return false;
@@ -848,21 +859,34 @@
           section.style.display = "block";
           btn.style.display = "none";
 
-          // 🔴 tampilkan info
           info.textContent = "Maksimal 7 data pembanding yang diperbolehkan.";
 
           return false;
         }
 
-        // 🟢 valid
         section.style.display = "block";
         btn.style.display = "inline-block";
 
-        // 🔥 kosongkan info
         info.textContent = "";
 
         return true;
       }
+
+      $("#tahapSelector").addEventListener("change", function() {
+        const t = this.value;
+        const div = $("#panduanTahap");
+        const text = $("#textPanduan");
+
+        if (t && panduanTahap[t]) {
+          text.textContent = panduanTahap[t];
+          div.style.display = "block";
+        } else {
+          div.style.display = "none";
+        }
+
+        // Panggil fungsi render tabel tahap yang sudah Anda miliki
+        applyFilterTahap();
+      });
 
       /* ===================== DASHBOARD PENCARIAN (pengganti Looker Studio) ===================== */
       let currentSearchPage = 1;
