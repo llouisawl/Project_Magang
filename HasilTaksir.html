@@ -166,6 +166,7 @@
             <table id="tabelHasilPencarian" class="no-wrap auto-fit">
               <thead>
                 <tr>
+                  <th>+</th>
                   <th>Kode</th>
                   <th>Kategori Objek</th>
                   <th>Tahun Lelang</th>
@@ -985,8 +986,11 @@ function collectFilters(page = 1) {
         }
 
         rows.forEach((d) => {
+          const kode = (d.kode || "").toUpperCase();
+          const checked = rowKodeIsSelected(kode); // Fungsi ini sudah ada
           const tr = document.createElement("tr");
           tr.innerHTML = `
+                  <td><input type="checkbox" class="row-pick-main" data-kode="${kode}" ${checked ? "checked" : ""}/></td>
                   <td>${d.kode || "-"}</td>
                   <td>${d.kategori_objek || "-"}</td>
                   <td>${d.tahun_lelang || "-"}</td>
@@ -1095,7 +1099,7 @@ function evaluateTahapDJKN(row, tahapStr) {
   const rowTahun = Number(row.tahun_pembuatan) || 0;
  
   const merekSama = (rowMerek === targetMerek);
-  const tipeSama = targetTipe !== "" && rowTipe !== "" && (rowTipe.includes(targetTipe) || targetTipe.includes(rowTipe));
+  // const tipeSama = targetTipe !== "" && rowTipe !== "" && (rowTipe.includes(targetTipe) || targetTipe.includes(rowTipe));
   const tahunSama = (rowTahun === targetTahun);
   const tahunRentang = (Math.abs(rowTahun - targetTahun) <= 5);
  
@@ -1104,16 +1108,16 @@ function evaluateTahapDJKN(row, tahapStr) {
   const t = Number(tahapStr);
  
   switch (t) {
-    case 1: return tier === 0 && merekSama && tipeSama && tahunSama;
-    case 2: return tier === 1 && merekSama && tipeSama && tahunSama;
-    case 3: return tier === 0 && merekSama && !tipeSama && tahunRentang;
-    case 4: return tier === 1 && merekSama && !tipeSama && tahunRentang;
-    case 5: return tier === 2 && merekSama && tipeSama && tahunSama;
-    case 6: return tier === 2 && merekSama && !tipeSama && tahunRentang;
-    case 7: return tier === 3 && merekSama && tipeSama && tahunSama;
-    case 8: return tier === 3 && merekSama && !tipeSama && tahunRentang;
-    case 9: return tier === 0 && !merekSama && tipeSama && tahunRentang;
-    case 10: return (tier === 1 || tier === 2 || tier === 3) && !merekSama && tipeSama && tahunRentang;
+    case 1: return tier === 0 && merekSama && tahunSama;
+    case 2: return tier === 1 && merekSama && tahunSama;
+    case 3: return tier === 0 && merekSama  && tahunRentang;
+    case 4: return tier === 1 && merekSama  && tahunRentang;
+    case 5: return tier === 2 && merekSama && tahunSama;
+    case 6: return tier === 2 && merekSama  && tahunRentang;
+    case 7: return tier === 3 && merekSama && tahunSama;
+    case 8: return tier === 3 && merekSama  && tahunRentang;
+    case 9: return tier === 0 && !merekSama && tahunRentang;
+    case 10: return (tier === 1 || tier === 2 || tier === 3) && !merekSama && tahunRentang;
     default: return false;
   }
 }
@@ -1238,6 +1242,49 @@ function evaluateTahapDJKN(row, tahapStr) {
       }
 
       // Tambah/hapus baris terpilih dari hasil pencarian ke Data Pembanding
+$("#tbodyHasilPencarian").addEventListener("change", (e) => {
+  const cb = e.target.closest(".row-pick-main");
+  if (!cb) return;
+  const kode = (cb.dataset.kode || "").toUpperCase();
+  
+  // Ambil data baris tersebut dari lastSearchResults (cache hasil pencarian)
+  const row = lastSearchResults.find(
+    (r) => (r.kode || "").toUpperCase() === kode,
+  );
+  if (!row) return;
+
+  if (cb.checked) {
+    if (dataPembanding.length >= 7) {
+      alert("Maksimal 7 data pembanding.");
+      cb.checked = false;
+      return;
+    }
+    if (rowKodeIsSelected(kode)) return;
+
+    // Normalisasi dan tambah ke dataPembanding
+    const x = normalizeRow({
+      KodeLelang: row.kode,
+      Merek: row.merek,
+      Tipe: row.tipe,
+      HargaLelang: row.harga_laku,
+      TahunTransaksi: row.tahun_lelang,
+      Lokasi: row.kota,
+      KategoriLokasi: row.kategori_lokasi,
+      TahunPembuatan: row.tahun_pembuatan,
+    });
+    const p = hitungPenyesuaianFrontend(x);
+    dataPembanding.push({ ...x, manual: false, penyesuaian: p });
+  } else {
+    // Hapus dari dataPembanding
+    const idx = dataPembanding.findIndex(
+      (d) => (d.KodeLelang || "").toUpperCase() === kode,
+    );
+    if (idx > -1) dataPembanding.splice(idx, 1);
+  }
+
+  renderPembanding();
+  validateJumlahPembanding(false);
+});
       // Tambah/hapus baris terpilih dari hasil pencarian Tahap ke Data Pembanding
       $("#tbodyHasilTahap").addEventListener("change", (e) => {
         const cb = e.target.closest(".row-pick");
