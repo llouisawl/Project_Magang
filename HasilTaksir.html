@@ -950,10 +950,10 @@ function collectFilters(page = 1) {
           kategori_objek: getTomSelectValue("fKategoriObjek"),
           harga_laku_min: $("#fHargaMin").value,
           harga_laku_max: $("#fHargaMax").value,
-          tahun_lelang: $("#fTahunLelang").value, // Jika ini single select, tetap bisa gunakan value atau getTomSelectValue
-          kategori_lokasi: $("#fTahap").value,
+          tahun_lelang: getTomSelectValue("fTahunLelang"), // Jika ini single select, tetap bisa gunakan value atau getTomSelectValue
+          kategori_lokasi: getTomSelectValue("fTahap"),
           warna: getTomSelectValue("fWarna"),
-          tahun_pembuatan: $("#fTahunPembuatan").value,
+          tahun_pembuatan: getTomSelectValue("fTahunPembuatan"),
           tipe: getTomSelectValue("fTipe"),
           merek: getTomSelectValue("fMerek"),
           kpknl: getTomSelectValue("fKpknl"),

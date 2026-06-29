@@ -32,6 +32,15 @@
   </head>
   <body>
     <div class="container">
+      <div id="alertModal" class="modal-backdrop" aria-hidden="true" style="display: none;">
+        <div class="modal">
+          <h3 id="alertModalTitle">Informasi</h3>
+          <p id="alertModalInfo" class="modal-desc" style="margin-bottom: 24px;">Pesan alert di sini.</p>
+          <div class="modal-actions" style="justify-content: center;">
+            <button id="alertOk" class="btn-modal primary">Mengerti</button>
+          </div>
+        </div>
+      </div>
       <!-- Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-header-flex">
@@ -213,6 +222,8 @@
     <!-- ======================================================= -->
     <script src="config.js"></script>
     <script>
+      
+
       /* ===================== Helpers & Config ===================== */
       const $ = (q, el = document) => el.querySelector(q);
       const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
@@ -271,6 +282,25 @@
           claims?.user?.user_Id ||
           claims?.user?.user_id ||
           claims?.user?.id ||
+          ""
+        );
+      }
+
+      function getSatkerFromJwt(role = "satker") {
+        const tokenKey =
+          role === "admin"
+            ? "jwt_admin"
+            : role === "superadmin"
+            ? "jwt_superadmin"
+            : "jwt_satker";
+        const token = localStorage.getItem(tokenKey);
+        if (!token) return "";
+
+        const claims = parseJwt(token);
+        return (
+          claims?.data?.satker || 
+          claims?.satker || 
+          claims?.nama_satker || 
           ""
         );
       }
@@ -400,10 +430,10 @@
         return {
           id: String(id),
           created_at: raw.created_at ?? raw.tanggal_dibuat ?? null,
-          nama_objek: raw.nama_objek ?? raw.nama ?? raw.objek ?? "-",
+          nama_objek: raw.nama_objek ?? "-",
           pdf_url: pdfUrl,
           nup: raw.nup ?? "-",
-          username: raw.username ?? "-"
+          username: raw.username ?? raw.Username ?? raw.pembuat ?? raw.nama_pembuat ?? "-"
         };
       }
 
@@ -553,10 +583,16 @@
       /* ===================== Actions ===================== */
       function previewById(id) {
         const row = allRows.find((r) => r.id === id);
-        if (!row) return alert("Data tidak ditemukan.");
+        if (!row) {
+          customAlert.open("Data kertas kerja tidak ditemukan di sistem.", "Data Tidak Ditemukan");
+          return;
+        }
 
         const url = getPreviewUrl(row);
-        if (!url) return alert("File PDF belum tersedia.");
+        if (!url) {
+          customAlert.open("File PDF belum tersedia atau sedang diproses. Silakan coba beberapa saat lagi.", "PDF Belum Tersedia");
+          return;
+        }
 
         window.open(url, "_blank");
       }
@@ -581,7 +617,6 @@
         applySearch();
 
         try {
-          // ✅ Use new API service
           await api.kertasKerja.delete(id);
           api.http.clearCache();
           delModal.success("Berhasil dihapus");
@@ -595,37 +630,47 @@
       }
 
       /* ===================== Fetch ===================== */
-async function loadHistory() {
-  try {
-    const userId = getUserIdFromJwt("satker");
-    if (!userId) {
-      throw new Error("user_Id tidak ditemukan di JWT satker.");
-    }
+/* ===================== Fetch ===================== */
+      async function loadHistory() {
+        try {
+          const userId = getUserIdFromJwt("satker");
+          const satker = getSatkerFromJwt("satker"); // Ambil satker dari token
 
-    const res = await fetch(`${API_URL.replace(/\/$/, "")}/kertas-kerja/?user_Id=${encodeURIComponent(userId)}`, {
-      headers: SATKER ? SATKER.headers() : {},
-    });
+          if (!userId && !satker) {
+            throw new Error("Kredensial tidak ditemukan di JWT satker.");
+          }
 
-    const json = await res.json().catch(() => ({}));
-    const arr = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
-    const mapped = arr.map(mapRow);
+          // 👇 Bangun parameter URL dinamis
+          const params = new URLSearchParams();
+          if (satker) params.append("nama_satker", satker);
+          // Kita tetap kirim userId berjaga-jaga jika backend Anda butuh, 
+          // tapi pastikan backend Anda mereturn SEMUA data yang satkernya cocok!
+          if (userId) params.append("user_id", userId); 
 
-    mapped.sort((a, b) => {
-      const da = fromBackendWallToUTC(a.created_at)?.getTime() || 0;
-      const db = fromBackendWallToUTC(b.created_at)?.getTime() || 0;
-      return db - da;
-    });
+          const res = await fetch(`${API_URL.replace(/\/$/, "")}/kertas-kerja/?${params.toString()}`, {
+            headers: SATKER ? SATKER.headers() : {},
+          });
 
-    allRows = mapped;
-    viewRows = [...allRows];
-    renderRows(viewRows);
-  } catch (e) {
-    allRows = [];
-    viewRows = [];
-    renderRows(viewRows);
-    console.error("loadHistory failed:", e);
-  }
-}
+          const json = await res.json().catch(() => ({}));
+          const arr = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
+          const mapped = arr.map(mapRow);
+
+          mapped.sort((a, b) => {
+            const da = fromBackendWallToUTC(a.created_at)?.getTime() || 0;
+            const db = fromBackendWallToUTC(b.created_at)?.getTime() || 0;
+            return db - da;
+          });
+
+          allRows = mapped;
+          viewRows = [...allRows];
+          renderRows(viewRows);
+        } catch (e) {
+          allRows = [];
+          viewRows = [];
+          renderRows(viewRows);
+          console.error("loadHistory failed:", e);
+        }
+      }
 
       /* ===================== Auto-Refresh ===================== */
       function startPolling() {
@@ -642,6 +687,33 @@ async function loadHistory() {
       }
 
       /* ===================== Init ===================== */
+      const customAlert = {
+        el: $("#alertModal"),
+        title: $("#alertModalTitle"),
+        info: $("#alertModalInfo"),
+        btnOk: $("#alertOk"),
+        open(message, title = "Informasi") {
+          this.title.textContent = title;
+          this.info.textContent = message;
+          this.el.style.display = "flex";
+          this.el.removeAttribute("aria-hidden");
+          return new Promise((resolve) => {
+            const onOk = () => {
+              this.close();
+              cleanup();
+              resolve();
+            };
+            const cleanup = () => {
+              this.btnOk.removeEventListener("click", onOk);
+            };
+            this.btnOk.addEventListener("click", onOk);
+          });
+        },
+        close() {
+          this.el.style.display = "none";
+          this.el.setAttribute("aria-hidden", "true");
+        }
+      };
       document.addEventListener("DOMContentLoaded", () => {
         // cari
         $("#searchInput")?.addEventListener("input", applySearch);
