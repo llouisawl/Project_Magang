@@ -183,6 +183,8 @@
             <thead>
               <tr>
                 <th class="col-no">No</th>
+                <th class="col-no">NUP</th>
+                <th class="col-no">Username</th>
                 <th class="col-tanggal">Tanggal & Waktu Pembuatan</th>
                 <th class="col-objek">Nama Objek</th>
                 <th class="col-aksi" style="text-align: center">Aksi</th>
@@ -400,6 +402,8 @@
           created_at: raw.created_at ?? raw.tanggal_dibuat ?? null,
           nama_objek: raw.nama_objek ?? raw.nama ?? raw.objek ?? "-",
           pdf_url: pdfUrl,
+          nup: raw.nup ?? "-",
+          username: raw.username ?? "-"
         };
       }
 
@@ -427,6 +431,8 @@
           const tr = document.createElement("tr");
           tr.innerHTML = `
   <td class="text-center">${i + 1}</td>
+  <td class="text-center">${row.nup}</td>
+  <td class="text-center">${row.username}</td>
   <td>${fmtDateTime(row.created_at)}</td>
   <td class="truncate">${row.nama_objek || "-"}</td>
   <td class="aksi-td" style="display:flex;gap:8px;justify-content:center">

@@ -362,6 +362,7 @@
       </div>
     </div>
     <script>
+
       /* ===================== STATE & HELPERS ===================== */
       const $ = (q, el = document) => el.querySelector(q);
       const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
@@ -571,17 +572,15 @@
         const val = (value || "").toString().toUpperCase();
         if (mode === "auto") {
           return `<div class="kode-wrap">
-                  <input type="text" class="kode-input" value="${val}" maxlength="6" readonly style="background:#f6f7fb;cursor:not-allowed"/>
+                  <input type="text" class="kode-input" value="${val}" readonly style="background:#f6f7fb;cursor:not-allowed"/>
                 </div>`;
         }
         return `<div class="kode-wrap">
-                <input type="text" class="kode-input" maxlength="6" placeholder="KETIK & ENTER"
+                <input type="text" class="kode-input" placeholder="KETIK & ENTER"
                   value="${val}"
                   oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')"
                   onkeydown="if(event.key==='Enter'){event.preventDefault(); triggerAmbilKode(this);}"/>
-                <button class="kode-check" ${
-                  val.length === 6 ? "" : "disabled"
-                } title="Ambil data">✔</button>
+                <button class="kode-check" title="Ambil data">✔</button>
               </div>`;
       }
 
@@ -629,10 +628,6 @@
       }
 
       function tambahManual() {
-        if ($("#tbodyPembanding").rows.length >= 7) {
-          alert("Maksimal 7 data.");
-          return;
-        }
         const tr = document.createElement("tr");
         tr.classList.add("fade-in-row");
         tr.innerHTML = `
@@ -711,7 +706,7 @@
       async function triggerAmbilKode(inputEl) {
         const row = inputEl.closest("tr");
         const btn = row.querySelector(".kode-check");
-        if (inputEl.value.trim().length === 6 && !btn.disabled) btn.click();
+        btn.click();
       }
 
       const tbodyPemb = $("#tbodyPembanding");
@@ -724,12 +719,6 @@
         el.value = kode;
         const duplicate = Array.from(tbodyPemb.querySelectorAll(".kode-input"))
           .filter((x) => x !== el)
-          .some(
-            (x) =>
-              (x.value || "").trim().toUpperCase() === kode &&
-              kode.length === 6,
-          );
-        btn.disabled = !(kode.length === 6 && !duplicate);
       });
 
       tbodyPemb.addEventListener("click", async (e) => {
@@ -738,10 +727,6 @@
         const row = btn.closest("tr");
         const input = row.querySelector(".kode-input");
         const kode = (input.value || "").trim().toUpperCase();
-        if (kode.length !== 6) {
-          alert("Kode lelang harus 6 karakter.");
-          return;
-        }
         const duplicate = Array.from(tbodyPemb.querySelectorAll(".kode-input"))
           .filter((x) => x !== input)
           .some((x) => (x.value || "").trim().toUpperCase() === kode);
@@ -792,7 +777,7 @@
               merek: p.merek ?? 0,
               waktu: p.waktu ?? 0,
               lokasi: p.lokasi ?? 0,
-              tahun: p.tahun ?? 0, // 🔥 INI PERBAIKANNYA
+              tahun: p.tahun ?? 0,
             },
           };
 
@@ -1022,44 +1007,116 @@ function collectFilters(page = 1) {
         setTimeout(() => autoFitAll(), 50); 
       }
 
-      function evaluateTahapDJKN(row, tahapStr) {
-        if (!tahapStr) return true; // Tampilkan semua jika belum pilih tahap
+const kpknlWilayahMapping = {
+  "ACEH": { 1: ["KPKNL Lhokseumawe"], 2: ["KPKNL Medan"], 3: ["KPKNL Pekanbaru"] },
+  "BALI": { 1: ["KPKNL Denpasar", "KPKNL Singaraja"], 2: ["KPKNL Mataram"], 3: ["KPKNL Surabaya", "KPKNL Makassar"] },
+  "BANTEN": { 1: ["KPKNL Serang", "KPKNL Tangerang I", "KPKNL Tangerang II"], 2: ["KPKNL Jakarta I","KPKNL Jakarta II","KPKNL Jakarta III","KPKNL Jakarta IV","KPKNL Jakarta V"], 3: ["KPKNL Bogor", "KPKNL Bandung"] },
+  "BENGKULU": { 1: ["KPKNL Bengkulu"], 2: ["KPKNL Palembang", "KPKNL Bandar Lampung"], 3: ["KPKNL Jambi"] },
+  "DI YOGYAKARTA": { 1: ["KPKNL Yogyakarta"], 2: ["KPKNL Semarang", "KPKNL Surakarta"], 3: ["KPKNL Malang", "KPKNL Surabaya"] },
+  "DKI JAKARTA": { 1: ["KPKNL Jakarta I","KPKNL Jakarta II","KPKNL Jakarta III","KPKNL Jakarta IV","KPKNL Jakarta V"], 2: ["KPKNL Bandung","KPKNL Bekasi","KPKNL Bogor","KPKNL Tangerang I","KPKNL Tangerang II","KPKNL Serang"], 3: ["KPKNL Semarang"] },
+  "GORONTALO": { 1: ["KPKNL Gorontalo"], 2: ["KPKNL Manado"], 3: ["KPKNL Palu", "KPKNL Makassar"] },
+  "JAMBI": { 1: ["KPKNL Jambi", "KPKNL Pekalongan"], 2: ["KPKNL Palembang"], 3: ["KPKNL Medan", "KPKNL Pangkal Pinang"] },
+  "JAWA BARAT": { 1: ["KPKNL Bandung","KPKNL Bekasi","KPKNL Bogor","KPKNL Cirebon","KPKNL Purwakarta","KPKNL Tasikmalaya"], 2: ["KPKNL Jakarta I","KPKNL Jakarta II","KPKNL Jakarta III","KPKNL Jakarta IV","KPKNL Jakarta V"], 3: ["KPKNL Semarang"] },
+  "JAWA TENGAH": { 1: ["KPKNL Pekalongan","KPKNL Purwokerto","KPKNL Semarang","KPKNL Surakarta","KPKNL Tegal"], 2: ["KPKNL Yogyakarta"], 3: ["KPKNL Surabaya"] },
+  "JAWA TIMUR": { 1: ["KPKNL Jember","KPKNL Madiun","KPKNL Malang","KPKNL Pamekasan","KPKNL Sidoarjo","KPKNL Surabaya"], 2: ["KPKNL Semarang"], 3: ["KPKNL Yogyakarta"] },
+  "KALIMANTAN BARAT": { 1: ["KPKNL Pontianak", "KPKNL Singkawang"], 2: ["KPKNL Samarinda", "KPKNL Balikpapan"], 3: ["KPKNL Banjarmasin"] },
+  "KALIMANTAN SELATAN": { 1: ["KPKNL Banjarmasin"], 2: ["KPKNL Samarinda", "KPKNL Balikpapan"], 3: ["KPKNL Pontianak"] },
+  "KALIMANTAN TENGAH": { 1: ["KPKNL Palangkaraya", "KPKNL Pangkalan Bun"], 2: ["KPKNL Samarinda", "KPKNL Balikpapan"], 3: ["KPKNL Banjarmasin"] },
+  "KALIMANTAN TIMUR": { 1: ["KPKNL Balikpapan", "KPKNL Bontang", "KPKNL Samarinda"], 2: ["KPKNL Tarakan"], 3: ["KPKNL Banjarmasin"] },
+  "KALIMANTAN UTARA": { 1: ["KPKNL Tarakan"], 2: ["KPKNL Samarinda", "KPKNL Balikpapan"], 3: ["KPKNL Banjarmasin"] },
+  "KEPULAUAN BANGKA BELITUNG": { 1: ["KPKNL Pangkal Pinang"], 2: ["KPKNL Jambi", "KPKNL Palembang"], 3: ["KPKNL Medan"] },
+  "KEPULAUAN RIAU": { 1: ["KPKNL Batam"], 2: ["KPKNL Pekanbaru"], 3: ["KPKNL Medan"] },
+  "LAMPUNG": { 1: ["KPKNL Bandar Lampung", "KPKNL Metro"], 2: ["KPKNL Jakarta V", "KPKNL Serang"], 3: ["KPKNL Palembang"] },
+  "MALUKU": { 1: ["KPKNL Ambon"], 2: ["KPKNL Ternate"], 3: ["KPKNL Makassar"] },
+  "MALUKU UTARA": { 1: ["KPKNL Ternate"], 2: ["KPKNL Ambon"], 3: ["KPKNL Manado"] },
+  "NUSA TENGGARA BARAT": { 1: ["KPKNL Bima", "KPKNL Mataram"], 2: ["KPKNL Denpasar"], 3: ["KPKNL Kupang", "KPKNL Makassar"] },
+  "NUSA TENGGARA TIMUR": { 1: ["KPKNL Kupang"], 2: ["KPKNL Mataram", "KPKNL Denpasar"], 3: ["KPKNL Makassar", "KPKNL Jayapura"] },
+  "PAPUA": { 1: ["KPKNL Biak", "KPKNL Jayapura"], 2: ["KPKNL Sorong"], 3: ["KPKNL Makassar"] },
+  "PAPUA BARAT": { 1: ["KPKNL Sorong"], 2: ["KPKNL Jayapura"], 3: ["KPKNL Makassar"] },
+  "RIAU": { 1: ["KPKNL Dumai", "KPKNL Pekanbaru"], 2: ["KPKNL Medan"], 3: ["KPKNL Jambi"] },
+  "SULAWESI BARAT": { 1: ["KPKNL Mamuju"], 2: ["KPKNL Makassar"], 3: ["KPKNL Palu"] },
+  "SULAWESI SELATAN": { 1: ["KPKNL Makassar", "KPKNL Palopo", "KPKNL Parepare"], 2: ["KPKNL Palu", "KPKNL Manado"], 3: ["KPKNL Kendari"] },
+  "SULAWESI TENGAH": { 1: ["KPKNL Palu"], 2: ["KPKNL Manado", "KPKNL Gorontalo"], 3: ["KPKNL Makassar"] },
+  "SULAWESI TENGGARA": { 1: ["KPKNL Kendari"], 2: ["KPKNL Makassar"], 3: ["KPKNL Manado", "KPKNL Palu"] },
+  "SULAWESI UTARA": { 1: ["KPKNL Manado"], 2: ["KPKNL Gorontalo"], 3: ["KPKNL Makassar", "KPKNL Palu"] },
+  "SUMATERA BARAT": { 1: ["KPKNL Bukittinggi", "KPKNL Padang"], 2: ["KPKNL Medan"], 3: ["KPKNL Jambi", "KPKNL Palembang"] },
+  "SUMATERA SELATAN": { 1: ["KPKNL Lahat", "KPKNL Palembang"], 2: ["KPKNL Bandar Lampung", "KPKNL Metro"], 3: ["KPKNL Jambi", "KPKNL Bengkulu"] },
+  "SUMATERA UTARA": { 1: ["KPKNL Kisaran","KPKNL Medan","KPKNL Padang Sidempuan","KPKNL Pematang Siantar"], 2: ["KPKNL Pekanbaru", "KPKNL Dumai"], 3: ["KPKNL Lhokseumawe"] },
+};
 
-        // Mengambil spek target kendaraan yang sedang di nilai
-        const targetMerek = (inputLelang.merek_kendaraan || "").toLowerCase().trim();
-        const targetTipe = (inputLelang.tipe_kendaraan || "").toLowerCase().trim();
-        const targetTahun = Number(inputLelang.tahun_pembuatan) || 0;
+const PROVINSI_TIDAK_BERLAKU_PERLUASAN = ["KEPULAUAN RIAU"]; // sesuaikan jika perlu pisah khusus Batam/Sabang
+ 
+/**
+ * Menentukan tier lokasi baris data dibanding objek yang sedang dinilai.
+ * 0 = Wilayah Kerja (KPKNL sama dengan KPKNL objek)
+ * 1 = Urutan Pertama
+ * 2 = Urutan Kedua
+ * 3 = Urutan Ketiga
+ * -1 = tidak masuk wilayah manapun (di luar mapping)
+ */
+function getLocationTier(targetKpknl, targetProvinsi, rowKpknl) {
+  const stripKpknl = (s) => s.replace(/^kpknl\s+/i, "").trim();
+  const tKpknl = (targetKpknl || "").toLowerCase().trim();
+  const rKpknl = (rowKpknl || "").toLowerCase().trim();
+  if (!rKpknl) return -1;
+ 
+    if (tKpknl && stripKpknl(rKpknl) === stripKpknl(tKpknl)) return 0;
 
-        // Mengambil spek data lelang per baris
-        const rowMerek = (row.merek || "").toLowerCase().trim();
-        const rowTipe = (row.tipe || "").toLowerCase().trim();
-        const rowTahun = Number(row.tahun_pembuatan) || 0;
-        const rowLokasi = Number(row.kategori_lokasi) || 0;
-
-        // Kondisi perbandingan
-        const merekSama = (rowMerek === targetMerek);
-        const tipeSama = targetTipe !== "" && rowTipe !== "" && (rowTipe.includes(targetTipe) || targetTipe.includes(rowTipe));
-        const tahunSama = (rowTahun === targetTahun);
-        const tahunRentang = (Math.abs(rowTahun - targetTahun) <= 5); // 5 th lebih muda s.d 5 th lebih tua
-
-        const t = Number(tahapStr);
-
-        switch(t) {
-          case 1: return rowLokasi === 1 && merekSama && tipeSama && tahunSama;
-          case 2: return rowLokasi === 2 && merekSama && tipeSama && tahunSama;
-          case 3: return rowLokasi === 1 && merekSama && !tipeSama && tahunRentang;
-          case 4: return rowLokasi === 2 && merekSama && !tipeSama && tahunRentang;
-          case 5: return rowLokasi === 3 && merekSama && tipeSama && tahunSama;
-          case 6: return rowLokasi === 3 && merekSama && !tipeSama && tahunRentang;
-          case 7: return rowLokasi === 4 && merekSama && tipeSama && tahunSama;
-          case 8: return rowLokasi === 4 && merekSama && !tipeSama && tahunRentang;
-          case 9: return rowLokasi === 1 && !merekSama && tipeSama && tahunRentang; 
-          case 10: return (rowLokasi === 2 || rowLokasi === 3 || rowLokasi === 4) && !merekSama && tipeSama && tahunRentang;
-          
-          default: return false;
-        }
-      }
-
+  console.log(`targetKPKNL = ${tKpknl}, rowKpknl = ${rKpknl}`);
+ 
+  const provinsiKey = (targetProvinsi || "").toUpperCase().trim();
+ 
+  if (PROVINSI_TIDAK_BERLAKU_PERLUASAN.includes(provinsiKey)) {
+    return -1; // grup Batam dan Sabang: tidak ada perluasan pencarian
+  }
+ 
+  const mapping = kpknlWilayahMapping[provinsiKey];
+  if (mapping) {
+    if ((mapping[1] || []).some(k => k.toLowerCase() === rKpknl)) return 1;
+    if ((mapping[2] || []).some(k => k.toLowerCase() === rKpknl)) return 2;
+  }
+ 
+  // Tier 3 = "Semua Wilayah kerja KPKNL di Indonesia" -> fallback, bukan daftar statis
+  return 3;
+}
+ 
+function evaluateTahapDJKN(row, tahapStr) {
+  
+  if (!tahapStr) return true;
+ 
+  const targetMerek = (inputLelang.merek_kendaraan || "").toLowerCase().trim();
+  const targetTipe = (inputLelang.tipe_kendaraan || "").toLowerCase().trim();
+  const targetTahun = Number(inputLelang.tahun_pembuatan) || 0;
+  const targetKpknl = inputLelang.kpknl || "" ;
+  const targetProvinsi = inputLelang.provinsi || "";
+ 
+  const rowMerek = (row.merek || "").toLowerCase().trim();
+  const rowTipe = (row.tipe || "").toLowerCase().trim();
+  const rowTahun = Number(row.tahun_pembuatan) || 0;
+ 
+  const merekSama = (rowMerek === targetMerek);
+  const tipeSama = targetTipe !== "" && rowTipe !== "" && (rowTipe.includes(targetTipe) || targetTipe.includes(rowTipe));
+  const tahunSama = (rowTahun === targetTahun);
+  const tahunRentang = (Math.abs(rowTahun - targetTahun) <= 5);
+ 
+  const tier = getLocationTier(targetKpknl, targetProvinsi, row.kpknl);
+ 
+  const t = Number(tahapStr);
+ 
+  switch (t) {
+    case 1: return tier === 0 && merekSama && tipeSama && tahunSama;
+    case 2: return tier === 1 && merekSama && tipeSama && tahunSama;
+    case 3: return tier === 0 && merekSama && !tipeSama && tahunRentang;
+    case 4: return tier === 1 && merekSama && !tipeSama && tahunRentang;
+    case 5: return tier === 2 && merekSama && tipeSama && tahunSama;
+    case 6: return tier === 2 && merekSama && !tipeSama && tahunRentang;
+    case 7: return tier === 3 && merekSama && tipeSama && tahunSama;
+    case 8: return tier === 3 && merekSama && !tipeSama && tahunRentang;
+    case 9: return tier === 0 && !merekSama && tipeSama && tahunRentang;
+    case 10: return (tier === 1 || tier === 2 || tier === 3) && !merekSama && tipeSama && tahunRentang;
+    default: return false;
+  }
+}
       // 3. Render Hasil Seleksi Tahap (Di Tabel Bawah)
       async function applyFilterTahap() {
         const t = $("#tahapSelector").value;

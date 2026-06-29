@@ -375,6 +375,124 @@
 
     <!-- ====== SCRIPT LOGIKA FORM ====== -->
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Kita beri sedikit jeda (setTimeout) agar script inisialisasi Select2 
+        // dan fetch Lokasi/Master Data selesai dijalankan terlebih dahulu.
+        setTimeout(async () => {
+          const savedDataRaw = sessionStorage.getItem("dataKertasKerja");
+          if (!savedDataRaw) return; // Jika tidak ada data tersimpan, biarkan form kosong
+
+          let savedData;
+          try {
+            savedData = JSON.parse(savedDataRaw);
+          } catch (e) {
+            console.error("Gagal parse dataKertasKerja:", e);
+            return;
+          }
+
+          // 1. Restore Text & Number Inputs Biasa
+          const textKeys = ['nama_objek', 'nup', 'nomor_polisi', 'keterangan_lain', 'tahun_pembuatan'];
+          textKeys.forEach(key => {
+            if (savedData[key]) {
+              const el = document.querySelector(`[name="${key}"]`);
+              if (el) el.value = savedData[key];
+            }
+          });
+
+          // 2. Restore Select Biasa & Trigger logic-nya
+          const selectKeys = ['masa_berlaku', 'bahan_bakar', 'kondisi_kendaraan', 'jenis_kendaraan'];
+          selectKeys.forEach(key => {
+            if (savedData[key]) {
+              const el = document.querySelector(`[name="${key}"]`);
+              if (el) {
+                el.value = savedData[key];
+                // Trigger event change (khususnya agar fungsi tampilkanCC() terpanggil jika jenis_kendaraan berubah)
+                el.dispatchEvent(new Event('change')); 
+              }
+            }
+          });
+
+          // 3. Restore Pilihan CC Kendaraan
+          if (savedData.jenis_kendaraan === 'Roda 2 atau 3' && savedData.cc_kendaraan_roda2) {
+             const cc2 = document.querySelector(`[name="cc_kendaraan_roda2"]`);
+             if (cc2) cc2.value = savedData.cc_kendaraan_roda2;
+          } else if (savedData.jenis_kendaraan === 'Roda 4 atau lebih' && savedData.cc_kendaraan_roda4) {
+             const cc4 = document.querySelector(`[name="cc_kendaraan_roda4"]`);
+             if (cc4) cc4.value = savedData.cc_kendaraan_roda4;
+          }
+
+          // 4. Restore Dokumen Kepemilikan (Checkbox logic)
+          if (savedData.dokumen_kepemilikan_tidak_ada) {
+            const chkTidak = document.getElementById("tidakAdaCheckbox");
+            if (chkTidak) {
+              chkTidak.checked = true;
+              chkTidak.dispatchEvent(new Event('change'));
+            }
+          } else if (Array.isArray(savedData.dokumen_kepemilikan)) {
+            savedData.dokumen_kepemilikan.forEach(doc => {
+              if (doc === 'BPKB' || doc === 'STNK') {
+                const chk = document.querySelector(`input[name="dokumen_kepemilikan[]"][value="${doc}"]`);
+                if (chk) {
+                  chk.checked = true;
+                  chk.dispatchEvent(new Event('change')); // Trigger event agar opsi "Tidak Ada" mati
+                }
+              } else if (doc === 'Lainnya') {
+                const chkLain = document.getElementById("lainnyaCheckbox");
+                if (chkLain) {
+                  chkLain.checked = true;
+                  chkLain.dispatchEvent(new Event('change')); // Buka input text "Lainnya"
+                  
+                  const txtLain = document.getElementById("lainnyaInput");
+                  if (txtLain) {
+                    txtLain.value = savedData.dok_lainnya_detail || "";
+                    txtLain.dispatchEvent(new Event('input')); 
+                  }
+                }
+              }
+            });
+          }
+
+          // 5. Restore Select2 Independen: Lokasi & Warna
+          if (savedData.warna) {
+            const $warna = $("#warna");
+            if (!$warna.find(`option[value="${savedData.warna}"]`).length) {
+               $warna.append(new Option(savedData.warna, savedData.warna, true, true));
+            }
+            $warna.val(savedData.warna).trigger('change.select2');
+          }
+
+          if (savedData.lokasi_objek) {
+            const $lokasi = $("#lokasi_objek");
+            if (!$lokasi.find(`option[value="${savedData.lokasi_objek}"]`).length) {
+               $lokasi.append(new Option(savedData.lokasi_objek, savedData.lokasi_objek, true, true));
+            }
+            // Gunakan 'change' biasa agar memicu request fetch ke API Kategori Lokasi di index.html
+            $lokasi.val(savedData.lokasi_objek).trigger('change'); 
+          }
+
+          // 6. Restore Select2 Berantai: Merek -> Tipe (Membutuhkan API Fetch)
+          if (savedData.merek_kendaraan) {
+            const $merek = $("#merek_kendaraan");
+            if (!$merek.find(`option[value="${savedData.merek_kendaraan}"]`).length) {
+               $merek.append(new Option(savedData.merek_kendaraan, savedData.merek_kendaraan, true, true));
+            }
+            $merek.val(savedData.merek_kendaraan).trigger('change.select2');
+
+            // Kita jalankan ulang fungsi updateTipe() secara sinkronus agar list Tipe di-fetch dari API
+            await updateTipe();
+
+            // Set nilai tipe jika datanya ada
+            if (savedData.tipe_kendaraan) {
+              const $tipe = $("#tipe_kendaraan");
+              if (!$tipe.find(`option[value="${savedData.tipe_kendaraan}"]`).length) {
+                 $tipe.append(new Option(savedData.tipe_kendaraan, savedData.tipe_kendaraan, true, true));
+              }
+              $tipe.val(savedData.tipe_kendaraan).trigger('change.select2');
+            }
+          }
+
+        }, 800); // Waktu tunda 800ms untuk memastikan jQuery/Select2 & Master Data selesai di-load.
+      });
       // Tampilkan CC dinamis
       function tampilkanCC() {
         var jenis = document.getElementById("jenis_kendaraan").value;
@@ -555,13 +673,13 @@
     <script>
       function getKategoriObjek() {
         const jenis = document.getElementById("jenis_kendaraan").value;
-        if (jenis === "Roda 2 atau 3") return "motor";
-        if (jenis === "Roda 4 atau lebih") return "mobil";
+        if (jenis === "Roda 2 atau 3") return "Motor";
+        if (jenis === "Roda 4 atau lebih") return "Mobil";
         return null;
       }
 
       async function updateMerek() {
-        const kategori = getKategoriObjek();
+        const kategori = getKategoriObjek(); // "motor" atau "mobil"
         const selectMerek = $("#merek_kendaraan");
         const selectTipe = $("#tipe_kendaraan");
 
@@ -574,7 +692,7 @@
         if (!kategori) return;
 
         try {
-          const json = await api.http.get(`/data-lelang/merek`);
+          const json = await api.http.get(`/data-lelang/merek?kategori=${encodeURIComponent(kategori)}`);
           const merekList = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
           merekList.forEach((merek) => {
             selectMerek.append(new Option(merek, merek));
@@ -586,7 +704,7 @@
       }
 
       async function updateTipe() {
-        const kategori = getKategoriObjek();
+        const kategori = getKategoriObjek(); // "motor" atau "mobil"
         const merek = $("#merek_kendaraan").val();
         const selectTipe = $("#tipe_kendaraan");
 
@@ -598,7 +716,8 @@
         if (!kategori || !merek) return;
 
         try {
-          const json = await api.http.get(`/data-lelang/tipe?merek=${encodeURIComponent(merek)}`);
+          // ✅ Tambahkan parameter &kategori=
+          const json = await api.http.get(`/data-lelang/tipe?merek=${encodeURIComponent(merek)}&kategori=${encodeURIComponent(kategori)}`);
           const tipeList = Array.isArray(json?.data) ? json.data : Array.isArray(json) ? json : [];
           tipeList.forEach((tipe) => {
             selectTipe.append(new Option(tipe, tipe));
