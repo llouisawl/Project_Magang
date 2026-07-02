@@ -6,10 +6,6 @@
     <title>SirOTO | Data Kendaraan & Hasil Taksir</title>
     <link rel="stylesheet" href="HasilTaksir.css" />
 
-
-    <title>SirOTO | Data Kendaraan & Hasil Taksir</title>
-    <link rel="stylesheet" href="HasilTaksir.css" />
-
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
@@ -219,7 +215,7 @@
             <div id="panduanTahap" class="dashboard-hint" style="margin: 16px 0; padding: 15px; border-left: 5px solid #6fb32b; background: #fbfdf9; display: none;">
               <h3><strong>Kriteria Tahap:</strong> <span id="textPanduan">-</span></h3>
             </div>
-            <div class="fit-wrap" id="containerTabelTahap" style="margin-top: 12px;">
+            <div class="fit-wrap" id="containerTabelTahap">
               <table id="tabelHasilTahap" class="no-wrap auto-fit">
                 <thead>
                   <tr>
@@ -688,15 +684,17 @@
         const lokasiSelisih = Number(d.KategoriLokasi) - Number(kategoriInput) || 0;
         const tahunSelisih = tahunInput - Number(d.TahunPembuatan || 0);
 
+        const depreciationRate = getDepreciationRate(inputLelang.jenis_klasifikasi_kendaraan);
+
         return {
           tipe: 0,
           merek: 0,
           waktu: clamp(waktuSelisih * 2),
           lokasi: clamp(lokasiSelisih * 5),
-          tahun: clamp(tahunSelisih * 8),
+          tahun: clamp(tahunSelisih * depreciationRate),
         };
       }
-      /* ===================== AMBIL DATA BY KODE ===================== */
+
       async function fetchByKode(kode) {
         const res = await fetch(
           `${API_BASE}/kertas-kerja/lelang/${encodeURIComponent(kode)}`,
@@ -758,7 +756,6 @@
             dataLelangByKode[kode] = resData;
           }
 
-          // 🔥 ambil data utama
           const d = resData.data;
 
           const p = hitungPenyesuaianFrontend(d);
@@ -894,7 +891,6 @@
       let lastSearchResults = []; // baris hasil pencarian saat ini (untuk lookup saat checkbox dicentang)
       let lastTahapResults = [];
 
-      // Isi dropdown filter dari endpoint /data-lelang/filter-options
       async function loadFilterOptions() {
         const fields = [
           ["kategori_objek", "#fKategoriObjek"],
@@ -926,7 +922,6 @@
           }),
         );
 
-        // Tahun lelang & tahun pembuatan: generate rentang tahun yang wajar
         const yearNow = new Date().getFullYear();
         const fillYears = (selector, from, to) => {
           const sel = $(selector);
@@ -939,8 +934,7 @@
         };
         fillYears("#fTahunLelang", yearNow - 10, yearNow);
         fillYears("#fTahunPembuatan", yearNow - 25, yearNow);
-        // --- TAMBAHKAN KODE INI DI SINI ---
-        // Inisialisasi Searchable Dropdown
+
         const dropdownIds = ["#fKategoriObjek", "#fTahap", "#fWarna", "#fTahunPembuatan", "#fTipe", "#fMerek", "#fKpknl", "#fTahunLelang"];
         
         dropdownIds.forEach(selector => {
@@ -948,8 +942,7 @@
           if (el) {
             new TomSelect(el, {
               plugins: ['remove_button'],
-              create: false, // Mencegah user mengetik teks yang tidak ada di pilihan
-              // allowEmptyOption: true, 
+              create: false,
               sortField: {
                 field: "text",
                 direction: "asc"
@@ -963,7 +956,6 @@
         const el = document.getElementById(id);
         if (el && el.tomselect) {
             const val = el.tomselect.getValue();
-            // Jika val adalah array (karena multiple select), gabungkan dengan koma
             return Array.isArray(val) ? val.join(',') : val;
         }
         return el ? el.value : "";
@@ -975,7 +967,7 @@ function collectFilters(page = 1) {
           kategori_objek: getTomSelectValue("fKategoriObjek"),
           harga_laku_min: $("#fHargaMin").value,
           harga_laku_max: $("#fHargaMax").value,
-          tahun_lelang: getTomSelectValue("fTahunLelang"), // Jika ini single select, tetap bisa gunakan value atau getTomSelectValue
+          tahun_lelang: getTomSelectValue("fTahunLelang"),
           kategori_lokasi: getTomSelectValue("fTahap"),
           warna: getTomSelectValue("fWarna"),
           tahun_pembuatan: getTomSelectValue("fTahunPembuatan"),
@@ -985,6 +977,7 @@ function collectFilters(page = 1) {
           page,
           page_size: 8,
         };
+
         // buang field kosong supaya query string bersih
         Object.keys(f).forEach((k) => {
           if (f[k] === "" || f[k] === null || f[k] === undefined) delete f[k];
@@ -1011,7 +1004,7 @@ function collectFilters(page = 1) {
 
         rows.forEach((d) => {
           const kode = (d.kode || "").toUpperCase();
-          const checked = rowKodeIsSelected(kode); // Fungsi ini sudah ada
+          const checked = rowKodeIsSelected(kode);
           const tr = document.createElement("tr");
           tr.innerHTML = `
                   <td><input type="checkbox" class="row-pick-main" data-kode="${kode}" ${checked ? "checked" : ""}/></td>
@@ -1072,15 +1065,13 @@ const kpknlWilayahMapping = {
   "SUMATERA UTARA": { 1: ["KPKNL Kisaran","KPKNL Medan","KPKNL Padang Sidempuan","KPKNL Pematang Siantar"], 2: ["KPKNL Pekanbaru", "KPKNL Dumai"], 3: ["KPKNL Lhokseumawe"] },
 };
 
-const PROVINSI_TIDAK_BERLAKU_PERLUASAN = ["KEPULAUAN RIAU"]; // sesuaikan jika perlu pisah khusus Batam/Sabang
- 
+const PROVINSI_TIDAK_BERLAKU_PERLUASAN = ["KEPULAUAN RIAU"];
 /**
  * Menentukan tier lokasi baris data dibanding objek yang sedang dinilai.
  * 0 = Wilayah Kerja (KPKNL sama dengan KPKNL objek)
  * 1 = Urutan Pertama
  * 2 = Urutan Kedua
  * 3 = Urutan Ketiga
- * -1 = tidak masuk wilayah manapun (di luar mapping)
  */
 function getLocationTier(targetKpknl, targetProvinsi, rowKpknl) {
   const stripKpknl = (s) => s.replace(/^kpknl\s+/i, "").trim();
@@ -1090,7 +1081,6 @@ function getLocationTier(targetKpknl, targetProvinsi, rowKpknl) {
  
     if (tKpknl && stripKpknl(rKpknl) === stripKpknl(tKpknl)) return 0;
 
-  console.log(`targetKPKNL = ${tKpknl}, rowKpknl = ${rKpknl}`);
  
   const provinsiKey = (targetProvinsi || "").toUpperCase().trim();
  
@@ -1104,7 +1094,7 @@ function getLocationTier(targetKpknl, targetProvinsi, rowKpknl) {
     if ((mapping[2] || []).some(k => k.toLowerCase() === rKpknl)) return 2;
   }
  
-  // Tier 3 = "Semua Wilayah kerja KPKNL di Indonesia" -> fallback, bukan daftar statis
+  // Tier 3 = "Semua Wilayah kerja KPKNL di Indonesia"
   return 3;
 }
  
@@ -1123,7 +1113,7 @@ function evaluateTahapDJKN(row, tahapStr) {
   const rowTahun = Number(row.tahun_pembuatan) || 0;
  
   const merekSama = (rowMerek === targetMerek);
-  // const tipeSama = targetTipe !== "" && rowTipe !== "" && (rowTipe.includes(targetTipe) || targetTipe.includes(rowTipe));
+  
   const tahunSama = (rowTahun === targetTahun);
   const tahunRentang = (Math.abs(rowTahun - targetTahun) <= 5);
  
@@ -1145,13 +1135,12 @@ function evaluateTahapDJKN(row, tahapStr) {
     default: return false;
   }
 }
-      // 3. Render Hasil Seleksi Tahap (Di Tabel Bawah)
+      // Render Hasil Seleksi Tahap (Di Tabel Bawah)
       async function applyFilterTahap() {
         const t = $("#tahapSelector").value;
         const container = $("#containerTabelTahap");
         const tb = $("#tbodyHasilTahap");
         
-        // JIKA TAHAP BELUM DIPILIH: Sembunyikan tabel
         if (!t) {
           container.style.display = "none";
           tb.innerHTML = ""; 
@@ -1159,7 +1148,6 @@ function evaluateTahapDJKN(row, tahapStr) {
           return;
         }
 
-        // Tampilkan loading saat mengambil data dari seluruh halaman
         container.style.display = "block";
         tb.innerHTML = `<tr><td colspan="13" style="text-align: center; font-weight: bold; color: #2f7d1a; padding: 20px;">Memindai data di seluruh halaman...</td></tr>`;
 
@@ -1184,7 +1172,7 @@ function evaluateTahapDJKN(row, tahapStr) {
             return;
           }
 
-          tb.innerHTML = ""; // Bersihkan loading
+          tb.innerHTML = "";
           lastTahapResults.forEach((d) => {
             const kode = (d.kode || "").toUpperCase();
             const checked = rowKodeIsSelected(kode);
@@ -1278,6 +1266,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
   if (!row) return;
 
   if (cb.checked) {
+
     if (dataPembanding.length >= 7) {
       alert("Maksimal 7 data pembanding.");
       cb.checked = false;
@@ -1702,6 +1691,38 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         }));
       }
 
+      // ===================== HELPER FUNCTIONS DEPRESIASI =====================
+      function getDepreciationRate(klasifikasi) {
+        const normalized = (klasifikasi || "middle").toLowerCase().trim();
+        switch (normalized) {
+          case "low-end":
+            return 5;
+          case "middle":
+            return 7;
+          case "high-end":
+            return 10;
+        }
+      }
+
+      function calculateDepreciatedValue(nilaiAwal, depreciationRate, tahunPembuatan) {
+        const currentYear = new Date().getFullYear();
+        const tahunSelisih = Math.max(0, currentYear - tahunPembuatan);
+        const depreciatedValue = nilaiAwal * (1 - depreciationRate * tahunSelisih);
+        return Math.max(0, depreciatedValue);
+      }
+
+      function applyDepreciationToNilaiTaksiran(penyesuaianList, klasifikasi, tahunPembuatan) {
+        const depreciationRate = getDepreciationRate(klasifikasi);
+        return penyesuaianList.map(p => ({
+          ...p,
+          nilai_taksiran_dengan_depresiasi: calculateDepreciatedValue(
+            Number(p.nilai_taksiran) || 0,
+            depreciationRate,
+            tahunPembuatan
+          )
+        }));
+      }
+
       async function saveKertasKerjaToExcel() {
         if ($("#tbodyPembanding").rows.length < 3) {
           alert("Data pembanding minimal 3 baris.");
@@ -1764,8 +1785,18 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
           nilai_taksiran: Number(p.nilai_taksiran) || 0,
         }));
 
-        const listNilai = penyesuaian
-          .map((x) => Number(x.nilai_taksiran) || 0)
+        // Terapkan depresiasi berdasarkan klasifikasi kendaraan
+        const klasifikasiKendaraan = inputLelang.jenis_klasifikasi_kendaraan || "middle";
+        const tahunPembuatanKendaraan = Number(inputLelang.tahun_pembuatan) || new Date().getFullYear();
+        const penyesuaianDenganDepresiasi = applyDepreciationToNilaiTaksiran(
+          data_penyesuaian,
+          klasifikasiKendaraan,
+          tahunPembuatanKendaraan
+        );
+
+        // Hitung menggunakan nilai dengan depresiasi
+        const listNilai = penyesuaianDenganDepresiasi
+          .map((x) => Number(x.nilai_taksiran_dengan_depresiasi) || 0)
           .filter((n) => Number.isFinite(n) && n > 0);
         const nilai_taksiran_total = listNilai.reduce((a, b) => a + b, 0);
         const rata_rata = listNilai.length
@@ -1793,12 +1824,12 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
 
               nomor_polisi: inputLelang.nomor_polisi,
               pemilik_dokumen: inputLelang.pemilik_dokumen,
-              jenis_kendaraan: jenisStr, // hasil normalisasi
-              kondisi_kendaraan: String(currentKondisiFactor.toFixed(1)), // "0.5"/"0.6"/"0.7"
+              jenis_kendaraan: jenisStr,
+              kondisi_kendaraan: String(currentKondisiFactor.toFixed(1)),
               dokumen_kepemilikan: dokList,
               dokumen_lainnya: dokumenLainnya,
 
-              faktor_kondisi: faktor, // tetap kirim kalau dipakai
+              faktor_kondisi: faktor,
 
               masa_berlaku: (inputLelang.masa_berlaku || "")
                 .toLowerCase()
@@ -1826,13 +1857,14 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
               taksiran_nilai_limit_lelang: limit_lelang,
 
               // pembulatan limit
-              pembulatan_nilai_taksiran: pembulatan, // dipakai GET riwayat
+              pembulatan_nilai_taksiran: pembulatan,
               pembulatan: pembulatan, // alias lama (kalau PDF cari ini)
             },
 
             // Field root yang juga dibaca backend/PDF
             faktor_kondisi: faktor,
             jenis_kendaraan: jenis,
+            jenis_klasifikasi_kendaraan: inputLelang.jenis_klasifikasi_kendaraan || "middle",
             nilai_taksiran_total,
           };
 
@@ -1887,7 +1919,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
               tryRestoreFromDraft();
 
               recalcAll();
-              validateJumlahPembanding(false); // 🔥 TAMBAHAN
+              validateJumlahPembanding(false);
               return;
             }
           } catch {}
@@ -1896,7 +1928,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         dataPembanding = [];
         renderPembanding();
         recalcAll();
-        validateJumlahPembanding(false); // 🔥 TAMBAHAN
+        validateJumlahPembanding(false);
       })();
 
       function showTahapModal(title, message) {
