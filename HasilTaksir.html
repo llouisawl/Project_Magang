@@ -1522,9 +1522,6 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         return Array.from($("#tbodyPenyesuaian").rows).map((r) => ({
           tipe: r.querySelector('[data-col="tipe"]')?.value || "",
           merek: r.querySelector('[data-col="merek"]')?.value || "",
-          waktu: r.querySelector('[data-col="waktu"]')?.value || "",
-          lokasi: r.querySelector('[data-col="lokasi"]')?.value || "",
-          tahun: r.querySelector('[data-col="tahun"]')?.value || "",
         }));
       }
       function restorePctFromDraft() {
@@ -1541,7 +1538,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         draft.penyesuaian.forEach((p, i) => {
           const r = rows[i];
           if (!r) return;
-          ["tipe", "merek", "waktu", "lokasi", "tahun"].forEach((col) => {
+          ["tipe", "merek"].forEach((col) => {
             const el = r.querySelector(`[data-col="${col}"]`);
             if (el && p[col] !== undefined) el.value = p[col];
           });
