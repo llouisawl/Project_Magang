@@ -597,8 +597,30 @@
       document.addEventListener("DOMContentLoaded", () => {
         document
           .getElementById("kertasKerjaForm")
-          .addEventListener("submit", function (e) {
+          .addEventListener("submit", async function (e) {
             e.preventDefault();
+
+            const nup = this.querySelector('input[name="nup"]')?.value.trim() || "";
+
+            const jenisKendaraan = this.querySelector('select[name="jenis_kendaraan"]')?.value || "";
+
+            try {
+              const apiBase = window.API_BASE || window.API_URL || "http://localhost:8080";
+              
+              const res = await fetch(`${apiBase}/kertas-kerja/check?nup=${encodeURIComponent(nup)}&jenis_kendaraan=${encodeURIComponent(jenisKendaraan)}`, {
+                headers: getAuthHeaders()
+              });
+
+              if (res.ok) {
+                const result = await res.json();
+                if (result.exist) {
+                  showErrorModal("NUP dan Jenis Kendaraan ini sudah pernah dinilai/ada di riwayat. Silakan gunakan NUP lain.");
+                  return;
+                }
+              }
+            } catch (err) {
+              console.error("Gagal melakukan pengecekan validasi NUP:", err);
+            }
 
             const fd = new FormData(this);
             const formData = {};
@@ -647,7 +669,7 @@
             })();
             formData.kondisi_kendaraan = rawKondisi;
             formData.faktor_kondisi = faktor;
-            formData.kpknl = fd.get("kpknl"); // 🔥 TAMBAHAN
+            formData.kpknl = fd.get("kpknl");
 
             // Hapus flow lama & draft lama
             sessionStorage.removeItem("kk_flow_id");
@@ -1461,6 +1483,18 @@
         }, 900);
       }
     </script>
+    <script>
+      // Fungsi untuk menampilkan modal error
+      function showErrorModal(message) {
+        document.getElementById("errorMessageText").innerText = message;
+        document.getElementById("errorModal").style.display = "flex";
+      }
+
+      // Fungsi untuk menutup modal error
+      function closeErrorModal() {
+        document.getElementById("errorModal").style.display = "none";
+      }
+    </script>
 
     <!-- MODAL CLEAR DATA -->
     <div class="modal-backdrop" id="clearModal">
@@ -1480,6 +1514,19 @@
         <div class="modal-loading" id="clearLoading">
           <div class="spinner"></div>
           <p id="clearLoadingText">Menghapus data...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="errorModal" style="display: none;">
+      <div class="modal">
+        <h3 style="color: #e04848;">⚠️ Peringatan</h3>
+        <p id="errorMessageText">Data sudah ada.</p>
+        
+        <div class="modal-actions" style="justify-content: center; margin-top: 20px;">
+          <button type="button" class="btn-modal primary" onclick="closeErrorModal()" style="background-color: #e04848; border: none;">
+            Mengerti
+          </button>
         </div>
       </div>
     </div>

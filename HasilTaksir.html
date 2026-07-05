@@ -677,7 +677,6 @@
         const tahunInput = Number(inputLelang.tahun_pembuatan || 0);
         const kategoriInput = Number(inputLelang.kategori_lokasi || 0);
 
-        // 🔥 pakai tahun sekarang sebagai tahun lelang utama
         const tahunSekarang = new Date().getFullYear();
 
         const waktuSelisih = tahunSekarang - Number(d.TahunTransaksi || 0);

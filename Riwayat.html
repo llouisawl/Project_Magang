@@ -196,6 +196,7 @@
                 <th class="col-no">Username</th>
                 <th class="col-tanggal">Tanggal & Waktu Pembuatan</th>
                 <th class="col-objek">Nama Objek</th>
+                <th class="col-objek">Objek Kendaraan</th>
                 <th class="col-aksi" style="text-align: center">Aksi</th>
               </tr>
             </thead>
@@ -433,7 +434,8 @@
           nama_objek: raw.nama_objek ?? "-",
           pdf_url: pdfUrl,
           nup: raw.nup ?? "-",
-          username: raw.username ?? raw.Username ?? raw.pembuat ?? raw.nama_pembuat ?? "-"
+          username: raw.username ?? raw.Username ?? raw.pembuat ?? raw.nama_pembuat ?? "-",
+          jenis_kendaraan: raw.jenis_kendaraan
         };
       }
 
@@ -465,6 +467,7 @@
   <td class="text-center">${row.username}</td>
   <td>${fmtDateTime(row.created_at)}</td>
   <td class="truncate">${row.nama_objek || "-"}</td>
+  <td class="truncate">${row.jenis_kendaraan || "-"}</td>
   <td class="aksi-td" style="display:flex;gap:8px;justify-content:center">
     <button class="aksi-btn lihat-btn" title="Preview PDF" data-id="${row.id}">
       <span>Preview</span>
