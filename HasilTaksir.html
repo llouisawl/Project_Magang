@@ -1703,7 +1703,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
       function calculateDepreciatedValue(nilaiAwal, depreciationRate, tahunPembuatan) {
         const currentYear = new Date().getFullYear();
         const tahunSelisih = Math.max(0, currentYear - tahunPembuatan);
-        const depreciatedValue = nilaiAwal * (1 - depreciationRate * tahunSelisih);
+        const depreciatedValue = nilaiAwal * (1 - (depreciationRate / 100) * tahunSelisih);
         return Math.max(0, depreciatedValue);
       }
 
