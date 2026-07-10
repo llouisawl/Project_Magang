@@ -54,6 +54,200 @@ body {
   align-items: center;
 }
 
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  background: #ffffff;
+  width: 450px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 1.5px solid #d6e8c6;
+  padding: 30px 24px 0 24px;
+  box-sizing: border-box;
+}
+.sidebar-header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.sidebar-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  position: relative;
+}
+.logo-kemenkeu {
+  width: 250px;
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 10px;
+}
+
+/* -------- PROFILE DROPDOWN (sidebar-header-flex) -------- */
+.sidebar-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  position: relative;
+}
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.profile-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #d6e8c6;
+  transition: border 0.15s;
+  background: #eef7e6;
+}
+.profile-icon:hover,
+.profile-icon:focus {
+  border: 2.5px solid #6fb32b;
+  outline: none;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 54px;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0 2px 15px #6e7da62e;
+  border-radius: 10px;
+  z-index: 102;
+  overflow: hidden;
+  animation: fadeindrop 0.13s;
+}
+@keyframes fadeindrop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.profile-dropdown:hover .dropdown-content,
+.profile-icon:focus + .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  color: #2d3757;
+  padding: 13px 18px 13px 18px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f2f8;
+  transition:
+    background 0.14s,
+    color 0.13s;
+  gap: 7px;
+}
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+.dropdown-content a:hover {
+  background: #eef7e6;
+  color: #206d1c;
+}
+.dropdown-content .logout-link {
+  color: #e04848 !important;
+  font-weight: 600;
+}
+.dropdown-content .logout-link:hover {
+  background: #ffecec;
+  color: #ad2323 !important;
+}
+
+/* Konten utama mengambil sisa ruang */
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Agar bisa di-scroll jika konten panjang */
+}
+
+/* Membatasi lebar konten utama agar tidak terlalu melebar */
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 18px;
+  margin-left: 10px;
+}
+.sidebar nav ul li {
+  margin-bottom: 18px;
+}
+.sidebar nav ul li a {
+  color: #7a8f5a;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+  transition: background 0.15s;
+}
+.sidebar nav ul li a span {
+  margin-right: 8px;
+}
+
+.sidebar nav ul li a:hover {
+  background: #6fb32b;
+  color: #fff;
+  font-weight: 800px;
+}
+welcome-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+.welcome-icon {
+  width: 150px;
+  height: 140px;
+  border-radius: 14px;
+}
+
+.welcome-text h3:empty::before {
+  content: "Satker";
+  color: #6b7280;
+}
+.welcome-text span {
+  font-size: 28px;
+  color: #7a8f5a;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 2px;
+}
+.welcome-text h3 {
+  margin: 0;
+  color: #406d1c;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
 /* =========================================================
    TOP BAR
    ========================================================= */

@@ -263,6 +263,47 @@ body {
   transform: translateY(-2px) scale(1.03);
 }
 
+/* =========================================
+   DESIGN TOMBOL EDIT (Kertas Kerja)
+   ========================================= */
+.btn-aksi.edit-btn {
+  background-color: #f59e0b; /* Warna Oranye/Amber */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px; /* Sesuaikan dengan lengkungan tombol lain Anda */
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* Jarak antara icon ✏️ dan teks */
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.15);
+}
+
+/* Efek saat mouse diarahkan ke tombol (Hover) */
+.btn-aksi.edit-btn:hover {
+  background-color: #d97706; /* Oranye lebih gelap */
+  transform: translateY(-1.5px); /* Efek tombol sedikit terangkat */
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+/* Efek saat tombol diklik (Active) */
+.btn-aksi.edit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.15);
+}
+
+/* Jika tombol dalam keadaan loading/disabled */
+.btn-aksi.edit-btn:disabled {
+  background-color: #fcd34d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 /* Table — disamakan gaya Hasil Lelang/Penyesuaian */
 .riwayat-table {
   margin-top: 8px;

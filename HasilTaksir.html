@@ -44,304 +44,379 @@
     </script>
   </head>
   <body>
-    <div class="main-wrapper">
-      <!-- TOP BAR -->
-      <div class="top-bar">
-        <button class="btn-back" onclick="window.history.back()">
-          <svg width="32" height="32" viewBox="0 0 28 28">
-            <path
-              d="M18 22l-8-8 8-8"
-              stroke="#666"
-              stroke-width="2.5"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <img src="Gambar/D4.png" alt="Logo Kemenkeu" class="logo-kemenkeu" />
-      </div>
+    <div class="container" style="display: flex; min-height: 100vh;">
 
-      <div class="result-card">
-        <h2 class="section-title">Data Kendaraan dan Kondisi Fisik</h2>
-
-        <!-- IDENTITAS -->
-        <div class="vehicle-data-box">
-          <img src="Gambar/siroto2.png" class="logoe" alt="" />
-          <div class="vehicle-group" id="vehicleGroup"></div>
+      <aside class="sidebar">
+                <div class="sidebar-header-flex">
+          <img src="Gambar/D4.png" alt="Logo Kemenkeu" class="logo-kemenkeu" />
+          <div class="profile-dropdown">
+            <span class="profile-icon" tabindex="0">
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <circle cx="19" cy="19" r="19" fill="#eef7e6" />
+                <path
+                  d="M19 19c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zM19 21c-4.41 0-8 2.24-8 5v2h16v-2c0-2.76-3.59-5-8-5z"
+                  fill="#6fb32b"
+                />
+              </svg>
+            </span>
+            <div class="dropdown-content">
+              <a href="daftar.html" class="logout-link" id="satkerLogout">
+                <svg
+                  width="17"
+                  height="17"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#e04848"
+                  style="vertical-align: middle; margin-right: 7px"
+                >
+                  <path
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1"
+                  />
+                </svg>
+                Logout
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- DASHBOARD PENCARIAN DATA PEMBANDING (pengganti Looker Studio) -->
-        <div class="lelang-dashboard" id="lelangDashboard">
-          <h3 class="dashboard-title">Cari Data Pembanding</h3>
+        <div class="welcome-row">
+          <img src="Gambar/siroto2.png" alt="Icon" class="welcome-icon" />
+          <div class="welcome-text">
+            <span>Selamat Datang</span>
+            <h3 id="welcomeName">Pengguna</h3>
+          </div>
+        </div>
 
-          <!-- KARTU RINGKASAN -->
-          <div class="summary-row">
-            <div class="summary-card">
-              <span class="summary-label">KOTA</span>
-              <span class="summary-val" id="sumKota">-</span>
-            </div>
-            <div class="summary-card">
-              <span class="summary-label">MEREK</span>
-              <span class="summary-val" id="sumMerek">-</span>
-            </div>
-            <div class="summary-card">
-              <span class="summary-label">TOTAL KENDARAAN</span>
-              <span class="summary-val" id="sumTotal">-</span>
-            </div>
-            <div class="summary-card">
-              <span class="summary-label">HARGA LAKU</span>
-              <span class="summary-val" id="sumHarga">-</span>
-            </div>
+        <nav>
+          <ul>
+            <li class="nav-item active">
+              <a href="Riwayat.html" class="nav-link">
+                <span class="nav-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#22c55e"
+                    stroke-width="2"
+                  >
+                    <path d="M3 3v5h5"></path>
+                    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+                    <polyline points="12 7 12 12 15 15"></polyline>
+                  </svg>
+                </span>
+                <span class="nav-text">Riwayat Kertas Kerja</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main style="flex: 1; padding: 20px; background-color: #f9fafb;">
+        <div class="main-wrapper">
+          <!-- TOP BAR -->
+          <div class="top-bar">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+              <svg width="32" height="32" viewBox="0 0 28 28">
+                <path
+                  d="M18 22l-8-8 8-8"
+                  stroke="#666"
+                  stroke-width="2.5"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <img src="Gambar/D4.png" alt="Logo Kemenkeu" class="logo-kemenkeu" />
           </div>
 
-          <!-- FILTER -->
-          <div class="filter-grid">
-            <div class="filter-field">
-              <label>Kode</label>
-              <input type="text" id="fKode" class="filter-input" placeholder="Cari kode lelang..." />
-            </div>
-            <div class="filter-field">
-              <label>Kategori Objek</label>
-              <select id="fKategoriObjek" multiple placeholder="Semua"><option value="">Semua</option></select>
-            </div>
-            <div class="filter-field">
-              <label>Harga Laku Min</label>
-              <input type="number" id="fHargaMin" class="filter-input" placeholder="Rp" min="0" />
-            </div>
-            <div class="filter-field">
-              <label>Harga Laku Max</label>
-              <input type="number" id="fHargaMax" class="filter-input" placeholder="Rp" min="0" />
-            </div>
-            <div class="filter-field">
-              <label>Tahun Lelang</label>
-              <select id="fTahunLelang" multiple><option value="">Semua</option></select>
-            </div>
-            <div class="filter-field">
-              <label>Tahap (Kategori Lokasi)</label>
-              <select id="fTahap">
-                <option value="">Semua</option>
-                <option value="1">Tahap 1</option>
-                <option value="2">Tahap 2</option>
-                <option value="3">Tahap 3</option>
-                <option value="4">Tahap 4</option>
-                <option value="5">Tahap 5</option>
-                <option value="6">Tahap 6</option>
-                <option value="7">Tahap 7</option>
-                <option value="8">Tahap 8</option>
-              </select>
-            </div>
-            <div class="filter-field">
-              <label>Warna</label>
-              <select id="fWarna" multiple><option value="" >Semua</option></select>
-            </div>
-            <div class="filter-field">
-              <label>Tahun Pembuatan</label>
-              <select id="fTahunPembuatan" multiple><option value="">Semua</option></select>
-            </div>
-            <div class="filter-field">
-              <label>Tipe</label>
-              <select id="fTipe" multiple><option value="">Semua</option></select>
-            </div>
-            <div class="filter-field">
-              <label>Merek</label>
-              <select id="fMerek" multiple><option value="">Semua</option></select>
-            </div>
-            <div class="filter-field">
-              <label>KPKNL</label>
-              <select id="fKpknl" multiple  ><option value="">Semua</option></select>
-            </div>
-            <div class="filter-field filter-actions">
-              <button id="btnCariDataLelang" class="btn-cari-pro">Cari</button>
-              <button id="btnResetFilter" class="btn-modal" type="button">Reset</button>
-            </div>
-          </div>
+          <div class="result-card">
+            <h2 class="section-title">Data Kendaraan dan Kondisi Fisik</h2>
 
-          <!-- TABEL HASIL PENCARIAN -->
-          <div class="fit-wrap">
-            <table id="tabelHasilPencarian" class="no-wrap auto-fit">
-              <thead>
-                <tr>
-                  <th>+</th>
-                  <th>Kode</th>
-                  <th>Kategori Objek</th>
-                  <th>Tahun Lelang</th>
-                  <th>Provinsi</th>
-                  <th>Kota</th>
-                  <th>KPKNL</th>
-                  <th>Kategori Lokasi</th>
-                  <th>Merek</th>
-                  <th>Tipe</th>
-                  <th>Tahun Pembuatan</th>
-                  <th>Warna</th>
-                  <th>Harga Laku</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyHasilPencarian">
-                <tr><td colspan="12">Klik "Cari" untuk menampilkan data lelang.</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="pagination-row" id="paginationRow" style="display:none">
-            <button id="btnPrevPage" class="btn-modal">‹ Sebelumnya</button>
-            <span id="pageInfo"></span>
-            <button id="btnNextPage" class="btn-modal">Selanjutnya ›</button>
-          </div>
-
-          <div class="tahap-card" style="margin-top: 32px; border-color: #6fb32b; background: #fbfdf9;">
-            <h3 style="margin-bottom: 16px;">Seleksi Kriteria Tahap</h3>
-            
-            <div class="filter-field" style="max-width: 400px; margin-bottom: 16px;">
-              <label>Pilih Tahap (DJKN)</label>
-              <select id="tahapSelector" style="width: 100%; padding: 10px; border-radius: 10px; border: 2px solid #bfe2a8; font-weight: bold;">
-                <option value="">-- Tampilkan Semua Hasil --</option>
-                <option value="1">Tahap 1</option>
-                <option value="2">Tahap 2</option>
-                <option value="3">Tahap 3</option>
-                <option value="4">Tahap 4 </option>
-                <option value="5">Tahap 5 </option>
-                <option value="6">Tahap 6</option>
-                <option value="7">Tahap 7</option>
-                <option value="8">Tahap 8</option>
-                <option value="9">Tahap 9</option>
-                <option value="10">Tahap 10</option>
-              </select>
+            <!-- IDENTITAS -->
+            <div class="vehicle-data-box">
+              <img src="Gambar/siroto2.png" class="logoe" alt="" />
+              <div class="vehicle-group" id="vehicleGroup"></div>
             </div>
 
-            <p class="dashboard-hint">
-              Centang baris yang lolos seleksi tahap ini (maks. 7) untuk ditambah ke <strong>Data Pembanding</strong>.
-            </p>
-            <div id="panduanTahap" class="dashboard-hint" style="margin: 16px 0; padding: 15px; border-left: 5px solid #6fb32b; background: #fbfdf9; display: none;">
-              <h3><strong>Kriteria Tahap:</strong> <span id="textPanduan">-</span></h3>
+            <!-- DASHBOARD PENCARIAN DATA PEMBANDING (pengganti Looker Studio) -->
+            <div class="lelang-dashboard" id="lelangDashboard">
+              <h3 class="dashboard-title">Cari Data Pembanding</h3>
+
+              <!-- KARTU RINGKASAN -->
+              <div class="summary-row">
+                <div class="summary-card">
+                  <span class="summary-label">KOTA</span>
+                  <span class="summary-val" id="sumKota">-</span>
+                </div>
+                <div class="summary-card">
+                  <span class="summary-label">MEREK</span>
+                  <span class="summary-val" id="sumMerek">-</span>
+                </div>
+                <div class="summary-card">
+                  <span class="summary-label">TOTAL KENDARAAN</span>
+                  <span class="summary-val" id="sumTotal">-</span>
+                </div>
+                <div class="summary-card">
+                  <span class="summary-label">HARGA LAKU</span>
+                  <span class="summary-val" id="sumHarga">-</span>
+                </div>
+              </div>
+
+              <!-- FILTER -->
+              <div class="filter-grid">
+                <div class="filter-field">
+                  <label>Kode</label>
+                  <input type="text" id="fKode" class="filter-input" placeholder="Cari kode lelang..." />
+                </div>
+                <div class="filter-field">
+                  <label>Kategori Objek</label>
+                  <select id="fKategoriObjek" multiple placeholder="Semua"><option value="">Semua</option></select>
+                </div>
+                <div class="filter-field">
+                  <label>Harga Laku Min</label>
+                  <input type="number" id="fHargaMin" class="filter-input" placeholder="Rp" min="0" />
+                </div>
+                <div class="filter-field">
+                  <label>Harga Laku Max</label>
+                  <input type="number" id="fHargaMax" class="filter-input" placeholder="Rp" min="0" />
+                </div>
+                <div class="filter-field">
+                  <label>Tahun Lelang</label>
+                  <select id="fTahunLelang" multiple><option value="">Semua</option></select>
+                </div>
+                <div class="filter-field">
+                  <label>Tahap (Kategori Lokasi)</label>
+                  <select id="fTahap">
+                    <option value="">Semua</option>
+                    <option value="1">Tahap 1</option>
+                    <option value="2">Tahap 2</option>
+                    <option value="3">Tahap 3</option>
+                    <option value="4">Tahap 4</option>
+                    <option value="5">Tahap 5</option>
+                    <option value="6">Tahap 6</option>
+                    <option value="7">Tahap 7</option>
+                    <option value="8">Tahap 8</option>
+                  </select>
+                </div>
+                <div class="filter-field">
+                  <label>Warna</label>
+                  <select id="fWarna" multiple><option value="" >Semua</option></select>
+                </div>
+                <div class="filter-field">
+                  <label>Tahun Pembuatan</label>
+                  <select id="fTahunPembuatan" multiple><option value="">Semua</option></select>
+                </div>
+                <div class="filter-field">
+                  <label>Tipe</label>
+                  <select id="fTipe" multiple><option value="">Semua</option></select>
+                </div>
+                <div class="filter-field">
+                  <label>Merek</label>
+                  <select id="fMerek" multiple><option value="">Semua</option></select>
+                </div>
+                <div class="filter-field">
+                  <label>KPKNL</label>
+                  <select id="fKpknl" multiple  ><option value="">Semua</option></select>
+                </div>
+                <div class="filter-field filter-actions">
+                  <button id="btnCariDataLelang" class="btn-cari-pro">Cari</button>
+                  <button id="btnResetFilter" class="btn-modal" type="button">Reset</button>
+                </div>
+              </div>
+
+              <!-- TABEL HASIL PENCARIAN -->
+              <div class="fit-wrap">
+                <table id="tabelHasilPencarian" class="no-wrap auto-fit">
+                  <thead>
+                    <tr>
+                      <th>+</th>
+                      <th>Kode</th>
+                      <th>Kategori Objek</th>
+                      <th>Tahun Lelang</th>
+                      <th>Provinsi</th>
+                      <th>Kota</th>
+                      <th>KPKNL</th>
+                      <th>Kategori Lokasi</th>
+                      <th>Merek</th>
+                      <th>Tipe</th>
+                      <th>Tahun Pembuatan</th>
+                      <th>Warna</th>
+                      <th>Harga Laku</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyHasilPencarian">
+                    <tr><td colspan="12">Klik "Cari" untuk menampilkan data lelang.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination-row" id="paginationRow" style="display:none">
+                <button id="btnPrevPage" class="btn-modal">‹ Sebelumnya</button>
+                <span id="pageInfo"></span>
+                <button id="btnNextPage" class="btn-modal">Selanjutnya ›</button>
+              </div>
+
+              <div class="tahap-card" style="margin-top: 32px; border-color: #6fb32b; background: #fbfdf9;">
+                <h3 style="margin-bottom: 16px;">Seleksi Kriteria Tahap</h3>
+                
+                <div class="filter-field" style="max-width: 400px; margin-bottom: 16px;">
+                  <label>Pilih Tahap (DJKN)</label>
+                  <select id="tahapSelector" style="width: 100%; padding: 10px; border-radius: 10px; border: 2px solid #bfe2a8; font-weight: bold;">
+                    <option value="">-- Tampilkan Semua Hasil --</option>
+                    <option value="1">Tahap 1</option>
+                    <option value="2">Tahap 2</option>
+                    <option value="3">Tahap 3</option>
+                    <option value="4">Tahap 4 </option>
+                    <option value="5">Tahap 5 </option>
+                    <option value="6">Tahap 6</option>
+                    <option value="7">Tahap 7</option>
+                    <option value="8">Tahap 8</option>
+                    <option value="9">Tahap 9</option>
+                    <option value="10">Tahap 10</option>
+                  </select>
+                </div>
+
+                <p class="dashboard-hint">
+                  Centang baris yang lolos seleksi tahap ini (maks. 7) untuk ditambah ke <strong>Data Pembanding</strong>.
+                </p>
+                <div id="panduanTahap" class="dashboard-hint" style="margin: 16px 0; padding: 15px; border-left: 5px solid #6fb32b; background: #fbfdf9; display: none;">
+                  <h3><strong>Kriteria Tahap:</strong> <span id="textPanduan">-</span></h3>
+                </div>
+                <div class="fit-wrap" id="containerTabelTahap">
+                  <table id="tabelHasilTahap" class="no-wrap auto-fit">
+                    <thead>
+                      <tr>
+                        <th>+</th>
+                        <th>Kode</th>
+                        <th>Kategori Objek</th>
+                        <th>Tahun Lelang</th>
+                        <th>Provinsi</th>
+                        <th>Kota</th>
+                        <th>KPKNL</th>
+                        <th>Kategori Lokasi</th>
+                        <th>Merek</th>
+                        <th>Tipe</th>
+                        <th>Tahun Pembuatan</th>
+                        <th>Warna</th>
+                        <th>Harga Laku</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyHasilTahap">
+                      <tr><td colspan="13">Pilih tahap untuk memfilter data lelang di atas.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>          
+
             </div>
-            <div class="fit-wrap" id="containerTabelTahap">
-              <table id="tabelHasilTahap" class="no-wrap auto-fit">
+
+            <!-- TABEL HASIL LELANG -->
+            <div class="table-title">
+              <span>Data Hasil Lelang </span>
+              <span class="brand-highlight" id="lelangBrand">-</span>
+            </div>
+
+            <div class="fit-wrap">
+              <table id="tabelHasilLelang" class="no-wrap auto-fit">
                 <thead>
                   <tr>
-                    <th>+</th>
-                    <th>Kode</th>
-                    <th>Kategori Objek</th>
-                    <th>Tahun Lelang</th>
-                    <th>Provinsi</th>
-                    <th>Kota</th>
-                    <th>KPKNL</th>
-                    <th>Kategori Lokasi</th>
+                    <th>No</th>
+                    <th style="min-width: 130px">Kode Lelang</th>
                     <th>Merek</th>
                     <th>Tipe</th>
+                    <th>Harga Lelang</th>
+                    <th>Waktu Lelang</th>
+                    <th>Lokasi</th>
+                    <th>Kategori Lokasi</th>
                     <th>Tahun Pembuatan</th>
-                    <th>Warna</th>
-                    <th>Harga Laku</th>
+                    <th class="aksi-header fade-table-col">Aksi</th>
                   </tr>
                 </thead>
-                <tbody id="tbodyHasilTahap">
-                  <tr><td colspan="13">Pilih tahap untuk memfilter data lelang di atas.</td></tr>
-                </tbody>
+                <tbody id="tbodyPembanding"></tbody>
               </table>
             </div>
-          </div>          
 
-        </div>
-
-        <!-- TABEL HASIL LELANG -->
-        <div class="table-title">
-          <span>Data Hasil Lelang </span>
-          <span class="brand-highlight" id="lelangBrand">-</span>
-        </div>
-
-        <div class="fit-wrap">
-          <table id="tabelHasilLelang" class="no-wrap auto-fit">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th style="min-width: 130px">Kode Lelang</th>
-                <th>Merek</th>
-                <th>Tipe</th>
-                <th>Harga Lelang</th>
-                <th>Waktu Lelang</th>
-                <th>Lokasi</th>
-                <th>Kategori Lokasi</th>
-                <th>Tahun Pembuatan</th>
-                <th class="aksi-header fade-table-col">Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="tbodyPembanding"></tbody>
-          </table>
-        </div>
-
-        <div class="table-btn-row" id="rowTambahData">
-          <button
-            class="btn-tambah"
-            id="btnTambahManual"
-            onclick="tambahManual()"
-            style="margin-top: 10px"
-          >
-            + Tambah Data
-          </button>
-        </div>
-
-        <!-- PENYESUAIAN -->
-        <div class="penyesuaian-section" id="penyesuaianSection">
-          <div class="table-title" style="margin-top: 28px">Penyesuaian</div>
-
-          <div class="fit-wrap">
-            <table id="tabelPenyesuaian" class="no-wrap auto-fit">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Merek</th>
-                  <th>Tipe (%)</th>
-                  <th>Merek (%)</th>
-                  <th>Waktu (%)</th>
-                  <th>Lokasi (%)</th>
-                  <th>Tahun Pembuatan (%)</th>
-                  <th>Total</th>
-                  <th>Nilai Taksiran</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyPenyesuaian"></tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="8" style="text-align: right; font-weight: 800">
-                    Nilai Taksiran (Total)&nbsp;
-                  </td>
-                  <td id="totalTaksiran" style="font-weight: 900">-</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-
-          <div class="nilai-row">
-            <div class="nilai-box">
-              <span class="nilai-label">RATA - RATA NILAI TAKSIRAN</span>
-              <span class="nilai-val" id="rataTaksir">-</span>
+            <div class="table-btn-row" id="rowTambahData">
+              <button
+                class="btn-tambah"
+                id="btnTambahManual"
+                onclick="tambahManual()"
+                style="margin-top: 10px"
+              >
+                + Tambah Data
+              </button>
             </div>
-            <div class="nilai-box">
-              <span class="nilai-label">TAKSIRAN NILAI LIMIT LELANG</span>
-              <span class="nilai-val" id="limitTaksir">-</span>
-            </div>
-            <div class="nilai-box">
-              <span class="nilai-label">PEMBULATAN</span>
-              <span class="nilai-val" id="pembulatan">-</span>
+
+            <!-- PENYESUAIAN -->
+            <div class="penyesuaian-section" id="penyesuaianSection">
+              <div class="table-title" style="margin-top: 28px">Penyesuaian</div>
+
+              <div class="fit-wrap">
+                <table id="tabelPenyesuaian" class="no-wrap auto-fit">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Merek</th>
+                      <th>Tipe (%)</th>
+                      <th>Merek (%)</th>
+                      <th>Waktu (%)</th>
+                      <th>Lokasi (%)</th>
+                      <th>Tahun Pembuatan (%)</th>
+                      <th>Total</th>
+                      <th>Nilai Taksiran</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyPenyesuaian"></tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="8" style="text-align: right; font-weight: 800">
+                        Nilai Taksiran (Total)&nbsp;
+                      </td>
+                      <td id="totalTaksiran" style="font-weight: 900">-</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <div class="nilai-row">
+                <div class="nilai-box">
+                  <span class="nilai-label">RATA - RATA NILAI TAKSIRAN</span>
+                  <span class="nilai-val" id="rataTaksir">-</span>
+                </div>
+                <div class="nilai-box">
+                  <span class="nilai-label">TAKSIRAN NILAI LIMIT LELANG</span>
+                  <span class="nilai-val" id="limitTaksir">-</span>
+                </div>
+                <div class="nilai-box">
+                  <span class="nilai-label">PEMBULATAN</span>
+                  <span class="nilai-val" id="pembulatan">-</span>
+                </div>
+              </div>
+
+              <div class="btn-simpan-row">
+                <div
+                  id="infoJumlah"
+                  style="color: #c00; font-weight: 600; margin-top: 10px"
+                ></div>
+
+                <button
+                  class="btn-simpan"
+                  id="btnSimpanKertasKerja"
+                  onclick="saveKertasKerjaToExcel()"
+                >
+                  Simpan
+                </button>
+              </div>
             </div>
           </div>
-
-          <div class="btn-simpan-row">
-            <div
-              id="infoJumlah"
-              style="color: #c00; font-weight: 600; margin-top: 10px"
-            ></div>
-
-            <button
-              class="btn-simpan"
-              id="btnSimpanKertasKerja"
-              onclick="saveKertasKerjaToExcel()"
-            >
-              Simpan
-            </button>
-          </div>
         </div>
-      </div>
+      </main>
+
     </div>
 
     <!-- MODAL KONFIRMASI SIMPAN -->
@@ -360,6 +435,14 @@
         <div id="modalDesc" class="modal-desc"></div>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.getElementById("welcomeName");
+        if (!el) return;
+        // cukup dari helper (sudah ada fallback per-role di auth.js)
+        el.textContent = Auth.getName("satker") || "Pengguna";
+      });
+    </script>
     <script>
       const panduanTahap = {
         1: "Wilayah Kerja (KPKNL sama), Merek Sama, Tipe Sama, Tahun Sama.",
@@ -1719,11 +1802,14 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         }));
       }
 
-async function saveKertasKerjaToExcel() {
+// Pastikan ada kata "async" di depan kata "function"
+      async function saveKertasKerjaToExcel() {
         if ($("#tbodyPembanding").rows.length < 3) {
           alert("Data pembanding minimal 3 baris.");
           return;
         }
+        
+        // await di bawah ini butuh "async" di atas
         const ok = await modal.open();
         if (!ok) return;
         modal.showLoading("Menyimpan kertas kerja…");
@@ -1766,7 +1852,6 @@ async function saveKertasKerjaToExcel() {
 
         // 2. PROSES PERHITUNGAN SESUAI KMK NO. 375 TAHUN 2024
         const data_penyesuaian = penyesuaian.map((p, index) => {
-          // Ambil Harga Lelang mentah ASLI dari data pembanding
           const hargaLelangAsli = Number(data_pembanding[index]?.harga_lelang) || 0;
           
           const tipe = Number(p.tipe) || 0;
@@ -1775,10 +1860,7 @@ async function saveKertasKerjaToExcel() {
           const lokasi = Number(p.lokasi) || 0;
           const tahun = Number(p.tahun_pembuatan) || 0;
 
-          // Jumlahkan persentase (Contoh: 4% + 2% + 0% = 6)
           const totalPenyesuaianPersen = waktu + lokasi + merek + tipe + tahun;
-
-          // Rumus: Harga Lelang Asli * (1 + Total Persen)
           const nilaiTaksiranAkhir = hargaLelangAsli * (1 + (totalPenyesuaianPersen / 100));
           
           return {
@@ -1818,17 +1900,14 @@ async function saveKertasKerjaToExcel() {
               lokasi_objek: inputLelang.lokasi_objek,
               nup: inputLelang.nup,
               kategori_lokasi: inputLelang.kategori_lokasi,
-
               merek_kendaraan: inputLelang.merek_kendaraan,
               tipe_kendaraan: inputLelang.tipe_kendaraan,
-
               nomor_polisi: inputLelang.nomor_polisi,
               pemilik_dokumen: inputLelang.pemilik_dokumen,
               jenis_kendaraan: jenisStr,
               kondisi_kendaraan: String(currentKondisiFactor.toFixed(1)),
               dokumen_kepemilikan: dokList,
               dokumen_lainnya: dokumenLainnya,
-
               faktor_kondisi: faktor,
               masa_berlaku: (inputLelang.masa_berlaku || "").toLowerCase().includes("habis")
                 ? "Habis Masa Berlaku"
@@ -1840,10 +1919,8 @@ async function saveKertasKerjaToExcel() {
               bahan_bakar: inputLelang.bahan_bakar,
               provinsi: inputLelang.provinsi || "",
             },
-
             data_pembanding,
             data_penyesuaian,
-
             hasil_taksiran: {
               nilai_taksiran: nilai_taksiran_total, 
               total_nilai_taksiran: nilai_taksiran_total, 
@@ -1852,15 +1929,20 @@ async function saveKertasKerjaToExcel() {
               pembulatan_nilai_taksiran: pembulatan,
               pembulatan: pembulatan, 
             },
-
             faktor_kondisi: faktor,
             jenis_kendaraan: jenis,
             jenis_klasifikasi_kendaraan: inputLelang.jenis_klasifikasi_kendaraan || "middle",
             nilai_taksiran_total,
           };
 
-          const res = await fetch(`${API_BASE}/kertas-kerja/`, {
-            method: "POST",
+          // 🔥 DETEKSI MODE EDIT
+          const editId = sessionStorage.getItem("edit_kk_id");
+          const httpMethod = editId ? "PUT" : "POST";
+          const apiEndpoint = editId ? `${API_BASE}/kertas-kerja/${editId}` : `${API_BASE}/kertas-kerja/`;
+
+          // await di bawah ini juga butuh "async" di atas
+          const res = await fetch(apiEndpoint, {
+            method: httpMethod,
             headers: getAuthHeaders(),
             body: JSON.stringify(payload),
           });
@@ -1868,7 +1950,14 @@ async function saveKertasKerjaToExcel() {
           const result = res.status !== 204 ? await res.json().catch(() => ({})) : {};
           if (res.ok) {
             modal.showSuccess(result.message || "Berhasil disimpan");
-            sessionStorage.removeItem(draftKey);
+            
+            // Bersihkan semua sesi edit setelah sukses
+            sessionStorage.removeItem("edit_kk_id");
+            // Hapus cache draft key (ganti window.draftKey menjadi draftKey karena variabel ini lokal di skrip Anda)
+            const dKey = typeof draftKey !== "undefined" ? draftKey : "";
+            if(dKey) sessionStorage.removeItem(dKey); 
+            sessionStorage.removeItem("kk_flow_id");
+            
             localStorage.setItem("kk_dirty", "1"); 
             setTimeout(() => {
               modal.close();
@@ -1886,35 +1975,41 @@ async function saveKertasKerjaToExcel() {
           btn.disabled = false;
         }
       }
-      
+
+      /* ===================== INIT ===================== */
       /* ===================== INIT ===================== */
       (function init() {
+        // Logika ambil draft
+        const draftKey = "kk_draft_" + sessionStorage.getItem("kk_flow_id");
         const draftRaw = sessionStorage.getItem(draftKey);
+        
+        console.log("--- DEBUG INIT ---");
+        console.log("Draft Key yang dicari:", draftKey);
+        console.log("Data Draft Raw di SessionStorage:", draftRaw);
 
         if (draftRaw) {
           try {
             const draft = JSON.parse(draftRaw);
-
-            // Cocokkan input dengan draft (cek lokasi / merek / tipe / tahun)
-            const sameInput =
-              draft?.inputSnapshot?.lokasi_objek === inputLelang.lokasi_objek &&
-              draft?.inputSnapshot?.merek_kendaraan ===
-                inputLelang.merek_kendaraan &&
-              draft?.inputSnapshot?.tipe_kendaraan ===
-                inputLelang.tipe_kendaraan &&
-              draft?.inputSnapshot?.tahun_pembuatan ===
-                inputLelang.tahun_pembuatan;
-
-            if (sameInput) {
-              tryRestoreFromDraft();
-
+            console.log("Draft Parsed:", draft);
+            
+            if (draft.dataPembanding) {
+              console.log("Berhasil menemukan dataPembanding, jumlah:", draft.dataPembanding.length);
+              dataPembanding = draft.dataPembanding;
+              renderPembanding();
               recalcAll();
               validateJumlahPembanding(false);
               return;
+            } else {
+              console.warn("Draft ada, tapi dataPembanding kosong!");
             }
-          } catch {}
+          } catch (e) {
+            console.error("Gagal parse draft:", e);
+          }
+        } else {
+          console.warn("Draft tidak ditemukan di sessionStorage!");
         }
 
+        console.log("Menggunakan data kosong (tabel kosong).");
         dataPembanding = [];
         renderPembanding();
         recalcAll();

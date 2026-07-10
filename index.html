@@ -388,9 +388,15 @@
     <!-- ====== SCRIPT LOGIKA FORM ====== -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Kita beri sedikit jeda (setTimeout) agar script inisialisasi Select2 
-        // dan fetch Lokasi/Master Data selesai dijalankan terlebih dahulu.
         setTimeout(async () => {
+
+          const editId = sessionStorage.getItem("edit_kk_id");
+          if (editId) {
+            document.querySelector("h1").innerHTML = '<span style="color: #f59e0b;">[MODE EDIT]</span> Kertas Kerja Penentuan Nilai Taksiran BMN';
+            document.querySelector(".submit-btn").textContent = "Simpan Identitas & Lanjut ➔";
+            document.querySelector(".submit-btn").style.backgroundColor = "#f59e0b"; // Ubah tombol jadi warna oranye
+          }
+
           const savedDataRaw = sessionStorage.getItem("dataKertasKerja");
           if (!savedDataRaw) return; // Jika tidak ada data tersimpan, biarkan form kosong
 
@@ -412,13 +418,23 @@
           });
 
           // 2. Restore Select Biasa & Trigger logic-nya
-          const selectKeys = ['masa_berlaku', 'bahan_bakar', 'kondisi_kendaraan', 'jenis_kendaraan'];
+          const selectKeys = ['masa_berlaku', 'bahan_bakar', 'kondisi_kendaraan', 'jenis_kendaraan', 'jenis_klasifikasi_kendaraan'];
+          
           selectKeys.forEach(key => {
             if (savedData[key]) {
               const el = document.querySelector(`[name="${key}"]`);
               if (el) {
-                el.value = savedData[key];
-                // Trigger event change (khususnya agar fungsi tampilkanCC() terpanggil jika jenis_kendaraan berubah)
+                if (key === 'kondisi_kendaraan') {
+                  const valFaktor = String(savedData[key]).trim();
+                  Array.from(el.options).forEach(opt => {
+                    if (opt.value.includes(valFaktor)) {
+                      el.value = opt.value;
+                    }
+                  });
+                } else {
+                  el.value = savedData[key];
+                }
+                
                 el.dispatchEvent(new Event('change')); 
               }
             }
@@ -600,9 +616,13 @@
           .addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            // const nup = this.querySelector('input[name="nup"]')?.value.trim() || "";
+            const nup = this.querySelector('input[name="nup"]')?.value.trim() || "";
+            const jenisKendaraan = this.querySelector('select[name="jenis_kendaraan"]')?.value || "";
+            const editId = sessionStorage.getItem("edit_kk_id") 
 
-            // const jenisKendaraan = this.querySelector('select[name="jenis_kendaraan"]')?.value || "";
+            if (!document.referrer.includes("Riwayat.html") && !document.referrer.includes("HasilTaksir.html")) {
+              sessionStorage.removeItem("edit_kk_id");
+            }
 
             // try {
             //   const apiBase = window.API_BASE || window.API_URL || "http://localhost:8080";
@@ -621,6 +641,42 @@
             // } catch (err) {
             //   console.error("Gagal melakukan pengecekan validasi NUP:", err);
             // }
+
+            let harusCekDuplikat = true;
+            
+            if (editId) {
+              // Jika mode Edit, cek apakah NUP dan Jenis Kendaraan berubah dari aslinya
+              const dataLamaRaw = sessionStorage.getItem("dataKertasKerja");
+              if (dataLamaRaw) {
+                const dataLama = JSON.parse(dataLamaRaw);
+                // Jika user TIDAK mengubah NUP dan Jenis Kendaraan, LEWATI pengecekan
+                if (dataLama.nup === nup && dataLama.jenis_kendaraan === jenisKendaraan) {
+                  harusCekDuplikat = false; 
+                }
+              }
+            }
+
+            // Jalankan API Cek Duplikat hanya jika Buat Baru ATAU user mengubah NUP saat Edit
+            if (harusCekDuplikat) {
+              try {
+                const apiBase = window.API_BASE || window.API_URL || "http://localhost:8080";
+                
+                const res = await fetch(`${apiBase}/kertas-kerja/check?nup=${encodeURIComponent(nup)}&jenis_kendaraan=${encodeURIComponent(jenisKendaraan)}`, {
+                  headers: getAuthHeaders()
+                });
+
+                if (res.ok) {
+                  const result = await res.json();
+                  // Sesuaikan dengan struktur response Go (biasanya result.data.exists)
+                  if (result.data && result.data.exists) {
+                    showErrorModal("Kombinasi NUP dan Jenis Kendaraan ini sudah pernah dinilai/ada di riwayat. Silakan gunakan NUP lain.");
+                    return;
+                  }
+                }
+              } catch (err) {
+                console.error("Gagal melakukan pengecekan validasi NUP:", err);
+              }
+            }
 
             const fd = new FormData(this);
             const formData = {};
@@ -671,15 +727,14 @@
             formData.faktor_kondisi = faktor;
             formData.kpknl = fd.get("kpknl");
 
-            // Hapus flow lama & draft lama
-            sessionStorage.removeItem("kk_flow_id");
-
-            // Hapus semua draft sebelumnya
-            Object.keys(sessionStorage).forEach((key) => {
-              if (key.startsWith("kk_draft_")) {
-                sessionStorage.removeItem(key);
-              }
-            });
+            if (!editId) {
+              sessionStorage.removeItem("kk_flow_id");
+              Object.keys(sessionStorage).forEach((key) => {
+                if (key.startsWith("kk_draft_")) {
+                  sessionStorage.removeItem(key);
+                }
+              });
+            }
 
             // Simpan data terbaru
             sessionStorage.setItem("dataKertasKerja", JSON.stringify(formData));

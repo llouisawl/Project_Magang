@@ -306,6 +306,14 @@
         );
       }
 
+      function getAuthHeaders(extra) {
+        const token =
+          localStorage.getItem("jwt_satker") ||
+          localStorage.getItem("jwt_admin") ||
+          localStorage.getItem("jwt_superadmin") || "";
+        return Object.assign({ "Content-Type": "application/json", Authorization: "Bearer " + token }, extra || {});
+      }
+
       // set welcome name dari token satker
       try {
         const nm = Auth.getName("satker");
@@ -473,6 +481,9 @@
       <span>Preview</span>
     </button>
 
+    <button class="btn-aksi edit-btn" data-id="${row.id}" title="Edit">Edit</button>
+
+
     <button class="aksi-btn hapus-btn aksi-icon-btn" title="Hapus" data-action="hapus" data-id="${row.id}">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e04848" stroke-width="2">
         <polyline points="3 6 5 6 21 6"/>
@@ -632,7 +643,19 @@
         }
       }
 
-      /* ===================== Fetch ===================== */
+      function cancelEditMode() {
+        console.log("Membatalkan mode edit...");
+        sessionStorage.removeItem("edit_kk_id");
+        sessionStorage.removeItem("kk_flow_id");
+        
+        // Hapus semua draft yang terkait dengan edit
+        Object.keys(sessionStorage).forEach((key) => {
+          if (key.startsWith("kk_draft_")) {
+            sessionStorage.removeItem(key);
+          }
+        });
+      }
+
 /* ===================== Fetch ===================== */
       async function loadHistory() {
         try {
@@ -718,6 +741,7 @@
         }
       };
       document.addEventListener("DOMContentLoaded", () => {
+        cancelEditMode();
         // cari
         $("#searchInput")?.addEventListener("input", applySearch);
         $("#clearSearch")?.addEventListener("click", () => {
@@ -729,8 +753,10 @@
         $("#riwayatBody").addEventListener("click", (e) => {
           const btnPrev = e.target.closest(".lihat-btn");
           const btnDel = e.target.closest(".hapus-btn");
+          const btnEdit = e.target.closest(".edit-btn");
           if (btnPrev) previewById(btnPrev.dataset.id);
           if (btnDel) deleteById(btnDel.dataset.id);
+          if (btnEdit) editById(btnEdit.dataset.id);
         });
 
         // load awal + mulai polling
@@ -746,6 +772,72 @@
           }
         });
       });
+
+      async function editById(id) {
+        try {
+          const btn = document.querySelector(`.edit-btn[data-id="${id}"]`);
+          if (btn) btn.textContent = "Load...";
+
+          const res = await fetch(`${API_URL.replace(/\/$/, "")}/kertas-kerja/detail/${id}`, {
+            headers: getAuthHeaders()
+          });
+          const result = await res.json();
+          if (!res.ok) throw new Error(result.message || "Gagal mengambil data");
+          console.log("Data detail kertas kerja:", result.data);
+
+          const payloadString = result.data.payload || result.data.json_payload || result.data.json || null;
+          
+          if (!payloadString || payloadString === "undefined") {
+              throw new Error("Data Kertas Kerja versi lama tidak memiliki format JSON lengkap dan tidak dapat diedit. Silakan buat dokumen baru untuk kendaraan ini.");
+          }
+
+          // 2. Parse Raw Payload dari kolom JSON
+          const rawPayload = JSON.parse(payloadString);
+
+          if (rawPayload.jenis_klasifikasi_kendaraan) {
+             rawPayload.input_lelang.jenis_klasifikasi_kendaraan = rawPayload.jenis_klasifikasi_kendaraan;
+          }
+
+          // Masukkan ke SessionStorage agar dibaca oleh form
+          sessionStorage.setItem("dataKertasKerja", JSON.stringify(rawPayload.input_lelang));
+
+          const dataPembandingMapped = rawPayload.data_pembanding.map(d => ({
+            KodeLelang: d.kode_lelang,
+            Merek: d.merek,
+            Tipe: d.tipe,
+            TahunPembuatan: d.tahun_pembuatan,
+            Lokasi: d.lokasi,
+            KategoriLokasi: d.kategori_lokasi,
+            HargaLelang: d.harga_lelang,
+            TahunTransaksi: d.tahun_transaksi,
+            manual: true 
+          }));
+
+          const flowId = "edit_" + id;
+          sessionStorage.setItem("kk_flow_id", flowId);
+
+          const draftPayload = {
+            inputSnapshot: {
+              lokasi_objek: rawPayload.input_lelang.lokasi_objek,
+              merek_kendaraan: rawPayload.input_lelang.merek_kendaraan,
+              tipe_kendaraan: rawPayload.input_lelang.tipe_kendaraan,
+              tahun_pembuatan: rawPayload.input_lelang.tahun_pembuatan,
+            },
+            dataPembanding: dataPembandingMapped,
+            penyesuaian: rawPayload.data_penyesuaian 
+          };
+
+          sessionStorage.setItem("kk_draft_" + flowId, JSON.stringify(draftPayload));
+          sessionStorage.setItem("edit_kk_id", id); 
+          
+          window.location.href = "HasilTaksir.html";
+
+        } catch (err) {
+          alert("Gagal memuat data Edit: " + err.message);
+          const btn = document.querySelector(`.edit-btn[data-id="${id}"]`);
+          if (btn) btn.innerHTML = "✏️ Edit";
+        }
+      }
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
