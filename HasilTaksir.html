@@ -1719,7 +1719,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         }));
       }
 
-      async function saveKertasKerjaToExcel() {
+async function saveKertasKerjaToExcel() {
         if ($("#tbodyPembanding").rows.length < 3) {
           alert("Data pembanding minimal 3 baris.");
           return;
@@ -1729,9 +1729,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         modal.showLoading("Menyimpan kertas kerja…");
 
         function normalisasiJenisKendaraan(raw) {
-          const s = String(raw || "")
-            .toLowerCase()
-            .trim();
+          const s = String(raw || "").toLowerCase().trim();
           if (s.includes("roda 2") || s.includes("roda 3")) return "Roda 2";
           return "Roda 4 atau lebih";
         }
@@ -1739,7 +1737,6 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
         const jenisStr =
           jenisRaw === "Roda 2 atau 3" ? "Roda 2 atau 3" : "Roda 4 atau lebih";
 
-        // Normalisasi dokumen juga
         let dokList = Array.isArray(inputLelang.dokumen_kepemilikan)
           ? inputLelang.dokumen_kepemilikan.map((s) => String(s).trim())
           : [];
@@ -1752,56 +1749,63 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
           ""
         ).trim();
 
+        // 1. AMBIL DATA DARI TABEL
         const data_pembanding = collectPembandingForSave();
         const penyesuaian = readPenyesuaianEdits();
 
+        // Samakan jumlah baris jika tidak sinkron
         if (penyesuaian.length !== data_pembanding.length) {
-          while (penyesuaian.length < data_pembanding.length)
+          while (penyesuaian.length < data_pembanding.length) {
             penyesuaian.push({
-              data_hasil_lelang:
-                data_pembanding[penyesuaian.length]?.merek || "",
-              tipe: 0,
-              merek: 0,
-              waktu: 0,
-              lokasi: 0,
-              tahun_pembuatan: 0,
-              total: 0,
-              nilai_taksiran: 0,
+              data_hasil_lelang: data_pembanding[penyesuaian.length]?.merek || "",
+              tipe: 0, merek: 0, waktu: 0, lokasi: 0, tahun_pembuatan: 0, total: 0, nilai_taksiran: 0,
             });
+          }
           penyesuaian.length = data_pembanding.length;
         }
-        const data_penyesuaian = penyesuaian.map((p) => ({
-          data_hasil_lelang: p.data_hasil_lelang || "",
-          tipe: Number(p.tipe) || 0,
-          merek: Number(p.merek) || 0,
-          waktu: Number(p.waktu) || 0,
-          lokasi: Number(p.lokasi) || 0,
-          tahun_pembuatan: Number(p.tahun_pembuatan) || 0,
-          total: Number(p.total) || 0,
-          nilai_taksiran: Number(p.nilai_taksiran) || 0,
-        }));
 
-        // Terapkan depresiasi berdasarkan klasifikasi kendaraan
-        const klasifikasiKendaraan = inputLelang.jenis_klasifikasi_kendaraan || "middle";
-        const tahunPembuatanKendaraan = Number(inputLelang.tahun_pembuatan) || new Date().getFullYear();
-        const penyesuaianDenganDepresiasi = applyDepreciationToNilaiTaksiran(
-          data_penyesuaian,
-          klasifikasiKendaraan,
-          tahunPembuatanKendaraan
-        );
+        // 2. PROSES PERHITUNGAN SESUAI KMK NO. 375 TAHUN 2024
+        const data_penyesuaian = penyesuaian.map((p, index) => {
+          // Ambil Harga Lelang mentah ASLI dari data pembanding
+          const hargaLelangAsli = Number(data_pembanding[index]?.harga_lelang) || 0;
+          
+          const tipe = Number(p.tipe) || 0;
+          const merek = Number(p.merek) || 0;
+          const waktu = Number(p.waktu) || 0;
+          const lokasi = Number(p.lokasi) || 0;
+          const tahun = Number(p.tahun_pembuatan) || 0;
 
-        // Hitung menggunakan nilai dengan depresiasi
-        const listNilai = penyesuaianDenganDepresiasi
-          .map((x) => Number(x.nilai_taksiran_dengan_depresiasi) || 0)
+          // Jumlahkan persentase (Contoh: 4% + 2% + 0% = 6)
+          const totalPenyesuaianPersen = waktu + lokasi + merek + tipe + tahun;
+
+          // Rumus: Harga Lelang Asli * (1 + Total Persen)
+          const nilaiTaksiranAkhir = hargaLelangAsli * (1 + (totalPenyesuaianPersen / 100));
+          
+          return {
+            data_hasil_lelang: p.data_hasil_lelang || "",
+            tipe: tipe,
+            merek: merek,
+            waktu: waktu,
+            lokasi: lokasi,
+            tahun_pembuatan: tahun,
+            total: totalPenyesuaianPersen,
+            nilai_taksiran: Math.round(nilaiTaksiranAkhir) 
+          };
+        });
+
+        // 3. HITUNG RATA-RATA DAN LIMIT LELANG
+        const listNilai = data_penyesuaian
+          .map((x) => x.nilai_taksiran)
           .filter((n) => Number.isFinite(n) && n > 0);
+          
         const nilai_taksiran_total = listNilai.reduce((a, b) => a + b, 0);
         const rata_rata = listNilai.length
           ? Math.round(nilai_taksiran_total / listNilai.length)
           : 0;
-        const faktor = Number(currentKondisiFactor) || 0.6;
-        const jenis =
-          (inputLelang.jenis_kendaraan || "").trim() || "Roda 4 atau lebih";
-        const limit_lelang = Math.round(rata_rata * faktor);
+        
+        const faktor = Number(currentKondisiFactor) || 0.5;
+        const jenis = (inputLelang.jenis_kendaraan || "").trim() || "Roda 4 atau lebih";
+        const limit_lelang = rata_rata * faktor;
         const pembulatan = Math.round(limit_lelang / 1000) * 1000;
 
         const btn = $("#btnSimpanKertasKerja");
@@ -1826,15 +1830,11 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
               dokumen_lainnya: dokumenLainnya,
 
               faktor_kondisi: faktor,
-
-              masa_berlaku: (inputLelang.masa_berlaku || "")
-                .toLowerCase()
-                .includes("habis")
+              masa_berlaku: (inputLelang.masa_berlaku || "").toLowerCase().includes("habis")
                 ? "Habis Masa Berlaku"
                 : "Masih Berlaku",
               penggunaan_kendaraan: inputLelang.penggunaan_kendaraan,
-              keterangan:
-                inputLelang.keterangan || inputLelang.keterangan_lain || "",
+              keterangan: inputLelang.keterangan || inputLelang.keterangan_lain || "",
               warna: inputLelang.warna,
               tahun_pembuatan: Number(inputLelang.tahun_pembuatan) || 0,
               bahan_bakar: inputLelang.bahan_bakar,
@@ -1845,19 +1845,14 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
             data_penyesuaian,
 
             hasil_taksiran: {
-              // total / jumlah dari setiap baris taksiran
-              nilai_taksiran: nilai_taksiran_total, // alias baru
-              total_nilai_taksiran: nilai_taksiran_total, // alias lama
-
+              nilai_taksiran: nilai_taksiran_total, 
+              total_nilai_taksiran: nilai_taksiran_total, 
               rata_rata_nilai_taksiran: rata_rata,
               taksiran_nilai_limit_lelang: limit_lelang,
-
-              // pembulatan limit
               pembulatan_nilai_taksiran: pembulatan,
-              pembulatan: pembulatan, // alias lama (kalau PDF cari ini)
+              pembulatan: pembulatan, 
             },
 
-            // Field root yang juga dibaca backend/PDF
             faktor_kondisi: faktor,
             jenis_kendaraan: jenis,
             jenis_klasifikasi_kendaraan: inputLelang.jenis_klasifikasi_kendaraan || "middle",
@@ -1870,12 +1865,11 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
             body: JSON.stringify(payload),
           });
 
-          const result =
-            res.status !== 204 ? await res.json().catch(() => ({})) : {};
+          const result = res.status !== 204 ? await res.json().catch(() => ({})) : {};
           if (res.ok) {
             modal.showSuccess(result.message || "Berhasil disimpan");
             sessionStorage.removeItem(draftKey);
-            localStorage.setItem("kk_dirty", "1"); // beri tahu halaman riwayat untuk refresh
+            localStorage.setItem("kk_dirty", "1"); 
             setTimeout(() => {
               modal.close();
               window.location.replace("Riwayat.html");
@@ -1892,7 +1886,7 @@ $("#tbodyHasilPencarian").addEventListener("change", (e) => {
           btn.disabled = false;
         }
       }
-
+      
       /* ===================== INIT ===================== */
       (function init() {
         const draftRaw = sessionStorage.getItem(draftKey);

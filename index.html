@@ -600,27 +600,27 @@
           .addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            const nup = this.querySelector('input[name="nup"]')?.value.trim() || "";
+            // const nup = this.querySelector('input[name="nup"]')?.value.trim() || "";
 
-            const jenisKendaraan = this.querySelector('select[name="jenis_kendaraan"]')?.value || "";
+            // const jenisKendaraan = this.querySelector('select[name="jenis_kendaraan"]')?.value || "";
 
-            try {
-              const apiBase = window.API_BASE || window.API_URL || "http://localhost:8080";
+            // try {
+            //   const apiBase = window.API_BASE || window.API_URL || "http://localhost:8080";
               
-              const res = await fetch(`${apiBase}/kertas-kerja/check?nup=${encodeURIComponent(nup)}&jenis_kendaraan=${encodeURIComponent(jenisKendaraan)}`, {
-                headers: getAuthHeaders()
-              });
+            //   const res = await fetch(`${apiBase}/kertas-kerja/check?nup=${encodeURIComponent(nup)}&jenis_kendaraan=${encodeURIComponent(jenisKendaraan)}`, {
+            //     headers: getAuthHeaders()
+            //   });
 
-              if (res.ok) {
-                const result = await res.json();
-                if (result.exist) {
-                  showErrorModal("NUP dan Jenis Kendaraan ini sudah pernah dinilai/ada di riwayat. Silakan gunakan NUP lain.");
-                  return;
-                }
-              }
-            } catch (err) {
-              console.error("Gagal melakukan pengecekan validasi NUP:", err);
-            }
+            //   if (res.ok) {
+            //     const result = await res.json();
+            //     if (result.exist) {
+            //       showErrorModal("NUP dan Jenis Kendaraan ini sudah pernah dinilai/ada di riwayat. Silakan gunakan NUP lain.");
+            //       return;
+            //     }
+            //   }
+            // } catch (err) {
+            //   console.error("Gagal melakukan pengecekan validasi NUP:", err);
+            // }
 
             const fd = new FormData(this);
             const formData = {};
