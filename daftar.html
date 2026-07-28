@@ -69,6 +69,10 @@
               <span class="btn-text">LOGIN</span>
               <span class="btn-spinner" aria-hidden="true"></span>
             </button>
+
+            <p class="lupa-password-link">
+              <a href="#" id="linkLupaPassword">Lupa Password?</a>
+            </p>
           </form>
 
           <!-- ================= SIGN UP ================= -->
@@ -252,6 +256,99 @@
         <h3 id="modalTitle" class="modal-title"></h3>
         <p id="modalMessage" class="modal-message"></p>
         <div class="modal-actions" id="modalActions"></div>
+      </div>
+    </div>
+
+    <!-- ================= Modal Lupa Password (3 Langkah) ================= -->
+    <div class="modal-overlay" id="fpOverlay" hidden>
+      <div class="modal-card fp-card" role="dialog" aria-modal="true" aria-labelledby="fpTitle">
+        <button type="button" class="modal-close" id="fpClose" aria-label="Tutup">✕</button>
+
+        <!-- STEP 1: Input Username atau Email -->
+        <div id="fpStep1">
+          <div class="modal-icon">
+            <svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="12" fill="#6fb32b"/><path d="M12 8v4m0 4h.01" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="modal-title" id="fpTitle">Lupa Password</h3>
+          <p class="modal-message">Masukkan username atau email akun Anda. Kode OTP akan dikirim ke email yang terdaftar.</p>
+          <div class="fp-form-group">
+            <input type="text" id="fpIdentifier" class="fp-input" placeholder="Username atau email" autocomplete="username email" />
+          </div>
+          <div class="fp-error" id="fpErr1"></div>
+          <button type="button" class="btn btn-login fp-btn" id="btnFpKirimOTP">
+            <span class="btn-text">Kirim Kode OTP</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- STEP 2: Input OTP -->
+        <div id="fpStep2" hidden>
+          <div class="modal-icon">
+            <svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="12" fill="#6fb32b"/><path d="M8 12l3 3 5-5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="modal-title">Verifikasi OTP</h3>
+          <p class="modal-message">Kode OTP 6 digit telah dikirim ke email Anda. Masukkan kode di bawah ini sebelum waktu habis.</p>
+          <div class="fp-countdown-row">
+            <span class="fp-countdown-label">Kode berlaku:</span>
+            <span class="fp-countdown" id="fpCountdown">02:00</span>
+          </div>
+          <div class="fp-otp-row">
+            <input type="text" class="fp-otp-box" maxlength="1" inputmode="numeric" />
+            <input type="text" class="fp-otp-box" maxlength="1" inputmode="numeric" />
+            <input type="text" class="fp-otp-box" maxlength="1" inputmode="numeric" />
+            <input type="text" class="fp-otp-box" maxlength="1" inputmode="numeric" />
+            <input type="text" class="fp-otp-box" maxlength="1" inputmode="numeric" />
+            <input type="text" class="fp-otp-box" maxlength="1" inputmode="numeric" />
+          </div>
+          <div class="fp-error" id="fpErr2"></div>
+          <button type="button" class="btn btn-login fp-btn" id="btnFpVerifyOTP">
+            <span class="btn-text">Verifikasi</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+          <p class="fp-resend-row">
+            Tidak menerima kode?
+            <a href="#" id="fpResend" class="fp-resend-link fp-resend-disabled">Kirim Ulang</a>
+          </p>
+        </div>
+
+        <!-- STEP 3: Input Password Baru -->
+        <div id="fpStep3" hidden>
+          <div class="modal-icon">
+            <svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="12" fill="#6fb32b"/><rect x="8" y="11" width="8" height="6" rx="1.5" fill="#fff"/><path d="M10 11V9a2 2 0 1 1 4 0v2" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="modal-title">Password Baru</h3>
+          <p class="modal-message">Masukkan password baru Anda. Minimal 8 karakter dengan huruf besar dan huruf kecil.</p>
+          <div class="fp-form-group input-with-eye">
+            <input type="password" id="fpNewPass" class="fp-input" placeholder="Password baru" autocomplete="new-password" />
+            <button type="button" class="toggle-pass" data-target="fpNewPass" aria-label="Tampilkan/Sembunyikan password">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 5C6 5 2.73 9.11 1 12c1.73 2.89 5 7 11 7s9.27-4.11 11-7c-1.73-2.89-5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <div class="fp-form-group input-with-eye">
+            <input type="password" id="fpConfirmPass" class="fp-input" placeholder="Ulangi password baru" autocomplete="new-password" />
+            <button type="button" class="toggle-pass" data-target="fpConfirmPass" aria-label="Tampilkan/Sembunyikan password">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 5C6 5 2.73 9.11 1 12c1.73 2.89 5 7 11 7s9.27-4.11 11-7c-1.73-2.89-5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <div class="fp-error" id="fpErr3"></div>
+          <button type="button" class="btn btn-login fp-btn" id="btnFpReset">
+            <span class="btn-text">Simpan Password Baru</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- STEP 4: Sukses -->
+        <div id="fpStep4" hidden>
+          <div class="modal-icon">
+            <svg viewBox="0 0 24 24" width="56" height="56"><circle cx="12" cy="12" r="12" fill="#22c55e"/><path d="M7 12l3 3 7-7" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="modal-title">Password Berhasil Diperbarui!</h3>
+          <p class="modal-message">Password Anda telah berhasil diperbarui. Silakan login dengan password baru Anda.</p>
+          <button type="button" class="btn btn-login fp-btn" id="btnFpKeLogin">
+            <span class="btn-text">Kembali ke Login</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -498,7 +595,394 @@
       //   }
       // });
 
-      // ================= REGISTER =================
+      // ================= LUPA PASSWORD =================
+      (function () {
+        const API = window.API_BASE_URL;
+
+        const fpOverlay   = document.getElementById("fpOverlay");
+        const fpClose     = document.getElementById("fpClose");
+        const steps       = [1, 2, 3, 4].map((n) => document.getElementById(`fpStep${n}`));
+
+        // State
+        let fpIdentifier = "";
+        let fpResetToken = "";
+        let countdownTimer = null;
+        let resendTimer    = null;
+
+        // ── helpers ──────────────────────────────────────────────────────────
+        function openFP(stepIdx = 0) {
+          fpOverlay.hidden = false;
+          document.body.style.overflow = "hidden";
+          showStep(stepIdx);
+        }
+
+        function closeFP() {
+          fpOverlay.hidden = true;
+          document.body.style.overflow = "";
+          clearCountdown();
+          // reset state
+          fpIdentifier = "";
+          fpResetToken = "";
+          document.getElementById("fpIdentifier").value   = "";
+          document.getElementById("fpNewPass").value      = "";
+          document.getElementById("fpConfirmPass").value  = "";
+          clearOTPBoxes();
+          clearErr();
+        }
+
+        function showStep(idx) {
+          steps.forEach((s, i) => (s.hidden = i !== idx));
+          if (idx === 1) startCountdown(); // OTP step
+        }
+
+        function setErr(id, msg) {
+          document.getElementById(id).textContent = msg;
+        }
+        function clearErr() {
+          ["fpErr1","fpErr2","fpErr3"].forEach((id) => setErr(id, ""));
+        }
+
+        function setBtnLoading(btnId, loading) {
+          const btn = document.getElementById(btnId);
+          const txt = btn.querySelector(".btn-text");
+          const spn = btn.querySelector(".btn-spinner");
+          btn.disabled = loading;
+          if (loading) { btn.classList.add("is-loading"); spn.style.display = "inline-block"; txt.style.opacity = "0"; }
+          else          { btn.classList.remove("is-loading"); spn.style.display = "none"; txt.style.opacity = "1"; }
+        }
+
+        // ── OTP 6-kotak ──────────────────────────────────────────────────────
+        const otpBoxes = Array.from(document.querySelectorAll(".fp-otp-box"));
+
+        otpBoxes.forEach((box, idx) => {
+          box.addEventListener("input", (e) => {
+            const val = e.target.value.replace(/\D/g, "");
+            e.target.value = val.slice(-1);
+            if (val && idx < otpBoxes.length - 1) otpBoxes[idx + 1].focus();
+          });
+          box.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !box.value && idx > 0) {
+              otpBoxes[idx - 1].focus();
+              otpBoxes[idx - 1].value = "";
+            }
+          });
+          box.addEventListener("paste", (e) => {
+            e.preventDefault();
+            const pasted = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
+            otpBoxes.forEach((b, i) => { b.value = pasted[i] || ""; });
+            const next = Math.min(pasted.length, otpBoxes.length - 1);
+            otpBoxes[next].focus();
+          });
+        });
+
+        function getOTPValue() {
+          return otpBoxes.map((b) => b.value).join("");
+        }
+
+        function clearOTPBoxes() {
+          otpBoxes.forEach((b) => (b.value = ""));
+        }
+
+        // ── Countdown 2:00 ───────────────────────────────────────────────────
+        function clearCountdown() {
+          if (countdownTimer) { clearInterval(countdownTimer); countdownTimer = null; }
+          if (resendTimer)    { clearTimeout(resendTimer);     resendTimer    = null; }
+        }
+
+        function startCountdown() {
+          clearCountdown();
+          const display  = document.getElementById("fpCountdown");
+          const resendEl = document.getElementById("fpResend");
+          resendEl.classList.add("fp-resend-disabled");
+
+          let remaining = 300;
+          display.textContent = "05:00";
+
+          countdownTimer = setInterval(() => {
+            remaining--;
+            const m = String(Math.floor(remaining / 60)).padStart(2, "0");
+            const s = String(remaining % 60).padStart(2, "0");
+            display.textContent = `${m}:${s}`;
+
+            if (remaining <= 0) {
+              clearCountdown();
+              display.textContent = "00:00";
+              display.style.color = "#ef4444";
+              setErr("fpErr2", "Kode OTP sudah kedaluarsa. Klik 'Kirim Ulang' untuk mendapatkan kode baru.");
+              resendEl.classList.remove("fp-resend-disabled");
+            }
+          }, 1000);
+
+          // Aktifkan tombol kirim ulang setelah 30 detik
+          resendTimer = setTimeout(() => {
+            if (!fpOverlay.hidden) resendEl.classList.remove("fp-resend-disabled");
+          }, 30_000);
+        }
+
+        // ── STEP 1: Kirim OTP ────────────────────────────────────────────────
+        document.getElementById("btnFpKirimOTP").addEventListener("click", async () => {
+          const identifier = document.getElementById("fpIdentifier").value.trim();
+          // console.log(identifier)
+          if (!identifier) { setErr("fpErr1", "Masukkan username atau email Anda."); return; }
+
+          // Deteksi apakah input berupa email atau username,
+          // lalu kirim dengan key yang sesuai ke backend
+          // const isEmail = identifier.includes("@");
+          const payload = { identifier: identifier }
+
+          console.log(payload)
+          setBtnLoading("btnFpKirimOTP", true);
+          setErr("fpErr1", "");
+          try {
+            const res = await fetch(`${API}/auth/forgot-password`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            const body = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(body?.message || `HTTP ${res.status}`);
+
+            fpIdentifier = identifier;
+
+            clearOTPBoxes();
+            showStep(1); // OTP step
+            otpBoxes[0].focus();
+          } catch (err) {
+            setErr("fpErr1", err.message || "Terjadi kesalahan. Coba lagi.");
+          } finally {
+            setBtnLoading("btnFpKirimOTP", false);
+          }
+        });
+
+        // ── STEP 2: Verifikasi OTP ───────────────────────────────────────────
+        document.getElementById("btnFpVerifyOTP").addEventListener("click", async () => {
+          const otp = getOTPValue();
+          if (otp.length < 6) { setErr("fpErr2", "Masukkan 6 digit kode OTP."); return; }
+          console.log(otp)
+
+          setBtnLoading("btnFpVerifyOTP", true);
+          setErr("fpErr2", "");
+          try {
+            const res = await fetch(`${API}/auth/verify-otp`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                identifier: fpIdentifier,
+                otp,
+              }),
+            });
+            const body = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(body?.message || `HTTP ${res.status}`);
+
+            fpResetToken = body.reset_token;
+            clearCountdown();
+            showStep(2); // Password baru step
+            document.getElementById("fpNewPass").focus();
+          } catch (err) {
+            setErr("fpErr2", err.message || "Kode OTP tidak valid atau sudah kedaluarsa.");
+          } finally {
+            setBtnLoading("btnFpVerifyOTP", false);
+          }
+        });
+
+        // ── STEP 2: Kirim Ulang OTP ──────────────────────────────────────────
+        document.getElementById("fpResend").addEventListener("click", async (e) => {
+          e.preventDefault();
+          const link = e.currentTarget;
+          if (link.classList.contains("fp-resend-disabled")) return;
+
+          setErr("fpErr2", "");
+          clearOTPBoxes();
+          link.classList.add("fp-resend-disabled");
+          document.getElementById("fpCountdown").style.color = "";
+
+          try {
+            const res = await fetch(`${API}/auth/forgot-password`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                identifier: fpIdentifier,
+              }),
+            });
+            if (!res.ok) throw new Error("Gagal mengirim ulang. Coba lagi.");
+            startCountdown();
+            otpBoxes[0].focus();
+          } catch (err) {
+            setErr("fpErr2", err.message);
+          }
+        });
+
+        // ── STEP 3: Reset Password ───────────────────────────────────────────
+        document.getElementById("btnFpReset").addEventListener("click", async () => {
+          const newPass     = document.getElementById("fpNewPass").value;
+          const confirmPass = document.getElementById("fpConfirmPass").value;
+
+          if (!isStrongPassword(newPass)) {
+            setErr("fpErr3", "Password minimal 8 karakter dan mengandung huruf besar serta huruf kecil.");
+            return;
+          }
+          if (newPass !== confirmPass) {
+            setErr("fpErr3", "Konfirmasi password tidak cocok.");
+            return;
+          }
+
+          setBtnLoading("btnFpReset", true);
+          setErr("fpErr3", "");
+          try {
+            const res = await fetch(`${API}/auth/reset-password`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                identifier: fpIdentifier,
+                reset_token:  fpResetToken,
+                new_password: newPass,
+              }),
+            });
+            const body = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(body?.message || `HTTP ${res.status}`);
+
+            showStep(3); // Sukses
+          } catch (err) {
+            setErr("fpErr3", err.message || "Terjadi kesalahan. Coba lagi.");
+          } finally {
+            setBtnLoading("btnFpReset", false);
+          }
+        });
+
+        // ── STEP 4: Kembali ke Login ─────────────────────────────────────────
+        document.getElementById("btnFpKeLogin").addEventListener("click", () => {
+          closeFP();
+          container.classList.remove("sign-up-mode");
+          document.getElementById("fpIdentifier").value = "";
+        });
+
+        // ── Buka modal dari link ──────────────────────────────────────────────
+        document.getElementById("linkLupaPassword").addEventListener("click", (e) => {
+          e.preventDefault();
+          clearErr();
+          openFP(0);
+        });
+
+        fpClose.addEventListener("click", closeFP);
+        fpOverlay.addEventListener("click", (e) => { if (e.target === fpOverlay) closeFP(); });
+      })();
+    </script>
+
+    <style>
+      /* ── Lupa Password Link ── */
+      .lupa-password-link {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 14px;
+      }
+      .lupa-password-link a {
+        color: #6fb32b;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .lupa-password-link a:hover { text-decoration: underline; }
+
+      /* ── Modal Lupa Password ── */
+      .fp-card {
+        width: min(420px, 96vw);
+        padding: 28px 28px 24px;
+        text-align: center;
+      }
+
+      .fp-form-group {
+        margin: 14px 0 4px;
+        position: relative;
+      }
+      .fp-input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 2px solid #cde7b0;
+        font-size: 15px;
+        font-weight: 600;
+        outline: none;
+        transition: border-color 0.18s;
+        box-sizing: border-box;
+      }
+      .fp-input:focus { border-color: #6fb32b; box-shadow: 0 0 0 3px rgba(111,179,43,0.2); }
+
+      /* OTP grid */
+      .fp-otp-row {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 18px 0 6px;
+      }
+      .fp-otp-box {
+        width: 46px;
+        height: 54px;
+        border-radius: 12px;
+        border: 2px solid #cde7b0;
+        font-size: 22px;
+        font-weight: 900;
+        text-align: center;
+        outline: none;
+        transition: border-color 0.18s, box-shadow 0.18s;
+        color: #1f2937;
+      }
+      .fp-otp-box:focus { border-color: #6fb32b; box-shadow: 0 0 0 3px rgba(111,179,43,0.2); }
+
+      /* Countdown */
+      .fp-countdown-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #475569;
+      }
+      .fp-countdown {
+        font-size: 22px;
+        font-weight: 900;
+        color: #6fb32b;
+        font-variant-numeric: tabular-nums;
+        min-width: 56px;
+      }
+
+      /* Resend */
+      .fp-resend-row {
+        margin-top: 14px;
+        font-size: 13px;
+        color: #64748b;
+      }
+      .fp-resend-link {
+        color: #6fb32b;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .fp-resend-link:hover:not(.fp-resend-disabled) { text-decoration: underline; }
+      .fp-resend-disabled {
+        color: #9ca3af !important;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      /* Error */
+      .fp-error {
+        min-height: 18px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #ef4444;
+        margin: 6px 0 2px;
+        text-align: left;
+      }
+
+      /* Button */
+      .fp-btn {
+        width: 100%;
+        margin-top: 16px;
+        height: 48px;
+      }
+    </style>
+    <script>
       (function () {
         const API = window.API_BASE_URL;
         const form = document.getElementById("formRegister");
