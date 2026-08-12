@@ -1015,21 +1015,27 @@
           }
         };
         fillYears("#fTahunLelang", yearNow - 10, yearNow);
-        fillYears("#fTahunPembuatan", yearNow - 25, yearNow);
+        fillYears("#fTahunPembuatan", 1900, yearNow);
 
         const dropdownIds = ["#fKategoriObjek", "#fTahap", "#fWarna", "#fTahunPembuatan", "#fTipe", "#fMerek", "#fKpknl", "#fTahunLelang"];
         
         dropdownIds.forEach(selector => {
           const el = document.querySelector(selector);
           if (el) {
-            new TomSelect(el, {
+            const tomSelectOptions = {
               plugins: ['remove_button'],
               create: false,
               sortField: {
                 field: "text",
                 direction: "asc"
               }
-            });
+            };
+
+            if (selector === "#fTahunPembuatan") {
+              tomSelectOptions.maxOptions = 1000;
+            }
+
+            new TomSelect(el, tomSelectOptions);
           }
         });
       }
