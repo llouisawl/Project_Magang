@@ -659,8 +659,36 @@
 
         resetBtn();
 
+        const isQueued = uploadResponse.status === 202 || response.status_code === "accepted";
         const isSuccess = uploadResponse.ok &&
           (!response.status_code || response.status_code === "success");
+
+        if (isQueued) {
+          const jobId = response.job_id || response.jobID || response.jobId;
+          showAlert(
+            "success",
+            "&#x23F3; Upload Diterima",
+            response.message || "File diterima dan sedang diproses di background."
+          );
+
+          const hist = JSON.parse(localStorage.getItem("upload_history") || "[]");
+          hist.unshift({
+            tanggal: new Date().toLocaleString("id-ID"),
+            file: uploadedFileName,
+            jumlah: "-",
+            status: "Diproses",
+            pesan: response.message || "Upload diproses di background",
+          });
+          localStorage.setItem("upload_history", JSON.stringify(hist.slice(0, 10)));
+
+          removeFile();
+          loadUploadHistory();
+
+          if (jobId) {
+            pollUploadJob(jobId, uploadedFileName);
+          }
+          return;
+        }
 
         if (isSuccess) {
           const msg = response.message ||
@@ -686,6 +714,86 @@
           showAlert("error", "Upload Gagal",
             response.message || `HTTP ${uploadResponse.status}: ${responseText}`);
         }
+      }
+
+      async function pollUploadJob(jobId, uploadedFileName) {
+        const progressUrl = API_URL.replace(/\/$/, "") + `/data-lelang/upload-progress?job_id=${encodeURIComponent(jobId)}`;
+        const maxAttempts = 30;
+        let attempts = 0;
+
+        while (attempts < maxAttempts) {
+          attempts += 1;
+          try {
+            const token =
+              localStorage.getItem("jwt_satker") ||
+              localStorage.getItem("jwt_admin") ||
+              localStorage.getItem("jwt_superadmin");
+
+            const progressResponse = await fetch(progressUrl, {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+
+            if (!progressResponse.ok) {
+              const errorText = await progressResponse.text();
+              console.error("Upload progress non-OK response", progressResponse.status, errorText);
+              await new Promise(resolve => setTimeout(resolve, 2000));
+              continue;
+            }
+
+            const progressJson = await progressResponse.json();
+            const progress = progressJson.data || {};
+
+            if (progress.status === "success") {
+              showAlert(
+                "success",
+                "&#x2705; Upload Selesai",
+                progress.message || "Upload berhasil diproses di background."
+              );
+
+              const hist = JSON.parse(localStorage.getItem("upload_history") || "[]");
+              hist.unshift({
+                tanggal: new Date().toLocaleString("id-ID"),
+                file: uploadedFileName,
+                jumlah: progress.processed_records ?? "-",
+                status: "Berhasil",
+                pesan: progress.message || "Upload selesai",
+              });
+              localStorage.setItem("upload_history", JSON.stringify(hist.slice(0, 10)));
+              loadUploadHistory();
+              return;
+            }
+
+            if (progress.status === "failed") {
+              showAlert(
+                "error",
+                "Upload Gagal",
+                progress.message || "Upload background gagal diproses."
+              );
+
+              const hist = JSON.parse(localStorage.getItem("upload_history") || "[]");
+              hist.unshift({
+                tanggal: new Date().toLocaleString("id-ID"),
+                file: uploadedFileName,
+                jumlah: "-",
+                status: "Gagal",
+                pesan: progress.message || "Upload background gagal",
+              });
+              localStorage.setItem("upload_history", JSON.stringify(hist.slice(0, 10)));
+              loadUploadHistory();
+              return;
+            }
+          } catch (err) {
+            console.error("Gagal polling upload progress", err);
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+
+        showAlert(
+          "warning",
+          "Upload Masih Diproses",
+          "Server masih memproses upload di background. Silakan cek history atau refresh beberapa saat lagi."
+        );
       }
       function showAlert(type, title, message) {
         const alertBox = $("#alertBox");
